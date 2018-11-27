@@ -1,0 +1,281 @@
+﻿<Window x:Class="CalculatorForWin10.MainWindow"
+         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="计算器" Height="520" Width="700" MinHeight="501" MinWidth="322" Background="#FFEAEAEA">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition  MinWidth="302">
+            </ColumnDefinition>
+            <ColumnDefinition Width="340"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="140"></RowDefinition>
+                <RowDefinition Height="20"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="45"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="45"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button BorderThickness="0" Background="#eaeaea">
+                    <Image Width="32" Source="images/opt.png"/>
+                </Button>
+                <Label Grid.Column="1" Background="#EAEAEA" FontSize="24" Padding="0,7,0,0">标准</Label>
+                <Button BorderThickness="0" Background="#eaeaea" Grid.Column="2">
+                    <Image Width="25" Source="images/his.png"/>
+                </Button>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="beforeText" Background="#EAEAEA" BorderBrush="#EAEAEA" TextAlignment="Right"></TextBox>
+                <TextBox Grid.Row="1" x:Name="resultText" Background="#EAEAEA" BorderBrush="#EAEAEA" FontSize="42" FontWeight="Heavy" TextAlignment="Right" TextChanged="ResultText_TextChanged"></TextBox>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button BorderThickness="0" Background="#eaeaea" Content="MC"/>
+                <Button BorderThickness="0" Grid.Column="1" Background="#eaeaea" Content="MR"/>
+                <Button BorderThickness="0" Grid.Column="2" Background="#eaeaea" Content="M+"/>
+                <Button BorderThickness="0" Grid.Column="3" Background="#eaeaea" Content="M-"/>
+                <Button BorderThickness="0" Grid.Column="4" Background="#eaeaea" Content="MS"/>
+                <Button BorderThickness="0" Grid.Column="5" Background="#eaeaea" Content="M▼"/>
+            </Grid>
+            <Grid Grid.Row="3" Background="#eaeaea">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button Margin="2" BorderThickness="0" x:Name="btn_pre"  Content="%" Background="#F3F3F3" FontSize="18" FontWeight="UltraLight" />
+                <Button Margin="2" BorderThickness="0" x:Name="btn_CE" Grid.Row="1"  Background="#F3F3F3" Content="CE" FontSize="18" FontWeight="Normal" Click="btn_CE_Click" />
+                <Button Margin="2" BorderThickness="0" x:Name="btn_C" Grid.Row="1" Grid.Column="1" Content="C" Background="#F3F3F3" FontSize="18" FontWeight="Normal" Click="btn_C_Click" />
+                <Button Margin="2,2,0,2" BorderThickness="0" x:Name="btn_DEL" Grid.Row="1" Grid.Column="2"  Background="#F3F3F3" Click="btn_DEL_Click"  >
+                    <Image Source="images/del.png" Width="36"/>
+                </Button>
+                <Button Margin="2" BorderThickness="0" x:Name="btn_divi" Grid.Row="1" Grid.Column="3" Content="÷" Background="#F3F3F3" FontSize="35" FontWeight="UltraLight" Click="btn_cal_Click" />
+                <Button Margin="2" BorderThickness="0" x:Name="btn_sqrt" Grid.Column="1" Content="√" Background="#F3F3F3" FontSize="25" FontWeight="UltraLight" Click="btn_sqrt_Click" />
+                <Button Margin="2" BorderThickness="0" x:Name="btn_7" Grid.Row="2"  Content="7" FontSize="25" FontWeight="Black" Background="#FBFBFB" Click="btnNum_Click" />
+                <Button Margin="2" BorderThickness="0" x:Name="btn_8" Grid.Row="2" Grid.Column="1" Content="8" FontSize="25" FontWeight="Black" Background="#FBFBFB" Click="btnNum_Click" />
+                <Button Margin="2" BorderThickness="0" x:Name="btn_9" Grid.Row="2" Grid.Column="2" Content="9" FontSize="25" FontWeight="Black" Background="#FBFBFB" Click="btnNum_Click" />
+                <Button Margin="2" BorderThickness="0" x:Name="btn_muti" Grid.Row="2" Grid.Column="3" Content="×" Background="#F3F3F3" FontSize="35" FontWeight="UltraLight" Click="btn_cal_Click" />
+                <Button Margin="2" BorderThickness="0" x:Name="btn_squ" Grid.Column="2" Content="x²" Background="#F3F3F3" FontSize="18" FontWeight="UltraLight" />
+                <Button Margin="2" BorderThickness="0" x:Name="btn_4" Grid.Row="3" Content="4" Background="#FBFBFB" FontSize="25" FontWeight="Black" Click="btnNum_Click" />
+                <Button Margin="2" BorderThickness="0" x:Name="btn_5" Grid.Row="3" Grid.Column="1" Content="5" Background="#FBFBFB" FontSize="25" FontWeight="Black" Click="btnNum_Click" />
+                <Button Margin="2" BorderThickness="0" x:Name="btn_6" Grid.Row="3" Grid.Column="2" Content="6" Background="#FBFBFB" FontSize="25" FontWeight="Black" Click="btnNum_Click" />
+                <Button Margin="2" BorderThickness="0" x:Name="btn_sub" Grid.Row="4" Grid.Column="3" Content="－" Background="#F3F3F3" FontSize="35" FontWeight="UltraLight" Click="btn_cal_Click" />
+                <Button Margin="2" BorderThickness="0" x:Name="btn_1" Grid.Row="4"  Content="1" Background="#FBFBFB" FontSize="25" FontWeight="Black" Click="btnNum_Click" />
+                <Button Margin="2" BorderThickness="0" x:Name="btn_2" Grid.Row="4" Grid.Column="1" Content="2" Background="#FBFBFB" FontSize="25" FontWeight="Black" Click="btnNum_Click" />
+                <Button Margin="2" BorderThickness="0" x:Name="btn_3" Grid.Row="4" Grid.Column="2" Content="3" Background="#FBFBFB" FontSize="25" FontWeight="Black" Click="btnNum_Click" />
+                <Button Margin="2" BorderThickness="0" x:Name="btn_add" Grid.Row="3" Grid.Column="3" Content="＋" Background="#F3F3F3" FontSize="35" FontWeight="UltraLight" Click="btn_cal_Click"/>
+                <Button Margin="2" BorderThickness="0" x:Name="btn_reci" Grid.Column="3" Content="¹/x" FontSize="18" FontWeight="UltraLight" Background="#F3F3F3" Click="btn_reci_Click" />
+                <Button Margin="2" BorderThickness="0" x:Name="btn_nega" Grid.Row="5"  Content="±" Background="#F3F3F3" FontSize="25" FontWeight="Light" Click="btn_nega_Click" />
+                <Button Margin="2" BorderThickness="0" x:Name="btn_0"  Grid.Row="5" Grid.Column="1" Content="0" Background="#FBFBFB" FontSize="25" FontWeight="Black" Click="btnNum_Click" />
+                <Button Margin="2" BorderThickness="0" x:Name="btn_point" Grid.Row="5" Grid.Column="2" Content="." Background="#F3F3F3" FontSize="25" FontWeight="Black" Click="btn_point_Click" />
+                <Button Margin="2" BorderThickness="0" x:Name="btn_equal" Grid.Row="5" Grid.Column="3" Content="＝" Background="#F3F3F3" FontSize="35" FontWeight="UltraLight" Click="btn_equal_Click" />
+            </Grid>
+        </Grid>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="45"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid>
+                <TabControl BorderBrush="#FFEAEAEA">
+                    <TabItem Header="历史记录" BorderBrush="{x:Null}">
+                        <Grid Background="#FFEAEAEA" MinWidth="340">
+                            <ScrollViewer VerticalScrollBarVisibility="Auto" Width="340" Margin="0">
+                                <ListBox Background="#FFE5E5E5" BorderBrush="{x:Null}">
+                                    <ListBoxItem Margin="0,0,0,10">
+                                        <StackPanel Width="308" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <TextBlock FontSize="16" TextWrapping="Wrap" TextAlignment="Right" Foreground="#6C6D6D" FontWeight="Light">7 - 8 - 9 - 6- 5- 4- 3- 5 - 4- 7 - 8 - 9 - 6 - 5 - 2 - 9 - 6 - 5 - 8 =</TextBlock>
+                                            <Label HorizontalContentAlignment="Right" FontSize="21">89</Label>
+                                        </StackPanel>
+                                    </ListBoxItem>
+                                    <ListBoxItem Margin="0,0,0,10">
+                                        <StackPanel Width="308" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <TextBlock FontSize="16" TextWrapping="Wrap" TextAlignment="Right" Foreground="#6C6D6D" FontWeight="Light">89 =</TextBlock>
+                                            <Label HorizontalContentAlignment="Right" FontSize="21">89</Label>
+                                        </StackPanel>
+                                    </ListBoxItem>
+                                    <ListBoxItem Margin="0,0,0,10">
+                                        <StackPanel Width="308" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <TextBlock FontSize="16" TextWrapping="Wrap" TextAlignment="Right" Foreground="#6C6D6D" FontWeight="Light">7 - 8 - 9 - 6- 5- 4- 3- 5 - 4- 7 - 8 - 9 - 6 - 5 - 2 - 9 - 6 - 5 - 8 =</TextBlock>
+                                            <Label HorizontalContentAlignment="Right" FontSize="21">89</Label>
+                                        </StackPanel>
+                                    </ListBoxItem>
+                                    <ListBoxItem Margin="0,0,0,10">
+                                        <StackPanel Width="308" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <TextBlock FontSize="16" TextWrapping="Wrap" TextAlignment="Right" Foreground="#6C6D6D" FontWeight="Light">89 =</TextBlock>
+                                            <Label HorizontalContentAlignment="Right" FontSize="21">89</Label>
+                                        </StackPanel>
+                                    </ListBoxItem>
+                                    <ListBoxItem Margin="0,0,0,10">
+                                        <StackPanel Width="308" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <TextBlock FontSize="16" TextWrapping="Wrap" TextAlignment="Right" Foreground="#6C6D6D" FontWeight="Light">7 - 8 - 9 - 6- 5- 4- 3- 5 - 4- 7 - 8 - 9 - 6 - 5 - 2 - 9 - 6 - 5 - 8 =</TextBlock>
+                                            <Label HorizontalContentAlignment="Right" FontSize="21">89</Label>
+                                        </StackPanel>
+                                    </ListBoxItem>
+                                    <ListBoxItem Margin="0,0,0,10">
+                                        <StackPanel Width="308" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <TextBlock FontSize="16" TextWrapping="Wrap" TextAlignment="Right" Foreground="#6C6D6D" FontWeight="Light">89 =</TextBlock>
+                                            <Label HorizontalContentAlignment="Right" FontSize="21">89</Label>
+                                        </StackPanel>
+                                    </ListBoxItem>
+                                    <ListBoxItem Margin="0,0,0,10">
+                                        <StackPanel Width="308" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <TextBlock FontSize="16" TextWrapping="Wrap" TextAlignment="Right" Foreground="#6C6D6D" FontWeight="Light">7 - 8 - 9 - 6- 5- 4- 3- 5 - 4- 7 - 8 - 9 - 6 - 5 - 2 - 9 - 6 - 5 - 8 =</TextBlock>
+                                            <Label HorizontalContentAlignment="Right" FontSize="21">89</Label>
+                                        </StackPanel>
+                                    </ListBoxItem>
+                                    <ListBoxItem Margin="0,0,0,10">
+                                        <StackPanel Width="308" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <TextBlock FontSize="16" TextWrapping="Wrap" TextAlignment="Right" Foreground="#6C6D6D" FontWeight="Light">89 =</TextBlock>
+                                            <Label HorizontalContentAlignment="Right" FontSize="21">89</Label>
+                                        </StackPanel>
+                                    </ListBoxItem>
+                                </ListBox>
+                            </ScrollViewer>
+
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="内存" BorderBrush="{x:Null}">
+                        <Grid Background="#FFEAEAEA" >
+                            <ScrollViewer VerticalScrollBarVisibility="Auto" Width="340" Margin="0">
+                                <ListBox Background="#FFE5E5E5" BorderBrush="{x:Null}">
+                                    <ListBoxItem Margin="0,0,0,10">
+                                        <StackPanel Width="308" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <Label HorizontalContentAlignment="Right" FontSize="21" Margin="0,0,10,0">89</Label>
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
+                                                <Button Width="40" Height="20" Margin="4,0,0,0" Content="MC" Background="White"/>
+                                                <Button Width="40" Height="20" Margin="4,0,0,0" Content="M+" Background="White"/>
+                                                <Button Width="40" Height="20" Margin="4,0,0,0" Content="M-" Background="White"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </ListBoxItem>
+                                    <ListBoxItem Margin="0,0,0,10">
+                                        <StackPanel Width="308" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <Label HorizontalContentAlignment="Right" FontSize="21" Margin="0,0,10,0">89</Label>
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
+                                                <Button Width="40" Height="20" Margin="4,0,0,0" Content="MC" Background="White"/>
+                                                <Button Width="40" Height="20" Margin="4,0,0,0" Content="M+" Background="White"/>
+                                                <Button Width="40" Height="20" Margin="4,0,0,0" Content="M-" Background="White"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </ListBoxItem>
+                                    <ListBoxItem Margin="0,0,0,10">
+                                        <StackPanel Width="308" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <Label HorizontalContentAlignment="Right" FontSize="21" Margin="0,0,10,0">89</Label>
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
+                                                <Button Width="40" Height="20" Margin="4,0,0,0" Content="MC" Background="White"/>
+                                                <Button Width="40" Height="20" Margin="4,0,0,0" Content="M+" Background="White"/>
+                                                <Button Width="40" Height="20" Margin="4,0,0,0" Content="M-" Background="White"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </ListBoxItem>
+                                    <ListBoxItem Margin="0,0,0,10">
+                                        <StackPanel Width="308" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <Label HorizontalContentAlignment="Right" FontSize="21" Margin="0,0,10,0">89</Label>
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
+                                                <Button Width="40" Height="20" Margin="4,0,0,0" Content="MC" Background="White"/>
+                                                <Button Width="40" Height="20" Margin="4,0,0,0" Content="M+" Background="White"/>
+                                                <Button Width="40" Height="20" Margin="4,0,0,0" Content="M-" Background="White"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </ListBoxItem>
+                                    <ListBoxItem Margin="0,0,0,10">
+                                        <StackPanel Width="308" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <Label HorizontalContentAlignment="Right" FontSize="21" Margin="0,0,10,0">89</Label>
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
+                                                <Button Width="40" Height="20" Margin="4,0,0,0" Content="MC" Background="White"/>
+                                                <Button Width="40" Height="20" Margin="4,0,0,0" Content="M+" Background="White"/>
+                                                <Button Width="40" Height="20" Margin="4,0,0,0" Content="M-" Background="White"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </ListBoxItem>
+                                    <ListBoxItem Margin="0,0,0,10">
+                                        <StackPanel Width="308" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <Label HorizontalContentAlignment="Right" FontSize="21" Margin="0,0,10,0">89</Label>
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
+                                                <Button Width="40" Height="20" Margin="4,0,0,0" Content="MC" Background="White"/>
+                                                <Button Width="40" Height="20" Margin="4,0,0,0" Content="M+" Background="White"/>
+                                                <Button Width="40" Height="20" Margin="4,0,0,0" Content="M-" Background="White"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </ListBoxItem>
+                                    <ListBoxItem Margin="0,0,0,10">
+                                        <StackPanel Width="308" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <Label HorizontalContentAlignment="Right" FontSize="21" Margin="0,0,10,0">89</Label>
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
+                                                <Button Width="40" Height="20" Margin="4,0,0,0" Content="MC" Background="White"/>
+                                                <Button Width="40" Height="20" Margin="4,0,0,0" Content="M+" Background="White"/>
+                                                <Button Width="40" Height="20" Margin="4,0,0,0" Content="M-" Background="White"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </ListBoxItem>
+                                    <ListBoxItem Margin="0,0,0,10">
+                                        <StackPanel Width="308" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <Label HorizontalContentAlignment="Right" FontSize="21" Margin="0,0,10,0">89</Label>
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
+                                                <Button Width="40" Height="20" Margin="4,0,0,0" Content="MC" Background="White"/>
+                                                <Button Width="40" Height="20" Margin="4,0,0,0" Content="M+" Background="White"/>
+                                                <Button Width="40" Height="20" Margin="4,0,0,0" Content="M-" Background="White"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </ListBoxItem>
+                                </ListBox>
+                            </ScrollViewer>
+                        </Grid>
+                    </TabItem>
+                </TabControl>
+
+            </Grid>
+            <Grid Grid.Row="1">
+
+                <Button HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="50" Height="45" BorderBrush="{x:Null}">
+                    <Image Width="45" Source="images/qc.png"/>
+                </Button>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
+
