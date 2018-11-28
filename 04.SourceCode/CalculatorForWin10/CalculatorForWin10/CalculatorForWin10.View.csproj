@@ -101,5 +101,11 @@
   <ItemGroup>
     <Resource Include="Images\qc.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CalculatorForWin10.ViewModel\CalculatorForWin10.ViewModel.csproj">
+      <Project>{045D1EA9-3A61-4BB0-B89B-91D34D8A985A}</Project>
+      <Name>CalculatorForWin10.ViewModel</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
