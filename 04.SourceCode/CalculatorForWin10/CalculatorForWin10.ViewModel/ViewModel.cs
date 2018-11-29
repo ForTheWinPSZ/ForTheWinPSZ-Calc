@@ -12,8 +12,15 @@ namespace CalculatorForWin10.ViewModel
         
         public MainWindowsViewModel()
         {
-            btn_point = new NVCommand(new Screen().Point1);
+            btn_point = new NVCommand(AddPoint);
         }
+
+        private void AddPoint()
+        {
+            Screen screen = new Screen();
+            ResultText = screen.Point1();
+        }
+
         private string _resultText;
         public string ResultText
         {
