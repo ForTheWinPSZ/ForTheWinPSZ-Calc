@@ -8,5 +8,6 @@ namespace NumberDefine
 {
     class Point
     {
+
     }
 }
