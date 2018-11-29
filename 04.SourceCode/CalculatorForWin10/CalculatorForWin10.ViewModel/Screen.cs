@@ -9,9 +9,16 @@ namespace CalculatorForWin10.ViewModel
     public class Screen
     {
         private string content;
-        public string Point1()
+
+        public string getResult()
         {
-             return content  = new Point().AddBtn_point();
+            return content;
         }
+
+        public void Point1()
+        {
+             content  =  new Point().AddBtn_point();
+        }
+
     }
 }

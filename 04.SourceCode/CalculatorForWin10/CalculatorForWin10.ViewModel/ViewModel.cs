@@ -18,7 +18,8 @@ namespace CalculatorForWin10.ViewModel
         private void AddPoint()
         {
             Screen screen = new Screen();
-            ResultText = screen.Point1();
+            screen.Point1();
+            ResultText = screen.getResult();
         }
 
         private string _resultText;
