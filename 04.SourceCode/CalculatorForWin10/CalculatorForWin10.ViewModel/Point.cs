@@ -8,9 +8,11 @@ namespace CalculatorForWin10.ViewModel
 {
     class Point: MainWindowsViewModel
     {
+        string resultValue;
 
-        public  string AddBtn_point()
+        public string AddBtn_point(string resultValue)
         {
+            resultValue = "";
             return ".";
         }
     }
