@@ -46,11 +46,5 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Zero.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CalculatorForWin10.ViewModel\CalculatorForWin10.ViewModel.csproj">
-      <Project>{045d1ea9-3a61-4bb0-b89b-91d34d8a985a}</Project>
-      <Name>CalculatorForWin10.ViewModel</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

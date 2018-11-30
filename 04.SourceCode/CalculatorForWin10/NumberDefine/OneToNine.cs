@@ -8,5 +8,9 @@ namespace NumberDefine
 {
     public class OneToNine
     {
+        private string content;
+        public OneToNine(string content){
+            this.content=content;
+        }
     }
 }
