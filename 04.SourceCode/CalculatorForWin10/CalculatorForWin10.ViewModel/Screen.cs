@@ -101,7 +101,7 @@ namespace CalculatorForWin10.ViewModel
         public void HandleZero()
         {
         }
-        public void Num(string number)
+        public void HandleNum(string number)
         {
             OneToNine oneToNine = new OneToNine(number,resultValue,expressionValue);
             resultValue = oneToNine.returnResult();
