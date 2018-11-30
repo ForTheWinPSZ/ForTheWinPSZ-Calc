@@ -94,15 +94,15 @@
                 <Button Margin="2" BorderThickness="0" x:Name="btn_7" Grid.Row="2"  Content="7" FontSize="25" FontWeight="Black" Background="#FBFBFB" Command="{Binding Btn_7}"/>
                 <Button Margin="2" BorderThickness="0" x:Name="btn_8" Grid.Row="2" Grid.Column="1" Content="8" FontSize="25" FontWeight="Black" Background="#FBFBFB" Command="{Binding Btn_8}"/>
                 <Button Margin="2" BorderThickness="0" x:Name="btn_9" Grid.Row="2" Grid.Column="2" Content="9" FontSize="25" FontWeight="Black" Background="#FBFBFB" Command="{Binding Btn_9}"/>
-                <Button Margin="2" BorderThickness="0" x:Name="btn_muti" Grid.Row="2" Grid.Column="3" Content="×" Background="#F3F3F3" FontSize="35" FontWeight="UltraLight" Command="{Binding multiplication}"/>
+                <Button Margin="2" BorderThickness="0" x:Name="btn_muti" Grid.Row="2" Grid.Column="3" Content="×" Background="#F3F3F3" FontSize="35" FontWeight="UltraLight" Command="{Binding Btn_multiplication}"/>
                 <Button Margin="2" BorderThickness="0" x:Name="btn_squ" Grid.Column="2" Content="x²" Background="#F3F3F3" FontSize="18" FontWeight="UltraLight" Command="{Binding Btn_square}"/>
                 <Button Margin="2" BorderThickness="0" x:Name="btn_4" Grid.Row="3" Content="4" Background="#FBFBFB" FontSize="25" FontWeight="Black"  Command="{Binding Btn_4}"/>
                 <Button Margin="2,2,2,0" BorderThickness="0" x:Name="btn_5" Grid.Row="3" Grid.Column="1" Content="5" Background="#FBFBFB" FontSize="25" FontWeight="Black" Height="43" VerticalAlignment="Top" Command="{Binding Btn_5}"/>
                 <Button Margin="2" BorderThickness="0" x:Name="btn_6" Grid.Row="3" Grid.Column="2" Content="6" Background="#FBFBFB" FontSize="25" FontWeight="Black" Command="{Binding Btn_6}"/>
                 <Button Margin="2" BorderThickness="0" x:Name="btn_sub" Grid.Row="4" Grid.Column="3" Content="－" Background="#F3F3F3" FontSize="35" FontWeight="UltraLight" Command="{Binding Btn_minus}"/>
                 <Button Margin="2" BorderThickness="0" x:Name="btn_1" Grid.Row="4"  Content="1" Background="#FBFBFB" FontSize="25" FontWeight="Black" Command="{Binding Btn_1}"/>
-                <Button Margin="2" BorderThickness="0" x:Name="btn_2" Grid.Row="4" Grid.Column="1" Content="2" Background="#FBFBFB" FontSize="25" FontWeight="Black" Command="{Binding btn_2}"/>
-                <Button Margin="2" BorderThickness="0" x:Name="btn_3" Grid.Row="4" Grid.Column="2" Content="3" Background="#FBFBFB" FontSize="25" FontWeight="Black" Command="{Binding btn_3}"/>
+                <Button Margin="2" BorderThickness="0" x:Name="btn_2" Grid.Row="4" Grid.Column="1" Content="2" Background="#FBFBFB" FontSize="25" FontWeight="Black" Command="{Binding Btn_2}"/>
+                <Button Margin="2" BorderThickness="0" x:Name="btn_3" Grid.Row="4" Grid.Column="2" Content="3" Background="#FBFBFB" FontSize="25" FontWeight="Black" Command="{Binding Btn_3}"/>
                 <Button Margin="2" BorderThickness="0" x:Name="btn_add" Grid.Row="3" Grid.Column="3" Content="＋" Background="#F3F3F3" FontSize="35" FontWeight="UltraLight" Command="{Binding Btn_plus}"/>
                 <Button Margin="2" BorderThickness="0" x:Name="btn_reci" Grid.Column="3" Content="¹/x" FontSize="18" FontWeight="UltraLight" Background="#F3F3F3" Command="{Binding Btn_reciprocal}"/>
                 <Button Margin="2" BorderThickness="0" x:Name="btn_nega" Grid.Row="5"  Content="±" Background="#F3F3F3" FontSize="25" FontWeight="Light" Command="{Binding Btn_reverse}"/>
