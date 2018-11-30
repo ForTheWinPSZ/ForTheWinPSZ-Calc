@@ -104,7 +104,7 @@ namespace CalculatorForWin10.ViewModel
         private void Point()
         {
             screen.HandlePoint();
-            ResultText = screen.getResult();
+            ResultText = screen.GetResult();
         }
         private void Mc()
         {
