@@ -11,5 +11,11 @@ namespace Arithmetic
         private string resultValue;
         private string expressionValue;
         private bool isBinary;
+
+        public abstract string Expression();
+        public abstract string IsUnary();
+        public abstract string IsBinary();
+        public abstract string ChangeResultValue();
+        public abstract string ChangeExpression();
     }
 }

@@ -42,7 +42,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Binary.cs" />
+    <Compile Include="Division.cs" />
     <Compile Include="Equal.cs" />
+    <Compile Include="Minus.cs" />
+    <Compile Include="Multiplication.cs" />
+    <Compile Include="Percent.cs" />
+    <Compile Include="Plus.cs" />
+    <Compile Include="Reciprocal.cs" />
+    <Compile Include="Reverse.cs" />
+    <Compile Include="Square.cs" />
+    <Compile Include="SquareRoot.cs" />
     <Compile Include="Unary.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
