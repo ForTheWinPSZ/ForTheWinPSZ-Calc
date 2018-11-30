@@ -24,15 +24,14 @@ namespace CalculatorForWin10.ViewModel
             btn_9 = new NVCommand(AddBtn_9);
         }
 
-        private string _resultText;
+        private string _resultText = "0";
         public string ResultText
         {
             get { return _resultText; }
             set { SetPropertyNotify(ref _resultText, value, nameof(ResultText)); }
         }
 
-        INumber num = new InputNumer();
-
+        Screen screen = new Screen();
 
         private readonly NVCommand btn_point;
         public NVCommand Btn_point { get => btn_point; }
@@ -60,60 +59,49 @@ namespace CalculatorForWin10.ViewModel
 
         private void AddBtn_point()
         {
-            num.InputNum(".");
-            ResultText = Screen.ResultValue;
+            
         }
         private void AddBtn_0()
         {
-            num.InputNum("0");
-            ResultText = Screen.ResultValue;
+           
         }
         private void AddBtn_1()
         {
-            num.InputNum("1");
-            ResultText = Screen.ResultValue;
+            screen.InputOneToNine("1");
+            ResultText = screen.ResultValue;
         }
         private void AddBtn_2()
         {
-            ScreenResult sr = new Screen();
-            sr.point();
-            resultText = sr.getResult();
+           
         }
         private void AddBtn_3()
         {
-            num.InputNum("3");
-            ResultText = Screen.ResultValue;
+            
         }
         private void AddBtn_4()
         {
-            num.InputNum("4");
-            ResultText = Screen.ResultValue;
+           
         }
         private void AddBtn_5()
         {
-            num.InputNum("5");
-            ResultText = Screen.ResultValue;
+           
         }
         private void AddBtn_6()
         {
-            num.InputNum("6");
-            ResultText = Screen.ResultValue;
+            
         }
         private void AddBtn_7()
         {
-            num.InputNum("7");
-            ResultText = Screen.ResultValue;
+            
             
         }
         private void AddBtn_8()
         {
-            num.InputNum("8");
-            ResultText = Screen.ResultValue;
+            
         }
         private void AddBtn_9()
         {
-            num.InputNum("9");
-            ResultText = Screen.ResultValue;
+            
         }
 
 

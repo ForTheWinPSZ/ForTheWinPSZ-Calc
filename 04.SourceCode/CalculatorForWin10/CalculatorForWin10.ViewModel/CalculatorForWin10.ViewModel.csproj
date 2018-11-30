@@ -44,14 +44,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="InputNumer.cs" />
-    <Compile Include="INumber.cs" />
     <Compile Include="Screen.cs" />
     <Compile Include="ViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Number\Number.csproj">
+      <Project>{5923a0b4-5d9f-4181-b937-f33d7b7ef133}</Project>
+      <Name>Number</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
