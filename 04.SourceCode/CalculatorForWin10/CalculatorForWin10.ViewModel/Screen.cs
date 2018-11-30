@@ -3,24 +3,42 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using M;
+using NumberDefine;
+using CalculatorForWin10;
 
 namespace CalculatorForWin10.ViewModel
 {
     public class Screen
     {
+        private static Screen screen = new Screen();
         private string resultValue;
         private string expressionValue;
-        private List<string> memory;
-        private List<string> history;
-        
-        public string getResult()
+
+        private Screen() { }
+        public static Screen GetScreen()
+        {
+            return screen;
+        }
+
+        public string GetResult()
         {
             return resultValue;
         }
 
-        public void Point1()
+        public string GetexpressionValue()
         {
-            resultValue =  new Point().AddBtn_point(resultValue);
+            return expressionValue;
+        }
+
+        public void Point()
+        {
+             
+        }
+        public void Num(string number)
+        {
+            OneToNine oneToNine = new OneToNine(number,resultValue,expressionValue);
+            resultValue = oneToNine.returnResult();
         }
 
     }
