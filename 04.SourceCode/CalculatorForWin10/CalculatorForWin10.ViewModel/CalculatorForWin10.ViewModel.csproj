@@ -52,9 +52,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Arithmetic\Arithmetic.csproj">
+      <Project>{68b54274-982d-4ee7-8cfb-a8a85be89f34}</Project>
+      <Name>Arithmetic</Name>
+    </ProjectReference>
     <ProjectReference Include="..\M\M.csproj">
       <Project>{66c25ceb-1360-4267-9460-0a3cf2f81922}</Project>
       <Name>M</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NumberDefine\NumberDefine.csproj">
+      <Project>{a0c423b3-7059-4fef-9b20-a783ee6dc1d5}</Project>
+      <Name>NumberDefine</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
