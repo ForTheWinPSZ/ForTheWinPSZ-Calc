@@ -9,6 +9,7 @@ namespace CalculatorForWin10.ViewModel
 {
     public class MainWindowsViewModel : NotifyObject
     {
+        Screen screen = Screen.GetScreen();
         private readonly NVCommand btn_mc;
         public NVCommand Btn_mc{ get => btn_mc; }
         private readonly NVCommand btn_mr;
@@ -68,7 +69,6 @@ namespace CalculatorForWin10.ViewModel
         private readonly NVCommand btn_equal;
         public NVCommand Btn_equal { get => btn_equal; }
 
-        public Screen screen = new Screen();
         public MainWindowsViewModel()
         {
             btn_point = new NVCommand(Mc);
@@ -104,7 +104,7 @@ namespace CalculatorForWin10.ViewModel
         private void Point()
         {
             screen.HandlePoint();
-            ResultText = screen.getResult();
+            ResultText = screen.GetResult();
         }
         private void Mc()
         {
