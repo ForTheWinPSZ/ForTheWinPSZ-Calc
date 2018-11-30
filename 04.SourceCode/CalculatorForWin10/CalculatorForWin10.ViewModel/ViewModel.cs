@@ -165,6 +165,8 @@ namespace CalculatorForWin10.ViewModel
         }
         private void One()
         {
+            screen.HandleNum("1");
+            ResultText = screen.GetResult();
         }
         private void Two()
         {
