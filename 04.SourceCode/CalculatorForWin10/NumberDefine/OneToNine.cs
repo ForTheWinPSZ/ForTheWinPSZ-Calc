@@ -11,10 +11,9 @@ namespace NumberDefine
         private string resultValue;
         private string expressionValue;
         private string content;
-        public OneToNine(string content,string resultValue,string expressionValue){
+        public OneToNine(string content,string resultValue){
             this.content=content;
             this.resultValue = resultValue;
-            this.expressionValue = expressionValue;
             Add();
         }
 
@@ -25,10 +24,6 @@ namespace NumberDefine
 
         public string returnResult() {
             return resultValue;
-        }
-        public string returnExpressionValue()
-        {
-            return expressionValue;
         }
     }
 }

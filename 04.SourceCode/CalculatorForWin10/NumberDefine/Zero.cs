@@ -23,7 +23,6 @@ namespace NumberDefine
                 resultValue += "0";
 
             }
-            
         }
 
         public string returnResult()

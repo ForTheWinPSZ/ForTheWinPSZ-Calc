@@ -170,27 +170,43 @@ namespace CalculatorForWin10.ViewModel
         }
         private void Two()
         {
+            screen.HandleNum("2");
+            ResultText = screen.GetResult();
         }
         private void Three()
         {
+            screen.HandleNum("3");
+            ResultText = screen.GetResult();
         }
         private void Four()
         {
+            screen.HandleNum("4");
+            ResultText = screen.GetResult();
         }
         private void Five()
         {
+            screen.HandleNum("5");
+            ResultText = screen.GetResult();
         }
         private void Six()
         {
+            screen.HandleNum("6");
+            ResultText = screen.GetResult();
         }
         private void Seven()
         {
+            screen.HandleNum("7");
+            ResultText = screen.GetResult();
         }
         private void Eight()
         {
+            screen.HandleNum("8");
+            ResultText = screen.GetResult();
         }
         private void Nine()
         {
+            screen.HandleNum("9");
+            ResultText = screen.GetResult();
         }
         private string _resultText="0";
         public string ResultText
