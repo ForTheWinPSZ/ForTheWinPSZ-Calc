@@ -6,15 +6,14 @@ using System.Threading.Tasks;
 
 namespace NumberDefine
 {
-    class Point
+    public class Point
     {
         private string resultValue;
-        private string expressionValue;
-
-        public Point(string resultValue, string expressionValue)
+       
+        public Point(string resultValue)
         {
             this.resultValue = resultValue;
-            this.expressionValue = expressionValue;
+            InputNum();
         }
 
         public void InputNum()
@@ -24,13 +23,9 @@ namespace NumberDefine
                 resultValue += ".";
             }
         }
-        public string returnResult()
+        public string ReturnResultValue()
         {
             return resultValue;
-        }
-        public string returnExpressionValue()
-        {
-            return expressionValue;
         }
 
     }

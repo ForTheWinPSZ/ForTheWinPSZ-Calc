@@ -12,7 +12,7 @@ namespace CalculatorForWin10.ViewModel
     public class Screen
     {
         private static Screen screen = new Screen();
-        private string resultValue;
+        private string resultValue="0";
         private string expressionValue;
         private List<string> history;
         private List<string> memory;
@@ -41,9 +41,7 @@ namespace CalculatorForWin10.ViewModel
             return memory;
         }
 
-        public void HandlePoint()
-        {  
-        }
+        
         public void HandleMc()
         {
         }
@@ -98,14 +96,23 @@ namespace CalculatorForWin10.ViewModel
         public void HandleEqual()
         {
         }
+
+
+        //数字定义部分
         public void HandleZero()
         {
+            Zero zero = new Zero(resultValue);
+            resultValue = zero.ReturnResultValue();
         }
         public void HandleNum(string number)
         {
             OneToNine oneToNine = new OneToNine(number,resultValue);
-            resultValue = oneToNine.returnResult();
+            resultValue = oneToNine.ReturnResultValue();
         }
-
+        public void HandlePoint()
+        {
+            Point point = new Point(resultValue);
+            resultValue = point.ReturnResultValue();
+        }
     }
 }
