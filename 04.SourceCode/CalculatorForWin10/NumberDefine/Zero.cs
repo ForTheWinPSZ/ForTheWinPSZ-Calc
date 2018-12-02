@@ -18,6 +18,8 @@ namespace NumberDefine
 
         private void InputNum()
         {
+            if (resultValue.Length >= 16)
+                return;
             if (!("".Equals(resultValue) || "0".Equals(resultValue)))
             {
                 resultValue += "0";

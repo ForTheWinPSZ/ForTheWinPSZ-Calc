@@ -29,7 +29,8 @@ namespace CalculatorForWin10.ViewModel
 
         public string GetResult()
         {
-            return resultValue;
+            //写在这里的目的是，不改变resultValue的值，只是为了改变屏幕上resultValue的显示
+            return Comma.AddComma(resultValue);
         }
 
         public string GetexpressionValue()
