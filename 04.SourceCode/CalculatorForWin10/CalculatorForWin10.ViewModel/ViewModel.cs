@@ -101,11 +101,7 @@ namespace CalculatorForWin10.ViewModel
             btn_8 = new NVCommand(Eight);
             btn_9 = new NVCommand(Nine);
         }
-        private void Point()
-        {
-            screen.HandlePoint();
-            ResultText = screen.GetResult();
-        }
+        
         private void Mc()
         {
         }
@@ -121,9 +117,6 @@ namespace CalculatorForWin10.ViewModel
         private void Ms()
         {
         }
-        private void Pre()
-        {
-        }
         private void Ce()
         {
         }
@@ -133,22 +126,13 @@ namespace CalculatorForWin10.ViewModel
         private void Del()
         {
         }
-        private void Division()
-        {
-        }
+        
+        //单目运算部分
         private void Squareroot()
         {
         }
-        private void Multiplication()
-        {
-        }
+       
         private void Square()
-        {
-        }
-        private void Minus()
-        {
-        }
-        private void Plus()
         {
         }
         private void Reciprocal()
@@ -157,11 +141,33 @@ namespace CalculatorForWin10.ViewModel
         private void Reverse()
         {
         }
-        private void Equal()
+        private void Pre()
         {
         }
+
+        //双目运算部分
+        private void Plus()
+        {
+        }
+        private void Minus()
+        {
+        }
+        private void Multiplication()
+        {
+        }
+        private void Division()
+        {
+        }
+        //数字定义部分
         private void Zero()
         {
+            screen.HandleZero();
+            ResultText = screen.GetResult();
+        }
+        private void Point()
+        {
+            screen.HandlePoint();
+            ResultText = screen.GetResult();
         }
         private void One()
         {
@@ -170,28 +176,50 @@ namespace CalculatorForWin10.ViewModel
         }
         private void Two()
         {
+            screen.HandleNum("2");
+            ResultText = screen.GetResult();
         }
         private void Three()
         {
+            screen.HandleNum("3");
+            ResultText = screen.GetResult();
         }
         private void Four()
         {
+            screen.HandleNum("4");
+            ResultText = screen.GetResult();
         }
         private void Five()
         {
+            screen.HandleNum("5");
+            ResultText = screen.GetResult();
         }
         private void Six()
         {
+            screen.HandleNum("6");
+            ResultText = screen.GetResult();
         }
         private void Seven()
         {
+            screen.HandleNum("7");
+            ResultText = screen.GetResult();
         }
         private void Eight()
         {
+            screen.HandleNum("8");
+            ResultText = screen.GetResult();
         }
         private void Nine()
         {
+            screen.HandleNum("9");
+            ResultText = screen.GetResult();
         }
+        //等于
+        private void Equal()
+        {
+        }
+
+        //屏幕显示部分
         private string _resultText="0";
         public string ResultText
         {
