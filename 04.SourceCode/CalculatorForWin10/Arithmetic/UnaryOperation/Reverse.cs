@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Arithmetic
+namespace Arithmetic.UnaryOperation
 {
-    public class Square : Unary
+    public class Reverse : IUnary
     {
         public override string ChangeExpression()
         {

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Arithmetic
+namespace Arithmetic.BinaryOperation
 {
-    public class Reverse : Unary
+    public class Plus : IBinary
     {
         public override string ChangeExpression()
         {
@@ -14,21 +14,6 @@ namespace Arithmetic
         }
 
         public override string ChangeResultValue()
-        {
-            return "";
-        }
-
-        public override string Expression()
-        {
-            return "";
-        }
-
-        public override string IsBinary()
-        {
-            return "";
-        }
-
-        public override string IsUnary()
         {
             return "";
         }

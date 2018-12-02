@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 using M;
 using NumberDefine;
 using CalculatorForWin10;
+using Arithmetic;
+using Arithmetic.BinaryOperation;
+using Arithmetic.UnaryOperation;
+using Clean;
 
 namespace CalculatorForWin10.ViewModel
 {
@@ -52,6 +56,7 @@ namespace CalculatorForWin10.ViewModel
         }
         public void HandleMplus()
         {
+            
         }
         public void HandleMminus()
         {
@@ -73,6 +78,7 @@ namespace CalculatorForWin10.ViewModel
         }
         public void HandleDivision()
         {
+
         }
         public void HandleSquareroot()
         {

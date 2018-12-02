@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Clean
 {
-    public interface Clear
+    public interface IClear
     {
         string ClearResultValue();
     }

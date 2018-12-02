@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Clean
 {
-    public class CE : Clear
+    public class CE : IClear
     {
         private string resultValue;
 

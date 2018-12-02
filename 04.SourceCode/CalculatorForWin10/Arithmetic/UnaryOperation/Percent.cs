@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Arithmetic
+namespace Arithmetic.UnaryOperation
 {
-    public class Percent : Unary
+    public class Percent : IUnary
     {
         public override string ChangeExpression()
         {

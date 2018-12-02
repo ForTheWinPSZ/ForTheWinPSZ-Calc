@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Arithmetic
+namespace Arithmetic.BinaryOperation
 {
-    public class Minus : Binary
+    public class Minus : IBinary
     {
         public override string ChangeExpression()
         {
