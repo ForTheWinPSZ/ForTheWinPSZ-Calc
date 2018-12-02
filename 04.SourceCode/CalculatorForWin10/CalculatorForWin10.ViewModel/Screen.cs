@@ -17,7 +17,7 @@ namespace CalculatorForWin10.ViewModel
     {
         private static Screen screen = new Screen();
         private string resultValue="0";
-        private string expressionValue;
+        private string expressionValue="";
         private List<string> history;
         private List<string> memory;
 
@@ -75,25 +75,16 @@ namespace CalculatorForWin10.ViewModel
         public void HandleDel()
         {
         }
-        public void HandleDivision()
-        {
-
-        }
+       
         public void HandleSquareroot()
         {
         }
-        public void HandleMultiplication()
-        {
-        }
+        
         public void HandleSquare()
         {
         }
-        public void HandleMinus()
-        {
-        }
-        public void HandlePlus()
-        {
-        }
+       
+        
         public void HandleReciprocal()
         {
         }
@@ -105,6 +96,31 @@ namespace CalculatorForWin10.ViewModel
         }
 
 
+        //双目运算部分
+        public void HandleDivision()
+        {
+            IBinary division = new Division(resultValue, expressionValue);
+            resultValue = division.ChangeResultValue();
+            expressionValue = division.ChangeExpression();
+        }
+        public void HandlePlus()
+        {
+            IBinary plus = new Plus(resultValue,expressionValue);
+            resultValue = plus.ChangeResultValue();
+            expressionValue = plus.ChangeExpression();
+        }
+        public void HandleMinus()
+        {
+            IBinary minus = new Minus(resultValue,expressionValue);
+            resultValue = minus.ChangeResultValue();
+            expressionValue = minus.ChangeExpression();
+        }
+        public void HandleMultiplication()
+        {
+            IBinary mul=new Multiplication(resultValue, expressionValue);
+            resultValue = mul.ChangeResultValue();
+            expressionValue = mul.ChangeExpression();
+        }
         //数字定义部分
         public void HandleZero()
         {

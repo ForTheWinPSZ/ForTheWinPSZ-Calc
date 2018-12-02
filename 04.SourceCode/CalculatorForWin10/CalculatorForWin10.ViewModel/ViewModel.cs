@@ -148,15 +148,27 @@ namespace CalculatorForWin10.ViewModel
         //双目运算部分
         private void Plus()
         {
+            screen.HandlePlus();
+            ResultText = screen.GetResult();
+            ExpressionText = screen.GetexpressionValue();
         }
         private void Minus()
         {
+            screen.HandleMinus();
+            ResultText = screen.GetResult();
+            ExpressionText = screen.GetexpressionValue();
         }
         private void Multiplication()
         {
+            screen.HandleMultiplication();
+            ResultText = screen.GetResult();
+            ExpressionText = screen.GetexpressionValue();
         }
         private void Division()
         {
+            screen.HandleDivision();
+            ResultText = screen.GetResult();
+            ExpressionText = screen.GetexpressionValue();
         }
         //数字定义部分
         private void Zero()
@@ -226,7 +238,7 @@ namespace CalculatorForWin10.ViewModel
             get { return _resultText; }
             set { SetPropertyNotify(ref _resultText, value, nameof(ResultText)); }
         }
-        private string _expressionText;
+        private string _expressionText="";
         public string ExpressionText
         {
             get { return _expressionText; }

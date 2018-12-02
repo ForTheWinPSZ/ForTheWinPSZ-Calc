@@ -8,9 +8,11 @@ namespace Arithmetic.BinaryOperation
 {
     public abstract class IBinary
     {
-        private string resultValue;
-        private string expressionValue;
-        private bool isComplete;
+        protected string resultValue;
+        protected string expressionValue;
+        protected bool isComplete;
+
+        
 
         public abstract string ChangeExpression();
 
