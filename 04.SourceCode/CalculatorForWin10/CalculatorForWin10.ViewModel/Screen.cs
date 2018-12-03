@@ -10,6 +10,7 @@ using Arithmetic;
 using Arithmetic.BinaryOperation;
 using Arithmetic.UnaryOperation;
 using Clean;
+using System.Diagnostics;
 
 namespace CalculatorForWin10.ViewModel
 {
@@ -19,7 +20,7 @@ namespace CalculatorForWin10.ViewModel
         private string resultValue="0";
         private string expressionValue="";
         private List<string> history;
-        private List<string> memory;
+        private List<string> memory = new List<string>();
 
         private Screen() { }
         public static Screen GetScreen()
@@ -43,25 +44,38 @@ namespace CalculatorForWin10.ViewModel
         }
         public List<string> Memory()
         {
+            foreach (string m in memory)
+            {
+                Debug.WriteLine(m);
+            }
             return memory;
         }
 
         
         public void HandleMc()
         {
+            MC mc = new MC(memory);
+            memory = mc.CleanAll();
         }
         public void HandleMr()
         {
+            MR mr = new MR(memory,resultValue);
+            resultValue = mr.ReUse();
         }
         public void HandleMplus()
         {
-            
+            MPlus mPlus = new MPlus(memory,resultValue);
+            memory = mPlus.FirstPlus();
         }
         public void HandleMminus()
         {
+            MMinus mMinus = new MMinus(memory, resultValue);
+            memory = mMinus.FirstMinus();
         }
         public void HandleMs()
         {
+            M.MS ms = new M.MS(memory,resultValue);
+            memory = ms.AddMemory(resultValue);
         }
         public void HandlePre()
         {
@@ -74,6 +88,8 @@ namespace CalculatorForWin10.ViewModel
         }
         public void HandleDel()
         {
+            BackSpace backSpace = new BackSpace(resultValue);
+            resultValue = backSpace.BackSp();
         }
        
         public void HandleSquareroot()
@@ -90,6 +106,9 @@ namespace CalculatorForWin10.ViewModel
         }
         public void HandleReverse()
         {
+            IUnary reverse = new Reverse(expressionValue,resultValue);
+            resultValue = reverse.ChangeResultValue();
+            expressionValue = reverse.ChangeExpression();
         }
         public void HandleEqual()
         {

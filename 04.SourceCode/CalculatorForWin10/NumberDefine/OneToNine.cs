@@ -19,19 +19,15 @@ namespace NumberDefine
 
         private void InputNum()
         {
-            if ("".Equals(resultValue) || "0".Equals(resultValue))
+            if ("0".Equals(resultValue))
                 resultValue = content;
-            else if (resultValue.Length >= 16)
-                return;
             else
             {
                 resultValue += content;
             }
             
         }
-
         
-
         public string ReturnResultValue() {
             return resultValue;
         }

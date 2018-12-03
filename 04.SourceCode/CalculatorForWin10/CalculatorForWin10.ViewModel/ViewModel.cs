@@ -71,10 +71,10 @@ namespace CalculatorForWin10.ViewModel
 
         public MainWindowsViewModel()
         {
-            btn_point = new NVCommand(Mc);
-            btn_mc = new NVCommand(Mr);
-            btn_mr = new NVCommand(Mplus);
-            btn_mplus = new NVCommand(Mminus);
+            btn_mc = new NVCommand(Mc);
+            btn_mr = new NVCommand(Mr);
+            btn_mplus = new NVCommand(Mplus);
+            btn_mminus = new NVCommand(Mminus);
             btn_ms = new NVCommand(Ms);
             btn_pre = new NVCommand(Pre);
             btn_ce = new NVCommand(Ce);
@@ -104,18 +104,28 @@ namespace CalculatorForWin10.ViewModel
         
         private void Mc()
         {
+            screen.HandleMc();
+            Memory = screen.Memory();
         }
         private void Mr()
         {
+            screen.HandleMr();
+            ResultText = screen.GetResult();
         }
         private void Mplus()
         {
+            screen.HandleMplus();
+            Memory = screen.Memory();
         }
         private void Mminus()
         {
+            screen.HandleMminus();
+            Memory = screen.Memory();
         }
         private void Ms()
         {
+            screen.HandleMs();
+            Memory = screen.Memory();
         }
         private void Ce()
         {
@@ -125,6 +135,8 @@ namespace CalculatorForWin10.ViewModel
         }
         private void Del()
         {
+            screen.HandleDel();
+            ResultText = screen.GetResult();
         }
         
         //单目运算部分
@@ -140,6 +152,9 @@ namespace CalculatorForWin10.ViewModel
         }
         private void Reverse()
         {
+            screen.HandleReverse();
+            ResultText = screen.GetResult();
+            ExpressionText = screen.GetexpressionValue();
         }
         private void Pre()
         {
