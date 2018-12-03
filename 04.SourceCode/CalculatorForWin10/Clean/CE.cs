@@ -11,11 +11,22 @@ namespace Clean
         public CE(string resultValue)
         {
             this.resultValue = resultValue;
+            ClearResultValue();
         }
 
-        public string ClearResultValue()
+        public void ClearResultValue()
         {
-            return "";
+            resultValue = "0";
+        }
+
+        public string ReturnExpressionValue()
+        {
+            return resultValue;
+        }
+
+        public string ReturnResultValue()
+        {
+            return resultValue;
         }
     }
 }

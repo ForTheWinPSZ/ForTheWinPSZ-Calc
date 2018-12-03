@@ -6,16 +6,15 @@ using System.Threading.Tasks;
 
 namespace Arithmetic.UnaryOperation
 {
-    public abstract class IUnary
+    public interface IUnary
     {
-        private string resultValue;
-        private string expressionValue;
-        private bool isBinary;
-
-        public abstract string Expression();
-        public abstract string IsUnary();
-        public abstract string IsBinary();
-        public abstract string ChangeResultValue();
-        public abstract string ChangeExpression();
+        string Calculate();
+        bool IsUnary();
+        bool IsBinary();
+        void ChangeResultValue();
+        void ChangeExpression();
+        string ReturnExpressionValue();
+        string ReturnResultValue();
+        string GetUnaryExpression();
     }
 }
