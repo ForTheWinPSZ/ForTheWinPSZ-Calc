@@ -20,7 +20,7 @@ namespace CalculatorForWin10.ViewModel
         private string resultValue="0";
         private string expressionValue="";
         private List<string> history;
-        private List<string> memory;
+        private List<string> memory=new List<string>();
         private string preResult = "";
 
         private Screen() { }
@@ -56,19 +56,28 @@ namespace CalculatorForWin10.ViewModel
         
         public void HandleMc()
         {
+            MC mc = new MC(memory);
+            memory=mc.CleanAll();
         }
         public void HandleMr()
         {
+            MR mr = new MR(memory,resultValue);
+            resultValue=mr.ReUse();
         }
         public void HandleMplus()
         {
-            
+            MPlus mPlus = new MPlus(memory,resultValue);
+            memory=mPlus.FirstPlus();
         }
         public void HandleMminus()
         {
+            MMinus mMinus = new MMinus(memory, resultValue);
+            memory =mMinus.FirstMinus();
         }
         public void HandleMs()
         {
+            M.MS ms = new M.MS(memory,resultValue);
+            memory = ms.AddMemory(resultValue);
         }
         public void HandlePre()
         {
