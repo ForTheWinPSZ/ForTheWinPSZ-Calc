@@ -8,11 +8,13 @@ namespace Clean
     {
         private string resultValue;
         private string expressionValue;
+        private string preResult;
 
-        public C(string resultValue, string expressionValue)
+        public C(string resultValue, string expressionValue,string preResult)
         {
             this.resultValue = resultValue;
             this.expressionValue = expressionValue;
+            this.preResult = preResult;
             ClearExpression();
             ClearResultValue();
         }
@@ -25,6 +27,7 @@ namespace Clean
         public void ClearExpression()
         {
             expressionValue = "";
+            preResult = "";
         }
 
         public string ReturnResultValue()
@@ -35,6 +38,11 @@ namespace Clean
         public string ReturnExpressionValue()
         {
             return expressionValue;
+        }
+
+        public string ReturnPreResult()
+        {
+            return preResult;
         }
     }
 }
