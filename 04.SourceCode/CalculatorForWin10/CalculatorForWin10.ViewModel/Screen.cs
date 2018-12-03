@@ -79,6 +79,8 @@ namespace CalculatorForWin10.ViewModel
         }
         public void HandleDel()
         {
+            BackSpace bs = new BackSpace(resultValue);
+            resultValue = bs.ReturnResultValue();
         }
        
         public void HandleSquareroot()

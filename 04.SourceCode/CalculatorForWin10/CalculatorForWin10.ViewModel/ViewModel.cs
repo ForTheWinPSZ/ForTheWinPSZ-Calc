@@ -130,6 +130,8 @@ namespace CalculatorForWin10.ViewModel
         }
         private void Del()
         {
+            screen.HandleDel();
+            ResultText = screen.GetResult();
         }
         
         //单目运算部分
