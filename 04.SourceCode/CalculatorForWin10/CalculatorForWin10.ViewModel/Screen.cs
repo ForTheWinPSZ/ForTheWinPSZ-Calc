@@ -83,17 +83,27 @@ namespace CalculatorForWin10.ViewModel
             resultValue = bs.ReturnResultValue();
         }
        
+        //单目运算
         public void HandleSquareroot()
         {
+            IUnary squareRoot = new SquareRoot(expressionValue, resultValue);
+            expressionValue = squareRoot.ReturnExpressionValue();
+            resultValue = squareRoot.ReturnResultValue();
         }
         
         public void HandleSquare()
         {
+            IUnary square = new Square(expressionValue,resultValue);
+            expressionValue = square.ReturnExpressionValue();
+            resultValue = square.ReturnResultValue();
         }
        
         
         public void HandleReciprocal()
         {
+            IUnary rec = new Reciprocal(expressionValue, resultValue);
+            expressionValue = rec.ReturnExpressionValue();
+            resultValue = rec.ReturnResultValue();
         }
         public void HandleReverse()
         {

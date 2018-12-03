@@ -137,13 +137,22 @@ namespace CalculatorForWin10.ViewModel
         //单目运算部分
         private void Squareroot()
         {
+            screen.HandleSquareroot();
+            ResultText = screen.GetResult();
+            ExpressionText = screen.GetexpressionValue();
         }
        
         private void Square()
         {
+            screen.HandleSquare();
+            ResultText = screen.GetResult();
+            ExpressionText = screen.GetexpressionValue();
         }
         private void Reciprocal()
         {
+            screen.HandleReciprocal();
+            ResultText = screen.GetResult();
+            ExpressionText = screen.GetexpressionValue();
         }
         private void Reverse()
         {

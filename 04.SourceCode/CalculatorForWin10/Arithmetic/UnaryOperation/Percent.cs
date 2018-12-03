@@ -8,29 +8,44 @@ namespace Arithmetic.UnaryOperation
 {
     public class Percent : IUnary
     {
-        public override string ChangeExpression()
+        public string Calculate()
         {
-            return "";
+            throw new NotImplementedException();
         }
 
-        public override string ChangeResultValue()
+        public void ChangeExpression()
         {
-            return "";
+            throw new NotImplementedException();
         }
 
-        public override string Expression()
+        public void ChangeResultValue()
         {
-            return "";
+            throw new NotImplementedException();
         }
 
-        public override string IsBinary()
+        public string GetUnaryExpression()
         {
-            return "";
+            throw new NotImplementedException();
         }
 
-        public override string IsUnary()
+        public bool IsBinary()
         {
-            return "";
+            throw new NotImplementedException();
+        }
+
+        public bool IsUnary()
+        {
+            throw new NotImplementedException();
+        }
+
+        public string ReturnExpressionValue()
+        {
+            throw new NotImplementedException();
+        }
+
+        public string ReturnResultValue()
+        {
+            throw new NotImplementedException();
         }
     }
 }
