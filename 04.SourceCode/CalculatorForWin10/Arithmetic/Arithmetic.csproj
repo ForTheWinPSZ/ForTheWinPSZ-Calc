@@ -41,18 +41,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Binary.cs" />
-    <Compile Include="Division.cs" />
+    <Compile Include="BinaryOperaion\IBinary.cs" />
+    <Compile Include="BinaryOperaion\Division.cs" />
     <Compile Include="Equal.cs" />
-    <Compile Include="Minus.cs" />
-    <Compile Include="Multiplication.cs" />
-    <Compile Include="Percent.cs" />
-    <Compile Include="Plus.cs" />
-    <Compile Include="Reciprocal.cs" />
-    <Compile Include="Reverse.cs" />
-    <Compile Include="Square.cs" />
-    <Compile Include="SquareRoot.cs" />
-    <Compile Include="Unary.cs" />
+    <Compile Include="BinaryOperaion\Minus.cs" />
+    <Compile Include="BinaryOperaion\Multiplication.cs" />
+    <Compile Include="UnaryOperation\Percent.cs" />
+    <Compile Include="BinaryOperaion\Plus.cs" />
+    <Compile Include="UnaryOperation\Reciprocal.cs" />
+    <Compile Include="UnaryOperation\Reverse.cs" />
+    <Compile Include="UnaryOperation\Square.cs" />
+    <Compile Include="UnaryOperation\SquareRoot.cs" />
+    <Compile Include="UnaryOperation\IUnary.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

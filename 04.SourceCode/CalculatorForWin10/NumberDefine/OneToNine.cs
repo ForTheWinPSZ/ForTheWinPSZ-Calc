@@ -3,26 +3,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections;
 
 namespace NumberDefine
 {
     public class OneToNine
     {
         private string resultValue;
-        private string expressionValue;
         private string content;
-        public OneToNine(string content,string resultValue){
-            this.content=content;
+        public OneToNine(string content, string resultValue) {
+            this.content = content;
             this.resultValue = resultValue;
-            Add();
+            InputNum();
         }
 
-        private void Add()
+        private void InputNum()
         {
-            resultValue += content;
+            if ("".Equals(resultValue) || "0".Equals(resultValue))
+                resultValue = content;
+            else if (resultValue.Length >= 16)
+                return;
+            else
+            {
+                resultValue += content;
+            }
+            
         }
 
-        public string returnResult() {
+        
+
+        public string ReturnResultValue() {
             return resultValue;
         }
     }

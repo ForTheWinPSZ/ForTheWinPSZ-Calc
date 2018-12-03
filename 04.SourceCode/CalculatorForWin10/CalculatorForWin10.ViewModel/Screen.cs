@@ -6,14 +6,18 @@ using System.Threading.Tasks;
 using M;
 using NumberDefine;
 using CalculatorForWin10;
+using Arithmetic;
+using Arithmetic.BinaryOperation;
+using Arithmetic.UnaryOperation;
+using Clean;
 
 namespace CalculatorForWin10.ViewModel
 {
     public class Screen
     {
         private static Screen screen = new Screen();
-        private string resultValue;
-        private string expressionValue;
+        private string resultValue="0";
+        private string expressionValue="";
         private List<string> history;
         private List<string> memory;
 
@@ -25,7 +29,8 @@ namespace CalculatorForWin10.ViewModel
 
         public string GetResult()
         {
-            return resultValue;
+            //写在这里的目的是，不改变resultValue的值，只是为了改变屏幕上resultValue的显示
+            return Comma.AddComma(resultValue);
         }
 
         public string GetexpressionValue()
@@ -41,9 +46,7 @@ namespace CalculatorForWin10.ViewModel
             return memory;
         }
 
-        public void HandlePoint()
-        {  
-        }
+        
         public void HandleMc()
         {
         }
@@ -52,6 +55,7 @@ namespace CalculatorForWin10.ViewModel
         }
         public void HandleMplus()
         {
+            
         }
         public void HandleMminus()
         {
@@ -71,24 +75,16 @@ namespace CalculatorForWin10.ViewModel
         public void HandleDel()
         {
         }
-        public void HandleDivision()
-        {
-        }
+       
         public void HandleSquareroot()
         {
         }
-        public void HandleMultiplication()
-        {
-        }
+        
         public void HandleSquare()
         {
         }
-        public void HandleMinus()
-        {
-        }
-        public void HandlePlus()
-        {
-        }
+       
+        
         public void HandleReciprocal()
         {
         }
@@ -98,14 +94,48 @@ namespace CalculatorForWin10.ViewModel
         public void HandleEqual()
         {
         }
+
+
+        //双目运算部分
+        public void HandleDivision()
+        {
+            IBinary division = new Division(resultValue, expressionValue);
+            resultValue = division.ChangeResultValue();
+            expressionValue = division.ChangeExpression();
+        }
+        public void HandlePlus()
+        {
+            IBinary plus = new Plus(resultValue,expressionValue);
+            resultValue = plus.ChangeResultValue();
+            expressionValue = plus.ChangeExpression();
+        }
+        public void HandleMinus()
+        {
+            IBinary minus = new Minus(resultValue,expressionValue);
+            resultValue = minus.ChangeResultValue();
+            expressionValue = minus.ChangeExpression();
+        }
+        public void HandleMultiplication()
+        {
+            IBinary mul=new Multiplication(resultValue, expressionValue);
+            resultValue = mul.ChangeResultValue();
+            expressionValue = mul.ChangeExpression();
+        }
+        //数字定义部分
         public void HandleZero()
         {
+            Zero zero = new Zero(resultValue);
+            resultValue = zero.ReturnResultValue();
         }
         public void HandleNum(string number)
         {
             OneToNine oneToNine = new OneToNine(number,resultValue);
-            resultValue = oneToNine.returnResult();
+            resultValue = oneToNine.ReturnResultValue();
         }
-
+        public void HandlePoint()
+        {
+            Point point = new Point(resultValue);
+            resultValue = point.ReturnResultValue();
+        }
     }
 }

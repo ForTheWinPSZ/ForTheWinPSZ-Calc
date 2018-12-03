@@ -44,6 +44,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Comma.cs" />
     <Compile Include="Screen.cs" />
     <Compile Include="ViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -55,6 +56,10 @@
     <ProjectReference Include="..\Arithmetic\Arithmetic.csproj">
       <Project>{68b54274-982d-4ee7-8cfb-a8a85be89f34}</Project>
       <Name>Arithmetic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Clean\Clean.csproj">
+      <Project>{08746252-8016-4e35-bf92-5f17a30636e5}</Project>
+      <Name>Clean</Name>
     </ProjectReference>
     <ProjectReference Include="..\M\M.csproj">
       <Project>{66c25ceb-1360-4267-9460-0a3cf2f81922}</Project>

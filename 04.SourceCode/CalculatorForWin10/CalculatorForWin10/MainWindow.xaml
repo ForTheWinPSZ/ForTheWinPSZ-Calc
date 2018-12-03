@@ -46,7 +46,7 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <TextBox x:Name="beforeText" Background="#EAEAEA" BorderBrush="#EAEAEA" TextAlignment="Right" Text="{Binding BeforeText}" IsReadOnly="True"></TextBox>
+                <TextBox x:Name="beforeText" Background="#EAEAEA" BorderBrush="#EAEAEA" TextAlignment="Right" Text="{Binding ExpressionText}" IsReadOnly="True"></TextBox>
                 <TextBox Grid.Row="1" x:Name="resultText" Background="#EAEAEA" BorderBrush="#EAEAEA" FontSize="42" FontWeight="Heavy" TextAlignment="Right" IsReadOnly="True" Text="{Binding ResultText}"></TextBox>
             </Grid>
             <Grid Grid.Row="2">

@@ -6,33 +6,30 @@ using System.Threading.Tasks;
 
 namespace NumberDefine
 {
-    class Zero
+    public class Zero
     {
         private string resultValue;
-        private string expressionValue;
 
-        public Zero(string resultValue, string expressionValue)
+        public Zero(string resultValue)
         {
             this.resultValue = resultValue;
-            this.expressionValue = expressionValue;
+            InputNum();
         }
 
         private void InputNum()
         {
-            if (!(Double.Parse(resultValue) == 0)) {
+            if (resultValue.Length >= 16)
+                return;
+            if (!("".Equals(resultValue) || "0".Equals(resultValue)))
+            {
                 resultValue += "0";
 
             }
         }
 
-        public string returnResult()
+        public string ReturnResultValue()
         {
             return resultValue;
         }
-        public string returnExpressionValue()
-        {
-            return expressionValue;
-        }
-
     }
 }
