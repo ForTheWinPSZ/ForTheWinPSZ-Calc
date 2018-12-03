@@ -89,9 +89,10 @@ namespace CalculatorForWin10.ViewModel
         }
         public void HandleC()
         {
-            IClear c = new C(resultValue,expressionValue);
+            C c = new C(resultValue,expressionValue,preResult);
             resultValue = c.ReturnResultValue();
             expressionValue = c.ReturnExpressionValue();
+            preResult = c.ReturnPreResult();
         }
         public void HandleDel()
         {
@@ -133,66 +134,34 @@ namespace CalculatorForWin10.ViewModel
         public void HandleDivision()
         {
             IBinary division = new Division(resultValue, expressionValue,preResult);
-            if (!division.IsComplete)
-            {
-                resultValue = "";
-                expressionValue = division.ReturnExpressionValue();
-            }
-            else
-            {
                 preResult = division.ReturnPreResult();
                 resultValue = "";
                 expressionValue = division.ReturnExpressionValue();
-            }
             
         }
         public void HandlePlus()
         {
             IBinary plus = new Plus(resultValue,expressionValue,preResult);
-            if (!plus.IsComplete )
-            {
-                resultValue = "";
-                expressionValue = plus.ReturnExpressionValue();
-            }
-            else
-            {
                 preResult = plus.ReturnPreResult();
                 resultValue = "";
                 expressionValue = plus.ReturnExpressionValue();
-            }
             
             
         }
         public void HandleMinus()
         {
-            IBinary minus = new Minus(resultValue,expressionValue,preResult);
-            if (!minus.IsComplete)
-            {
-                resultValue = "";
-                expressionValue = minus.ReturnExpressionValue();
-            }
-            else
-            {
+            IBinary minus = new Minus(resultValue,expressionValue,preResult);           
                 preResult = minus.ReturnPreResult();
                 resultValue = "";
                 expressionValue = minus.ReturnExpressionValue();
-            }
             
         }
         public void HandleMultiplication()
         {
-            IBinary mul=new Multiplication(resultValue, expressionValue,preResult);
-            if (!mul.IsComplete)
-            {
-                resultValue = "";
-                expressionValue = mul.ReturnExpressionValue();
-            }
-            else
-            {
+            IBinary mul=new Multiplication(resultValue, expressionValue,preResult);            
                 preResult = mul.ReturnPreResult();
                 resultValue = "";
                 expressionValue = mul.ReturnExpressionValue();
-            }
         }
         //数字定义部分
         public void HandleZero()

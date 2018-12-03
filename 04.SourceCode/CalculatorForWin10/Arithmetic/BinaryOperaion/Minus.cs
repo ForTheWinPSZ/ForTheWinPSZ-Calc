@@ -73,6 +73,7 @@ namespace Arithmetic.BinaryOperation
                     {
                         cul = cul.Replace('÷', '/');
                     }
+                    cul = cul.Replace(" ", "");
                     preResult = table.Compute(cul, "").ToString();
                     return;
                 }
@@ -88,6 +89,7 @@ namespace Arithmetic.BinaryOperation
                         symbol = symbol.Replace('÷', '/');
                     }
                     string cul = preResult + symbol + resultValue;
+                    cul = cul.Replace(" ", "");
                     preResult = table.Compute(cul, "").ToString();
                     resultValue = preResult;
                     return;
