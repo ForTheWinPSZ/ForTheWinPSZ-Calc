@@ -80,9 +80,10 @@ namespace CalculatorForWin10.ViewModel
         }
         public void HandleC()
         {
-            IClear c = new C(resultValue,expressionValue);
+            C c = new C(resultValue,expressionValue,preResult);
             resultValue = c.ReturnResultValue();
             expressionValue = c.ReturnExpressionValue();
+            preResult = c.ReturnPreResult();
         }
         public void HandleDel()
         {
