@@ -18,6 +18,10 @@ namespace NumberDefine
 
         public void InputNum()
         {
+            if (resultValue == "")
+            {
+                resultValue = "0.";
+            }
             if (!resultValue.Contains("."))
             {
                 resultValue += ".";
