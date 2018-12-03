@@ -75,25 +75,42 @@ namespace CalculatorForWin10.ViewModel
         }
         public void HandleCe()
         {
+            IClear ce = new CE(resultValue);
+            resultValue = ce.ReturnResultValue();
         }
         public void HandleC()
         {
+            IClear c = new C(resultValue,expressionValue);
+            resultValue = c.ReturnResultValue();
+            expressionValue = c.ReturnExpressionValue();
         }
         public void HandleDel()
         {
+            BackSpace bs = new BackSpace(resultValue);
+            resultValue = bs.ReturnResultValue();
         }
        
+        //单目运算
         public void HandleSquareroot()
         {
+            IUnary squareRoot = new SquareRoot(expressionValue, resultValue);
+            expressionValue = squareRoot.ReturnExpressionValue();
+            resultValue = squareRoot.ReturnResultValue();
         }
         
         public void HandleSquare()
         {
+            IUnary square = new Square(expressionValue,resultValue);
+            expressionValue = square.ReturnExpressionValue();
+            resultValue = square.ReturnResultValue();
         }
        
         
         public void HandleReciprocal()
         {
+            IUnary rec = new Reciprocal(expressionValue, resultValue);
+            expressionValue = rec.ReturnExpressionValue();
+            resultValue = rec.ReturnResultValue();
         }
         public void HandleReverse()
         {

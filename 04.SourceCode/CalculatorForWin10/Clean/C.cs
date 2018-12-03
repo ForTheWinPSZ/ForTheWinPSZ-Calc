@@ -13,16 +13,28 @@ namespace Clean
         {
             this.resultValue = resultValue;
             this.expressionValue = expressionValue;
+            ClearExpression();
+            ClearResultValue();
         }
 
-        public string ClearResultValue()
+        public void ClearResultValue()
         {
-            return "";
+            resultValue = "0";
         }
 
-        public string ClearExpression()
+        public void ClearExpression()
         {
-            return "";
+            expressionValue = "";
+        }
+
+        public string ReturnResultValue()
+        {
+            return resultValue;
+        }
+
+        public string ReturnExpressionValue()
+        {
+            return expressionValue;
         }
     }
 }

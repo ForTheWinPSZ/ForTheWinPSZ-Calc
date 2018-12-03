@@ -120,24 +120,40 @@ namespace CalculatorForWin10.ViewModel
         }
         private void Ce()
         {
+            screen.HandleCe();
+            ResultText = screen.GetResult();
         }
         private void C()
         {
+            screen.HandleC();
+            ResultText = screen.GetResult();
+            ExpressionText = screen.GetexpressionValue();
         }
         private void Del()
         {
+            screen.HandleDel();
+            ResultText = screen.GetResult();
         }
         
         //单目运算部分
         private void Squareroot()
         {
+            screen.HandleSquareroot();
+            ResultText = screen.GetResult();
+            ExpressionText = screen.GetexpressionValue();
         }
        
         private void Square()
         {
+            screen.HandleSquare();
+            ResultText = screen.GetResult();
+            ExpressionText = screen.GetexpressionValue();
         }
         private void Reciprocal()
         {
+            screen.HandleReciprocal();
+            ResultText = screen.GetResult();
+            ExpressionText = screen.GetexpressionValue();
         }
         private void Reverse()
         {
