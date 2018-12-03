@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace CalculatorForWin10.ViewModel
 {
@@ -149,26 +150,80 @@ namespace CalculatorForWin10.ViewModel
         private void Plus()
         {
             screen.HandlePlus();
-            ResultText = screen.GetResult();
-            ExpressionText = screen.GetexpressionValue();
+            if (screen.GetResult() == "")
+            {
+                if(screen.GetPreResult()=="")
+                    ExpressionText = screen.GetexpressionValue();
+                else
+                {
+                    ExpressionText = screen.GetexpressionValue();
+                    ResultText = screen.GetPreResult();
+                }
+            }
+            else
+            {
+                ResultText = screen.GetResult();
+                ExpressionText = screen.GetexpressionValue();
+            }
         }
         private void Minus()
         {
             screen.HandleMinus();
-            ResultText = screen.GetResult();
-            ExpressionText = screen.GetexpressionValue();
+            if (screen.GetResult() == "")
+            {
+                if (screen.GetPreResult() == "")
+                    ExpressionText = screen.GetexpressionValue();
+                else
+                {
+                    ExpressionText = screen.GetexpressionValue();
+                    ResultText = screen.GetPreResult();
+                }
+            }
+            else
+            {
+                ResultText = screen.GetResult();
+                ExpressionText = screen.GetexpressionValue();
+            }
+
+
         }
         private void Multiplication()
         {
             screen.HandleMultiplication();
-            ResultText = screen.GetResult();
-            ExpressionText = screen.GetexpressionValue();
+            if (screen.GetResult() == "")
+            {
+                if (screen.GetPreResult() == "")
+                    ExpressionText = screen.GetexpressionValue();
+                else
+                {
+                    ExpressionText = screen.GetexpressionValue();
+                    ResultText = screen.GetPreResult();
+                }
+            }
+            else
+            {
+                ResultText = screen.GetResult();
+                ExpressionText = screen.GetexpressionValue();
+            }
         }
         private void Division()
         {
             screen.HandleDivision();
-            ResultText = screen.GetResult();
-            ExpressionText = screen.GetexpressionValue();
+            if (screen.GetResult() == "")
+            {
+                if (screen.GetPreResult() == "")
+                    ExpressionText = screen.GetexpressionValue();
+                else
+                {
+                    ExpressionText = screen.GetexpressionValue();
+                    ResultText = screen.GetPreResult();
+                }
+            }
+            else
+            {
+                ResultText = screen.GetResult();
+                ExpressionText = screen.GetexpressionValue();
+            }
         }
         //数字定义部分
         private void Zero()

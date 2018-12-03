@@ -10,6 +10,7 @@ using Arithmetic;
 using Arithmetic.BinaryOperation;
 using Arithmetic.UnaryOperation;
 using Clean;
+using System.Diagnostics;
 
 namespace CalculatorForWin10.ViewModel
 {
@@ -20,6 +21,7 @@ namespace CalculatorForWin10.ViewModel
         private string expressionValue="";
         private List<string> history;
         private List<string> memory;
+        private string preResult = "";
 
         private Screen() { }
         public static Screen GetScreen()
@@ -37,6 +39,11 @@ namespace CalculatorForWin10.ViewModel
         {
             return expressionValue;
         }
+        public string GetPreResult()
+        {
+            return preResult;
+        }
+
         public List<string> History()
         {
             return history;
@@ -99,27 +106,67 @@ namespace CalculatorForWin10.ViewModel
         //双目运算部分
         public void HandleDivision()
         {
-            IBinary division = new Division(resultValue, expressionValue);
-            resultValue = division.ChangeResultValue();
-            expressionValue = division.ChangeExpression();
+            IBinary division = new Division(resultValue, expressionValue,preResult);
+            if (!division.IsComplete)
+            {
+                resultValue = "";
+                expressionValue = division.ReturnExpressionValue();
+            }
+            else
+            {
+                preResult = division.ReturnPreResult();
+                resultValue = "";
+                expressionValue = division.ReturnExpressionValue();
+            }
+            
         }
         public void HandlePlus()
         {
-            IBinary plus = new Plus(resultValue,expressionValue);
-            resultValue = plus.ChangeResultValue();
-            expressionValue = plus.ChangeExpression();
+            IBinary plus = new Plus(resultValue,expressionValue,preResult);
+            if (!plus.IsComplete )
+            {
+                resultValue = "";
+                expressionValue = plus.ReturnExpressionValue();
+            }
+            else
+            {
+                preResult = plus.ReturnPreResult();
+                resultValue = "";
+                expressionValue = plus.ReturnExpressionValue();
+            }
+            
+            
         }
         public void HandleMinus()
         {
-            IBinary minus = new Minus(resultValue,expressionValue);
-            resultValue = minus.ChangeResultValue();
-            expressionValue = minus.ChangeExpression();
+            IBinary minus = new Minus(resultValue,expressionValue,preResult);
+            if (!minus.IsComplete)
+            {
+                resultValue = "";
+                expressionValue = minus.ReturnExpressionValue();
+            }
+            else
+            {
+                preResult = minus.ReturnPreResult();
+                resultValue = "";
+                expressionValue = minus.ReturnExpressionValue();
+            }
+            
         }
         public void HandleMultiplication()
         {
-            IBinary mul=new Multiplication(resultValue, expressionValue);
-            resultValue = mul.ChangeResultValue();
-            expressionValue = mul.ChangeExpression();
+            IBinary mul=new Multiplication(resultValue, expressionValue,preResult);
+            if (!mul.IsComplete)
+            {
+                resultValue = "";
+                expressionValue = mul.ReturnExpressionValue();
+            }
+            else
+            {
+                preResult = mul.ReturnPreResult();
+                resultValue = "";
+                expressionValue = mul.ReturnExpressionValue();
+            }
         }
         //数字定义部分
         public void HandleZero()
