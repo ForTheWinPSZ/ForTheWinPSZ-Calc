@@ -119,9 +119,14 @@ namespace CalculatorForWin10.ViewModel
         }
         private void Ce()
         {
+            screen.HandleCe();
+            ResultText = screen.GetResult();
         }
         private void C()
         {
+            screen.HandleC();
+            ResultText = screen.GetResult();
+            ExpressionText = screen.GetexpressionValue();
         }
         private void Del()
         {

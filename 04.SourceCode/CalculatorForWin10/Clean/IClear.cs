@@ -6,6 +6,8 @@ namespace Clean
 {
     public interface IClear
     {
-        string ClearResultValue();
+        void ClearResultValue();
+        string ReturnResultValue();
+        string ReturnExpressionValue();
     }
 }

@@ -68,9 +68,14 @@ namespace CalculatorForWin10.ViewModel
         }
         public void HandleCe()
         {
+            IClear ce = new CE(resultValue);
+            resultValue = ce.ReturnResultValue();
         }
         public void HandleC()
         {
+            IClear c = new C(resultValue,expressionValue);
+            resultValue = c.ReturnResultValue();
+            expressionValue = c.ReturnExpressionValue();
         }
         public void HandleDel()
         {
