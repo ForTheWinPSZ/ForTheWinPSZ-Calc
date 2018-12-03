@@ -1,65 +1,65 @@
-﻿<Window x:Class="CalculatorForWin10.MainWindow"
+﻿<Window
          xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ViewModel="clr-namespace:CalculatorForWin10.ViewModel;assembly=CalculatorForWin10.ViewModel" x:Class="CalculatorForWin10.MainWindow"
         mc:Ignorable="d"
         Title="计算器" Height="520" Width="700" MinHeight="501" MinWidth="322" Background="#FFEAEAEA">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
+            <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition  MinWidth="302">
-            </ColumnDefinition>
-            <ColumnDefinition Width="340"></ColumnDefinition>
+            <ColumnDefinition  MinWidth="302"/>
+            <ColumnDefinition Width="340"/>
         </Grid.ColumnDefinitions>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="45"></RowDefinition>
-                <RowDefinition Height="140"></RowDefinition>
-                <RowDefinition Height="20"></RowDefinition>
-                <RowDefinition></RowDefinition>
+                <RowDefinition Height="45"/>
+                <RowDefinition Height="140"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="45"></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition Width="45"></ColumnDefinition>
+                    <ColumnDefinition Width="45"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="45"/>
                 </Grid.ColumnDefinitions>
                 <Button BorderThickness="0" Background="#eaeaea">
                     <Image Width="32" Source="images/opt.png"/>
                 </Button>
-                <Label Grid.Column="1" Background="#EAEAEA" FontSize="24" Padding="0,7,0,0">标准</Label>
+                <Label Grid.Column="1" Background="#EAEAEA" FontSize="24" Padding="0,7,0,0" Content="标准"/>
                 <Button BorderThickness="0" Background="#eaeaea" Grid.Column="2">
                     <Image Width="25" Source="images/his.png"/>
                 </Button>
             </Grid>
             <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="40"></RowDefinition>
-                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <TextBox x:Name="beforeText" Background="#EAEAEA" BorderBrush="#EAEAEA" TextAlignment="Right" Text="{Binding ExpressionText}" IsReadOnly="True"></TextBox>
-                <TextBox Grid.Row="1" x:Name="resultText" Background="#EAEAEA" BorderBrush="#EAEAEA" FontSize="42" FontWeight="Heavy" TextAlignment="Right" IsReadOnly="True" Text="{Binding ResultText}"></TextBox>
+                <TextBox x:Name="beforeText" Background="#EAEAEA" BorderBrush="#EAEAEA" TextAlignment="Right" Text="{Binding ExpressionText}" IsReadOnly="True"/>
+                <TextBox Grid.Row="1" x:Name="resultText" Background="#EAEAEA" BorderBrush="#EAEAEA" FontSize="25" FontWeight="Heavy" TextAlignment="Right" IsReadOnly="True" Text="{Binding ResultText}"/>
             </Grid>
             <Grid Grid.Row="2">
                 <Grid.RowDefinitions>
-                    <RowDefinition></RowDefinition>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Button BorderThickness="0" Background="#eaeaea" Content="MC" Command="{Binding Btn_mc}"/>
                 <Button BorderThickness="0" Grid.Column="1" Background="#eaeaea" Content="MR" Command="{Binding Btn_mr}"/>
@@ -70,18 +70,18 @@
             </Grid>
             <Grid Grid.Row="3" Background="#eaeaea">
                 <Grid.RowDefinitions>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Button Margin="2" BorderThickness="0" x:Name="btn_pre"  Content="%" Background="#F3F3F3" FontSize="18" FontWeight="UltraLight" Command="{Binding Btn_pre}"/>
                 <Button Margin="2" BorderThickness="0" x:Name="btn_CE" Grid.Row="1"  Background="#F3F3F3" Content="CE" FontSize="18" FontWeight="Normal" Command="{Binding Btn_ce}"/>
@@ -113,11 +113,11 @@
         </Grid>
         <Grid Grid.Column="1" >
             <Grid.RowDefinitions>
-                <RowDefinition></RowDefinition>
-                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition/>
+                <RowDefinition Height="45"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Grid>
                 <TabControl BorderBrush="#FFEAEAEA">
@@ -127,50 +127,50 @@
                                 <ListBox Background="#FFE5E5E5" BorderBrush="{x:Null}">
                                     <ListBoxItem Margin="0,0,0,10">
                                         <StackPanel Width="308" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <TextBlock FontSize="16" TextWrapping="Wrap" TextAlignment="Right" Foreground="#6C6D6D" FontWeight="Light">7 - 8 - 9 - 6- 5- 4- 3- 5 - 4- 7 - 8 - 9 - 6 - 5 - 2 - 9 - 6 - 5 - 8 =</TextBlock>
-                                            <Label HorizontalContentAlignment="Right" FontSize="21">89</Label>
+                                            <TextBlock FontSize="16" TextWrapping="Wrap" TextAlignment="Right" Foreground="#6C6D6D" FontWeight="Light"><Run Text="7 - 8 - 9 - 6- 5- 4- 3- 5 - 4- 7 - 8 - 9 - 6 - 5 - 2 - 9 - 6 - 5 - 8 ="/></TextBlock>
+                                            <Label HorizontalContentAlignment="Right" FontSize="21" Content="89"/>
                                         </StackPanel>
                                     </ListBoxItem>
                                     <ListBoxItem Margin="0,0,0,10">
                                         <StackPanel Width="308" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <TextBlock FontSize="16" TextWrapping="Wrap" TextAlignment="Right" Foreground="#6C6D6D" FontWeight="Light">89 =</TextBlock>
-                                            <Label HorizontalContentAlignment="Right" FontSize="21">89</Label>
+                                            <TextBlock FontSize="16" TextWrapping="Wrap" TextAlignment="Right" Foreground="#6C6D6D" FontWeight="Light"><Run Text="89 ="/></TextBlock>
+                                            <Label HorizontalContentAlignment="Right" FontSize="21" Content="89"/>
                                         </StackPanel>
                                     </ListBoxItem>
                                     <ListBoxItem Margin="0,0,0,10">
                                         <StackPanel Width="308" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <TextBlock FontSize="16" TextWrapping="Wrap" TextAlignment="Right" Foreground="#6C6D6D" FontWeight="Light">7 - 8 - 9 - 6- 5- 4- 3- 5 - 4- 7 - 8 - 9 - 6 - 5 - 2 - 9 - 6 - 5 - 8 =</TextBlock>
-                                            <Label HorizontalContentAlignment="Right" FontSize="21">89</Label>
+                                            <TextBlock FontSize="16" TextWrapping="Wrap" TextAlignment="Right" Foreground="#6C6D6D" FontWeight="Light"><Run Text="7 - 8 - 9 - 6- 5- 4- 3- 5 - 4- 7 - 8 - 9 - 6 - 5 - 2 - 9 - 6 - 5 - 8 ="/></TextBlock>
+                                            <Label HorizontalContentAlignment="Right" FontSize="21" Content="89"/>
                                         </StackPanel>
                                     </ListBoxItem>
                                     <ListBoxItem Margin="0,0,0,10">
                                         <StackPanel Width="308" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <TextBlock FontSize="16" TextWrapping="Wrap" TextAlignment="Right" Foreground="#6C6D6D" FontWeight="Light">89 =</TextBlock>
-                                            <Label HorizontalContentAlignment="Right" FontSize="21">89</Label>
+                                            <TextBlock FontSize="16" TextWrapping="Wrap" TextAlignment="Right" Foreground="#6C6D6D" FontWeight="Light"><Run Text="89 ="/></TextBlock>
+                                            <Label HorizontalContentAlignment="Right" FontSize="21" Content="89"/>
                                         </StackPanel>
                                     </ListBoxItem>
                                     <ListBoxItem Margin="0,0,0,10">
                                         <StackPanel Width="308" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <TextBlock FontSize="16" TextWrapping="Wrap" TextAlignment="Right" Foreground="#6C6D6D" FontWeight="Light">7 - 8 - 9 - 6- 5- 4- 3- 5 - 4- 7 - 8 - 9 - 6 - 5 - 2 - 9 - 6 - 5 - 8 =</TextBlock>
-                                            <Label HorizontalContentAlignment="Right" FontSize="21">89</Label>
+                                            <TextBlock FontSize="16" TextWrapping="Wrap" TextAlignment="Right" Foreground="#6C6D6D" FontWeight="Light"><Run Text="7 - 8 - 9 - 6- 5- 4- 3- 5 - 4- 7 - 8 - 9 - 6 - 5 - 2 - 9 - 6 - 5 - 8 ="/></TextBlock>
+                                            <Label HorizontalContentAlignment="Right" FontSize="21" Content="89"/>
                                         </StackPanel>
                                     </ListBoxItem>
                                     <ListBoxItem Margin="0,0,0,10">
                                         <StackPanel Width="308" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <TextBlock FontSize="16" TextWrapping="Wrap" TextAlignment="Right" Foreground="#6C6D6D" FontWeight="Light">89 =</TextBlock>
-                                            <Label HorizontalContentAlignment="Right" FontSize="21">89</Label>
+                                            <TextBlock FontSize="16" TextWrapping="Wrap" TextAlignment="Right" Foreground="#6C6D6D" FontWeight="Light"><Run Text="89 ="/></TextBlock>
+                                            <Label HorizontalContentAlignment="Right" FontSize="21" Content="89"/>
                                         </StackPanel>
                                     </ListBoxItem>
                                     <ListBoxItem Margin="0,0,0,10">
                                         <StackPanel Width="308" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <TextBlock FontSize="16" TextWrapping="Wrap" TextAlignment="Right" Foreground="#6C6D6D" FontWeight="Light">7 - 8 - 9 - 6- 5- 4- 3- 5 - 4- 7 - 8 - 9 - 6 - 5 - 2 - 9 - 6 - 5 - 8 =</TextBlock>
-                                            <Label HorizontalContentAlignment="Right" FontSize="21">89</Label>
+                                            <TextBlock FontSize="16" TextWrapping="Wrap" TextAlignment="Right" Foreground="#6C6D6D" FontWeight="Light"><Run Text="7 - 8 - 9 - 6- 5- 4- 3- 5 - 4- 7 - 8 - 9 - 6 - 5 - 2 - 9 - 6 - 5 - 8 ="/></TextBlock>
+                                            <Label HorizontalContentAlignment="Right" FontSize="21" Content="89"/>
                                         </StackPanel>
                                     </ListBoxItem>
                                     <ListBoxItem Margin="0,0,0,10">
                                         <StackPanel Width="308" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <TextBlock FontSize="16" TextWrapping="Wrap" TextAlignment="Right" Foreground="#6C6D6D" FontWeight="Light">89 =</TextBlock>
-                                            <Label HorizontalContentAlignment="Right" FontSize="21">89</Label>
+                                            <TextBlock FontSize="16" TextWrapping="Wrap" TextAlignment="Right" Foreground="#6C6D6D" FontWeight="Light"><Run Text="89 ="/></TextBlock>
+                                            <Label HorizontalContentAlignment="Right" FontSize="21" Content="89"/>
                                         </StackPanel>
                                     </ListBoxItem>
                                 </ListBox>
@@ -182,86 +182,9 @@
                         <Grid Background="#FFEAEAEA" >
                             <ScrollViewer VerticalScrollBarVisibility="Auto" Width="340" Margin="0">
                                 <ListBox Background="#FFE5E5E5" BorderBrush="{x:Null}">
-                                    <ListBoxItem Margin="0,0,0,10">
-                                        <StackPanel Width="308" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <Label HorizontalContentAlignment="Right" FontSize="21" Margin="0,0,10,0">89</Label>
-                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
-                                                <Button Width="40" Height="20" Margin="4,0,0,0" Content="MC" Background="White"/>
-                                                <Button Width="40" Height="20" Margin="4,0,0,0" Content="M+" Background="White"/>
-                                                <Button Width="40" Height="20" Margin="4,0,0,0" Content="M-" Background="White"/>
-                                            </StackPanel>
-                                        </StackPanel>
-                                    </ListBoxItem>
-                                    <ListBoxItem Margin="0,0,0,10">
-                                        <StackPanel Width="308" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <Label HorizontalContentAlignment="Right" FontSize="21" Margin="0,0,10,0">89</Label>
-                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
-                                                <Button Width="40" Height="20" Margin="4,0,0,0" Content="MC" Background="White"/>
-                                                <Button Width="40" Height="20" Margin="4,0,0,0" Content="M+" Background="White"/>
-                                                <Button Width="40" Height="20" Margin="4,0,0,0" Content="M-" Background="White"/>
-                                            </StackPanel>
-                                        </StackPanel>
-                                    </ListBoxItem>
-                                    <ListBoxItem Margin="0,0,0,10">
-                                        <StackPanel Width="308" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <Label HorizontalContentAlignment="Right" FontSize="21" Margin="0,0,10,0">89</Label>
-                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
-                                                <Button Width="40" Height="20" Margin="4,0,0,0" Content="MC" Background="White"/>
-                                                <Button Width="40" Height="20" Margin="4,0,0,0" Content="M+" Background="White"/>
-                                                <Button Width="40" Height="20" Margin="4,0,0,0" Content="M-" Background="White"/>
-                                            </StackPanel>
-                                        </StackPanel>
-                                    </ListBoxItem>
-                                    <ListBoxItem Margin="0,0,0,10">
-                                        <StackPanel Width="308" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <Label HorizontalContentAlignment="Right" FontSize="21" Margin="0,0,10,0">89</Label>
-                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
-                                                <Button Width="40" Height="20" Margin="4,0,0,0" Content="MC" Background="White"/>
-                                                <Button Width="40" Height="20" Margin="4,0,0,0" Content="M+" Background="White"/>
-                                                <Button Width="40" Height="20" Margin="4,0,0,0" Content="M-" Background="White"/>
-                                            </StackPanel>
-                                        </StackPanel>
-                                    </ListBoxItem>
-                                    <ListBoxItem Margin="0,0,0,10">
-                                        <StackPanel Width="308" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <Label HorizontalContentAlignment="Right" FontSize="21" Margin="0,0,10,0">89</Label>
-                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
-                                                <Button Width="40" Height="20" Margin="4,0,0,0" Content="MC" Background="White"/>
-                                                <Button Width="40" Height="20" Margin="4,0,0,0" Content="M+" Background="White"/>
-                                                <Button Width="40" Height="20" Margin="4,0,0,0" Content="M-" Background="White"/>
-                                            </StackPanel>
-                                        </StackPanel>
-                                    </ListBoxItem>
-                                    <ListBoxItem Margin="0,0,0,10">
-                                        <StackPanel Width="308" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <Label HorizontalContentAlignment="Right" FontSize="21" Margin="0,0,10,0">89</Label>
-                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
-                                                <Button Width="40" Height="20" Margin="4,0,0,0" Content="MC" Background="White"/>
-                                                <Button Width="40" Height="20" Margin="4,0,0,0" Content="M+" Background="White"/>
-                                                <Button Width="40" Height="20" Margin="4,0,0,0" Content="M-" Background="White"/>
-                                            </StackPanel>
-                                        </StackPanel>
-                                    </ListBoxItem>
-                                    <ListBoxItem Margin="0,0,0,10">
-                                        <StackPanel Width="308" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <Label HorizontalContentAlignment="Right" FontSize="21" Margin="0,0,10,0">89</Label>
-                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
-                                                <Button Width="40" Height="20" Margin="4,0,0,0" Content="MC" Background="White"/>
-                                                <Button Width="40" Height="20" Margin="4,0,0,0" Content="M+" Background="White"/>
-                                                <Button Width="40" Height="20" Margin="4,0,0,0" Content="M-" Background="White"/>
-                                            </StackPanel>
-                                        </StackPanel>
-                                    </ListBoxItem>
-                                    <ListBoxItem Margin="0,0,0,10">
-                                        <StackPanel Width="308" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <Label HorizontalContentAlignment="Right" FontSize="21" Margin="0,0,10,0">89</Label>
-                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
-                                                <Button Width="40" Height="20" Margin="4,0,0,0" Content="MC" Background="White"/>
-                                                <Button Width="40" Height="20" Margin="4,0,0,0" Content="M+" Background="White"/>
-                                                <Button Width="40" Height="20" Margin="4,0,0,0" Content="M-" Background="White"/>
-                                            </StackPanel>
-                                        </StackPanel>
-                                    </ListBoxItem>
+                                    
+
+
                                 </ListBox>
                             </ScrollViewer>
                         </Grid>

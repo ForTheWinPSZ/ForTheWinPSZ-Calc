@@ -12,19 +12,39 @@ namespace CalculatorForWin10.ViewModel
         public static string AddComma(string resultValue)
         {
             string integer;
-            //判断是否有小数点，只取整数部分
-            if (resultValue.Contains("."))
+            if (resultValue.Contains("-") && resultValue.Contains(".") && resultValue.Length >= 19)
             {
-                integer = resultValue.Substring(0, resultValue.IndexOf("."));
-                CommaIndex(ref integer);
-                return integer + resultValue.Substring(resultValue.IndexOf("."));
+                resultValue=resultValue.Substring(0,19);
             }
-            else
+            else if (!resultValue.Contains("-") && resultValue.Contains(".") && resultValue.Length >= 18)
             {
-                integer = resultValue;
-                CommaIndex(ref integer);
-                return integer;
+                resultValue = resultValue.Substring(0, 18);
             }
+            else if (resultValue.Contains("-") && !resultValue.Contains(".") && resultValue.Length >= 17)
+            {
+                resultValue = resultValue.Substring(0, 17);
+            }
+            else if (!resultValue.Contains("-") && !resultValue.Contains(".") && resultValue.Length >= 16)
+            {
+                resultValue = resultValue.Substring(0, 16);
+            }
+
+                if (resultValue.Contains("."))
+                {
+                    //判断是否有小数点，只取整数部分
+                    integer = resultValue.Substring(0, resultValue.IndexOf("."));
+                    CommaIndex(ref integer);
+                    return integer + resultValue.Substring(resultValue.IndexOf("."));
+                }
+                else
+                {
+                    integer = resultValue;
+                    CommaIndex(ref integer);
+                    return integer;
+                }
+            
+            
+            
 
         }
         //AddComma方法的子部分，负责计算

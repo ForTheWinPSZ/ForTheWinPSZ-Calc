@@ -27,5 +27,7 @@ namespace CalculatorForWin10
             InitializeComponent();
             this.DataContext = new MainWindowsViewModel();
         }
+
+        
     }
 }
