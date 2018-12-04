@@ -14,6 +14,7 @@ namespace Arithmetic.UnaryOperation
         private string resultValue;
         private int binaryIndex;
         private string preResult;
+        private string displayText = "";
 
         public Square(string expressionValue, string resultValue,string preResult)
         {
@@ -30,11 +31,19 @@ namespace Arithmetic.UnaryOperation
         }
         
         public void ChangeExpression()
-        {
+        {            
+            if (resultValue == "" && preResult == "")
+            {
+                displayText = expressionValue.Remove(expressionValue.Length - 2).Trim();
+            }
+            else
+            {
+                displayText = resultValue == "" ? preResult : resultValue;
+            }
             if (expressionValue == "" || IsUnary() == false)
             {
                 Debug.WriteLine("结尾不是单目");
-                expressionValue += " sqr(" + preResult + ")";
+                expressionValue += "sqr(" + displayText + ")";
             }
             else
             {
@@ -47,7 +56,7 @@ namespace Arithmetic.UnaryOperation
 
         public void ChangeResultValue()
         {
-            preResult = resultValue == "" ? Calculate(preResult) : Calculate(resultValue);
+            preResult = Calculate(displayText);
             resultValue = "";
         }
 

@@ -31,10 +31,19 @@ namespace Arithmetic.UnaryOperation
 
         public void ChangeExpression()
         {
+            string displayText = "";
+            if (resultValue == "" && preResult == "")
+            {
+                displayText = expressionValue.Remove(expressionValue.Length - 1).Trim();
+            }
+            else
+            {
+                displayText = resultValue == "" ? preResult : resultValue;
+            }
             if (expressionValue == "" || IsUnary() == false)
             {
                 Debug.WriteLine("结尾不是单目");
-                expressionValue += " √(" + preResult + ")";
+                expressionValue += " √(" + displayText + ")";
             }
             else
             {
