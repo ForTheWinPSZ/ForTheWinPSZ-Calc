@@ -22,6 +22,7 @@ namespace CalculatorForWin10.ViewModel
         private List<string> history;
         private List<string> memory=new List<string>();
         private string preResult = "";
+        private string preUnaryResult = "";
 
         private Screen() { }
         public static Screen GetScreen()
@@ -42,6 +43,11 @@ namespace CalculatorForWin10.ViewModel
         public string GetPreResult()
         {
             return Comma.AddComma(preResult);
+        }
+
+        public string GetPreUnaryResult()
+        {
+            return Comma.AddComma(preUnaryResult);
         }
 
         public List<string> History()
@@ -91,10 +97,11 @@ namespace CalculatorForWin10.ViewModel
         }
         public void HandleC()
         {
-            C c = new C(resultValue,expressionValue,preResult);
+            C c = new C(resultValue,expressionValue,preResult,preUnaryResult);
             resultValue = c.ReturnResultValue();
             expressionValue = c.ReturnExpressionValue();
             preResult = c.ReturnPreResult();
+            preUnaryResult = c.ReturnPreUnaryResult();
         }
         public void HandleDel()
         {
@@ -107,27 +114,27 @@ namespace CalculatorForWin10.ViewModel
         //单目运算
         public void HandleSquareroot()
         {
-            IUnary squareRoot = new SquareRoot(expressionValue, resultValue,preResult);
+            IUnary squareRoot = new SquareRoot(expressionValue, resultValue, preUnaryResult,preResult);
             expressionValue = squareRoot.ReturnExpressionValue();
             resultValue = squareRoot.ReturnResultValue();
-            preResult = squareRoot.ReturnPreResult();
+            preUnaryResult = squareRoot.ReturnPreUnaryResult();
         }
         
         public void HandleSquare()
         {
-            IUnary square = new Square(expressionValue,resultValue,preResult);
+            IUnary square = new Square(expressionValue,resultValue,preUnaryResult,preResult);
             expressionValue = square.ReturnExpressionValue();
             resultValue = square.ReturnResultValue();
-            preResult = square.ReturnPreResult();
+            preUnaryResult = square.ReturnPreUnaryResult();
         }
        
         
         public void HandleReciprocal()
         {
-            IUnary rec = new Reciprocal(expressionValue, resultValue,preResult);
+            IUnary rec = new Reciprocal(expressionValue, resultValue, preUnaryResult,preResult);
             expressionValue = rec.ReturnExpressionValue();
             resultValue = rec.ReturnResultValue();
-            preResult = rec.ReturnPreResult();
+            preUnaryResult = rec.ReturnPreUnaryResult();
         }
         public void HandleReverse()
         {

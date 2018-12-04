@@ -151,20 +151,20 @@ namespace CalculatorForWin10.ViewModel
         private void Squareroot()
         {
             screen.HandleSquareroot();
-            ResultText = screen.GetPreResult();
+            ResultText = screen.GetPreUnaryResult();
             ExpressionText = screen.GetexpressionValue();
         }
        
         private void Square()
         {
             screen.HandleSquare();
-            ResultText = screen.GetPreResult();
+            ResultText = screen.GetPreUnaryResult();
             ExpressionText = screen.GetexpressionValue();
         }
         private void Reciprocal()
         {
             screen.HandleReciprocal();
-            ResultText = screen.GetPreResult();
+            ResultText = screen.GetPreUnaryResult();
             ExpressionText = screen.GetexpressionValue();
         }
         private void Reverse()

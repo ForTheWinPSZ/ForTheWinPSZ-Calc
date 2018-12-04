@@ -9,12 +9,14 @@ namespace Clean
         private string resultValue;
         private string expressionValue;
         private string preResult;
+        private string preUnaryResult;
 
-        public C(string resultValue, string expressionValue,string preResult)
+        public C(string resultValue, string expressionValue,string preResult,string preUnaryResult)
         {
             this.resultValue = resultValue;
             this.expressionValue = expressionValue;
             this.preResult = preResult;
+            this.preUnaryResult = preUnaryResult;
             ClearExpression();
             ClearResultValue();
         }
@@ -28,6 +30,7 @@ namespace Clean
         {
             expressionValue = "";
             preResult = "";
+            preUnaryResult = "";
         }
 
         public string ReturnResultValue()
@@ -43,6 +46,11 @@ namespace Clean
         public string ReturnPreResult()
         {
             return preResult;
+        }
+
+        public string ReturnPreUnaryResult()
+        {
+            return preUnaryResult;
         }
     }
 }
