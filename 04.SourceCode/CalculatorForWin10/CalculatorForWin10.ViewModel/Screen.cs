@@ -138,6 +138,10 @@ namespace CalculatorForWin10.ViewModel
         }
         public void HandleReverse()
         {
+            IUnary reverse = new Reverse(expressionValue, resultValue, preUnaryResult, preResult);
+            expressionValue = reverse.ReturnExpressionValue();
+            resultValue = reverse.ReturnResultValue();
+            preUnaryResult = reverse.ReturnPreUnaryResult();
         }
 
 
