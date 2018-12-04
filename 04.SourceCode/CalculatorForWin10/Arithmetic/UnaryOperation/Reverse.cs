@@ -8,6 +8,14 @@ namespace Arithmetic.UnaryOperation
 {
     public class Reverse : IUnary
     {
+        private string resultValue;
+        private string expressionValue;
+        private double result;
+        public Reverse(string resultValue, string expressionValue)
+        {
+            this.expressionValue = expressionValue;
+            this.resultValue = resultValue;
+        }
         public string Calculate()
         {
             throw new NotImplementedException();
@@ -20,7 +28,8 @@ namespace Arithmetic.UnaryOperation
 
         public void ChangeResultValue()
         {
-            throw new NotImplementedException();
+            result = -Convert.ToDouble(resultValue);
+            resultValue = Convert.ToString(result);
         }
 
         public string GetUnaryExpression()
@@ -45,7 +54,7 @@ namespace Arithmetic.UnaryOperation
 
         public string ReturnResultValue()
         {
-            throw new NotImplementedException();
+            return resultValue;
         }
     }
 }

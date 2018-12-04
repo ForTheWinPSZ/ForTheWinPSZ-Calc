@@ -182,7 +182,7 @@
                         <Grid Background="#FFEAEAEA" >
                             <ScrollViewer VerticalScrollBarVisibility="Auto" Width="340" Margin="0">
                                 <ListBox Background="#FFE5E5E5" BorderBrush="{x:Null}">
-                                    
+
 
 
                                 </ListBox>

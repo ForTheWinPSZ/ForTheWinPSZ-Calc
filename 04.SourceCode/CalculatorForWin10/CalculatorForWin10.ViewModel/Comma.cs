@@ -8,49 +8,59 @@ namespace CalculatorForWin10.ViewModel
 {
     static class Comma
     {
-        //为整数部分添加逗号
         public static string AddComma(string resultValue)
         {
-            string integer;
+            string integer; //输出框逗号显示部分
+            #region 限制输出框最大容纳位数
+            //负数小数，输出框最大容纳19位
             if (resultValue.Contains("-") && resultValue.Contains(".") && resultValue.Length >= 19)
             {
                 resultValue=resultValue.Substring(0,19);
             }
+            //正数小数，输出框最大容纳18位
             else if (!resultValue.Contains("-") && resultValue.Contains(".") && resultValue.Length >= 18)
             {
                 resultValue = resultValue.Substring(0, 18);
             }
+            //负整数，输出框最大容纳17位
             else if (resultValue.Contains("-") && !resultValue.Contains(".") && resultValue.Length >= 17)
             {
                 resultValue = resultValue.Substring(0, 17);
             }
+            //正整数，输出框最大容纳16位
             else if (!resultValue.Contains("-") && !resultValue.Contains(".") && resultValue.Length >= 16)
             {
                 resultValue = resultValue.Substring(0, 16);
             }
+            #endregion
 
-                if (resultValue.Contains("."))
+            if (resultValue.Contains("."))  //处理小数
                 {
-                    //判断是否有小数点，只取整数部分
                     integer = resultValue.Substring(0, resultValue.IndexOf("."));
                     CommaIndex(ref integer);
                     return integer + resultValue.Substring(resultValue.IndexOf("."));
                 }
-                else
+                else                         //处理整数(正整数、负整数)
+                {
+                if (resultValue.Contains("-")) 
+                {
+                       resultValue = resultValue.Substring(1, resultValue.Length-1);
+                       integer = resultValue;
+                       CommaIndex(ref integer);
+                       return "-"+integer;
+                }
+                else                         
                 {
                     integer = resultValue;
                     CommaIndex(ref integer);
                     return integer;
                 }
-            
-            
-            
-
+                }
         }
-        //AddComma方法的子部分，负责计算
+        #region AddComma方法的子部分，负责计算
         private static void CommaIndex(ref string integer)
         {
-            //整数部分3个以下不需要加逗号
+            // 3位数以下不要“逗号”
             if (integer.Length <= 3)
                 return;
 
@@ -75,7 +85,7 @@ namespace CalculatorForWin10.ViewModel
             }
             integer = string.Join("", list.ToArray());
         }
-
+        #endregion
 
     }
 }

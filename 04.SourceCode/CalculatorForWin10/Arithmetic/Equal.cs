@@ -10,12 +10,15 @@ namespace Arithmetic
     {
         private string resultValue;
         private string expressionValue;
+        private string preResult;
         private List<string> history;
+        private double result;
 
-        public Equal(string resultValue, string expressionValue, List<string> history)
+        public Equal(string resultValue, string expressionValue, string preResult,List<string> history)
         {
             this.resultValue = resultValue;
             this.expressionValue = expressionValue;
+            this.preResult = preResult;
             this.history = history;
         }
 
@@ -26,7 +29,46 @@ namespace Arithmetic
 
         public string CaculationResult()
         {
-            return "";
+            if (preResult .Equals(""))
+            {
+                if (expressionValue.EndsWith("+"))
+                {
+                    result = Convert.ToDouble(expressionValue.Substring(0,1)) + Convert.ToDouble(resultValue);
+                }
+                if (expressionValue.EndsWith("-"))
+                {
+                    result = Convert.ToDouble(expressionValue.Substring(0, 1)) - Convert.ToDouble(resultValue);
+                }
+                if (expressionValue.EndsWith("x"))
+                {
+                    result = Convert.ToDouble(expressionValue.Substring(0, 1)) * Convert.ToDouble(resultValue);
+                }
+                if (expressionValue.EndsWith("÷"))
+                {
+                    result = Convert.ToDouble(expressionValue.Substring(0, 1)) / Convert.ToDouble(resultValue);
+                }
+            }
+            else
+            {
+                if (expressionValue.EndsWith("+"))
+                {
+                    result = Convert.ToDouble(preResult) + Convert.ToDouble(resultValue);
+                }
+                if (expressionValue.EndsWith("-"))
+                {
+                    result = Convert.ToDouble(preResult) - Convert.ToDouble(resultValue);
+                }
+                if (expressionValue.EndsWith("x"))
+                {
+                    result = Convert.ToDouble(preResult) * Convert.ToDouble(resultValue);
+                }
+                if (expressionValue.EndsWith("÷"))
+                {
+                    result = Convert.ToDouble(preResult) / Convert.ToDouble(resultValue);
+                }
+            }
+            
+            return Convert.ToString(result);
         }
 
         public List<string> AddHistory(string expression)

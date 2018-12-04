@@ -9,109 +9,93 @@ using System.Diagnostics;
 
 namespace Arithmetic.BinaryOperation
 {
-
+    
     public class Plus : IBinary
     {
-        //用来存储一开始resultValue的值
-        string preResultValue;
-        public Plus(string value1,string value2,string value3)
+            
+        public Plus(string resultValue, string expressionValue, string preResult)
         {
-            base.resultValue = value1;
-            base.expressionValue = value2;
-            base.preResult = value3;
-            preResultValue = resultValue;
-            if (expressionValue == "")
-                IsComplete = false;
-
-            if (resultValue!=""&&".".Equals(resultValue.Substring(resultValue.Length - 1)))
+            _resultValue = resultValue;
+            _expressionValue = expressionValue;
+            _preResult = preResult;
+            if (_resultValue.EndsWith("."))
             {
-                resultValue = resultValue.Substring(0, resultValue.Length - 1);
+                int index = _resultValue.IndexOf(".");
+                _resultValue = resultValue.Substring(0,index);
             }
-            ChangeResultValue();
-            ChangeExpression();
+                ChangeResultValue();
+                ChangeExpression();
+
         }
         public override void ChangeExpression()
         {
-            if (expressionValue == "")
+            if (_expressionValue=="")
             {
-                expressionValue = preResultValue + "+";
-                return;
+                _expressionValue = _resultValue + "+";
             }
             else
             {
-                if (resultValue == "")
+                if (_resultValue == "")
                 {
                     Debug.WriteLine("执行换符号操作！");
-                    expressionValue = expressionValue.Substring(0, expressionValue.Length - 1) + "+";
-                    return;
+                    _expressionValue = _expressionValue.Substring(0, _expressionValue.Length - 1) + "+";
+                  
                 }
-                expressionValue = expressionValue + preResultValue + "+";
-                return;
+                else
+                {
+                    _expressionValue = _expressionValue+ _resultValue + "+";
+                }
             }
+            
         }
 
         public override void ChangeResultValue()
         {
-            if (resultValue == "")
-            {
-                return;
-            }
-            //能计算的情况
-            if (IsComplete)
-            {
-                DataTable table = new DataTable();
 
-                if (preResult == "")
-                {
-                    //没有先前暂存值的情况
-                    string cul = expressionValue + resultValue;
-                    if (cul.Contains("x"))
-                    {
-                        cul = cul.Replace('x', '*');
-                    }
-                    else if (cul.Contains("÷"))
-                    {
-                        cul = cul.Replace('÷', '/');
-                    }
-                    cul = cul.Replace(" ", "");
-                    Debug.WriteLine(cul);
-                    preResult = table.Compute(cul, "").ToString();
-                    return;
-                }
-                else
-                {
-                    string symbol = expressionValue.Substring(expressionValue.Length - 1);
-                    if (symbol.Contains("x"))
-                    {
-                        symbol = symbol.Replace('x', '*');
-                    }
-                    else if (symbol.Contains("÷"))
-                    {
-                        symbol = symbol.Replace('÷', '/');
-                    }
-                    string cul = preResult + symbol + resultValue;
-                    cul=cul.Replace(" ","");
-                    preResult = table.Compute(cul, "").ToString();
-                    resultValue = preResult;
-                    return;
-                }
-            }
+            DataTable table = new DataTable();
+            string cul;
 
+            if (_preResult == "")
+            {
+                //没有先前暂存值的情况
+                cul = _expressionValue + _resultValue;
+
+            }
+            else
+            {
+                string symbol = _expressionValue.Substring(_expressionValue.Length - 1);
+                cul = _preResult + symbol + _resultValue;
+            }
+            if (cul.Contains("x"))
+            {
+                cul = cul.Replace('x', '*');
+            }
+            else if (cul.Contains("÷"))
+            {
+                cul = cul.Replace('÷', '/');
+            }
+            cul = cul.Replace(" ", "");
+            Debug.WriteLine(cul);
+            _preResult = table.Compute(cul, "").ToString();
+            
         }
+
+
 
         public override string ReturnExpressionValue()
         {
-            return expressionValue;
+            return _expressionValue;
         }
 
         public override string ReturnPreResult()
         {
-            return preResult;
+            return _preResult;
         }
 
         public override string ReturnResultValue()
         {
-            return resultValue;
+            _resultValue = _preResult;
+            return _resultValue;
         }
     }
 }

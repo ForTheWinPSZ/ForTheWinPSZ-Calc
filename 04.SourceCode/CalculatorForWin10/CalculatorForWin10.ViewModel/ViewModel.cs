@@ -137,7 +137,7 @@ namespace CalculatorForWin10.ViewModel
         {
             screen.HandleC();
             ResultText = screen.GetResult();
-            ExpressionText = screen.GetexpressionValue();
+            ExpressionText = screen.GetExpressionValue();
         }
         private void Del()
         {
@@ -150,26 +150,26 @@ namespace CalculatorForWin10.ViewModel
         {
             screen.HandleSquareroot();
             ResultText = screen.GetResult();
-            ExpressionText = screen.GetexpressionValue();
+            ExpressionText = screen.GetExpressionValue();
         }
        
         private void Square()
         {
             screen.HandleSquare();
             ResultText = screen.GetResult();
-            ExpressionText = screen.GetexpressionValue();
+            ExpressionText = screen.GetExpressionValue();
         }
         private void Reciprocal()
         {
             screen.HandleReciprocal();
             ResultText = screen.GetResult();
-            ExpressionText = screen.GetexpressionValue();
+            ExpressionText = screen.GetExpressionValue();
         }
         private void Reverse()
         {
             screen.HandleReverse();
             ResultText = screen.GetResult();
-            ExpressionText = screen.GetexpressionValue();
+            ExpressionText = screen.GetExpressionValue();
         }
         private void Pre()
         {
@@ -182,17 +182,17 @@ namespace CalculatorForWin10.ViewModel
             if (screen.GetResult() == "")
             {
                 if(screen.GetPreResult()=="")
-                    ExpressionText = screen.GetexpressionValue();
+                    ExpressionText = screen.GetExpressionValue();
                 else
                 {
-                    ExpressionText = screen.GetexpressionValue();
+                    ExpressionText = screen.GetExpressionValue();
                     ResultText = screen.GetPreResult();
                 }
             }
             else
             {
                 ResultText = screen.GetResult();
-                ExpressionText = screen.GetexpressionValue();
+                ExpressionText = screen.GetExpressionValue();
             }
         }
         private void Minus()
@@ -201,17 +201,17 @@ namespace CalculatorForWin10.ViewModel
             if (screen.GetResult() == "")
             {
                 if (screen.GetPreResult() == "")
-                    ExpressionText = screen.GetexpressionValue();
+                    ExpressionText = screen.GetExpressionValue();
                 else
                 {
-                    ExpressionText = screen.GetexpressionValue();
+                    ExpressionText = screen.GetExpressionValue();
                     ResultText = screen.GetPreResult();
                 }
             }
             else
             {
                 ResultText = screen.GetResult();
-                ExpressionText = screen.GetexpressionValue();
+                ExpressionText = screen.GetExpressionValue();
             }
 
 
@@ -222,17 +222,17 @@ namespace CalculatorForWin10.ViewModel
             if (screen.GetResult() == "")
             {
                 if (screen.GetPreResult() == "")
-                    ExpressionText = screen.GetexpressionValue();
+                    ExpressionText = screen.GetExpressionValue();
                 else
                 {
-                    ExpressionText = screen.GetexpressionValue();
+                    ExpressionText = screen.GetExpressionValue();
                     ResultText = screen.GetPreResult();
                 }
             }
             else
             {
                 ResultText = screen.GetResult();
-                ExpressionText = screen.GetexpressionValue();
+                ExpressionText = screen.GetExpressionValue();
             }
         }
         private void Division()
@@ -241,17 +241,17 @@ namespace CalculatorForWin10.ViewModel
             if (screen.GetResult() == "")
             {
                 if (screen.GetPreResult() == "")
-                    ExpressionText = screen.GetexpressionValue();
+                    ExpressionText = screen.GetExpressionValue();
                 else
                 {
-                    ExpressionText = screen.GetexpressionValue();
+                    ExpressionText = screen.GetExpressionValue();
                     ResultText = screen.GetPreResult();
                 }
             }
             else
             {
                 ResultText = screen.GetResult();
-                ExpressionText = screen.GetexpressionValue();
+                ExpressionText = screen.GetExpressionValue();
             }
         }
         //数字定义部分
@@ -313,6 +313,9 @@ namespace CalculatorForWin10.ViewModel
         //等于
         private void Equal()
         {
+            screen.HandleEqual();
+            ResultText = screen.GetResult();
+            ExpressionText = screen.GetExpressionValue();
         }
 
         //屏幕显示部分
