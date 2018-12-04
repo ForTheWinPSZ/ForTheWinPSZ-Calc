@@ -48,6 +48,11 @@ namespace Arithmetic.UnaryOperation
             throw new NotImplementedException();
         }
 
+        public string ReturnPreUnaryResult()
+        {
+            throw new NotImplementedException();
+        }
+
         public string ReturnResultValue()
         {
             throw new NotImplementedException();

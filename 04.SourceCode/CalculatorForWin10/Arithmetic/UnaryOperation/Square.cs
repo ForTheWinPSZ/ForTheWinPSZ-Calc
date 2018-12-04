@@ -13,37 +13,31 @@ namespace Arithmetic.UnaryOperation
         private string expressionValue;
         private string resultValue;
         private int binaryIndex;
-        private string preResult;
+        private string preUnaryResult;
         private string displayText = "";
+        private string preResult;
 
-        public Square(string expressionValue, string resultValue,string preResult)
+        public Square(string expressionValue, string resultValue,string preUnaryResult,string preResult)
         {
             this.expressionValue = expressionValue;
             this.resultValue = resultValue;
+            this.preUnaryResult = preUnaryResult;
             this.preResult = preResult;
-            if (preResult != "无效输入" && preResult != "除数不能为零")
+            if (preUnaryResult != "无效输入" && preUnaryResult != "除数不能为零")
             {
-                //改变表达式栏
-                ChangeExpression();
                 //改变结果栏
                 ChangeResultValue();
+                //改变表达式栏
+                ChangeExpression();
             }
         }
         
         public void ChangeExpression()
-        {            
-            if (resultValue == "" && preResult == "")
+        {
+            if (expressionValue == "" || IsBinary() == true)
             {
-                displayText = expressionValue.Remove(expressionValue.Length - 2).Trim();
-            }
-            else
-            {
-                displayText = resultValue == "" ? preResult : resultValue;
-            }
-            if (expressionValue == "" || IsUnary() == false)
-            {
-                Debug.WriteLine("结尾不是单目");
-                expressionValue += "sqr(" + displayText + ")";
+                Debug.WriteLine("结尾是双目");
+                expressionValue += "sqr(" + ToDouble(displayText) + ")";
             }
             else
             {
@@ -56,7 +50,29 @@ namespace Arithmetic.UnaryOperation
 
         public void ChangeResultValue()
         {
-            preResult = Calculate(displayText);
+            if (resultValue == "")
+            {
+                if (preResult == "" && preUnaryResult == "")
+                {
+                    displayText = expressionValue.Remove(expressionValue.Length - 2).Trim();
+                }
+                else
+                {
+                    if (IsBinary())
+                    {
+                        displayText = preResult;
+                    }
+                    else
+                    {
+                        displayText = preUnaryResult;
+                    }
+                }
+            }
+            else
+            {
+                displayText = resultValue;
+            }
+            preUnaryResult = Calculate(displayText);
             resultValue = "";
         }
 
@@ -68,13 +84,13 @@ namespace Arithmetic.UnaryOperation
         //最后一部分是否是双目运算
         public bool IsBinary()
         {
-            if (expressionValue.EndsWith(")"))
+            if (expressionValue.EndsWith(" "))
             {
-                return false;
+                return true;
             }
             else
             {
-                return true;
+                return false;
             }
         }
         //最后一部分是否是单目运算
@@ -107,9 +123,9 @@ namespace Arithmetic.UnaryOperation
             return expressionValue.Substring(binaryIndex + 1);
         }
 
-        public string ReturnPreResult()
+        public string ReturnPreUnaryResult()
         {
-            return preResult;
+            return preUnaryResult;
         }
     }
 }

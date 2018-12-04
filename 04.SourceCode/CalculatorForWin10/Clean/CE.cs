@@ -30,7 +30,7 @@ namespace Clean
 
         public string ReturnExpressionValue()
         {
-            return resultValue;
+            return expressionValue;
         }
 
         public string ReturnPreResult()

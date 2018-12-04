@@ -15,7 +15,7 @@ namespace Arithmetic.UnaryOperation
         void ChangeExpression();
         string ReturnExpressionValue();
         string ReturnResultValue();
-        string ReturnPreResult();
+        string ReturnPreUnaryResult();
         string GetUnaryExpression();
     }
 }
