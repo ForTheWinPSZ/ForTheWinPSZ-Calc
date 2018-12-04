@@ -9,5 +9,6 @@ namespace Clean
         void ClearResultValue();
         string ReturnResultValue();
         string ReturnExpressionValue();
+        string ReturnPreResult();
     }
 }

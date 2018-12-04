@@ -132,6 +132,7 @@ namespace CalculatorForWin10.ViewModel
         {
             screen.HandleCe();
             ResultText = screen.GetResult();
+            ExpressionText = screen.GetexpressionValue();
         }
         private void C()
         {
@@ -143,26 +144,27 @@ namespace CalculatorForWin10.ViewModel
         {
             screen.HandleDel();
             ResultText = screen.GetResult();
+            ExpressionText = screen.GetexpressionValue();
         }
         
         //单目运算部分
         private void Squareroot()
         {
             screen.HandleSquareroot();
-            ResultText = screen.GetResult();
+            ResultText = screen.GetPreResult();
             ExpressionText = screen.GetexpressionValue();
         }
        
         private void Square()
         {
             screen.HandleSquare();
-            ResultText = screen.GetResult();
+            ResultText = screen.GetPreResult();
             ExpressionText = screen.GetexpressionValue();
         }
         private void Reciprocal()
         {
             screen.HandleReciprocal();
-            ResultText = screen.GetResult();
+            ResultText = screen.GetPreResult();
             ExpressionText = screen.GetexpressionValue();
         }
         private void Reverse()

@@ -84,8 +84,10 @@ namespace CalculatorForWin10.ViewModel
         }
         public void HandleCe()
         {
-            IClear ce = new CE(resultValue);
+            IClear ce = new CE(resultValue,expressionValue,preResult);
             resultValue = ce.ReturnResultValue();
+            expressionValue = ce.ReturnExpressionValue();
+            preResult = ce.ReturnPreResult();
         }
         public void HandleC()
         {
@@ -96,31 +98,36 @@ namespace CalculatorForWin10.ViewModel
         }
         public void HandleDel()
         {
-            BackSpace bs = new BackSpace(resultValue);
+            BackSpace bs = new BackSpace(resultValue, expressionValue, preResult);
             resultValue = bs.ReturnResultValue();
+            expressionValue = bs.ReturnExpressionValue();
+            preResult = bs.ReturnPreResult();
         }
        
         //单目运算
         public void HandleSquareroot()
         {
-            IUnary squareRoot = new SquareRoot(expressionValue, resultValue);
+            IUnary squareRoot = new SquareRoot(expressionValue, resultValue,preResult);
             expressionValue = squareRoot.ReturnExpressionValue();
             resultValue = squareRoot.ReturnResultValue();
+            preResult = squareRoot.ReturnPreResult();
         }
         
         public void HandleSquare()
         {
-            IUnary square = new Square(expressionValue,resultValue);
+            IUnary square = new Square(expressionValue,resultValue,preResult);
             expressionValue = square.ReturnExpressionValue();
             resultValue = square.ReturnResultValue();
+            preResult = square.ReturnPreResult();
         }
        
         
         public void HandleReciprocal()
         {
-            IUnary rec = new Reciprocal(expressionValue, resultValue);
+            IUnary rec = new Reciprocal(expressionValue, resultValue,preResult);
             expressionValue = rec.ReturnExpressionValue();
             resultValue = rec.ReturnResultValue();
+            preResult = rec.ReturnPreResult();
         }
         public void HandleReverse()
         {
