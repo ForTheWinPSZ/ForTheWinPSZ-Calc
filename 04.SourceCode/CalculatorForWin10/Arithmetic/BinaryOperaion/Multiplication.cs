@@ -44,6 +44,7 @@ namespace Arithmetic.BinaryOperation
                 if (ExpressionValue.Trim().EndsWith(")"))
                 {
                     ExpressionValue = ExpressionValue + " × ";
+                    return;
                 }
                 
                 //表达式有值且非数字定义且最后非单目运算的时候           
@@ -101,6 +102,7 @@ namespace Arithmetic.BinaryOperation
                             exps = exps.Substring(0, index + 1)+PreResult;
                             exps=exps.Replace(" ", "");
                             PreResult= table.Compute(exps, "").ToString();
+                            return;
                         }
                     }
 
