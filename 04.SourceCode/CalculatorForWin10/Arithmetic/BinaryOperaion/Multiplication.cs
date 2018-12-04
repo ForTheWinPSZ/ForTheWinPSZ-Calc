@@ -11,14 +11,12 @@ namespace Arithmetic.BinaryOperation
 {
     public class Multiplication : IBinary
     {
-        public Multiplication(string resultValue, string expressionValue, string preResult)
+        public Multiplication(string resultValue, string expressionValue, string preResult,string preUnaryResult)
         {
             base.ResultValue = resultValue;
             base.ExpressionValue = expressionValue;
             base.PreResult = preResult;
-            
-            if (ExpressionValue == "")
-                IsComplete = false;
+            base.PreUnaryResult = preUnaryResult;           
             if (ResultValue != ""&&".".Equals(ResultValue.Substring(ResultValue.Length - 1)))
             {
                 ResultValue = ResultValue.Substring(0, ResultValue.Length - 1);
@@ -60,74 +58,67 @@ namespace Arithmetic.BinaryOperation
 
         public override void ChangeResultValue()
         {
-            
-            //初始时候不能计算
+            DataTable table = new DataTable();
+            //初始时候不能计算的时候
             if (ResultValue == "" && PreResult == "")
             {
                 return;
             }
-            //表达式最后为加减乘除
+            //表达式最后为加减乘除的时候
             if(ExpressionValue.EndsWith(" ")&&ResultValue=="")
             {
                 return;
             }
-            
- 
-            //能计算的情况
-            if (IsComplete)                         
-            {                
-                DataTable table = new DataTable();
-
-                if (PreResult=="")
+            //第一次存储PreResult的时候
+            if (ResultValue != "" && PreResult == "")
+            {
+                string exps;//拼凑表达式
+                if (PreUnaryResult != "")
                 {
-                    //没有先前暂存值的情况
-                    string cul = ExpressionValue+ResultValue;
-                    if (cul.Contains("×"))
-                    {
-                        cul=cul.Replace('×','*');
-                    }else if (cul.Contains("÷"))
-                    {
-                        cul = cul.Replace('÷', '/');
-                    }
-                    cul = cul.Replace(" ", "");
-                    PreResult = table.Compute(cul,"").ToString();                   
-                    return;
+                    string symbol = ExpressionValue.Trim().Substring(ExpressionValue.Length - 1);
+                    symbol = ForCompute(symbol);
+                     exps= PreUnaryResult + symbol + ResultValue;                    
                 }
                 else
                 {
-                    //有暂存值且结尾是单目运算的情况
-                    string exps = ExpressionValue.Trim();
-                    Debug.WriteLine("exps:" + exps);
-                    if (exps.Substring(exps.Length - 1) == ")")
-                    {
-                        char[] binary = { '+', '-', '×', '÷' };
-                        int index = ExpressionValue.LastIndexOfAny(binary);
-                        if (index == -1)
-                            return;
-                        else
-                        {
-                            exps = exps.Substring(0, index + 1)+PreResult;
-                            exps = ForCompute(exps);
-                            PreResult = table.Compute(exps, "").ToString();
-                            return;
-                        }
-                    }
-
-                   
+                    exps = ForCompute(ExpressionValue) + ResultValue;
+                }
+                PreResult = table.Compute(exps, "").ToString();
+                return;
+            }
+            if (ResultValue == "" && PreResult == "" && PreUnaryResult == "")
+            {
+                char[] binary = { '+', '-', '×', '÷' };
+                int index = ExpressionValue.LastIndexOfAny(binary);
+                string exps = ExpressionValue.Substring(0, index + 1) + PreUnaryResult;
+                exps = ForCompute(exps);
+                PreResult = table.Compute(exps, "").ToString();
+                return;
+            }
+            //多行运算的时候
+            if (PreResult != null)
+            {
+                //最后不是单目运算的时候
+                if(ExpressionValue.EndsWith(" "))
+                {
                     string symbol = ExpressionValue.Trim().Substring(ExpressionValue.Trim().Length - 1);
-                    if (symbol.Contains("×"))
-                    {
-                        symbol = symbol.Replace('×', '*');
-                    }
-                    else if (symbol.Contains("÷"))
-                    {
-                        symbol = symbol.Replace('÷', '/');
-                    }
                     string cul = PreResult + symbol + ResultValue;
-                    cul = cul.Replace(" ", "");
+                    cul = ForCompute(cul);
                     PreResult = table.Compute(cul, "").ToString();
                     return;
                 }
+                //最后是单目运算的时候
+                else
+                {
+                    char[] binary = { '+', '-', '×', '÷' };
+                    int index = ExpressionValue.LastIndexOfAny(binary);
+                    string symbol = ExpressionValue.Substring(index, index + 1);
+                    string cul = PreResult + symbol + ResultValue;
+                    cul = ForCompute(cul);
+                    PreResult = table.Compute(cul, "").ToString();
+                    return;
+                }
+                
             }
 
         }

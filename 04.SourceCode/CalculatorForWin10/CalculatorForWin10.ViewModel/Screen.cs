@@ -174,7 +174,7 @@ namespace CalculatorForWin10.ViewModel
         }
         public void HandleMultiplication()
         {
-            IBinary mul=new Multiplication(resultValue, expressionValue,preResult);            
+            IBinary mul=new Multiplication(resultValue, expressionValue,preResult, preUnaryResult);            
                 preResult = mul.ReturnPreResult();
                 resultValue = "";
                 expressionValue = mul.ReturnExpressionValue();
