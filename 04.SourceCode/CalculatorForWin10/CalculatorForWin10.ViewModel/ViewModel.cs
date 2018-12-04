@@ -170,7 +170,14 @@ namespace CalculatorForWin10.ViewModel
         private void Reverse()
         {
             screen.HandleReverse();
-            ResultText = screen.GetResult();
+            if (screen.GetResult() == "")
+            {
+                ResultText = screen.GetPreUnaryResult();
+            }
+            else
+            {
+                ResultText = screen.GetResult();
+            }         
             ExpressionText = screen.GetexpressionValue();
         }
         private void Pre()
