@@ -77,18 +77,18 @@ namespace CalculatorForWin10.ViewModel
             btn_mplus = new NVCommand(Mplus);
             btn_mminus = new NVCommand(Mminus);
             btn_ms = new NVCommand(Ms);
-            btn_pre = new NVCommand(Pre);
-            btn_ce = new NVCommand(Ce);
-            btn_c = new NVCommand(C);
-            btn_del = new NVCommand(Del);
+            //btn_pre = new NVCommand(Pre);
+            //btn_ce = new NVCommand(Ce);
+            //btn_c = new NVCommand(C);
+            //btn_del = new NVCommand(Del);
             btn_division = new NVCommand(Division);
-            btn_squareroot = new NVCommand(Squareroot);
+            //btn_squareroot = new NVCommand(Squareroot);
             btn_multiplication = new NVCommand(Multiplication);
-            btn_square = new NVCommand(Square);
+            //btn_square = new NVCommand(Square);
             btn_minus = new NVCommand(Minus);
             btn_plus = new NVCommand(Plus);
-            btn_reciprocal = new NVCommand(Reciprocal);
-            btn_reverse = new NVCommand(Reverse);
+            //btn_reciprocal = new NVCommand(Reciprocal);
+            //btn_reverse = new NVCommand(Reverse);
             btn_point = new NVCommand(Point);
             btn_equal = new NVCommand(Equal);
             btn_0 = new NVCommand(Zero);
@@ -128,52 +128,52 @@ namespace CalculatorForWin10.ViewModel
             screen.HandleMs();
             Memory = screen.Memory();
         }
-        private void Ce()
-        {
-            screen.HandleCe();
-            ResultText = screen.GetResult();
-        }
-        private void C()
-        {
-            screen.HandleC();
-            ResultText = screen.GetResult();
-            ExpressionText = screen.GetExpressionValue();
-        }
-        private void Del()
-        {
-            screen.HandleDel();
-            ResultText = screen.GetResult();
-        }
+        //private void Ce()
+        //{
+        //    screen.HandleCe();
+        //    ResultText = screen.GetResult();
+        //}
+        //private void C()
+        //{
+        //    screen.HandleC();
+        //    ResultText = screen.GetResult();
+        //    ExpressionText = screen.GetExpressionValue();
+        //}
+        //private void Del()
+        //{
+        //    screen.HandleDel();
+        //    ResultText = screen.GetResult();
+        //}
         
-        //单目运算部分
-        private void Squareroot()
-        {
-            screen.HandleSquareroot();
-            ResultText = screen.GetResult();
-            ExpressionText = screen.GetExpressionValue();
-        }
+        ////单目运算部分
+        //private void Squareroot()
+        //{
+        //    screen.HandleSquareroot();
+        //    ResultText = screen.GetResult();
+        //    ExpressionText = screen.GetExpressionValue();
+        //}
        
-        private void Square()
-        {
-            screen.HandleSquare();
-            ResultText = screen.GetResult();
-            ExpressionText = screen.GetExpressionValue();
-        }
-        private void Reciprocal()
-        {
-            screen.HandleReciprocal();
-            ResultText = screen.GetResult();
-            ExpressionText = screen.GetExpressionValue();
-        }
-        private void Reverse()
-        {
-            screen.HandleReverse();
-            ResultText = screen.GetResult();
-            ExpressionText = screen.GetExpressionValue();
-        }
-        private void Pre()
-        {
-        }
+        //private void Square()
+        //{
+        //    screen.HandleSquare();
+        //    ResultText = screen.GetResult();
+        //    ExpressionText = screen.GetExpressionValue();
+        //}
+        //private void Reciprocal()
+        //{
+        //    screen.HandleReciprocal();
+        //    ResultText = screen.GetResult();
+        //    ExpressionText = screen.GetExpressionValue();
+        //}
+        //private void Reverse()
+        //{
+        //    screen.HandleReverse();
+        //    ResultText = screen.GetResult();
+        //    ExpressionText = screen.GetExpressionValue();
+        //}
+        //private void Pre()
+        //{
+        //}
 
         //双目运算部分
         private void Plus()
@@ -181,78 +181,52 @@ namespace CalculatorForWin10.ViewModel
             screen.HandlePlus();
             if (screen.GetResult() == "")
             {
-                if(screen.GetPreResult()=="")
-                    ExpressionText = screen.GetExpressionValue();
-                else
-                {
-                    ExpressionText = screen.GetExpressionValue();
-                    ResultText = screen.GetPreResult();
-                }
+                ResultText = screen.GetPreResult();
             }
             else
             {
                 ResultText = screen.GetResult();
-                ExpressionText = screen.GetExpressionValue();
             }
+            ExpressionText = screen.GetExpressionValue();
         }
         private void Minus()
         {
             screen.HandleMinus();
             if (screen.GetResult() == "")
             {
-                if (screen.GetPreResult() == "")
-                    ExpressionText = screen.GetExpressionValue();
-                else
-                {
-                    ExpressionText = screen.GetExpressionValue();
-                    ResultText = screen.GetPreResult();
-                }
+                ResultText = screen.GetPreResult();
             }
             else
             {
                 ResultText = screen.GetResult();
-                ExpressionText = screen.GetExpressionValue();
             }
-
-
+            ExpressionText = screen.GetExpressionValue();
         }
         private void Multiplication()
         {
             screen.HandleMultiplication();
             if (screen.GetResult() == "")
             {
-                if (screen.GetPreResult() == "")
-                    ExpressionText = screen.GetExpressionValue();
-                else
-                {
-                    ExpressionText = screen.GetExpressionValue();
-                    ResultText = screen.GetPreResult();
-                }
+                ResultText = screen.GetPreResult();
             }
             else
             {
                 ResultText = screen.GetResult();
-                ExpressionText = screen.GetExpressionValue();
             }
+            ExpressionText = screen.GetExpressionValue();
         }
         private void Division()
         {
             screen.HandleDivision();
             if (screen.GetResult() == "")
             {
-                if (screen.GetPreResult() == "")
-                    ExpressionText = screen.GetExpressionValue();
-                else
-                {
-                    ExpressionText = screen.GetExpressionValue();
-                    ResultText = screen.GetPreResult();
-                }
+                ResultText = screen.GetPreResult();
             }
             else
             {
                 ResultText = screen.GetResult();
-                ExpressionText = screen.GetExpressionValue();
             }
+            ExpressionText = screen.GetExpressionValue();
         }
         //数字定义部分
         private void Zero()

@@ -89,67 +89,65 @@ namespace CalculatorForWin10.ViewModel
         {
             IBinary plus = new Plus(_resultValue, _expressionValue, _preResult);
             _preResult = plus.ReturnPreResult();
-            _resultValue = "";
             _expressionValue = plus.ReturnExpressionValue();
-
-
+            _resultValue = "";
         }
         public void HandleMinus()
         {
             IBinary minus = new Minus(_resultValue, _expressionValue, _preResult);
             _preResult = minus.ReturnPreResult();
-            _resultValue = "";
             _expressionValue = minus.ReturnExpressionValue();
+            _resultValue = "";
 
         }
         public void HandleMultiplication()
         {
             IBinary mul = new Multiplication(_resultValue, _expressionValue, _preResult);
             _preResult = mul.ReturnPreResult();
-            _resultValue = "";
             _expressionValue = mul.ReturnExpressionValue();
+            _resultValue = "";
         }
         public void HandleDivision()
         {
             IBinary division = new Division(_resultValue, _expressionValue, _preResult);
             _preResult = division.ReturnPreResult();
-            _resultValue = "";
             _expressionValue = division.ReturnExpressionValue();
+            _resultValue = "";
 
         }
         #endregion
 
         #region 处理单目运算
-        public void HandleSquareroot()
-        {
-            IUnary squareRoot = new SquareRoot(_expressionValue, _resultValue);
-            _expressionValue = squareRoot.ReturnExpressionValue();
-            _resultValue = squareRoot.ReturnResultValue();
-        }
+        //public void HandleSquareroot()
+        //{
+        //    IUnary squareRoot = new SquareRoot(_expressionValue, _resultValue);
+        //    _expressionValue = squareRoot.ReturnExpressionValue();
+        //    _resultValue = squareRoot.ReturnResultValue();
+        //}
         
-        public void HandleSquare()
-        {
-            IUnary square = new Square(_expressionValue,_resultValue);
-            _expressionValue = square.ReturnExpressionValue();
-            _resultValue = square.ReturnResultValue();
-        }
+        //public void HandleSquare()
+        //{
+        //    IUnary square = new Square(_expressionValue,_resultValue);
+        //    _expressionValue = square.ReturnExpressionValue();
+        //    _resultValue = square.ReturnResultValue();
+        //}
        
         
-        public void HandleReciprocal()
-        {
-            IUnary rec = new Reciprocal(_expressionValue, _resultValue);
-            _expressionValue = rec.ReturnExpressionValue();
-            _resultValue = rec.ReturnResultValue();
-        }
-        public void HandleReverse()
-        {
-            Reverse reverse = new Reverse(_resultValue,_expressionValue);
-            reverse.ChangeResultValue();
-            _resultValue = reverse.ReturnResultValue();
-        }
-        public void HandlePre()
-        {
-        }
+        //public void HandleReciprocal()
+        //{
+        //    IUnary rec = new Reciprocal(_expressionValue, _resultValue);
+        //    _expressionValue = rec.ReturnExpressionValue();
+        //    _resultValue = rec.ReturnResultValue();
+        //}
+        //public void HandleReverse()
+        //{
+        //    Reverse reverse = new Reverse(_resultValue,_expressionValue);
+        //    reverse.ChangeResultValue();
+        //    _resultValue = reverse.ReturnResultValue();
+        //}
+        //public void HandlePre()
+        //{
+        //}
         #endregion
 
         #region 处理等于按钮
@@ -162,23 +160,23 @@ namespace CalculatorForWin10.ViewModel
         #endregion
 
         #region 处理清除按钮
-        public void HandleCe()
-        {
-            IClear ce = new CE(_resultValue);
-            _resultValue = ce.ReturnResultValue();
-        }
-        public void HandleC()
-        {
-            C c = new C(_resultValue, _expressionValue, _preResult);
-            _resultValue = c.ReturnResultValue();
-            _expressionValue = c.ReturnExpressionValue();
-            _preResult = c.ReturnPreResult();
-        }
-        public void HandleDel()
-        {
-            BackSpace bs = new BackSpace(_resultValue);
-            _resultValue = bs.ReturnResultValue();
-        }
+        //public void HandleCe()
+        //{
+        //    IClear ce = new CE(_resultValue);
+        //    _resultValue = ce.ReturnResultValue();
+        //}
+        //public void HandleC()
+        //{
+        //    C c = new C(_resultValue, _expressionValue, _preResult);
+        //    _resultValue = c.ReturnResultValue();
+        //    _expressionValue = c.ReturnExpressionValue();
+        //    _preResult = c.ReturnPreResult();
+        //}
+        //public void HandleDel()
+        //{
+        //    BackSpace bs = new BackSpace(_resultValue);
+        //    _resultValue = bs.ReturnResultValue();
+        //}
         #endregion
 
         #region 数字定义
