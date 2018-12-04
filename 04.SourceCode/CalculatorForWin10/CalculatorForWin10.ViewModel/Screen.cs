@@ -41,7 +41,7 @@ namespace CalculatorForWin10.ViewModel
         }
         public string GetPreResult()
         {
-            return preResult;
+            return Comma.AddComma(preResult);
         }
 
         public List<string> History()
