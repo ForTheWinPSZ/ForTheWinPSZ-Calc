@@ -62,8 +62,10 @@ namespace Arithmetic.BinaryOperation
 
         public override void ChangeResultValue()
         {
+            Debug.WriteLine("IsComplete:"+IsComplete);
+            Debug.WriteLine("暂存值：" + PreResult);
             //不能计算
-            if (ResultValue == "")
+            if (ResultValue == "" && PreResult == "")
             {
                 return;
             }
@@ -91,6 +93,7 @@ namespace Arithmetic.BinaryOperation
                 {
                     //有暂存值且结尾是单目运算的情况
                     string exps = ExpressionValue.Trim();
+                    Debug.WriteLine("exps:" + exps);
                     if (exps.Substring(exps.Length - 1) == ")")
                     {
                         char[] binary = { '+', '-', '×', '÷' };
@@ -101,7 +104,15 @@ namespace Arithmetic.BinaryOperation
                         {
                             exps = exps.Substring(0, index + 1)+PreResult;
                             exps=exps.Replace(" ", "");
-                            PreResult= table.Compute(exps, "").ToString();
+                            if (exps.Contains("×"))
+                            {
+                                exps = exps.Replace('×', '*');
+                            }
+                            else if (exps.Contains("÷"))
+                            {
+                                exps = exps.Replace('÷', '/');
+                            }
+                            PreResult = table.Compute(exps, "").ToString();
                             return;
                         }
                     }
