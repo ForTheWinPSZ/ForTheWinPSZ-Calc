@@ -13,17 +13,17 @@ namespace Arithmetic.UnaryOperation
         private string expressionValue;
         private string resultValue;
         private int binaryIndex;
+        private string preResult;
 
-        public Square(string expressionValue, string resultValue)
+        public Square(string expressionValue, string resultValue,string preResult)
         {
             this.expressionValue = expressionValue;
             this.resultValue = resultValue;
-            if (resultValue != "无效输入" && resultValue != "除数不能为零")
+            this.preResult = preResult;
+            if (preResult != "无效输入" && preResult != "除数不能为零")
             {
                 //改变表达式栏
                 ChangeExpression();
-                //计算
-                Calculate();
                 //改变结果栏
                 ChangeResultValue();
             }
@@ -34,7 +34,7 @@ namespace Arithmetic.UnaryOperation
             if (expressionValue == "" || IsUnary() == false)
             {
                 Debug.WriteLine("结尾不是单目");
-                expressionValue += " sqr(" + resultValue + ")";
+                expressionValue += " sqr(" + preResult + ")";
             }
             else
             {
@@ -47,13 +47,14 @@ namespace Arithmetic.UnaryOperation
 
         public void ChangeResultValue()
         {
-            resultValue = Calculate();
+            preResult = resultValue == "" ? Calculate(preResult) : Calculate(resultValue);
+            resultValue = "";
         }
 
-        public string Calculate()
+        public string Calculate(string param)
         {
             //平方
-            return (ToDouble(resultValue) * ToDouble(resultValue)).ToString().ToLower();
+            return (ToDouble(param) * ToDouble(param)).ToString().ToLower();
         }
         //最后一部分是否是双目运算
         public bool IsBinary()
@@ -95,6 +96,11 @@ namespace Arithmetic.UnaryOperation
             char[] binary = { '+', '-', '×', '÷' };
             binaryIndex = expressionValue.LastIndexOfAny(binary);
             return expressionValue.Substring(binaryIndex + 1);
+        }
+
+        public string ReturnPreResult()
+        {
+            return preResult;
         }
     }
 }

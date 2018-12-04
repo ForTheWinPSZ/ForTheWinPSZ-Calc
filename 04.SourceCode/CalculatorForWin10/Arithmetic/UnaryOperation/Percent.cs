@@ -8,7 +8,7 @@ namespace Arithmetic.UnaryOperation
 {
     public class Percent : IUnary
     {
-        public string Calculate()
+        public string Calculate(string param)
         {
             throw new NotImplementedException();
         }
@@ -39,6 +39,11 @@ namespace Arithmetic.UnaryOperation
         }
 
         public string ReturnExpressionValue()
+        {
+            throw new NotImplementedException();
+        }
+
+        public string ReturnPreResult()
         {
             throw new NotImplementedException();
         }
