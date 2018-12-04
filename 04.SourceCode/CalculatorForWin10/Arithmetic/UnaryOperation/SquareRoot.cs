@@ -31,10 +31,11 @@ namespace Arithmetic.UnaryOperation
 
         public void ChangeExpression()
         {
+            string displayText = resultValue == "" ? preResult : resultValue;
             if (expressionValue == "" || IsUnary() == false)
             {
                 Debug.WriteLine("结尾不是单目");
-                expressionValue += " √(" + preResult + ")";
+                expressionValue += " √(" + displayText + ")";
             }
             else
             {
