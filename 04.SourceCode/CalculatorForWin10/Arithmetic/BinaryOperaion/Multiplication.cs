@@ -74,7 +74,7 @@ namespace Arithmetic.BinaryOperation
             {                
                 DataTable table = new DataTable();
 
-                if (PreResult == "")
+                if (PreResult=="")
                 {
                     //没有先前暂存值的情况
                     string cul = ExpressionValue+ResultValue;
@@ -117,7 +117,7 @@ namespace Arithmetic.BinaryOperation
                         }
                     }
 
-
+                   
                     string symbol = ExpressionValue.Trim().Substring(ExpressionValue.Trim().Length - 1);
                     if (symbol.Contains("×"))
                     {
