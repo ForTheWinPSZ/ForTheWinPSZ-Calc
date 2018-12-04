@@ -125,6 +125,8 @@ namespace CalculatorForWin10.ViewModel
         public void HandleReverse()
         {
         }
+
+
         public void HandleEqual()
         {
         }

@@ -15,16 +15,17 @@ namespace Arithmetic.BinaryOperation
         string preResultValue;
         public Minus(string value1, string value2, string value3)
         {
-            base.resultValue = value1;
-            base.expressionValue = value2;
-            base.preResult = value3;
-            preResultValue = resultValue;
-            if (expressionValue == "")
+            base.ResultValue = value1;
+            base.ExpressionValue = value2;
+            base.PreResult = value3;
+            
+            if (ExpressionValue == "")
                 IsComplete = false;
-            if (resultValue != ""&&".".Equals(resultValue.Substring(resultValue.Length - 1)))
+            if (ResultValue != ""&&".".Equals(ResultValue.Substring(ResultValue.Length - 1)))
             {
-                resultValue = resultValue.Substring(0, resultValue.Length - 1);
+                ResultValue = ResultValue.Substring(0, ResultValue.Length - 1);
             }
+            preResultValue = ResultValue;
             ChangeResultValue();
             ChangeExpression();
         }
@@ -32,27 +33,27 @@ namespace Arithmetic.BinaryOperation
 
         public override void ChangeExpression()
         {
-            if (expressionValue == "")
+            if (ExpressionValue == "")
             {
-                expressionValue = preResultValue + "-";
+                ExpressionValue = preResultValue + "-";
                 return;
             }
             else
             {
-                if (resultValue == "")
+                if (ResultValue == "")
                 {
                     Debug.WriteLine("执行换符号操作！");
-                    expressionValue = expressionValue.Substring(0, expressionValue.Length - 1) + "-";
+                    ExpressionValue = ExpressionValue.Substring(0, ExpressionValue.Length - 1) + "-";
                     return;
                 }
-                expressionValue = expressionValue + preResultValue + "-";
+                ExpressionValue = ExpressionValue + preResultValue + "-";
                 return;
             }
         }
 
         public override void ChangeResultValue()
         {
-            if (resultValue == "")
+            if (ResultValue == "")
             {
                 return;
             }
@@ -61,10 +62,10 @@ namespace Arithmetic.BinaryOperation
             {
                 DataTable table = new DataTable();
 
-                if (preResult == "")
+                if (PreResult == "")
                 {
                     //没有先前暂存值的情况
-                    string cul = expressionValue + resultValue;
+                    string cul = ExpressionValue + ResultValue;
                     if (cul.Contains("x"))
                     {
                         cul = cul.Replace('x', '*');
@@ -74,12 +75,12 @@ namespace Arithmetic.BinaryOperation
                         cul = cul.Replace('÷', '/');
                     }
                     cul = cul.Replace(" ", "");
-                    preResult = table.Compute(cul, "").ToString();
+                    PreResult = table.Compute(cul, "").ToString();
                     return;
                 }
                 else
                 {
-                    string symbol = expressionValue.Substring(expressionValue.Length - 1);
+                    string symbol = ExpressionValue.Substring(ExpressionValue.Length - 1);
                     if (symbol.Contains("x"))
                     {
                         symbol = symbol.Replace('x', '*');
@@ -88,10 +89,10 @@ namespace Arithmetic.BinaryOperation
                     {
                         symbol = symbol.Replace('÷', '/');
                     }
-                    string cul = preResult + symbol + resultValue;
+                    string cul = PreResult + symbol + ResultValue;
                     cul = cul.Replace(" ", "");
-                    preResult = table.Compute(cul, "").ToString();
-                    resultValue = preResult;
+                    PreResult = table.Compute(cul, "").ToString();
+                    ResultValue = PreResult;
                     return;
                 }
             }
@@ -99,17 +100,17 @@ namespace Arithmetic.BinaryOperation
 
         public override string ReturnExpressionValue()
         {
-            return expressionValue;
+            return ExpressionValue;
         }
 
         public override string ReturnPreResult()
         {
-            return preResult;
+            return PreResult;
         }
 
         public override string ReturnResultValue()
         {
-            return resultValue;
+            return ResultValue;
         }
     }
 }

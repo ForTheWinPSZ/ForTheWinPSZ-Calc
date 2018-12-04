@@ -178,80 +178,53 @@ namespace CalculatorForWin10.ViewModel
         //双目运算部分
         private void Plus()
         {
-            screen.HandlePlus();
-            if (screen.GetResult() == "")
-            {
-                if(screen.GetPreResult()=="")
-                    ExpressionText = screen.GetexpressionValue();
-                else
-                {
-                    ExpressionText = screen.GetexpressionValue();
-                    ResultText = screen.GetPreResult();
-                }
-            }
+            screen.HandlePlus();           
+            if(screen.GetPreResult()=="")
+                ExpressionText = screen.GetexpressionValue();
             else
             {
-                ResultText = screen.GetResult();
                 ExpressionText = screen.GetexpressionValue();
+                ResultText = screen.GetPreResult();
             }
+            
+            
         }
         private void Minus()
         {
             screen.HandleMinus();
-            if (screen.GetResult() == "")
-            {
-                if (screen.GetPreResult() == "")
-                    ExpressionText = screen.GetexpressionValue();
-                else
-                {
-                    ExpressionText = screen.GetexpressionValue();
-                    ResultText = screen.GetPreResult();
-                }
-            }
+            
+            if (screen.GetPreResult() == "")
+                ExpressionText = screen.GetexpressionValue();
             else
             {
-                ResultText = screen.GetResult();
                 ExpressionText = screen.GetexpressionValue();
+                ResultText = screen.GetPreResult();
             }
+            
+            
 
 
         }
         private void Multiplication()
         {
             screen.HandleMultiplication();
-            if (screen.GetResult() == "")
-            {
-                if (screen.GetPreResult() == "")
-                    ExpressionText = screen.GetexpressionValue();
-                else
-                {
-                    ExpressionText = screen.GetexpressionValue();
-                    ResultText = screen.GetPreResult();
-                }
-            }
+            if (screen.GetPreResult() == "")
+                ExpressionText = screen.GetexpressionValue();
             else
             {
-                ResultText = screen.GetResult();
                 ExpressionText = screen.GetexpressionValue();
+                ResultText = screen.GetPreResult();
             }
         }
         private void Division()
         {
             screen.HandleDivision();
-            if (screen.GetResult() == "")
-            {
-                if (screen.GetPreResult() == "")
-                    ExpressionText = screen.GetexpressionValue();
-                else
-                {
-                    ExpressionText = screen.GetexpressionValue();
-                    ResultText = screen.GetPreResult();
-                }
-            }
+            if (screen.GetPreResult() == "")
+               ExpressionText = screen.GetexpressionValue();
             else
             {
-                ResultText = screen.GetResult();
-                ExpressionText = screen.GetexpressionValue();
+               ExpressionText = screen.GetexpressionValue();
+               ResultText = screen.GetPreResult();
             }
         }
         //数字定义部分

@@ -11,12 +11,14 @@ namespace Arithmetic
         private string resultValue;
         private string expressionValue;
         private List<string> history;
+        private string preResult;
 
-        public Equal(string resultValue, string expressionValue, List<string> history)
+        public Equal(string resultValue, string expressionValue, List<string> history,string preResult)
         {
             this.resultValue = resultValue;
             this.expressionValue = expressionValue;
             this.history = history;
+            this.preResult = preResult;
         }
 
         public string ExpressionResult()

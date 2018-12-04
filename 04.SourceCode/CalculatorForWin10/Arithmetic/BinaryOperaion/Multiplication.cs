@@ -12,40 +12,49 @@ namespace Arithmetic.BinaryOperation
     public class Multiplication : IBinary
     {
         //用来存储一开始resultValue的值
-        string preResultValue;
-        public Multiplication(string value1, string value2, string value3)
+        string _preResultValue;
+        public Multiplication(string resultValue, string expressionValue, string preResult)
         {
-            base.resultValue = value1;
-            base.expressionValue = value2;
-            base.preResult = value3;
-            preResultValue = resultValue;
-            if (expressionValue == "")
-                IsComplete = false;
-            if (resultValue != ""&&".".Equals(resultValue.Substring(resultValue.Length - 1)))
-            {
-                resultValue = resultValue.Substring(0, resultValue.Length - 1);
-            }
+            base.ResultValue = resultValue;
+            base.ExpressionValue = expressionValue;
+            base.PreResult = preResult;
             
+            if (ExpressionValue == "")
+                IsComplete = false;
+            if (ResultValue != ""&&".".Equals(ResultValue.Substring(ResultValue.Length - 1)))
+            {
+                ResultValue = ResultValue.Substring(0, ResultValue.Length - 1);
+            }
+            _preResultValue = ResultValue;
             ChangeResultValue();
             ChangeExpression();
         }
 
         public override void ChangeExpression()
         {
-            if (expressionValue == "")
-            {
-                expressionValue= preResultValue + "x";
+            //表达式没有值的时候
+            if (ExpressionValue == "")
+            { 
+                ExpressionValue= _preResultValue + " × ";
                 return;
             }
             else
-            {               
-                if (resultValue=="")
+            {
+                //表达式有值且最后是单目运算的时候
+                if (ExpressionValue.Trim().EndsWith(")"))
+                {
+                    ExpressionValue = ExpressionValue + " × ";
+                }
+                
+                //表达式有值且非数字定义且最后非单目运算的时候           
+                if (ResultValue==""&&!ExpressionValue.Trim().EndsWith(")"))
                 {
                     Debug.WriteLine("执行换符号操作！");
-                    expressionValue= expressionValue.Substring(0, expressionValue.Length - 1) + "x";
+                    ExpressionValue= ExpressionValue.Substring(0, ExpressionValue.Length - 1) + " × ";
                     return;
                 }
-                expressionValue= expressionValue + preResultValue + "x";
+                //表达式有值且是数字定义的时候
+                ExpressionValue= ExpressionValue + _preResultValue + " × ";
                 return;
             }
         }
@@ -53,7 +62,7 @@ namespace Arithmetic.BinaryOperation
         public override void ChangeResultValue()
         {
             //不能计算
-            if (resultValue == "")
+            if (ResultValue == "")
             {
                 return;
             }
@@ -62,36 +71,53 @@ namespace Arithmetic.BinaryOperation
             {                
                 DataTable table = new DataTable();
 
-                if (preResult == "")
+                if (PreResult == "")
                 {
                     //没有先前暂存值的情况
-                    string cul = expressionValue+resultValue;
-                    if (cul.Contains("x"))
+                    string cul = ExpressionValue+ResultValue;
+                    if (cul.Contains("×"))
                     {
-                        cul=cul.Replace('x','*');
+                        cul=cul.Replace('×','*');
                     }else if (cul.Contains("÷"))
                     {
                         cul = cul.Replace('÷', '/');
                     }
                     cul = cul.Replace(" ", "");
-                    preResult = table.Compute(cul,"").ToString();                   
+                    PreResult = table.Compute(cul,"").ToString();                   
                     return;
                 }
                 else
                 {
-                    string symbol = expressionValue.Substring(expressionValue.Length - 1);
-                    if (symbol.Contains("x"))
+                    //有暂存值且结尾是单目运算的情况
+                    string exps = ExpressionValue.Trim();
+                    if (exps.Substring(exps.Length - 1) == ")")
                     {
-                        symbol = symbol.Replace('x', '*');
+                        char[] binary = { '+', '-', '×', '÷' };
+                        int index = ExpressionValue.LastIndexOfAny(binary);
+                        if (index == -1)
+                            return;
+                        else
+                        {
+                            exps = exps.Substring(0, index + 1)+PreResult;
+                            exps=exps.Replace(" ", "");
+                            PreResult= table.Compute(exps, "").ToString();
+                        }
+                    }
+
+
+                    string symbol = ExpressionValue.Trim().Substring(ExpressionValue.Trim().Length - 1);
+                    if (symbol.Contains("×"))
+                    {
+                        symbol = symbol.Replace('×', '*');
                     }
                     else if (symbol.Contains("÷"))
                     {
                         symbol = symbol.Replace('÷', '/');
                     }
-                    string cul = preResult + symbol + resultValue;
+                    string cul = PreResult + symbol + ResultValue;
                     cul = cul.Replace(" ", "");
-                    preResult = table.Compute(cul, "").ToString();
-                    resultValue= preResult;
+                    PreResult = table.Compute(cul, "").ToString();
+                    ResultValue= PreResult;
                     return;
                 }
             }
@@ -100,17 +126,17 @@ namespace Arithmetic.BinaryOperation
 
         public override string ReturnExpressionValue()
         {
-            return expressionValue;
+            return ExpressionValue;
         }
 
         public override string ReturnPreResult()
         {
-            return preResult;
+            return PreResult;
         }
 
         public override string ReturnResultValue()
         {
-            return resultValue;
+            return ResultValue;
         }
     }
 }
