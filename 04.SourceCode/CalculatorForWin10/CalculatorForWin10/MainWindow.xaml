@@ -143,7 +143,13 @@
                     <TabItem Header="内存" BorderThickness="0" FontFamily="黑体" FontSize="16" FontWeight="Bold">
                         <Grid Background="#FFEAEAEA">
                             <ScrollViewer VerticalScrollBarVisibility="Auto" Width="340" Margin="0" BorderThickness="0">
-                                <ListBox Background="{x:Null}" BorderBrush="{x:Null}" ItemsSource="{Binding Memory}" FontSize="20" Width="304" Height="405"/>
+                                <ListBox Background="{x:Null}" BorderBrush="{x:Null}" ItemsSource="{Binding Memory}" FontSize="20" Width="304" Height="405">
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding}" Margin="5" FontSize="25" HorizontalAlignment="Right" TextAlignment="Right" Width="270"></TextBlock>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
                             </ScrollViewer>
                             <Button HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="50" Height="45" BorderBrush="{x:Null}" Command="{Binding Btn_qc1}" Margin="5">
                                 <Image Width="45" Source="images/qc.png"/>
