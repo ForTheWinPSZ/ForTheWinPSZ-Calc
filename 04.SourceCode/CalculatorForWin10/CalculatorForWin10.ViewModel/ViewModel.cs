@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using Arithmetic;
 
 
 namespace CalculatorForWin10.ViewModel
@@ -388,8 +389,8 @@ namespace CalculatorForWin10.ViewModel
             get { return _expressionText; }
             set { SetPropertyNotify(ref _expressionText, value, nameof(ExpressionText)); }
         }
-        private ObservableCollection<string> _history = new ObservableCollection<string>() { "尚无历史纪录" };
-        public ObservableCollection<string> History
+        private ObservableCollection<History> _history = new ObservableCollection<History>() { new History("尚无历史记录","") };
+        public ObservableCollection<History> History
         {
             get { return _history; }
         }
