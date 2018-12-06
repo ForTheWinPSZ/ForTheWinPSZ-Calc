@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:ViewModel="clr-namespace:CalculatorForWin10.ViewModel;assembly=CalculatorForWin10.ViewModel" x:Class="CalculatorForWin10.MainWindow"
         mc:Ignorable="d"
-        Title="计算器" Height="520" Width="335" MinHeight="501" MinWidth="335" Background="#eaeaea" x:Name="main">
+        Title="计算器" Height="520" Width="335" MinHeight="501" MinWidth="335" Background="#eaeaea" x:Name="main" >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -124,7 +124,16 @@
                     <TabItem Header="历史记录" BorderThickness="0"  FontFamily="黑体" FontSize="16" FontWeight="Bold">
                         <Grid Background="#FFEAEAEA">
                             <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0" BorderThickness="0">
-                                <ListBox Background="{x:Null}" BorderBrush="{x:Null}" ItemsSource="{Binding History}" FontSize="20" Width="304" Height="405"/>
+                                <ListBox Background="{x:Null}" BorderBrush="{x:Null}" ItemsSource="{Binding History}" FontSize="20" Width="304" Height="405">
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate >
+                                            <StackPanel Orientation="Vertical" HorizontalAlignment="Right">
+                                                <TextBlock TextWrapping="Wrap" Text="{Binding Path=Expression}" Margin="5" FontSize="16" HorizontalAlignment="Right" TextAlignment="Right" Foreground="Gray" Width="270"></TextBlock>
+                                                <TextBlock Text="{Binding Path=Result}" Margin="5" FontSize="25" HorizontalAlignment="Right" TextAlignment="Right" Width="270"></TextBlock>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
                             </ScrollViewer>
                             <Button HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="50" Height="45" BorderBrush="{x:Null}" Command="{Binding Btn_qc}" Margin="5">
                                 <Image Width="45" Source="images/qc.png"/>

@@ -19,7 +19,7 @@ namespace CalculatorForWin10.ViewModel
         private static Screen _screen = new Screen();
         private string _resultValue = "0";
         private string _expressionValue = "";
-        private List<string> _history = new List<string>();
+        private List<History> _history = new List<History>();
         private List<string> _memory = new List<string>();
         private string _preResult = "";
         private string _lparm = "";
@@ -47,7 +47,7 @@ namespace CalculatorForWin10.ViewModel
             return Comma.AddComma(_preResult);
         }
 
-        public List<string> History()
+        public List<History> History()
         {
             return _history;
         }
@@ -163,7 +163,7 @@ namespace CalculatorForWin10.ViewModel
         #endregion
 
         #region 处理等于按钮
-        public void HandleEqual()        {            Equal equal = new Equal(_resultValue, _expressionValue, _preResult, _history,_lparm);            _expressionValue = equal.ReturnExpressionValue();            _preResult = equal.ReturnPreResult();            _resultValue = "";            _history = equal.ReturnHistory();            foreach (string h in _history)            {                Debug.WriteLine("历史记录：" + h);            }            _canNumberDef = false;            _lparm = equal.Lparm();        }
+        public void HandleEqual()        {            Equal equal = new Equal(_resultValue, _expressionValue, _preResult, _history,_lparm);            _expressionValue = equal.ReturnExpressionValue();            _preResult = equal.ReturnPreResult();            _resultValue = "";            _history = equal.ReturnHistory();            foreach (History h in _history)            {                Debug.WriteLine("历史记录：" + h.ToString());            }            _canNumberDef = false;            _lparm = equal.Lparm();        }
         #endregion
 
         #region 处理清除按钮
@@ -189,7 +189,7 @@ namespace CalculatorForWin10.ViewModel
 
         {
 
-            Dustbin db = new Dustbin(_history);
+            HistoryDustbin db = new HistoryDustbin(_history);
 
             _history = db.Clear();
 
@@ -199,7 +199,7 @@ namespace CalculatorForWin10.ViewModel
 
         {
 
-            Dustbin db = new Dustbin(_memory);
+            MemoryDustbin db = new MemoryDustbin(_memory);
 
             _memory = db.Clear();
 
