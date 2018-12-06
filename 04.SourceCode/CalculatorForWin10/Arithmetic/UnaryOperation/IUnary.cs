@@ -8,7 +8,6 @@ namespace Arithmetic.UnaryOperation
 {
     public interface IUnary
     {
-        string Calculate(string param);
         void ChangeResultValue();
         void ChangeExpression();
         string ReturnExpressionValue();

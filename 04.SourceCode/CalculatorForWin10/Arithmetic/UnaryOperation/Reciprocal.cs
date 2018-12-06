@@ -4,10 +4,7 @@
 
             ChangeExpression();
 
-        }        public void ChangeExpression()        {            if (expressionValue == "" || expressionValue.EndsWith(" "))            {                Debug.WriteLine("结尾不是单目");                expressionValue += "1/(" + ToDouble(displayText) + ")";            }            else            {                Debug.WriteLine("结尾是单目");                string UnaryExpression = GetUnaryExpression().Trim();                string partExpression = expressionValue.Substring(0, binaryIndex);                expressionValue = partExpression + "1/(" + UnaryExpression + ")";            }        }        public void ChangeResultValue()        {            resultValue = Calculate(displayText = resultValue == "" ? preResult : resultValue);        }        public string Calculate(string param)        {            if (param == "0")            {                return "除数不能为零";            }            else            {
-                //倒数
-                return (1 / ToDouble(param)).ToString().ToLower();            }        }
-        //最后一部分是否是双目运算
+        }        public void ChangeExpression()        {            if (expressionValue == "" || expressionValue.EndsWith(" "))            {                Debug.WriteLine("结尾不是单目");                expressionValue += "1/(" + ToDouble(displayText) + ")";            }            else            {                Debug.WriteLine("结尾是单目");                string UnaryExpression = GetUnaryExpression().Trim();                string partExpression = expressionValue.Substring(0, binaryIndex);                expressionValue = partExpression + "1/(" + UnaryExpression + ")";            }        }        public void ChangeResultValue()        {            resultValue = Tool1.Calculate("reciprocal", displayText = resultValue == "" ? preResult : resultValue);        }        
 
 
         public string ReturnExpressionValue()        {            return expressionValue;        }        public string ReturnResultValue()        {            return resultValue;        }        public string GetUnaryExpression()        {            binaryIndex = expressionValue.LastIndexOf(" ") + 1;            return expressionValue.Substring(binaryIndex);        }    }}

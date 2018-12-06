@@ -3,8 +3,7 @@
             ChangeResultValue();
             ChangeExpression();
 
-        }        public string Calculate(string param)        {            return (ToDouble(param) * -1).ToString().ToLower();        }
-
+        }        
 
         public void ChangeExpression()        {
 
@@ -24,7 +23,7 @@
 
 
 
-        }        public void ChangeResultValue()        {            resultValue = Calculate(displayText = resultValue == "" ? preResult : resultValue);        }        public string GetUnaryExpression()        {            binaryIndex = expressionValue.LastIndexOf(" ") + 1;            return expressionValue.Substring(binaryIndex);        }        public string ReturnExpressionValue()        {            return expressionValue;        }
+        }        public void ChangeResultValue()        {            resultValue = Tool1.Calculate("reverse", displayText = resultValue == "" ? preResult : resultValue);        }        public string GetUnaryExpression()        {            binaryIndex = expressionValue.LastIndexOf(" ") + 1;            return expressionValue.Substring(binaryIndex);        }        public string ReturnExpressionValue()        {            return expressionValue;        }
 
 
         public string ReturnResultValue()        {            return resultValue;        }        public bool ReturnCanNumberDef()

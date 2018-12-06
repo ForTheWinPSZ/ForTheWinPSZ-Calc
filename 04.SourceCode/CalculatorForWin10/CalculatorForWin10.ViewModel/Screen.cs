@@ -22,6 +22,7 @@ namespace CalculatorForWin10.ViewModel
         private List<string> _history = new List<string>();
         private List<string> _memory = new List<string>();
         private string _preResult = "";
+        private string _lparm = "";
         private bool _canNumberDef = true;
 
         //获取Screen
@@ -162,7 +163,7 @@ namespace CalculatorForWin10.ViewModel
         #endregion
 
         #region 处理等于按钮
-        public void HandleEqual()        {            Equal equal = new Equal(_resultValue, _expressionValue, _preResult, _history);            _expressionValue = equal.ReturnExpressionValue();            _preResult = equal.ReturnPreResult();            _resultValue = "";            _history = equal.ReturnHistory();            foreach (string h in _history)            {                Debug.WriteLine("历史记录：" + h);            }            _canNumberDef = false;        }
+        public void HandleEqual()        {            Equal equal = new Equal(_resultValue, _expressionValue, _preResult, _history,_lparm);            _expressionValue = equal.ReturnExpressionValue();            _preResult = equal.ReturnPreResult();            _resultValue = "";            _history = equal.ReturnHistory();            foreach (string h in _history)            {                Debug.WriteLine("历史记录：" + h);            }            _canNumberDef = false;            _lparm = equal.Lparm();        }
         #endregion
 
         #region 处理清除按钮

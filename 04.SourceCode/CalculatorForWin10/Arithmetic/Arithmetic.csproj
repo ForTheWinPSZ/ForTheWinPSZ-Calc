@@ -55,6 +55,7 @@
     <Compile Include="UnaryOperation\SquareRoot.cs" />
     <Compile Include="UnaryOperation\IUnary.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnaryOperation\Tool1.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
