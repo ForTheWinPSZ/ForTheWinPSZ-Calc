@@ -20,12 +20,31 @@ namespace CalculatorForWin10
 	/// </summary>
 	public partial class MainWindow : Window
 	{
+        bool _clicked = false;
 
         public MainWindow()
         {
             InitializeComponent();
             this.DataContext = new MainWindowsViewModel();
         }
+        protected override void OnSourceInitialized(EventArgs e)
+        {
+            IconHelper.RemoveIcon(this);
+        }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (_clicked)
+            {
+                main.Width = 335;
+                _clicked = false;
+            }
+            else
+            {
+                main.Width = 675;
+                _clicked = true;
+            }
+            
+        }
     }
 }

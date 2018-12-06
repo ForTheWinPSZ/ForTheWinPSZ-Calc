@@ -71,6 +71,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="IconHelper.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -104,8 +105,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\del.png" />
-    <Resource Include="Images\his.png" />
     <Resource Include="Images\opt.png" />
   </ItemGroup>
   <ItemGroup>
@@ -116,6 +115,10 @@
       <Project>{045D1EA9-3A61-4BB0-B89B-91D34D8A985A}</Project>
       <Name>CalculatorForWin10.ViewModel</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\del.png" />
+    <Resource Include="Images\his.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
