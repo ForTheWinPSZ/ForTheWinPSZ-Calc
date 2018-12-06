@@ -4,29 +4,38 @@ using System.Text;
 
 namespace Clean
 {
-    public class CE : IClear
+    public class CE 
     {
-        private string resultValue;
+        private string _resultValue;
+        private string _expressionValue;
 
-        public CE(string resultValue)
+        public CE(string resultValue,string expressionValue)
         {
-            this.resultValue = resultValue;
+            this._resultValue = resultValue;
+            this._expressionValue = expressionValue;
             ClearResultValue();
+            ChangeExpression();
         }
-
+        public void ChangeExpression()
+        {
+            if (!_expressionValue.EndsWith(" "))
+            {
+                string[] arr = _expressionValue.Split(new char[] { ' ' });
+                _expressionValue=_expressionValue.Replace(arr[arr.Length-1],"");
+            }
+        }
         public void ClearResultValue()
         {
-            resultValue = "0";
+            _resultValue = "0";
         }
-
-        public string ReturnExpressionValue()
-        {
-            return resultValue;
-        }
-
+        
         public string ReturnResultValue()
         {
-            return resultValue;
+            return _resultValue;
+        }
+        public string ReturnExpressionValue()
+        {
+            return _expressionValue;
         }
     }
 }

@@ -8,13 +8,19 @@ namespace M
     {
         private string resultValue;
         private List<string> memory;
-        public MS(List<string> memory,string resultValue)
+        private string preResult;
+        public MS(List<string> memory,string resultValue,string preResult)
         {
             this.resultValue = resultValue;
+            this.preResult = preResult;
             this.memory = memory;
         }
         public List<string> AddMemory(string resultValue)
         {
+            if (resultValue=="")
+            {
+                resultValue = preResult;
+            }
             memory.Add(resultValue);
             return memory;
         }

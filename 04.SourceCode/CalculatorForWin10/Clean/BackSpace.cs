@@ -6,38 +6,38 @@ namespace Clean
 {
     public class BackSpace
     {
-        private string resultValue;
-        private double result;
+        private string _resultValue;
+        private double _result;
 
         public BackSpace(string resultValue)
         {
-            this.resultValue = resultValue;
-            result = Convert.ToDouble(resultValue);
+            this._resultValue = resultValue;
+            _result = Convert.ToDouble(resultValue);
             BackSp();
         }
 
         public void BackSp()
         {
-            if (result>0)
+            if (_result>0)
             {
-                if (resultValue.Length > 1)
+                if (_resultValue.Length > 1)
                 {
-                    resultValue = resultValue.Remove(resultValue.Length - 1);
+                    _resultValue = _resultValue.Remove(_resultValue.Length - 1);
                 }
                 else
                 {
-                    resultValue = "0";
+                    _resultValue = "0";
                 }
             }
             else
             {
-                if (resultValue.Equals("-0.")|| resultValue.Length <= 2)
+                if (_resultValue.Equals("-0.")|| _resultValue.Length <= 2)
                 {
-                    resultValue = "0";
+                    _resultValue = "0";
                 }
                 else 
                 {
-                    resultValue = resultValue.Remove(resultValue.Length - 1);
+                    _resultValue = _resultValue.Remove(_resultValue.Length - 1);
                 }
             }
             
@@ -45,7 +45,7 @@ namespace Clean
 
         public string ReturnResultValue()
         {
-            return resultValue;
+            return _resultValue;
         }
     }
 }

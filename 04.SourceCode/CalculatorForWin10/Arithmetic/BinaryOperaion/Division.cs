@@ -1,95 +1,1 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-
-namespace Arithmetic.BinaryOperation
-{
-    public class Division : IBinary
-    {
-        public Division(string resultValue, string expressionValue, string preResult)
-        {
-            _resultValue = resultValue;
-            _expressionValue = expressionValue;
-            _preResult = preResult;
-            if (_resultValue.EndsWith("."))
-            {
-                int index = _resultValue.IndexOf(".");
-                _resultValue = resultValue.Substring(0, index);
-            }
-            ChangeResultValue();
-            ChangeExpression();
-
-        }
-
-        public override void ChangeExpression()
-        {
-            if (_expressionValue == "")
-            {
-                _expressionValue = _resultValue + "÷";
-            }
-            else
-            {
-                if (_resultValue == "")
-                {
-                    Debug.WriteLine("执行换符号操作！");
-                    _expressionValue = _expressionValue.Substring(0, _expressionValue.Length - 1) + "÷";
-
-                }
-                else
-                {
-                    _expressionValue = _expressionValue + _resultValue + "÷";
-                }
-            }
-        }
-
-        public override void ChangeResultValue()
-        {
-            DataTable table = new DataTable();
-            string cul;
-
-            if (_preResult == "")
-            {
-                //没有先前暂存值的情况
-                cul = _expressionValue + _resultValue;
-
-            }
-            else
-            {
-                string symbol = _expressionValue.Substring(_expressionValue.Length - 1);
-                cul = _preResult + symbol + _resultValue;
-            }
-            if (cul.Contains("x"))
-            {
-                cul = cul.Replace('x', '*');
-            }
-            else if (cul.Contains("÷"))
-            {
-                cul = cul.Replace('÷', '/');
-            }
-            cul = cul.Replace(" ", "");
-            Debug.WriteLine(cul);
-            _preResult = table.Compute(cul, "").ToString();
-        }
-
-        public override string ReturnExpressionValue()
-        {
-            return _expressionValue;
-        }
-
-        public override string ReturnPreResult()
-        {
-            return _preResult;
-        }
-
-        public override string ReturnResultValue()
-        {
-            _resultValue = _preResult;
-            return _resultValue;
-        }
-    }
-}
+﻿using System;using System.Collections.Generic;using System.Data;using System.Diagnostics;using System.Linq;using System.Text;using System.Text.RegularExpressions;using System.Threading.Tasks;using Arithmetic.BinaryOperaion;namespace Arithmetic.BinaryOperation{    public class Division : IBinary    {        public Division(string resultValue, string expressionValue, string preResult)        {            _resultValue = resultValue;            _expressionValue = expressionValue;            _preResult = preResult;            if (_resultValue.EndsWith("."))            {                int index = _resultValue.IndexOf(".");                _resultValue = resultValue.Substring(0, index);            }            Change();        }        public override void Change()        {            if (ExpressionValue == "")            {                ExpressionValue = (ResultValue != "" ? ResultValue : PreResult) + " ÷ ";                PreResult = (ResultValue != "" ? ResultValue : PreResult);                ResultValue = "";            }            else            {                if (!ExpressionValue.EndsWith(" "))                {                    ExpressionValue = ExpressionValue + " ÷ ";                    string[] arr = ExpressionValue.Substring(0, ExpressionValue.Length - 3).Split(new char[] { ' ' });                    if (arr.Length < 3)                    {                        PreResult = ResultValue;                    }                    else                    {                        PreResult = Tool.Compute(PreResult, arr[arr.Length - 2], ResultValue);                    }                }                else if (ResultValue == "")                {                    Debug.WriteLine("执行换符号操作！");                    ExpressionValue = ExpressionValue.Substring(0, ExpressionValue.Length - 3) + " ÷ ";                    ResultValue = PreResult;                }                else                {                    string symbol = ExpressionValue.Substring(ExpressionValue.Length - 3).Trim();                    ExpressionValue = ExpressionValue + ResultValue + " ÷ ";                    PreResult = Tool.Compute(PreResult, symbol, ResultValue);                }            }        }        public override string ReturnExpressionValue()        {            return _expressionValue;        }        public override string ReturnPreResult()        {            return _preResult;        }        public override string ReturnResultValue()        {            _resultValue = _preResult;            return _resultValue;        }    }}

@@ -22,7 +22,8 @@ namespace CalculatorForWin10.ViewModel
         private List<string> _history = new List<string>();
         private List<string> _memory = new List<string>();
         private string _preResult = "";
-        
+        private bool _canNumberDef = true;
+
         //获取Screen
         public static Screen GetScreen()
         {
@@ -78,7 +79,7 @@ namespace CalculatorForWin10.ViewModel
         }
         public void HandleMs()
         {
-            M.MS ms = new M.MS(_memory, _resultValue);
+            M.MS ms = new M.MS(_memory, _resultValue,_preResult);
             _memory = ms.AddMemory(_resultValue);
         }
         #endregion
@@ -118,82 +119,100 @@ namespace CalculatorForWin10.ViewModel
         #endregion
 
         #region 处理单目运算
-        //public void HandleSquareroot()
-        //{
-        //    IUnary squareRoot = new SquareRoot(_expressionValue, _resultValue);
-        //    _expressionValue = squareRoot.ReturnExpressionValue();
-        //    _resultValue = squareRoot.ReturnResultValue();
-        //}
-        
-        //public void HandleSquare()
-        //{
-        //    IUnary square = new Square(_expressionValue,_resultValue);
-        //    _expressionValue = square.ReturnExpressionValue();
-        //    _resultValue = square.ReturnResultValue();
-        //}
-       
-        
-        //public void HandleReciprocal()
-        //{
-        //    IUnary rec = new Reciprocal(_expressionValue, _resultValue);
-        //    _expressionValue = rec.ReturnExpressionValue();
-        //    _resultValue = rec.ReturnResultValue();
-        //}
-        //public void HandleReverse()
-        //{
-        //    Reverse reverse = new Reverse(_resultValue,_expressionValue);
-        //    reverse.ChangeResultValue();
-        //    _resultValue = reverse.ReturnResultValue();
-        //}
-        //public void HandlePre()
-        //{
-        //}
-        #endregion
-
-        #region 处理等于按钮
-        public void HandleEqual()
+        public void HandleSquareroot()
         {
-            Equal equal = new Equal(_resultValue, _expressionValue, _preResult,_history);
-            _expressionValue = equal.ExpressionResult();
-            _resultValue = equal.CaculationResult();
+            IUnary squareRoot = new SquareRoot(_expressionValue, _resultValue, _preResult);
+            _expressionValue = squareRoot.ReturnExpressionValue();
+            _resultValue = squareRoot.ReturnResultValue();
+            _canNumberDef = false;
+        }
+
+        public void HandleSquare()
+        {
+            IUnary square = new Square(_expressionValue, _resultValue,_preResult);
+            _expressionValue = square.ReturnExpressionValue();
+            _resultValue = square.ReturnResultValue();
+            _canNumberDef = false;
+        }
+
+
+        public void HandleReciprocal()
+        {
+            IUnary rec = new Reciprocal(_expressionValue, _resultValue, _preResult);
+            _expressionValue = rec.ReturnExpressionValue();
+            _resultValue = rec.ReturnResultValue();
+            _canNumberDef = false;
+        }
+        public void HandleReverse()
+        {
+            IUnary reverse = new Reverse(_expressionValue, _resultValue, _preResult);
+            _expressionValue = reverse.ReturnExpressionValue();
+            _resultValue = reverse.ReturnResultValue();
+            _canNumberDef = false;
+        }
+        public void HandlePre()
+        {
+            IUnary percent = new Percent(_expressionValue, _resultValue, _preResult);
+            _expressionValue = percent.ReturnExpressionValue();
+            _resultValue = percent.ReturnResultValue();
+            _canNumberDef = false;
         }
         #endregion
 
+        #region 处理等于按钮
+        public void HandleEqual()        {            Equal equal = new Equal(_resultValue, _expressionValue, _preResult, _history);            _expressionValue = equal.ReturnExpressionValue();            _preResult = equal.ReturnPreResult();            _resultValue = "";            _history = equal.ReturnHistory();            foreach (string h in _history)            {                Debug.WriteLine("历史记录：" + h);            }        }
+        #endregion
+
         #region 处理清除按钮
-        //public void HandleCe()
-        //{
-        //    IClear ce = new CE(_resultValue);
-        //    _resultValue = ce.ReturnResultValue();
-        //}
-        //public void HandleC()
-        //{
-        //    C c = new C(_resultValue, _expressionValue, _preResult);
-        //    _resultValue = c.ReturnResultValue();
-        //    _expressionValue = c.ReturnExpressionValue();
-        //    _preResult = c.ReturnPreResult();
-        //}
-        //public void HandleDel()
-        //{
-        //    BackSpace bs = new BackSpace(_resultValue);
-        //    _resultValue = bs.ReturnResultValue();
-        //}
+        public void HandleCe()
+        {
+            CE ce = new CE(_resultValue, _expressionValue);
+            _resultValue = ce.ReturnResultValue();
+            _expressionValue = ce.ReturnExpressionValue();
+        }
+        public void HandleC()
+        {
+            C c = new C(_resultValue, _expressionValue, _preResult);
+            _resultValue = c.ReturnResultValue();
+            _expressionValue = c.ReturnExpressionValue();
+            _preResult = c.ReturnPreResult();
+        }
+        public void HandleDel()
+        {
+            BackSpace bs = new BackSpace(_resultValue);
+            _resultValue = bs.ReturnResultValue();
+        }
+        public void HandleDustbin()
+        {
+            Dustbin db = new Dustbin(_history);
+            _history = db.Clear();
+        }
+        public void HandleDustbin1()
+        {
+            Dustbin db = new Dustbin(_memory);
+            _memory = db.Clear();
+        }
         #endregion
 
         #region 数字定义
         public void HandleZero()
         {
-            Zero zero = new Zero(_resultValue);
+            Zero zero = new Zero(_resultValue,_canNumberDef);
             _resultValue = zero.ReturnResultValue();
+            _canNumberDef = zero.ReturnCanNumberDef();
         }
         public void HandleNum(string number)
         {
-            OneToNine oneToNine = new OneToNine(number,_resultValue);
+            OneToNine oneToNine = new OneToNine(number,_resultValue,_canNumberDef,_expressionValue);
             _resultValue = oneToNine.ReturnResultValue();
+            _canNumberDef = oneToNine.ReturnCanNumberDef();
+            _expressionValue = oneToNine.ReturnExpressionValue();
         }
         public void HandlePoint()
         {
-            Point point = new Point(_resultValue);
+            Point point = new Point(_resultValue,_canNumberDef);
             _resultValue = point.ReturnResultValue();
+            _canNumberDef = point.ReturnCanNumberDef();
         }
         #endregion
     }

@@ -6,16 +6,17 @@ namespace Clean
 {
     public class Dustbin
     {
-        private List<string> history;
+        private List<string> list;
 
-        public Dustbin(List<string> history)
+        public Dustbin(List<string> list)
         {
-            this.history = history;
+            this.list = list;
         }
 
-        public List<string> ClearHistory()
+        public List<string> Clear()
         {
-            return history;
+            list.Clear();
+            return list;
         }
     }
 }

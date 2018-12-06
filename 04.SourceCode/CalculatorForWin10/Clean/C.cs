@@ -4,45 +4,49 @@ using System.Text;
 
 namespace Clean
 {
-    public class C : IClear
+    public class C 
     {
-        private string resultValue;
-        private string expressionValue;
-        private string preResult;
+        private string _resultValue;
+        private string _expressionValue;
+        private string _preResult;
 
         public C(string resultValue, string expressionValue,string preResult)
         {
-            this.resultValue = resultValue;
-            this.expressionValue = expressionValue;
-            this.preResult = preResult;
+            this._resultValue = resultValue;
+            this._expressionValue = expressionValue;
+            this._preResult = preResult;
+            ClearPreResult();
             ClearExpression();
             ClearResultValue();
         }
-
+        public void ClearPreResult()
+        {
+            _preResult = "";
+        }
         public void ClearResultValue()
         {
-            resultValue = "0";
+            _resultValue = "0";
         }
 
         public void ClearExpression()
         {
-            expressionValue = "";
-            preResult = "";
+            _expressionValue = "";
         }
 
         public string ReturnResultValue()
         {
-            return resultValue;
+            return _resultValue;
         }
 
         public string ReturnExpressionValue()
         {
-            return expressionValue;
+            return _expressionValue;
         }
 
         public string ReturnPreResult()
         {
-            return preResult;
+            return _preResult;
         }
+
     }
 }

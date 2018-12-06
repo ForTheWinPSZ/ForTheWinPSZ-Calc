@@ -11,10 +11,12 @@ namespace Arithmetic.BinaryOperation
         protected string _resultValue;
         protected string _expressionValue;
         protected string _preResult;
-        
-        public abstract void ChangeExpression();
 
-        public abstract void ChangeResultValue();
+        protected string ResultValue { get => _resultValue; set => _resultValue = value; }
+        protected string ExpressionValue { get => _expressionValue; set => _expressionValue = value; }
+        protected string PreResult { get => _preResult; set => _preResult = value; }
+        public abstract void Change();
+        
         public abstract string ReturnResultValue();
         public abstract string ReturnExpressionValue();
 

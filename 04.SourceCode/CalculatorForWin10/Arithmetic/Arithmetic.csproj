@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="BinaryOperaion\IBinary.cs" />
     <Compile Include="BinaryOperaion\Division.cs" />
+    <Compile Include="BinaryOperaion\Tool.cs" />
     <Compile Include="Equal.cs" />
     <Compile Include="BinaryOperaion\Minus.cs" />
     <Compile Include="BinaryOperaion\Multiplication.cs" />
