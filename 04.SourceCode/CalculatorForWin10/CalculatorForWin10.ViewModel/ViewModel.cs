@@ -1,16 +1,19 @@
 ﻿using Infrastructure;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+
 
 namespace CalculatorForWin10.ViewModel
 {
     public class MainWindowsViewModel : NotifyObject
     {
         Screen screen = Screen.GetScreen();
+        #region 按钮委托
         private readonly NVCommand btn_mc;
         public NVCommand Btn_mc{ get => btn_mc; }
         private readonly NVCommand btn_mr;
@@ -69,9 +72,16 @@ namespace CalculatorForWin10.ViewModel
         public NVCommand Btn_point { get => btn_point; }
         private readonly NVCommand btn_equal;
         public NVCommand Btn_equal { get => btn_equal; }
+        private readonly NVCommand btn_qc;
+        public NVCommand Btn_qc { get => btn_qc; }
 
+        private readonly NVCommand btn_qc1;
+        public NVCommand Btn_qc1 { get => btn_qc1; }
+        #endregion
         public MainWindowsViewModel()
         {
+            #region 委托调用方法
+            btn_qc1 = new NVCommand(Dustbin1);
             btn_mc = new NVCommand(Mc);
             btn_mr = new NVCommand(Mr);
             btn_mplus = new NVCommand(Mplus);
@@ -101,12 +111,15 @@ namespace CalculatorForWin10.ViewModel
             btn_7 = new NVCommand(Seven);
             btn_8 = new NVCommand(Eight);
             btn_9 = new NVCommand(Nine);
+            btn_qc = new NVCommand(Dustbin);
+            #endregion
         }
-        
+        #region 内存
         private void Mc()
         {
             screen.HandleMc();
-            Memory = screen.Memory();
+            Memory.Clear();
+            
         }
         private void Mr()
         {
@@ -116,188 +129,253 @@ namespace CalculatorForWin10.ViewModel
         private void Mplus()
         {
             screen.HandleMplus();
-            Memory = screen.Memory();
+            Memory.Clear();
+            foreach (var item in screen.Memory())
+            {
+                Memory.Insert(0, item);
+            }
         }
         private void Mminus()
         {
             screen.HandleMminus();
-            Memory = screen.Memory();
+            Memory.Clear();
+            foreach (var item in screen.Memory())
+            {
+                Memory.Insert(0, item);
+            }
         }
         private void Ms()
         {
             screen.HandleMs();
-            Memory = screen.Memory();
+            Memory.Clear();
+            foreach (var item in screen.Memory())
+            {
+                Memory.Insert(0,item);
+            }
         }
+        #endregion
+
+        #region 清除
         private void Ce()
         {
             screen.HandleCe();
             ResultText = screen.GetResult();
-            ExpressionText = screen.GetexpressionValue();
+            ExpressionText = screen.GetExpressionValue();
         }
         private void C()
         {
             screen.HandleC();
             ResultText = screen.GetResult();
-            ExpressionText = screen.GetexpressionValue();
+            ExpressionText = screen.GetExpressionValue();
         }
         private void Del()
         {
             screen.HandleDel();
             ResultText = screen.GetResult();
-            ExpressionText = screen.GetexpressionValue();
         }
-        
-        //单目运算部分
+        private void Dustbin()
+        {
+            screen.HandleDustbin();
+            History.Clear();
+            foreach (var item in screen.History())
+            {
+                History.Insert(0, item);
+            }
+        }
+
+        private void Dustbin1()
+
+        {
+
+            screen.HandleDustbin1();
+
+            Memory.Clear();
+
+            foreach (var item in screen.Memory())
+
+            {
+
+                Memory.Insert(0, item);
+
+            }
+
+        }
+
+        #endregion
+
+        #region 单目运算
         private void Squareroot()
         {
             screen.HandleSquareroot();
-            ResultText = screen.GetPreUnaryResult();
-            ExpressionText = screen.GetexpressionValue();
+            ResultText = screen.GetResult();
+            ExpressionText = screen.GetExpressionValue();
         }
-       
+
         private void Square()
         {
             screen.HandleSquare();
-            ResultText = screen.GetPreUnaryResult();
-            ExpressionText = screen.GetexpressionValue();
+            ResultText = screen.GetResult();
+            ExpressionText = screen.GetExpressionValue();
         }
         private void Reciprocal()
         {
             screen.HandleReciprocal();
-            ResultText = screen.GetPreUnaryResult();
-            ExpressionText = screen.GetexpressionValue();
+            ResultText = screen.GetResult();
+            ExpressionText = screen.GetExpressionValue();
         }
         private void Reverse()
         {
             screen.HandleReverse();
+            ResultText = screen.GetResult();
+            ExpressionText = screen.GetExpressionValue();
+        }
+        private void Pre()
+        {
+            screen.HandlePre();
+            ResultText = screen.GetResult();
+            ExpressionText = screen.GetExpressionValue();
+        }
+        #endregion
+
+        #region 双目运算
+        private void Plus()
+        {
+            screen.HandlePlus();
             if (screen.GetResult() == "")
             {
-                ResultText = screen.GetPreUnaryResult();
+                ResultText = screen.GetPreResult();
             }
             else
             {
                 ResultText = screen.GetResult();
-            }         
-            ExpressionText = screen.GetexpressionValue();
-        }
-        private void Pre()
-        {
-        }
-
-        //双目运算部分
-        private void Plus()
-        {
-            screen.HandlePlus();           
-            if(screen.GetPreResult()=="")
-                ExpressionText = screen.GetexpressionValue();
-            else
-            {
-                ExpressionText = screen.GetexpressionValue();
-                ResultText = screen.GetPreResult();
             }
-            
-            
+            ExpressionText = screen.GetExpressionValue();
         }
         private void Minus()
         {
             screen.HandleMinus();
-            
-            if (screen.GetPreResult() == "")
-                ExpressionText = screen.GetexpressionValue();
-            else
+            if (screen.GetResult() == "")
             {
-                ExpressionText = screen.GetexpressionValue();
                 ResultText = screen.GetPreResult();
             }
-            
-            
-
-
+            else
+            {
+                ResultText = screen.GetResult();
+            }
+            ExpressionText = screen.GetExpressionValue();
         }
         private void Multiplication()
         {
             screen.HandleMultiplication();
-            if (screen.GetPreResult() == "")
-                ExpressionText = screen.GetexpressionValue();
-            else
+            if (screen.GetResult() == "")
             {
-                ExpressionText = screen.GetexpressionValue();
                 ResultText = screen.GetPreResult();
             }
+            else
+            {
+                ResultText = screen.GetResult();
+            }
+            ExpressionText = screen.GetExpressionValue();
         }
         private void Division()
         {
             screen.HandleDivision();
-            if (screen.GetPreResult() == "")
-               ExpressionText = screen.GetexpressionValue();
+            if (screen.GetResult() == "")
+            {
+                ResultText = screen.GetPreResult();
+            }
             else
             {
-               ExpressionText = screen.GetexpressionValue();
-               ResultText = screen.GetPreResult();
+                ResultText = screen.GetResult();
             }
+            ExpressionText = screen.GetExpressionValue();
         }
-        //数字定义部分
+        #endregion
+
+        #region 数字定义部分
         private void Zero()
         {
             screen.HandleZero();
             ResultText = screen.GetResult();
+            ExpressionText = screen.GetExpressionValue();
         }
         private void Point()
         {
             screen.HandlePoint();
             ResultText = screen.GetResult();
+            ExpressionText = screen.GetExpressionValue();
         }
         private void One()
         {
             screen.HandleNum("1");
             ResultText = screen.GetResult();
+            ExpressionText = screen.GetExpressionValue();
         }
         private void Two()
         {
             screen.HandleNum("2");
             ResultText = screen.GetResult();
+            ExpressionText = screen.GetExpressionValue();
         }
         private void Three()
         {
             screen.HandleNum("3");
             ResultText = screen.GetResult();
+            ExpressionText = screen.GetExpressionValue();
         }
         private void Four()
         {
             screen.HandleNum("4");
             ResultText = screen.GetResult();
+            ExpressionText = screen.GetExpressionValue();
         }
         private void Five()
         {
             screen.HandleNum("5");
             ResultText = screen.GetResult();
+            ExpressionText = screen.GetExpressionValue();
         }
         private void Six()
         {
             screen.HandleNum("6");
             ResultText = screen.GetResult();
+            ExpressionText = screen.GetExpressionValue();
         }
         private void Seven()
         {
             screen.HandleNum("7");
             ResultText = screen.GetResult();
+            ExpressionText = screen.GetExpressionValue();
         }
         private void Eight()
         {
             screen.HandleNum("8");
             ResultText = screen.GetResult();
+            ExpressionText = screen.GetExpressionValue();
         }
         private void Nine()
         {
             screen.HandleNum("9");
             ResultText = screen.GetResult();
+            ExpressionText = screen.GetExpressionValue();
         }
-        //等于
+        #endregion
+
+        #region 等于
         private void Equal()
         {
+            screen.HandleEqual();
+            ResultText = screen.GetPreResult();
+            ExpressionText = screen.GetExpressionValue();
+            History.Clear();
+            foreach (var item in screen.History())
+            {
+                History.Insert(0, item);
+            }
         }
+        #endregion
 
-        //屏幕显示部分
+        #region 屏幕显示部分
         private string _resultText="0";
         public string ResultText
         {
@@ -310,23 +388,17 @@ namespace CalculatorForWin10.ViewModel
             get { return _expressionText; }
             set { SetPropertyNotify(ref _expressionText, value, nameof(ExpressionText)); }
         }
-        private List<string> _history;
-        public List<string> History
+        private ObservableCollection<string> _history = new ObservableCollection<string>() { "尚无历史纪录" };
+        public ObservableCollection<string> History
         {
             get { return _history; }
-            set { SetPropertyNotify(ref _history, value, nameof(History)); }
         }
-        private List<string> _memory;
-        public List<string> Memory
+        private ObservableCollection<string> _memory =new ObservableCollection<string>() {"内存中没有内容"};
+        public ObservableCollection<string> Memory
         {
             get { return _memory; }
-            set { SetPropertyNotify(ref _memory, value, nameof(Memory)); }
         }
-
-
-
-
-
-
+        #endregion
+        
     }
 }

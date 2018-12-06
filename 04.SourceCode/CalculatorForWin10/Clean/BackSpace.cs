@@ -6,56 +6,56 @@ namespace Clean
 {
     public class BackSpace
     {
-        private string resultValue;
-        private string expressionValue;
-        private string preResult;
+        private string _resultValue;
+        private string _preResult;
+        private bool _canNumberDef;
+        private double _result;
 
-        public BackSpace(string resultValue, string expressionValue, string preResult)
+        public BackSpace(string resultValue,string preResult,bool canNumberDef)
         {
-            this.resultValue = resultValue;
-            this.expressionValue = expressionValue;
-            this.preResult = preResult;
-            if (preResult == "无效输入" || preResult == "除数不能为零")
-            {
-                expressionValue = "";
-                preResult = "";
-                resultValue = "0";
-            }
-            else
-            {
-                BackSp();
-            }
+            this._resultValue = resultValue;
+            this._preResult = preResult;
+            this._canNumberDef = canNumberDef;            
+            BackSp();         
         }
 
         public void BackSp()
         {
-            if (resultValue.Length > 1)
+            if (_canNumberDef == false)
             {
-                resultValue = resultValue.Remove(resultValue.Length - 1);
-            }
-            else if (resultValue.Length == 1)
-            {
-                resultValue = "0";
+                _resultValue = _preResult == "" ? _resultValue : _preResult;
             }
             else
             {
-                return;
-            }
+                _result = Convert.ToDouble(_resultValue);
+                if (_result > 0)
+                {
+                    if (_resultValue.Length > 1)
+                    {
+                        _resultValue = _resultValue.Remove(_resultValue.Length - 1);
+                    }
+                    else
+                    {
+                        _resultValue = "0";
+                    }
+                }
+                else
+                {
+                    if (_resultValue.Equals("-0.") || _resultValue.Length <= 2)
+                    {
+                        _resultValue = "0";
+                    }
+                    else
+                    {
+                        _resultValue = _resultValue.Remove(_resultValue.Length - 1);
+                    }
+                }
+            }                       
         }
 
         public string ReturnResultValue()
         {
-            return resultValue;
-        }
-
-        public string ReturnPreResult()
-        {
-            return preResult;
-        }
-
-        public string ReturnExpressionValue()
-        {
-            return resultValue;
+            return _resultValue;
         }
     }
 }

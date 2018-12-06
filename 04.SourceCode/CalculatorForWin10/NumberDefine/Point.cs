@@ -9,15 +9,21 @@ namespace NumberDefine
     public class Point
     {
         private string resultValue;
-       
-        public Point(string resultValue)
+        private bool canNumberDef;
+
+        public Point(string resultValue,bool canNumberDef)
         {
             this.resultValue = resultValue;
+            this.canNumberDef = canNumberDef;
             InputNum();
         }
 
         public void InputNum()
         {
+            if (!canNumberDef)
+            {
+                resultValue = "";
+            }
             if (resultValue == "")
             {
                 resultValue = "0.";
@@ -30,6 +36,11 @@ namespace NumberDefine
         public string ReturnResultValue()
         {
             return resultValue;
+        }
+
+        public bool ReturnCanNumberDef()
+        {
+            return true;
         }
 
     }

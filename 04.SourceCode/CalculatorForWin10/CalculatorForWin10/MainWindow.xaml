@@ -5,16 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:ViewModel="clr-namespace:CalculatorForWin10.ViewModel;assembly=CalculatorForWin10.ViewModel" x:Class="CalculatorForWin10.MainWindow"
         mc:Ignorable="d"
-        Title="计算器" Height="520" Width="700" MinHeight="501" MinWidth="322" Background="#FFEAEAEA">
+        Title="计算器" Height="520" Width="700" MinHeight="501" MinWidth="322" Background="#eaeaea">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition  MinWidth="302"/>
+            <ColumnDefinition  MinWidth="302" Width="299*"/>
+            <ColumnDefinition Width="54*"/>
             <ColumnDefinition Width="340"/>
         </Grid.ColumnDefinitions>
-        <Grid>
+        <Grid Grid.ColumnSpan="2" Margin="0,0,0.333,-0.333">
             <Grid.RowDefinitions>
                 <RowDefinition Height="45"/>
                 <RowDefinition Height="140"/>
@@ -33,7 +34,7 @@
                 <Button BorderThickness="0" Background="#eaeaea">
                     <Image Width="32" Source="images/opt.png"/>
                 </Button>
-                <Label Grid.Column="1" Background="#EAEAEA" FontSize="24" Padding="0,7,0,0" Content="标准"/>
+                <Label Grid.Column="1" Background="#EAEAEA" FontSize="24" Padding="0,7,0,0" Content="标准" FontWeight="Normal"/>
                 <Button BorderThickness="0" Background="#eaeaea" Grid.Column="2">
                     <Image Width="25" Source="images/his.png"/>
                 </Button>
@@ -47,7 +48,7 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <TextBox x:Name="beforeText" Background="#EAEAEA" BorderBrush="#EAEAEA" TextAlignment="Right" Text="{Binding ExpressionText}" IsReadOnly="True"/>
-                <TextBox Grid.Row="1" x:Name="resultText" Background="#EAEAEA" BorderBrush="#EAEAEA" FontSize="25" FontWeight="Heavy" TextAlignment="Right" IsReadOnly="True" Text="{Binding ResultText}"/>
+                <TextBox Grid.Row="1" x:Name="resultText" Background="#EAEAEA" BorderBrush="#EAEAEA" FontSize="28" FontWeight="Heavy" TextAlignment="Right" IsReadOnly="True" Text="{Binding ResultText}"/>
             </Grid>
             <Grid Grid.Row="2">
                 <Grid.RowDefinitions>
@@ -89,115 +90,64 @@
                 <Button Margin="2,2,0,2" BorderThickness="0" x:Name="btn_DEL" Grid.Row="1" Grid.Column="2"  Background="#F3F3F3" Command="{Binding Btn_del}">
                     <Image Source="images/del.png" Width="36"/>
                 </Button>
-                <Button Margin="2" BorderThickness="0" x:Name="btn_divi" Grid.Row="1" Grid.Column="3" Content="÷" Background="#F3F3F3" FontSize="35" FontWeight="UltraLight" Command="{Binding Btn_division}"/>
+                <Button Margin="2" BorderThickness="0" x:Name="btn_divi" Grid.Row="1" Grid.Column="3" Content="÷" Background="#F3F3F3" FontSize="35" FontWeight="Light" Command="{Binding Btn_division}"/>
                 <Button Margin="2" BorderThickness="0" x:Name="btn_sqrt" Grid.Column="1" Content="√" Background="#F3F3F3" FontSize="25" FontWeight="UltraLight" Command="{Binding Btn_squareroot}" />
                 <Button Margin="2" BorderThickness="0" x:Name="btn_7" Grid.Row="2"  Content="7" FontSize="25" FontWeight="Black" Background="#FBFBFB" Command="{Binding Btn_7}"/>
                 <Button Margin="2" BorderThickness="0" x:Name="btn_8" Grid.Row="2" Grid.Column="1" Content="8" FontSize="25" FontWeight="Black" Background="#FBFBFB" Command="{Binding Btn_8}"/>
                 <Button Margin="2" BorderThickness="0" x:Name="btn_9" Grid.Row="2" Grid.Column="2" Content="9" FontSize="25" FontWeight="Black" Background="#FBFBFB" Command="{Binding Btn_9}"/>
-                <Button Margin="2" BorderThickness="0" x:Name="btn_muti" Grid.Row="2" Grid.Column="3" Content="×" Background="#F3F3F3" FontSize="35" FontWeight="UltraLight" Command="{Binding Btn_multiplication}"/>
-                <Button Margin="2" BorderThickness="0" x:Name="btn_squ" Grid.Column="2" Content="x²" Background="#F3F3F3" FontSize="18" FontWeight="UltraLight" Command="{Binding Btn_square}"/>
+                <Button Margin="2" BorderThickness="0" x:Name="btn_muti" Grid.Row="2" Grid.Column="3" Content="×" Background="#F3F3F3" FontSize="35" FontWeight="Light" Command="{Binding Btn_multiplication}"/>
+                <Button Margin="2" BorderThickness="0" x:Name="btn_squ" Grid.Column="2" Content="x2" Background="#F3F3F3" FontSize="18" FontWeight="UltraLight" Command="{Binding Btn_square}"/>
                 <Button Margin="2" BorderThickness="0" x:Name="btn_4" Grid.Row="3" Content="4" Background="#FBFBFB" FontSize="25" FontWeight="Black"  Command="{Binding Btn_4}"/>
                 <Button Margin="2" BorderThickness="0" x:Name="btn_5" Grid.Row="3" Grid.Column="1" Content="5" Background="#FBFBFB" FontSize="25" FontWeight="Black" Command="{Binding Btn_5}"/>
                 <Button Margin="2" BorderThickness="0" x:Name="btn_6" Grid.Row="3" Grid.Column="2" Content="6" Background="#FBFBFB" FontSize="25" FontWeight="Black" Command="{Binding Btn_6}"/>
-                <Button Margin="2" BorderThickness="0" x:Name="btn_sub" Grid.Row="4" Grid.Column="3" Content="－" Background="#F3F3F3" FontSize="35" FontWeight="UltraLight" Command="{Binding Btn_minus}"/>
+                <Button Margin="2" BorderThickness="0" x:Name="btn_sub" Grid.Row="3" Grid.Column="3" Content="－" Background="#F3F3F3" FontSize="35" FontWeight="Light" Command="{Binding Btn_minus}"/>
                 <Button Margin="2" BorderThickness="0" x:Name="btn_1" Grid.Row="4"  Content="1" Background="#FBFBFB" FontSize="25" FontWeight="Black" Command="{Binding Btn_1}"/>
                 <Button Margin="2" BorderThickness="0" x:Name="btn_2" Grid.Row="4" Grid.Column="1" Content="2" Background="#FBFBFB" FontSize="25" FontWeight="Black" Command="{Binding Btn_2}"/>
                 <Button Margin="2" BorderThickness="0" x:Name="btn_3" Grid.Row="4" Grid.Column="2" Content="3" Background="#FBFBFB" FontSize="25" FontWeight="Black" Command="{Binding Btn_3}"/>
-                <Button Margin="2" BorderThickness="0" x:Name="btn_add" Grid.Row="3" Grid.Column="3" Content="＋" Background="#F3F3F3" FontSize="35" FontWeight="UltraLight" Command="{Binding Btn_plus}"/>
-                <Button Margin="2" BorderThickness="0" x:Name="btn_reci" Grid.Column="3" Content="¹/x" FontSize="18" FontWeight="UltraLight" Background="#F3F3F3" Command="{Binding Btn_reciprocal}"/>
+                <Button Margin="2" BorderThickness="0" x:Name="btn_add" Grid.Row="4" Grid.Column="3" Content="＋" Background="#F3F3F3" FontSize="35" FontWeight="Light" Command="{Binding Btn_plus}"/>
+                <Button Margin="2" BorderThickness="0" x:Name="btn_reci" Grid.Column="3" Content="1/x" FontSize="18" FontWeight="Light" Background="#F3F3F3" Command="{Binding Btn_reciprocal}"/>
                 <Button Margin="2" BorderThickness="0" x:Name="btn_nega" Grid.Row="5"  Content="±" Background="#F3F3F3" FontSize="25" FontWeight="Light" Command="{Binding Btn_reverse}"/>
                 <Button Margin="2" BorderThickness="0" x:Name="btn_0"  Grid.Row="5" Grid.Column="1" Content="0" Background="#FBFBFB" FontSize="25" FontWeight="Black" Command="{Binding Btn_0}"/>
-                <Button Margin="2" BorderThickness="0" x:Name="btn_point" Grid.Row="5" Grid.Column="2" Content="." Background="#F3F3F3" FontSize="25" FontWeight="Black" Command="{Binding Btn_point}"/>
-                <Button Margin="2" BorderThickness="0" x:Name="btn_equal" Grid.Row="5" Grid.Column="3" Content="＝" Background="#F3F3F3" FontSize="35" FontWeight="UltraLight" Command="{Binding Btn_equal}"/>
+                <Button Margin="2" BorderThickness="0" x:Name="btn_point" Grid.Row="5" Grid.Column="2" Content="." Background="#FBFBFB" FontSize="25" FontWeight="Light" Command="{Binding Btn_point}"/>
+                <Button Margin="2" BorderThickness="0" x:Name="btn_equal" Grid.Row="5" Grid.Column="3" Content="=" Background="#F3F3F3" FontSize="35" FontWeight="Light" Command="{Binding Btn_equal}"/>
             </Grid>
         </Grid>
-        <Grid Grid.Column="1" >
+        <Grid Grid.Column="1" Grid.ColumnSpan="2" Margin="53.836,0,0,0" >
             <Grid.RowDefinitions>
                 <RowDefinition/>
-                <RowDefinition Height="45"/>
+                <RowDefinition Height="0"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Grid>
+            <Grid Grid.RowSpan="2" Margin="0,0,0.333,-0.333">
                 <TabControl BorderBrush="#FFEAEAEA">
-                    <TabItem Header="历史记录" BorderBrush="{x:Null}">
-                        <Grid Background="#FFEAEAEA" MinWidth="340">
-                            <ScrollViewer VerticalScrollBarVisibility="Auto" Width="340" Margin="0">
-                                <ListBox Background="#FFE5E5E5" BorderBrush="{x:Null}">
-                                    <ListBoxItem Margin="0,0,0,10">
-                                        <StackPanel Width="308" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <TextBlock FontSize="16" TextWrapping="Wrap" TextAlignment="Right" Foreground="#6C6D6D" FontWeight="Light"><Run Text="7 - 8 - 9 - 6- 5- 4- 3- 5 - 4- 7 - 8 - 9 - 6 - 5 - 2 - 9 - 6 - 5 - 8 ="/></TextBlock>
-                                            <Label HorizontalContentAlignment="Right" FontSize="21" Content="89"/>
-                                        </StackPanel>
-                                    </ListBoxItem>
-                                    <ListBoxItem Margin="0,0,0,10">
-                                        <StackPanel Width="308" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <TextBlock FontSize="16" TextWrapping="Wrap" TextAlignment="Right" Foreground="#6C6D6D" FontWeight="Light"><Run Text="89 ="/></TextBlock>
-                                            <Label HorizontalContentAlignment="Right" FontSize="21" Content="89"/>
-                                        </StackPanel>
-                                    </ListBoxItem>
-                                    <ListBoxItem Margin="0,0,0,10">
-                                        <StackPanel Width="308" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <TextBlock FontSize="16" TextWrapping="Wrap" TextAlignment="Right" Foreground="#6C6D6D" FontWeight="Light"><Run Text="7 - 8 - 9 - 6- 5- 4- 3- 5 - 4- 7 - 8 - 9 - 6 - 5 - 2 - 9 - 6 - 5 - 8 ="/></TextBlock>
-                                            <Label HorizontalContentAlignment="Right" FontSize="21" Content="89"/>
-                                        </StackPanel>
-                                    </ListBoxItem>
-                                    <ListBoxItem Margin="0,0,0,10">
-                                        <StackPanel Width="308" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <TextBlock FontSize="16" TextWrapping="Wrap" TextAlignment="Right" Foreground="#6C6D6D" FontWeight="Light"><Run Text="89 ="/></TextBlock>
-                                            <Label HorizontalContentAlignment="Right" FontSize="21" Content="89"/>
-                                        </StackPanel>
-                                    </ListBoxItem>
-                                    <ListBoxItem Margin="0,0,0,10">
-                                        <StackPanel Width="308" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <TextBlock FontSize="16" TextWrapping="Wrap" TextAlignment="Right" Foreground="#6C6D6D" FontWeight="Light"><Run Text="7 - 8 - 9 - 6- 5- 4- 3- 5 - 4- 7 - 8 - 9 - 6 - 5 - 2 - 9 - 6 - 5 - 8 ="/></TextBlock>
-                                            <Label HorizontalContentAlignment="Right" FontSize="21" Content="89"/>
-                                        </StackPanel>
-                                    </ListBoxItem>
-                                    <ListBoxItem Margin="0,0,0,10">
-                                        <StackPanel Width="308" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <TextBlock FontSize="16" TextWrapping="Wrap" TextAlignment="Right" Foreground="#6C6D6D" FontWeight="Light"><Run Text="89 ="/></TextBlock>
-                                            <Label HorizontalContentAlignment="Right" FontSize="21" Content="89"/>
-                                        </StackPanel>
-                                    </ListBoxItem>
-                                    <ListBoxItem Margin="0,0,0,10">
-                                        <StackPanel Width="308" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <TextBlock FontSize="16" TextWrapping="Wrap" TextAlignment="Right" Foreground="#6C6D6D" FontWeight="Light"><Run Text="7 - 8 - 9 - 6- 5- 4- 3- 5 - 4- 7 - 8 - 9 - 6 - 5 - 2 - 9 - 6 - 5 - 8 ="/></TextBlock>
-                                            <Label HorizontalContentAlignment="Right" FontSize="21" Content="89"/>
-                                        </StackPanel>
-                                    </ListBoxItem>
-                                    <ListBoxItem Margin="0,0,0,10">
-                                        <StackPanel Width="308" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <TextBlock FontSize="16" TextWrapping="Wrap" TextAlignment="Right" Foreground="#6C6D6D" FontWeight="Light"><Run Text="89 ="/></TextBlock>
-                                            <Label HorizontalContentAlignment="Right" FontSize="21" Content="89"/>
-                                        </StackPanel>
-                                    </ListBoxItem>
-                                </ListBox>
+                    <TabItem Header="历史记录" BorderThickness="0"  FontFamily="黑体" FontSize="16" FontWeight="Bold">
+                        <Grid Background="#FFEAEAEA" Margin="-32,-53,-22.667,-20.333">
+                            <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0" BorderThickness="0">
+                                <ListBox Background="{x:Null}" BorderBrush="{x:Null}" ItemsSource="{Binding History}" FontSize="20" Width="304" Height="405"/>
                             </ScrollViewer>
-
+                            <Button HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="50" Height="45" BorderBrush="{x:Null}" Command="{Binding Btn_qc}" Margin="20">
+                                <Image Width="45" Source="images/qc.png"/>
+                            </Button>
                         </Grid>
                     </TabItem>
-                    <TabItem Header="内存" BorderBrush="{x:Null}">
-                        <Grid Background="#FFEAEAEA" >
-                            <ScrollViewer VerticalScrollBarVisibility="Auto" Width="340" Margin="0">
-                                <ListBox Background="#FFE5E5E5" BorderBrush="{x:Null}">
-                                    
-
-
-                                </ListBox>
+                    <TabItem Header="内存" BorderThickness="0" FontFamily="黑体" FontSize="16" FontWeight="Bold">
+                        <Grid Margin="-32,-53,-22.667,-20.333" Background="#FFEAEAEA">
+                            <ScrollViewer VerticalScrollBarVisibility="Auto" Width="340" Margin="0" BorderThickness="0">
+                                <ListBox Background="{x:Null}" BorderBrush="{x:Null}" ItemsSource="{Binding Memory}" FontSize="20" Width="304" Height="405"/>
                             </ScrollViewer>
+                            <Button HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="50" Height="45" BorderBrush="{x:Null}" Command="{Binding Btn_qc1}" Margin="20">
+                                <Image Width="45" Source="images/qc.png"/>
+                            </Button>
                         </Grid>
                     </TabItem>
                 </TabControl>
 
             </Grid>
-            <Grid Grid.Row="1">
 
-                <Button HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="50" Height="45" BorderBrush="{x:Null}">
-                    <Image Width="45" Source="images/qc.png"/>
-                </Button>
-            </Grid>
+
+
         </Grid>
     </Grid>
 </Window>

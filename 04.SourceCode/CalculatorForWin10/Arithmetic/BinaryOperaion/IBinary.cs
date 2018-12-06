@@ -8,19 +8,15 @@ namespace Arithmetic.BinaryOperation
 {
     public abstract class IBinary
     {
-        private string _resultValue;
-        private string _expressionValue;
-        private string _preResult;
-        private bool _isCompute=true;
+        protected string _resultValue;
+        protected string _expressionValue;
+        protected string _preResult;
 
-        public bool IsComplete { get => _isCompute; set => _isCompute = value; }
         protected string ResultValue { get => _resultValue; set => _resultValue = value; }
         protected string ExpressionValue { get => _expressionValue; set => _expressionValue = value; }
         protected string PreResult { get => _preResult; set => _preResult = value; }
-
-        public abstract void ChangeExpression();
-
-        public abstract void ChangeResultValue();
+        public abstract void Change();
+        
         public abstract string ReturnResultValue();
         public abstract string ReturnExpressionValue();
 
