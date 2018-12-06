@@ -43,7 +43,7 @@ namespace CalculatorForWin10.ViewModel
         }
         public string GetPreResult()
         {
-            return _preResult;
+            return Comma.AddComma(_preResult);
         }
 
         public List<string> History()
@@ -92,6 +92,7 @@ namespace CalculatorForWin10.ViewModel
             _preResult = plus.ReturnPreResult();
             _expressionValue = plus.ReturnExpressionValue();
             _resultValue = "";
+            _canNumberDef = false;
         }
         public void HandleMinus()
         {
@@ -99,7 +100,7 @@ namespace CalculatorForWin10.ViewModel
             _preResult = minus.ReturnPreResult();
             _expressionValue = minus.ReturnExpressionValue();
             _resultValue = "";
-
+            _canNumberDef = false;
         }
         public void HandleMultiplication()
         {
@@ -107,6 +108,7 @@ namespace CalculatorForWin10.ViewModel
             _preResult = mul.ReturnPreResult();
             _expressionValue = mul.ReturnExpressionValue();
             _resultValue = "";
+            _canNumberDef = false;
         }
         public void HandleDivision()
         {
@@ -114,7 +116,7 @@ namespace CalculatorForWin10.ViewModel
             _preResult = division.ReturnPreResult();
             _expressionValue = division.ReturnExpressionValue();
             _resultValue = "";
-
+            _canNumberDef = false;
         }
         #endregion
 
@@ -145,10 +147,10 @@ namespace CalculatorForWin10.ViewModel
         }
         public void HandleReverse()
         {
-            IUnary reverse = new Reverse(_expressionValue, _resultValue, _preResult);
+            Reverse reverse = new Reverse(_expressionValue, _resultValue, _preResult,_canNumberDef);
             _expressionValue = reverse.ReturnExpressionValue();
             _resultValue = reverse.ReturnResultValue();
-            _canNumberDef = false;
+            _canNumberDef = reverse.ReturnCanNumberDef();
         }
         public void HandlePre()
         {
@@ -160,7 +162,7 @@ namespace CalculatorForWin10.ViewModel
         #endregion
 
         #region 处理等于按钮
-        public void HandleEqual()        {            Equal equal = new Equal(_resultValue, _expressionValue, _preResult, _history);            _expressionValue = equal.ReturnExpressionValue();            _preResult = equal.ReturnPreResult();            _resultValue = "";            _history = equal.ReturnHistory();            foreach (string h in _history)            {                Debug.WriteLine("历史记录：" + h);            }        }
+        public void HandleEqual()        {            Equal equal = new Equal(_resultValue, _expressionValue, _preResult, _history);            _expressionValue = equal.ReturnExpressionValue();            _preResult = equal.ReturnPreResult();            _resultValue = "";            _history = equal.ReturnHistory();            foreach (string h in _history)            {                Debug.WriteLine("历史记录：" + h);            }            _canNumberDef = false;        }
         #endregion
 
         #region 处理清除按钮
@@ -179,18 +181,27 @@ namespace CalculatorForWin10.ViewModel
         }
         public void HandleDel()
         {
-            BackSpace bs = new BackSpace(_resultValue);
+            BackSpace bs = new BackSpace(_resultValue,_preResult, _canNumberDef);
             _resultValue = bs.ReturnResultValue();
         }
         public void HandleDustbin()
+
         {
+
             Dustbin db = new Dustbin(_history);
+
             _history = db.Clear();
+
         }
+
         public void HandleDustbin1()
+
         {
+
             Dustbin db = new Dustbin(_memory);
+
             _memory = db.Clear();
+
         }
         #endregion
 

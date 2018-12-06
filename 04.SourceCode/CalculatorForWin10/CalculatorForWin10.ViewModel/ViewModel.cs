@@ -74,12 +74,14 @@ namespace CalculatorForWin10.ViewModel
         public NVCommand Btn_equal { get => btn_equal; }
         private readonly NVCommand btn_qc;
         public NVCommand Btn_qc { get => btn_qc; }
+
         private readonly NVCommand btn_qc1;
         public NVCommand Btn_qc1 { get => btn_qc1; }
         #endregion
         public MainWindowsViewModel()
         {
             #region 委托调用方法
+            btn_qc1 = new NVCommand(Dustbin1);
             btn_mc = new NVCommand(Mc);
             btn_mr = new NVCommand(Mr);
             btn_mplus = new NVCommand(Mplus);
@@ -110,7 +112,6 @@ namespace CalculatorForWin10.ViewModel
             btn_8 = new NVCommand(Eight);
             btn_9 = new NVCommand(Nine);
             btn_qc = new NVCommand(Dustbin);
-            btn_qc1 = new NVCommand(Dustbin1);
             #endregion
         }
         #region 内存
@@ -181,14 +182,23 @@ namespace CalculatorForWin10.ViewModel
                 History.Insert(0, item);
             }
         }
+
         private void Dustbin1()
+
         {
+
             screen.HandleDustbin1();
+
             Memory.Clear();
+
             foreach (var item in screen.Memory())
+
             {
+
                 Memory.Insert(0, item);
+
             }
+
         }
 
         #endregion

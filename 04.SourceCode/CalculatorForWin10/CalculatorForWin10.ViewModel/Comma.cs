@@ -15,7 +15,7 @@ namespace CalculatorForWin10.ViewModel
             //负数小数，输出框最大容纳19位
             if (resultValue.Contains("-") && resultValue.Contains(".") && resultValue.Length >= 19)
             {
-                resultValue=resultValue.Substring(0,19);
+                resultValue = resultValue.Substring(0, 19);
             }
             //正数小数，输出框最大容纳18位
             else if (!resultValue.Contains("-") && resultValue.Contains(".") && resultValue.Length >= 18)
@@ -35,27 +35,31 @@ namespace CalculatorForWin10.ViewModel
             #endregion
 
             if (resultValue.Contains("."))  //处理小数
+            {
+                integer = resultValue.Substring(0, resultValue.IndexOf("."));
+                CommaIndex(ref integer);
+                return integer + resultValue.Substring(resultValue.IndexOf("."));
+            }
+            else                         //处理整数(正整数、负整数)
+            {
+                if (resultValue.Contains("-"))
                 {
-                    integer = resultValue.Substring(0, resultValue.IndexOf("."));
+                    resultValue = resultValue.Substring(1, resultValue.Length - 1);
+                    integer = resultValue;
                     CommaIndex(ref integer);
-                    return integer + resultValue.Substring(resultValue.IndexOf("."));
+                    return "-" + integer;
                 }
-                else                         //处理整数(正整数、负整数)
+                else if (resultValue == "除数不能为零" || resultValue == "无效输入")
                 {
-                if (resultValue.Contains("-")) 
-                {
-                       resultValue = resultValue.Substring(1, resultValue.Length-1);
-                       integer = resultValue;
-                       CommaIndex(ref integer);
-                       return "-"+integer;
+                    return resultValue;
                 }
-                else                         
+                else
                 {
                     integer = resultValue;
                     CommaIndex(ref integer);
                     return integer;
                 }
-                }
+            }
         }
         #region AddComma方法的子部分，负责计算
         private static void CommaIndex(ref string integer)
