@@ -36,12 +36,12 @@ namespace CalculatorForWin10
         {
             if (_clicked)
             {
-                main.Width = 335;
+                main.Width = 375;
                 _clicked = false;
             }
             else
             {
-                main.Width = 675;
+                main.Width = 715;
                 _clicked = true;
             }
             
