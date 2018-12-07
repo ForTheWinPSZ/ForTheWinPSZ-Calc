@@ -28,7 +28,7 @@ namespace NumberDefine
         public abstract void InputNum();
         public string ReturnResultValue()
         {
-            return ResultValue;
+            return Filter.returnNum(ResultValue);
         }
         public string ReturnExpressionValue()
         {
