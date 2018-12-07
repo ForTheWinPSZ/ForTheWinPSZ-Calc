@@ -5,8 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:ViewModel="clr-namespace:CalculatorForWin10.ViewModel;assembly=CalculatorForWin10.ViewModel" x:Class="CalculatorForWin10.MainWindow"
         mc:Ignorable="d"
-        Title="计算器" Height="520" Width="375" MinHeight="501" MinWidth="375" Background="#eaeaea" x:Name="main">
-    <Grid>
+        Title="计算器" Height="520" Width="360" MinHeight="501" MinWidth="360" Background="#eaeaea" x:Name="main">
+    <Window.Style>
+        <Style TargetType="Window">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="WindowStyle" Value="None" />
+            <Setter Property="ResizeMode" Value="CanResize" />
+            <Setter Property="AllowsTransparency" Value="True" />
+            <Setter Property="WindowChrome.WindowChrome">
+                <Setter.Value>
+                    <WindowChrome CaptionHeight="30" ResizeBorderThickness="20" />
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Style>
+    <Border
+            Background="#eaeaea"
+            BorderThickness="1"
+            SnapsToDevicePixels="True">
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="10"
+                              Direction="0"
+                              ShadowDepth="0" />
+        </Border.Effect>
+        <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
         </Grid.RowDefinitions>
@@ -16,7 +38,7 @@
         </Grid.ColumnDefinitions>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="45"/>
+                <RowDefinition Height="80"/>
                 <RowDefinition Height="140"/>
                 <RowDefinition Height="20"/>
                 <RowDefinition/>
@@ -25,19 +47,33 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Row="0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="45"/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition Width="45"/>
-                </Grid.ColumnDefinitions>
-                <Button BorderThickness="0" Background="#eaeaea">
-                    <Image Width="32" Source="images/opt.png"/>
-                </Button>
-                <Label Grid.Column="1" Background="#EAEAEA" FontSize="24" Padding="0,7,0,0" Content="标准" FontWeight="Normal"/>
-                <Button BorderThickness="0" Background="#eaeaea" Grid.Column="2" Height="45" VerticalAlignment="Bottom" Click="Button_Click">
-                    <Image Width="50" Source="images/his.png"/>
-                </Button>
-            </Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="45" />
+                </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" MouseMove="Grid_MouseMove">
+                        <Label VerticalAlignment="Center" Margin="7,0,0,0" FontSize="14" Width="60" HorizontalAlignment="Left">计算器</Label>
+                        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                            <Button x:Name="smallMin" HorizontalAlignment="Right" Width="47" Background="#eaeaea" BorderThickness="0" FontSize="25" FontWeight="Bold" Content="-" Click="Button_Click_Min" Visibility="Visible" />
+                            <Button x:Name="smallMax" HorizontalAlignment="Right" Width="47" Background="#eaeaea" BorderThickness="0" FontSize="25" FontWeight="Bold" Content="□" Click="Button_Click_Max" Visibility="Visible" />
+                            <Button x:Name="smallClose" HorizontalAlignment="Right" Width="47" Background="#eaeaea" BorderThickness="0" FontSize="25" Content="×" Click="Button_Click_Close" Visibility="Visible"/>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="45"/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="45"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Row="1" Grid.Column="0" BorderThickness="0" Background="#eaeaea">
+                            <Image Width="32" Source="images/opt.png"/>
+                        </Button>
+                        <Label Grid.Row="1" Grid.Column="1" Background="#EAEAEA" FontSize="24" Padding="0,7,0,0" Content="标准" FontWeight="Normal"/>
+                        <Button Grid.Row="1" BorderThickness="0" Background="#eaeaea" Grid.Column="2" Height="45" VerticalAlignment="Bottom" Click="Button_Click">
+                            <Image Width="50" Source="images/his.png"/>
+                        </Button>
+                    </Grid>
+                </Grid>
             <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="60"/>
@@ -111,58 +147,62 @@
                 <Button Margin="2" BorderThickness="0" x:Name="btn_equal" Grid.Row="5" Grid.Column="3" Content="=" Background="#F3F3F3" FontSize="28" FontWeight="Light" Command="{Binding Btn_equal}"/>
             </Grid>
         </Grid>
-        <Grid Grid.Column="1" Grid.ColumnSpan="2">
+        <Grid Grid.Column="1">
             <Grid.RowDefinitions>
+                <RowDefinition Height="35"/>
                 <RowDefinition/>
-                <RowDefinition Height="0"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Grid Grid.RowSpan="2">
-                <TabControl BorderBrush="#FFEAEAEA">
-                    <TabItem Header="历史记录" BorderThickness="0"  FontFamily="黑体" FontSize="16" FontWeight="Bold">
-                        <Grid Background="#FFEAEAEA">
-                            <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0" BorderThickness="0">
-                                <ListBox Background="{x:Null}" BorderBrush="{x:Null}" ItemsSource="{Binding History}" FontSize="20" Width="304" Height="Auto" VerticalAlignment="Top" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                                    <ListBox.ItemTemplate>
-                                        <DataTemplate >
-                                            <StackPanel Orientation="Vertical" HorizontalAlignment="Right">
-                                                <TextBlock TextWrapping="Wrap" Text="{Binding Path=Expression}" Margin="5" FontSize="16" HorizontalAlignment="Right" TextAlignment="Right" Foreground="Gray" Width="270"></TextBlock>
-                                                <TextBlock Text="{Binding Path=Result}" Margin="5" FontSize="25" HorizontalAlignment="Right" TextAlignment="Right" Width="270"></TextBlock>
-                                            </StackPanel>
-                                        </DataTemplate>
-                                    </ListBox.ItemTemplate>
-                                </ListBox>
-                            </ScrollViewer>
-                            <Button HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="50" Height="45" BorderBrush="{x:Null}" Command="{Binding Btn_qc}" Margin="5">
-                                <Image Width="45" Source="images/qc.png"/>
-                            </Button>
-                        </Grid>
-                    </TabItem>
-                    <TabItem Header="内存" BorderThickness="0" FontFamily="黑体" FontSize="16" FontWeight="Bold">
-                        <Grid Background="#FFEAEAEA">
-                            <ScrollViewer VerticalScrollBarVisibility="Auto" Width="340" Margin="0" BorderThickness="0">
-                                <ListBox Background="{x:Null}" BorderBrush="{x:Null}" ItemsSource="{Binding Memory}" FontSize="20" Width="304" Height="Auto" VerticalAlignment="Top" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                                    <ListBox.ItemTemplate>
-                                        <DataTemplate>
-                                            <TextBlock Text="{Binding}" Margin="5" FontSize="25" HorizontalAlignment="Right" TextAlignment="Right" Width="270"></TextBlock>
-                                        </DataTemplate>
-                                    </ListBox.ItemTemplate>
-                                </ListBox>
-                            </ScrollViewer>
-                            <Button HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="50" Height="45" BorderBrush="{x:Null}" Command="{Binding Btn_qc1}" Margin="5">
-                                <Image Width="45" Source="images/qc.png"/>
-                            </Button>
-                        </Grid>
-                    </TabItem>
-                </TabControl>
-
+                <Grid Grid.Row="0">
+                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                        <Button x:Name="bigMin" HorizontalAlignment="Right" Width="47" Background="#eaeaea" BorderThickness="0" FontSize="25" FontWeight="Bold" Content="-" Click="Button_Click_Min" Visibility="Hidden"/>
+                        <Button x:Name="bigMax" HorizontalAlignment="Right" Width="47" Background="#eaeaea" BorderThickness="0" FontSize="25" FontWeight="Bold" Content="□" Click="Button_Click_Max" Visibility="Hidden" />
+                        <Button x:Name="bigClose" HorizontalAlignment="Right" Width="47" Background="#eaeaea" BorderThickness="0" FontSize="25" Content="×" Click="Button_Click_Close" Visibility="Hidden" />
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Row ="1">
+                    <TabControl BorderBrush="#FFEAEAEA">
+                        <TabItem Header="历史记录" BorderThickness="0"  FontFamily="黑体" FontSize="16" FontWeight="Bold">
+                            <Grid Background="#FFEAEAEA">
+                                <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0" BorderThickness="0">
+                                    <ListBox Background="{x:Null}" BorderBrush="{x:Null}" ItemsSource="{Binding History}" FontSize="20" Width="304" Height="Auto" VerticalAlignment="Top" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                                        <ListBox.ItemTemplate>
+                                            <DataTemplate >
+                                                <StackPanel Orientation="Vertical" HorizontalAlignment="Right">
+                                                    <TextBlock TextWrapping="Wrap" Text="{Binding Path=Expression}" Margin="5" FontSize="16" HorizontalAlignment="Right" TextAlignment="Right" Foreground="Gray" Width="270"></TextBlock>
+                                                    <TextBlock Text="{Binding Path=Result}" Margin="5" FontSize="25" HorizontalAlignment="Right" TextAlignment="Right" Width="270"></TextBlock>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ListBox.ItemTemplate>
+                                    </ListBox>
+                                </ScrollViewer>
+                                <Button HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="50" Height="45" BorderBrush="{x:Null}" Command="{Binding Btn_qc}" Margin="5">
+                                    <Image Width="45" Source="images/qc.png"/>
+                                </Button>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="内存" BorderThickness="0" FontFamily="黑体" FontSize="16" FontWeight="Bold">
+                            <Grid Background="#FFEAEAEA">
+                                <ScrollViewer VerticalScrollBarVisibility="Auto" Width="340" Margin="0" BorderThickness="0">
+                                    <ListBox Background="{x:Null}" BorderBrush="{x:Null}" ItemsSource="{Binding Memory}" FontSize="20" Width="304" Height="Auto" VerticalAlignment="Top" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                                        <ListBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding}" Margin="5" FontSize="25" HorizontalAlignment="Right" TextAlignment="Right" Width="270"></TextBlock>
+                                            </DataTemplate>
+                                        </ListBox.ItemTemplate>
+                                    </ListBox>
+                                </ScrollViewer>
+                                <Button HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="50" Height="45" BorderBrush="{x:Null}" Command="{Binding Btn_qc1}" Margin="5">
+                                    <Image Width="45" Source="images/qc.png"/>
+                                </Button>
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
+                </Grid>
             </Grid>
-
-
-
-        </Grid>
     </Grid>
+    </Border>
 </Window>
 
