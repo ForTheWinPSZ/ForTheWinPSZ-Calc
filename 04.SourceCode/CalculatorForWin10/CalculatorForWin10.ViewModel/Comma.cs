@@ -44,12 +44,12 @@ namespace CalculatorForWin10.ViewModel
             {
                 if (resultValue.Contains("-"))
                 {
-                    resultValue = resultValue.Substring(1, resultValue.Length - 1);
+                    resultValue = resultValue.Substring(1, resultValue.Length-1);
                     integer = resultValue;
                     CommaIndex(ref integer);
                     return "-" + integer;
                 }
-                else if (resultValue == "除数不能为零" || resultValue == "无效输入")
+                else if (resultValue == "除数不能为零" || resultValue == "无效输入" || resultValue == "结果未定义")
                 {
                     return resultValue;
                 }

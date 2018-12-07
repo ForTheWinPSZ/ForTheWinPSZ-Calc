@@ -2,7 +2,8 @@
 
     public class Plus : IBinary    {
 
-        public Plus(string resultValue, string expressionValue, string preResult)        {            ResultValue = resultValue;            ExpressionValue = expressionValue;            PreResult = preResult;            if (ResultValue.EndsWith("."))            {                int index = ResultValue.IndexOf(".");                ResultValue = resultValue.Substring(0, index);            }
+        public Plus(string resultValue, string expressionValue, string preResult)        {            ResultValue = resultValue;            ExpressionValue = expressionValue;            PreResult = preResult;            if (_resultValue.Contains("."))            {
+                _resultValue = Convert.ToDouble(_resultValue).ToString();            }
             Change();        }        public override void Change()        {            if (ExpressionValue == "")            {                ExpressionValue = (ResultValue != "" ? ResultValue : PreResult) + " + ";                PreResult = (ResultValue != "" ? ResultValue : PreResult);                ResultValue = "";            }            else            {                if (!ExpressionValue.EndsWith(" "))                {                    ExpressionValue = ExpressionValue + " + ";                    string[] arr = ExpressionValue.Substring(0, ExpressionValue.Length - 3).Split(new char[] { ' ' });                    if (arr.Length < 3)                    {                        PreResult = ResultValue;                    }                    else                    {                        PreResult = Tool.Compute(PreResult, arr[arr.Length - 2], ResultValue);                    }
 
 

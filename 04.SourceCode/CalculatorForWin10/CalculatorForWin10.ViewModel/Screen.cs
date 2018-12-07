@@ -213,9 +213,10 @@ namespace CalculatorForWin10.ViewModel
         #region 数字定义
         public void HandleZero()
         {
-            Zero zero = new Zero(_resultValue,_canNumberDef);
+            Zero zero = new Zero(_resultValue,_canNumberDef, _expressionValue);
             _resultValue = zero.ReturnResultValue();
             _canNumberDef = zero.ReturnCanNumberDef();
+            _expressionValue = zero.ReturnExpressionValue();
         }
         public void HandleNum(string number)
         {
@@ -226,9 +227,10 @@ namespace CalculatorForWin10.ViewModel
         }
         public void HandlePoint()
         {
-            Point point = new Point(_resultValue,_canNumberDef);
+            Point point = new Point(_resultValue,_canNumberDef, _expressionValue);
             _resultValue = point.ReturnResultValue();
             _canNumberDef = point.ReturnCanNumberDef();
+            _expressionValue = point.ReturnExpressionValue();
         }
         #endregion
     }

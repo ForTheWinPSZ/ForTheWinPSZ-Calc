@@ -122,6 +122,7 @@ namespace CalculatorForWin10.ViewModel
             Memory.Clear();
             
         }
+
         private void Mr()
         {
             screen.HandleMr();
