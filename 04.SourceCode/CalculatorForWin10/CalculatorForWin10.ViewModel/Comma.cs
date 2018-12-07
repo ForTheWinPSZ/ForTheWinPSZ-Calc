@@ -49,7 +49,7 @@ namespace CalculatorForWin10.ViewModel
                     CommaIndex(ref integer);
                     return "-" + integer;
                 }
-                else if (resultValue == "除数不能为零" || resultValue == "无效输入")
+                else if (resultValue == "除数不能为零" || resultValue == "无效输入" || resultValue == "结果未定义")
                 {
                     return resultValue;
                 }

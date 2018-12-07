@@ -1,4 +1,5 @@
 ﻿using System;using System.Collections.Generic;using System.Linq;using System.Text;using System.Threading.Tasks;using System.Diagnostics;using static System.Convert;namespace Arithmetic.UnaryOperation{    public class SquareRoot : IUnary    {        private string expressionValue;        private string resultValue;        private int binaryIndex;        private string displayText = "";        private string preResult;        public SquareRoot(string expressionValue, string resultValue, string preResult)        {            this.expressionValue = expressionValue;            this.resultValue = resultValue;            this.preResult = preResult;
+            if (resultValue.Contains("."))            {                resultValue = Convert.ToDouble(resultValue).ToString();            }
             //改变结果栏
             ChangeResultValue();
             //改变表达式栏
