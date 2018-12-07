@@ -6,58 +6,37 @@ using System.Threading.Tasks;
 
 namespace NumberDefine
 {
-    public class Zero
+    public class Zero: Number
     {
-        private string resultValue;
-        private bool canNumberDef;
-        private string expressionValue;
-        public Zero(string resultValue,bool canNumberDef, string expressionValue)
+        public Zero(string content, string resultValue,bool canNumberDef, string expressionValue):base(content, resultValue, canNumberDef, expressionValue)
         {
-            this.resultValue = resultValue;
-            this.canNumberDef = canNumberDef;
-            this.expressionValue = expressionValue;
-            InputNum();
         }
 
-        private void InputNum()
+        public override void InputNum()
         {
-            if (!canNumberDef)
+            if (!CanNumberDef)
             {
-                if (!expressionValue.EndsWith(" ") && expressionValue != "")
+                if (!ExpressionValue.EndsWith(" ") && ExpressionValue != "")
                 {
-                    string[] arr = expressionValue.Split(new char[] { ' ' });
-                    expressionValue = expressionValue.Replace(arr[arr.Length - 1], "");
+                    string[] arr = ExpressionValue.Split(new char[] { ' ' });
+                    ExpressionValue = ExpressionValue.Replace(arr[arr.Length - 1], "");
                 }
-                resultValue = "";
+                ResultValue = "";
             }
-            if (resultValue == "")
+            if (ResultValue == "")
             {
-                resultValue = "0";
+                ResultValue = Content;
             }
-            if ((resultValue.Contains("-") && resultValue.Contains(".") && resultValue.Length >= 19) ||
-               (!resultValue.Contains("-") && resultValue.Contains(".") && resultValue.Length >= 18) ||
-               (resultValue.Contains("-") && !resultValue.Contains(".") && resultValue.Length >= 17) ||
-                    (!resultValue.Contains("-") && !resultValue.Contains(".") && resultValue.Length >= 16))
+            if ((ResultValue.Contains("-") && ResultValue.Contains(".") && ResultValue.Length >= 19) ||
+               (!ResultValue.Contains("-") && ResultValue.Contains(".") && ResultValue.Length >= 18) ||
+               (ResultValue.Contains("-") && !ResultValue.Contains(".") && ResultValue.Length >= 17) ||
+                    (!ResultValue.Contains("-") && !ResultValue.Contains(".") && ResultValue.Length >= 16))
                 return;
-            if (!("".Equals(resultValue) || "0".Equals(resultValue)))
+            if (!("".Equals(ResultValue) || "0".Equals(ResultValue)))
             {
-                resultValue += "0";
+                ResultValue += Content;
 
             }
-        }
-
-        public string ReturnResultValue()
-        {
-            return resultValue;
-        }
-
-        public bool ReturnCanNumberDef()
-        {
-            return true;
-        }
-        public string ReturnExpressionValue()
-        {
-            return expressionValue;
         }
     }
 }

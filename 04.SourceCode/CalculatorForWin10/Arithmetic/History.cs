@@ -16,10 +16,8 @@ namespace Arithmetic
             Expression = expression;
             Result = result;
         }
-
         public string Expression { get => _expression; set => _expression = value; }
         public string Result { get => _result; set => _result = value; }
-
         public override string ToString()
         {
             return _expression + _result;

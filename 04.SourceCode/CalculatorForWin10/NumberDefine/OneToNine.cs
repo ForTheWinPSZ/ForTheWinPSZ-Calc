@@ -7,52 +7,35 @@ using System.Collections;
 
 namespace NumberDefine
 {
-    public class OneToNine
+    public class OneToNine : Number
     {
-        private string resultValue;
-        private string content;
-        private bool canNumberDef;
-        private string expressionValue;
-        public OneToNine(string content, string resultValue,bool canNumberDef,string expressionValue) {
-            this.content = content;
-            this.resultValue = resultValue;
-            this.canNumberDef = canNumberDef;
-            this.expressionValue = expressionValue;
-            InputNum();
+        public OneToNine(string content, string resultValue, bool canNumberDef, string expressionValue) : base(content,resultValue, canNumberDef, expressionValue)
+        {
         }
 
-        private void InputNum()
+        public override void InputNum()
         {
-            if (!canNumberDef)
+            if (!CanNumberDef)
             {
-                if (!expressionValue.EndsWith(" ") && expressionValue!="")
+                if (!ExpressionValue.EndsWith(" ") && ExpressionValue != "")
                 {
-                    string[] arr = expressionValue.Split(new char[] { ' ' });
-                    expressionValue=expressionValue.Replace(arr[arr.Length - 1], "");
+                    string[] arr = ExpressionValue.Split(new char[] { ' ' });
+                    ExpressionValue = ExpressionValue.Replace(arr[arr.Length - 1], "");
                 }
-                resultValue = "";
+                ResultValue = "";
             }
-            if ("0".Equals(resultValue))
-                resultValue = content;
-            else if((resultValue.Contains("-") && resultValue.Contains(".") && resultValue.Length < 19) ||
-               (!resultValue.Contains("-") && resultValue.Contains(".") && resultValue.Length < 18)||
-                    (resultValue.Contains("-") && !resultValue.Contains(".") && resultValue.Length < 17) ||
-                    (!resultValue.Contains("-") && !resultValue.Contains(".") && resultValue.Length < 16))
-            {
-                resultValue += content;
-            }
+
+                if (ResultValue=="0")
+                    ResultValue = Content;
+                else if ((ResultValue.Contains("-") && ResultValue.Contains(".") && ResultValue.Length < 19) ||
+                   (!ResultValue.Contains("-") && ResultValue.Contains(".") && ResultValue.Length < 18) ||
+                        (ResultValue.Contains("-") && !ResultValue.Contains(".") && ResultValue.Length < 17) ||
+                        (!ResultValue.Contains("-") && !ResultValue.Contains(".") && ResultValue.Length < 16))
+                {
+                    ResultValue += Content;
+                }
+            
         }
-        
-        public string ReturnResultValue() {
-            return resultValue;
-        }
-        public string ReturnExpressionValue()
-        {
-            return expressionValue;
-        }
-        public bool ReturnCanNumberDef()
-        {
-            return true;
-        }
+
     }
 }

@@ -9,12 +9,11 @@ using System.Diagnostics;
 namespace Arithmetic.UnaryOperation
 {
     public class Percent : IUnary
-    {
-        private string expressionValue;        private string resultValue;        private int binaryIndex;        private string displayText = "";        private string preResult;        public Percent(string expressionValue, string resultValue, string preResult)        {            this.expressionValue = expressionValue;            this.resultValue = resultValue;            this.preResult = preResult;            ChangeResultValue();            ChangeExpression();        }        public void ChangeExpression()        {            if (expressionValue == "" || expressionValue.EndsWith(" "))            {                Debug.WriteLine("结尾是双目");                expressionValue += resultValue;            }            else            {                Debug.WriteLine("结尾是单目");                string UnaryExpression = GetUnaryExpression().Trim();                string partExpression = expressionValue.Substring(0, binaryIndex);                expressionValue = partExpression + Calculate(displayText);            }        }        public void ChangeResultValue()        {            resultValue = Calculate(displayText = resultValue == "" ? preResult : resultValue);        }        public string Calculate(string param)        {
-            if (preResult=="")
-            {
-                preResult = "0";
-            }
-            return ((ToDouble(preResult) * ToDouble(param)/100)).ToString().ToLower();        }        public string ReturnExpressionValue()        {            return expressionValue;        }        public string ReturnResultValue()        {            return resultValue;        }        public string GetUnaryExpression()        {            binaryIndex = expressionValue.LastIndexOf(" ") + 1;            return expressionValue.Substring(binaryIndex);        }
+    {        public Percent(string ExpressionValue, string ResultValue, string PreResult) : base(ExpressionValue, ResultValue, PreResult)        {        }        public override void ChangeExpression()        {            if (ExpressionValue == "" || ExpressionValue.EndsWith(" "))            {                ExpressionValue += ResultValue;            }            else            {                string UnaryExpression = GetUnaryExpression().Trim();                string partExpression = ExpressionValue.Substring(0, binaryIndex);                ExpressionValue = partExpression + Calculate(displayText);            }        }        public override void ChangeResultValue()        {            ResultValue = Calculate(displayText = ResultValue == "" ? PreResult : ResultValue);        }        public string Calculate(string param)        {
+            if (PreResult == "")
+                PreResult = "0";
+            return ((ToDouble(PreResult) * ToDouble(param) / 100)).ToString().ToLower();        }
+
+        
     }
 }

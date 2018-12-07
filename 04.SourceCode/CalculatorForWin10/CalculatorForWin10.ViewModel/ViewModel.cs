@@ -297,13 +297,13 @@ namespace CalculatorForWin10.ViewModel
         #region 数字定义部分
         private void Zero()
         {
-            screen.HandleZero();
+            screen.HandleZero("0");
             ResultText = screen.GetResult();
             ExpressionText = screen.GetExpressionValue();
         }
         private void Point()
         {
-            screen.HandlePoint();
+            screen.HandlePoint(".");
             ResultText = screen.GetResult();
             ExpressionText = screen.GetExpressionValue();
         }

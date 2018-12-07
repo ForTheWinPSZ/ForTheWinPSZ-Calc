@@ -6,12 +6,24 @@ using System.Threading.Tasks;
 
 namespace Arithmetic.UnaryOperation
 {
-    public interface IUnary
+    public abstract class IUnary
     {
-        void ChangeResultValue();
-        void ChangeExpression();
-        string ReturnExpressionValue();
-        string ReturnResultValue();
-        string GetUnaryExpression();
+        private string _resultValue;
+        private string _expressionValue;
+        private string _preResult;
+        protected int binaryIndex;
+        protected string displayText = "";
+        protected string ResultValue { get => _resultValue; set => _resultValue = value; }
+        protected string ExpressionValue { get => _expressionValue; set => _expressionValue = value; }
+        protected string PreResult { get => _preResult; set => _preResult = value; }
+        public IUnary(string expressionValue, string resultValue, string preResult)        {            ExpressionValue = expressionValue;            ResultValue = resultValue;            PreResult = preResult;
+            if (resultValue.Contains("."))            {                resultValue = Convert.ToDouble(resultValue).ToString();            }
+            ChangeResultValue();
+            ChangeExpression();        }
+        public string GetUnaryExpression()        {            binaryIndex = ExpressionValue.LastIndexOf(" ") + 1;            return ExpressionValue.Substring(binaryIndex);        }
+        public abstract void ChangeResultValue();
+        public abstract void ChangeExpression();
+        public string ReturnExpressionValue()        {            return ExpressionValue;        } 
+        public string ReturnResultValue()        {            return ResultValue;        }
     }
 }
