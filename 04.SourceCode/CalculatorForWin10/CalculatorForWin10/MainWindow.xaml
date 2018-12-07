@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:ViewModel="clr-namespace:CalculatorForWin10.ViewModel;assembly=CalculatorForWin10.ViewModel" x:Class="CalculatorForWin10.MainWindow"
         mc:Ignorable="d"
-        Title="计算器" Height="520" Width="335" MinHeight="501" MinWidth="335" Background="#eaeaea" x:Name="main" >
+        Title="计算器" Height="520" Width="375" MinHeight="501" MinWidth="375" Background="#eaeaea" x:Name="main">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition  MinWidth="320" Width="299*"/>
+            <ColumnDefinition  MinWidth="360" Width="299*"/>
             <ColumnDefinition Width="340"/>
         </Grid.ColumnDefinitions>
         <Grid>
@@ -124,7 +124,7 @@
                     <TabItem Header="历史记录" BorderThickness="0"  FontFamily="黑体" FontSize="16" FontWeight="Bold">
                         <Grid Background="#FFEAEAEA">
                             <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0" BorderThickness="0">
-                                <ListBox Background="{x:Null}" BorderBrush="{x:Null}" ItemsSource="{Binding History}" FontSize="20" Width="304" Height="405">
+                                <ListBox Background="{x:Null}" BorderBrush="{x:Null}" ItemsSource="{Binding History}" FontSize="20" Width="304" Height="Auto" VerticalAlignment="Top" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                                     <ListBox.ItemTemplate>
                                         <DataTemplate >
                                             <StackPanel Orientation="Vertical" HorizontalAlignment="Right">
@@ -143,7 +143,7 @@
                     <TabItem Header="内存" BorderThickness="0" FontFamily="黑体" FontSize="16" FontWeight="Bold">
                         <Grid Background="#FFEAEAEA">
                             <ScrollViewer VerticalScrollBarVisibility="Auto" Width="340" Margin="0" BorderThickness="0">
-                                <ListBox Background="{x:Null}" BorderBrush="{x:Null}" ItemsSource="{Binding Memory}" FontSize="20" Width="304" Height="405">
+                                <ListBox Background="{x:Null}" BorderBrush="{x:Null}" ItemsSource="{Binding Memory}" FontSize="20" Width="304" Height="Auto" VerticalAlignment="Top" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                                     <ListBox.ItemTemplate>
                                         <DataTemplate>
                                             <TextBlock Text="{Binding}" Margin="5" FontSize="25" HorizontalAlignment="Right" TextAlignment="Right" Width="270"></TextBlock>
