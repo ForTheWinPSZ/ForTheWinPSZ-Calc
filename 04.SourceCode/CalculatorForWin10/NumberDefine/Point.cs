@@ -6,51 +6,31 @@ using System.Threading.Tasks;
 
 namespace NumberDefine
 {
-    public class Point
+    public class Point:Number
     {
-        private string resultValue;
-        private bool canNumberDef;
-        private string expressionValue;
-        public Point(string resultValue,bool canNumberDef, string expressionValue)
+        public Point(string content,string resultValue, bool canNumberDef, string expressionValue) : base(content,resultValue, canNumberDef, expressionValue)
         {
-            this.resultValue = resultValue;
-            this.canNumberDef = canNumberDef;
-            this.expressionValue = expressionValue;
-            InputNum();
         }
 
-        public void InputNum()
+        public override void InputNum()
         {
-            if (!canNumberDef)
+            if (!CanNumberDef)
             {
-                if (!expressionValue.EndsWith(" ") && expressionValue != "")
+                if (!ExpressionValue.EndsWith(" ") && ExpressionValue != "")
                 {
-                    string[] arr = expressionValue.Split(new char[] { ' ' });
-                    expressionValue = expressionValue.Replace(arr[arr.Length - 1], "");
+                    string[] arr = ExpressionValue.Split(new char[] { ' ' });
+                    ExpressionValue = ExpressionValue.Replace(arr[arr.Length - 1], "");
                 }
-                resultValue = "";
+                ResultValue = "";
             }
-            if (resultValue == "")
+            if (ResultValue == "")
             {
-                resultValue = "0.";
+                ResultValue = "0.";
             }
-            if (!resultValue.Contains("."))
+            if (!ResultValue.Contains("."))
             {
-                resultValue += ".";
+                ResultValue += Content;
             }
-        }
-        public string ReturnResultValue()
-        {
-            return resultValue;
-        }
-
-        public bool ReturnCanNumberDef()
-        {
-            return true;
-        }
-        public string ReturnExpressionValue()
-        {
-            return expressionValue;
         }
     }
 }

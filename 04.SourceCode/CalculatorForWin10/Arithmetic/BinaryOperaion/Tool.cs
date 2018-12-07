@@ -9,12 +9,6 @@ namespace Arithmetic.BinaryOperaion
 {
     public static class Tool
     {
-        //去掉所有空格，将X和÷替换为可以计算的
-        public static string ForCompute(string expression)
-        {
-            expression = expression.Replace(" ", "");
-            return expression;
-        }
         public static string Compute(string num1, string symbol, string num2)
         {
             double result = 0;

@@ -34,11 +34,21 @@ namespace CalculatorForWin10.ViewModel
             }
             #endregion
 
-            if (resultValue.Contains("."))  //处理小数
+            if (resultValue.Contains("."))  //处理小数(正小数、负小数)
             {
-                integer = resultValue.Substring(0, resultValue.IndexOf("."));
-                CommaIndex(ref integer);
-                return integer + resultValue.Substring(resultValue.IndexOf("."));
+                if (resultValue.Contains("-"))
+                {
+                    resultValue = resultValue.Substring(1, resultValue.Length - 1);
+                    integer = resultValue.Substring(0, resultValue.IndexOf("."));
+                    CommaIndex(ref integer);
+                    return "-" + integer + resultValue.Substring(resultValue.IndexOf("."));
+                }
+                else
+                {
+                    integer = resultValue.Substring(0, resultValue.IndexOf("."));
+                    CommaIndex(ref integer);
+                    return integer + resultValue.Substring(resultValue.IndexOf("."));
+                }           
             }
             else                         //处理整数(正整数、负整数)
             {

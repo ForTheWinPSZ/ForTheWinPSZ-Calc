@@ -211,23 +211,23 @@ namespace CalculatorForWin10.ViewModel
         #endregion
 
         #region 数字定义
-        public void HandleZero()
+        public void HandleZero(string content)
         {
-            Zero zero = new Zero(_resultValue,_canNumberDef, _expressionValue);
+            Number zero = new Zero(content,_resultValue,_canNumberDef, _expressionValue);
             _resultValue = zero.ReturnResultValue();
             _canNumberDef = zero.ReturnCanNumberDef();
             _expressionValue = zero.ReturnExpressionValue();
         }
-        public void HandleNum(string number)
+        public void HandleNum(string content)
         {
-            OneToNine oneToNine = new OneToNine(number,_resultValue,_canNumberDef,_expressionValue);
+            Number oneToNine = new OneToNine(content,_resultValue,_canNumberDef,_expressionValue);
             _resultValue = oneToNine.ReturnResultValue();
             _canNumberDef = oneToNine.ReturnCanNumberDef();
             _expressionValue = oneToNine.ReturnExpressionValue();
         }
-        public void HandlePoint()
+        public void HandlePoint(string content)
         {
-            Point point = new Point(_resultValue,_canNumberDef, _expressionValue);
+            Number point = new Point(content,_resultValue,_canNumberDef, _expressionValue);
             _resultValue = point.ReturnResultValue();
             _canNumberDef = point.ReturnCanNumberDef();
             _expressionValue = point.ReturnExpressionValue();

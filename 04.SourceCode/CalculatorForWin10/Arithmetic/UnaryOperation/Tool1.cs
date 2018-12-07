@@ -11,11 +11,12 @@ namespace Arithmetic.UnaryOperation
     {
         public static string Calculate(string symbol, string param)
         {
+            double result = 0;
             switch (symbol)
             {
-                case "square":
-                    return (ToDouble(param) * ToDouble(param)).ToString().ToLower();
-                    
+                case "sqr":
+                    result = ToDouble(param) * ToDouble(param);
+                    break;
                 case "squareroot":
                     if (param.StartsWith("-"))
                     {
@@ -23,13 +24,12 @@ namespace Arithmetic.UnaryOperation
                     }
                     else
                     {
-                        //开方
-                        return Math.Sqrt(ToDouble(param)).ToString().ToLower();
+                        result = Math.Sqrt(ToDouble(param));
+                        break;
                     }
-                  
                 case "reverse":
-                    return (ToDouble(param) * -1).ToString().ToLower();
-                 
+                    result = ToDouble(param) * -1;
+                    break;
                 case "reciprocal":
                     if (param == "0")
                     {
@@ -37,12 +37,11 @@ namespace Arithmetic.UnaryOperation
                     }
                     else
                     {
-                        //倒数
-                        return (1 / ToDouble(param)).ToString().ToLower();
+                        result = 1 / ToDouble(param);
+                        break;
                     }
-                 
             }
-            return "";
+            return result.ToString();
         }
     }
 }
