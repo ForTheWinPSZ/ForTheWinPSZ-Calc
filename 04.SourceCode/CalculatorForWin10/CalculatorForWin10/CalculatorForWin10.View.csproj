@@ -33,6 +33,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Calculate.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="ControlzEx, Version=3.0.2.4, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ControlzEx.3.0.2.4\lib\net45\ControlzEx.dll</HintPath>
@@ -121,6 +124,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\his.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="IconCal.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Cal.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Calculate.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
