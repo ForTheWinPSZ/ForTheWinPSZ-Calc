@@ -44,7 +44,7 @@ namespace CalculatorForWin10.ViewModel
             {
                 if (resultValue.Contains("-"))
                 {
-                    resultValue = resultValue.Substring(1, resultValue.Length - 1);
+                    resultValue = resultValue.Substring(1, resultValue.Length-1);
                     integer = resultValue;
                     CommaIndex(ref integer);
                     return "-" + integer;

@@ -115,13 +115,14 @@ namespace CalculatorForWin10.ViewModel
             btn_qc = new NVCommand(Dustbin);
             #endregion
         }
-        #region 内存
+                #region 内存
         private void Mc()
         {
             screen.HandleMc();
             Memory.Clear();
             
         }
+
         private void Mr()
         {
             screen.HandleMr();

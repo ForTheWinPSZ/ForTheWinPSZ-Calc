@@ -34,7 +34,10 @@ namespace NumberDefine
             }
             if ("0".Equals(resultValue))
                 resultValue = content;
-            else
+            else if((resultValue.Contains("-") && resultValue.Contains(".") && resultValue.Length < 19) ||
+               (!resultValue.Contains("-") && resultValue.Contains(".") && resultValue.Length < 18)||
+                    (resultValue.Contains("-") && !resultValue.Contains(".") && resultValue.Length < 17) ||
+                    (!resultValue.Contains("-") && !resultValue.Contains(".") && resultValue.Length < 16))
             {
                 resultValue += content;
             }

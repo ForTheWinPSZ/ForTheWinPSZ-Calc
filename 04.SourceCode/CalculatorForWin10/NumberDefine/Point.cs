@@ -10,11 +10,12 @@ namespace NumberDefine
     {
         private string resultValue;
         private bool canNumberDef;
-
-        public Point(string resultValue,bool canNumberDef)
+        private string expressionValue;
+        public Point(string resultValue,bool canNumberDef, string expressionValue)
         {
             this.resultValue = resultValue;
             this.canNumberDef = canNumberDef;
+            this.expressionValue = expressionValue;
             InputNum();
         }
 
@@ -22,6 +23,11 @@ namespace NumberDefine
         {
             if (!canNumberDef)
             {
+                if (!expressionValue.EndsWith(" ") && expressionValue != "")
+                {
+                    string[] arr = expressionValue.Split(new char[] { ' ' });
+                    expressionValue = expressionValue.Replace(arr[arr.Length - 1], "");
+                }
                 resultValue = "";
             }
             if (resultValue == "")
@@ -42,6 +48,9 @@ namespace NumberDefine
         {
             return true;
         }
-
+        public string ReturnExpressionValue()
+        {
+            return expressionValue;
+        }
     }
 }
