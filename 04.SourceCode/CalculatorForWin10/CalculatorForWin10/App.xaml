@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:CalculatorForWin10"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+
     </Application.Resources>
+
 </Application>
