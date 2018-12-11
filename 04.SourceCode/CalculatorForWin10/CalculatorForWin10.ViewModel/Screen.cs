@@ -25,6 +25,7 @@ namespace CalculatorForWin10.ViewModel
         private string _lparm = "";
         private string _lhistory = "";
         private bool _canNumberDef = true;
+        
 
         //获取Screen
         public static Screen GetScreen()

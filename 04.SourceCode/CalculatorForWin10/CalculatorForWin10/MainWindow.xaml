@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:ViewModel="clr-namespace:CalculatorForWin10.ViewModel;assembly=CalculatorForWin10.ViewModel" x:Class="CalculatorForWin10.MainWindow"
         mc:Ignorable="d"
-        Title="计算器" Height="520" Width="360" MinHeight="501" MinWidth="360" Background="#eaeaea" x:Name="main">
+        Title="计算器" Height="520" Width="700" MinHeight="501" MinWidth="360" Background="#eaeaea" x:Name="main">
     <Window.Style>
         <Style TargetType="Window">
             <Setter Property="Background" Value="Transparent" />
@@ -20,7 +20,7 @@
         </Style>
     </Window.Style>
     <Border
-            Background="#eaeaea"
+            Background="#FFE7E7E9"
             BorderThickness="1"
             SnapsToDevicePixels="True">
         <Border.Effect>
@@ -29,35 +29,30 @@
                               ShadowDepth="0" />
         </Border.Effect>
         <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition  MinWidth="360" Width="299*"/>
-            <ColumnDefinition Width="340"/>
-        </Grid.ColumnDefinitions>
-        <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="80"/>
-                <RowDefinition Height="140"/>
-                <RowDefinition Height="20"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
+                <ColumnDefinition  MinWidth="360" Width="299*"/>
+                <ColumnDefinition Width="340"/>
             </Grid.ColumnDefinitions>
-            <Grid Grid.Row="0">
+            <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="35" />
-                    <RowDefinition Height="45" />
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="140"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="45" />
+                    </Grid.RowDefinitions>
                     <Grid Grid.Row="0" MouseMove="Grid_MouseMove">
-                        <Label VerticalAlignment="Center" Margin="7,0,0,0" FontSize="14" Width="60" HorizontalAlignment="Left">计算器</Label>
-                        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-                            <Button x:Name="smallMin" HorizontalAlignment="Right" Width="47" Background="#eaeaea" BorderThickness="0" FontSize="25" FontWeight="Bold" Content="-" Click="Button_Click_Min" Visibility="Visible" />
-                            <Button x:Name="smallMax" HorizontalAlignment="Right" Width="47" Background="#eaeaea" BorderThickness="0" FontSize="25" FontWeight="Bold" Content="□" Click="Button_Click_Max" Visibility="Visible" />
-                            <Button x:Name="smallClose" HorizontalAlignment="Right" Width="47" Background="#eaeaea" BorderThickness="0" FontSize="25" Content="×" Click="Button_Click_Close" Visibility="Visible"/>
-                        </StackPanel>
+                        <Label VerticalAlignment="Center" Margin="7,0,0,0" FontSize="12" Width="60" HorizontalAlignment="Left">计算器</Label>
                     </Grid>
                     <Grid Grid.Row="1">
                         <Grid.ColumnDefinitions>
@@ -65,144 +60,145 @@
                             <ColumnDefinition/>
                             <ColumnDefinition Width="45"/>
                         </Grid.ColumnDefinitions>
-                        <Button Grid.Row="1" Grid.Column="0" BorderThickness="0" Background="#eaeaea">
-                            <Image Width="32" Source="images/opt.png"/>
+                        <Button Grid.Row="1" Grid.Column="0" Content="≡" FontSize="30" FontWeight="Light" BorderThickness="0" Background="#FFE3E3E3">
                         </Button>
-                        <Label Grid.Row="1" Grid.Column="1" Background="#EAEAEA" FontSize="24" Padding="0,7,0,0" Content="标准" FontWeight="Normal"/>
-                        <Button Grid.Row="1" BorderThickness="0" Background="#eaeaea" Grid.Column="2" Height="45" VerticalAlignment="Bottom" Click="Button_Click">
-                            <Image Width="50" Source="images/his.png"/>
+                        <Label Grid.Row="1" Grid.Column="1" FontSize="24" Padding="0,7,0,0" Content="标准" FontWeight="Normal"/>
+                        <Button Grid.Row="1" BorderThickness="0" Grid.Column="2" Height="45" VerticalAlignment="Bottom" Background="#00DDDDDD">
+                            <Image Width="36" Source="images/his.png" Height="36"/>
                         </Button>
                     </Grid>
                 </Grid>
-            <Grid Grid.Row="1">
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Label x:Name="beforeText"  BorderBrush="#EAEAEA" HorizontalContentAlignment="Right" FontSize="16"  Content="{Binding ExpressionText}" Margin="0,0,0,-3"/>
+                    <Label x:Name="resultText" Grid.Row="1"  BorderBrush="#EAEAEA" FontSize="35" FontWeight="Heavy" HorizontalContentAlignment="Right" Content="{Binding ResultText}">
+                    </Label>
+                </Grid>
+                <Grid Grid.Row="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button BorderThickness="0"  Content="MC" Command="{Binding Btn_mc}" Background="#00DDDDDD" Click="Button_Click_Qc1"/>
+                    <Button BorderThickness="0" Grid.Column="1" Content="MR" Command="{Binding Btn_mr}" Background="#00DDDDDD" />
+                    <Button BorderThickness="0" Grid.Column="2" Content="M+" Command="{Binding Btn_mplus}" Background="#00DDDDDD"/>
+                    <Button BorderThickness="0" Grid.Column="3" Content="M-" Command="{Binding Btn_mminus}" Background="#00DDDDDD"/>
+                    <Button BorderThickness="0" Grid.Column="4" Content="MS" Command="{Binding Btn_ms}" Background="#00DDDDDD" Click="Button_Click_Ms"/>
+                    <Button BorderThickness="0" Grid.Column="5" Content="M▾" Command="{Binding Btn_mmore}" Background="#00DDDDDD"/>
+                </Grid>
+                <Grid Grid.Row="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button Margin="4,2,2,2" BorderThickness="0" x:Name="btn_pre"  Content="%" Background="#F3F3F3" FontSize="18" FontWeight="UltraLight" Command="{Binding Btn_pre}"/>
+                    <Button Margin="4,2,2,2" BorderThickness="0" x:Name="btn_CE" Grid.Row="1"  Background="#F3F3F3" Content="CE" FontSize="15" FontWeight="Normal" Command="{Binding Btn_ce}"/>
+                    <Button Margin="2" BorderThickness="0" x:Name="btn_C" Grid.Row="1" Grid.Column="1" Content="C" Background="#F3F3F3" FontSize="15" FontWeight="Normal" Command="{Binding Btn_c}"/>
+                    <Button Margin="2" BorderThickness="0" x:Name="btn_DEL" Grid.Row="1" Grid.Column="2"  Background="#F3F3F3" Command="{Binding Btn_del}">
+                        <Image Source="images/del.png" Width="90"/>
+                    </Button>
+                    <Button Margin="2" BorderThickness="0" x:Name="btn_divi" Grid.Row="1" Grid.Column="3" Content="÷" Background="#F3F3F3" FontSize="28" FontWeight="Light" Command="{Binding Btn_division}" />
+                    <Button Margin="2" BorderThickness="0" x:Name="btn_sqrt" Grid.Column="1" Content="√" Background="#F3F3F3" FontSize="18" FontWeight="UltraLight" Command="{Binding Btn_squareroot}"  />
+                    <Button Margin="4,2,2,2" BorderThickness="0" x:Name="btn_7" Grid.Row="2"  Content="7" FontSize="22" FontWeight="Normal" Background="#FBFBFB" Command="{Binding Btn_7}" />
+                    <Button Margin="2" BorderThickness="0" x:Name="btn_8" Grid.Row="2" Grid.Column="1" Content="8" FontSize="22" FontWeight="Normal" Background="#FBFBFB" Command="{Binding Btn_8}"  />
+                    <Button Margin="2" BorderThickness="0" x:Name="btn_9" Grid.Row="2" Grid.Column="2" Content="9" FontSize="22" FontWeight="Normal" Background="#FBFBFB" Command="{Binding Btn_9}" />
+                    <Button Margin="2" BorderThickness="0" x:Name="btn_muti" Grid.Row="2" Grid.Column="3" Content="×" Background="#F3F3F3" FontSize="28" FontWeight="Light" Command="{Binding Btn_multiplication}"/>
+                    <Button Margin="2" BorderThickness="0" x:Name="btn_squ" Grid.Column="2" Content="x²" Background="#F3F3F3" FontSize="18" FontWeight="UltraLight" Command="{Binding Btn_square}"/>
+                    <Button Margin="4,2,2,2" BorderThickness="0" x:Name="btn_4" Grid.Row="3" Content="4" Background="#FBFBFB" FontSize="22" FontWeight="Normal"  Command="{Binding Btn_4}"/>
+                    <Button Margin="2" BorderThickness="0" x:Name="btn_5" Grid.Row="3" Grid.Column="1" Content="5" Background="#FBFBFB" FontSize="22" FontWeight="Normal" Command="{Binding Btn_5}"/>
+                    <Button Margin="2" BorderThickness="0" x:Name="btn_6" Grid.Row="3" Grid.Column="2" Content="6" Background="#FBFBFB" FontSize="22" FontWeight="Normal" Command="{Binding Btn_6}" />
+                    <Button Margin="2" BorderThickness="0" x:Name="btn_sub" Grid.Row="3" Grid.Column="3" Content="－" Background="#F3F3F3" FontSize="28" FontWeight="Light" Command="{Binding Btn_minus}" />
+                    <Button Margin="4,2,2,2" BorderThickness="0" x:Name="btn_1" Grid.Row="4"  Content="1" Background="#FBFBFB" FontSize="22" FontWeight="Normal" Command="{Binding Btn_1}"/>
+                    <Button Margin="2" BorderThickness="0" x:Name="btn_2" Grid.Row="4" Grid.Column="1" Content="2" Background="#FBFBFB" FontSize="22" FontWeight="Normal" Command="{Binding Btn_2}"/>
+                    <Button Margin="2" BorderThickness="0" x:Name="btn_3" Grid.Row="4" Grid.Column="2" Content="3" Background="#FBFBFB" FontSize="22" FontWeight="Normal" Command="{Binding Btn_3}" />
+                    <Button Margin="2" BorderThickness="0" x:Name="btn_add" Grid.Row="4" Grid.Column="3" Content="＋" Background="#F3F3F3" FontSize="28" FontWeight="Light" Command="{Binding Btn_plus}"/>
+                    <Button Margin="2" BorderThickness="0" x:Name="btn_reci" Grid.Column="3" Content="¹/x" FontSize="18" FontWeight="Light" Background="#F3F3F3" Command="{Binding Btn_reciprocal}"/>
+                    <Button Margin="4,2,2,4" BorderThickness="0" x:Name="btn_nega" Grid.Row="5"  Content="±" Background="#F3F3F3" FontSize="22" FontWeight="Light" Command="{Binding Btn_reverse}"/>
+                    <Button Margin="2,2,2,4" BorderThickness="0" x:Name="btn_0"  Grid.Row="5" Grid.Column="1" Content="0" Background="#FBFBFB" FontSize="22" FontWeight="Normal" Command="{Binding Btn_0}" />
+                    <Button Margin="2,2,2,4" BorderThickness="0" x:Name="btn_point" Grid.Row="5" Grid.Column="2" Content="." Background="#FBFBFB" FontSize="28" FontWeight="Light" Command="{Binding Btn_point}"/>
+                    <Button Margin="2,2,2,4" BorderThickness="0" x:Name="btn_equal" Grid.Row="5" Grid.Column="3" Content="=" Background="#F3F3F3" FontSize="28" FontWeight="Light" Command="{Binding Btn_equal}" Click="Button_Click_Equal"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="35"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Label x:Name="beforeText" Background="#EAEAEA" BorderBrush="#EAEAEA" HorizontalContentAlignment="Right" FontSize="16"  Content="{Binding ExpressionText}"/>
-                <Label Grid.Row="1" x:Name="resultText" Background="#EAEAEA" BorderBrush="#EAEAEA" FontSize="35" FontWeight="Heavy" HorizontalContentAlignment="Right" Content="{Binding ResultText}"/>
-            </Grid>
-            <Grid Grid.Row="2">
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Button BorderThickness="0" Background="#eaeaea" Content="MC" Command="{Binding Btn_mc}"/>
-                <Button BorderThickness="0" Grid.Column="1" Background="#eaeaea" Content="MR" Command="{Binding Btn_mr}"/>
-                <Button BorderThickness="0" Grid.Column="2" Background="#eaeaea" Content="M+" Command="{Binding Btn_mplus}"/>
-                <Button BorderThickness="0" Grid.Column="3" Background="#eaeaea" Content="M-" Command="{Binding Btn_mminus}"/>
-                <Button BorderThickness="0" Grid.Column="4" Background="#eaeaea" Content="MS" Command="{Binding Btn_ms}"/>
-                <Button BorderThickness="0" Grid.Column="5" Background="#eaeaea" Content="M▼" Command="{Binding Btn_mmore}"/>
-            </Grid>
-            <Grid Grid.Row="3" Background="#eaeaea">
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Button Margin="2" BorderThickness="0" x:Name="btn_pre"  Content="%" Background="#F3F3F3" FontSize="18" FontWeight="UltraLight" Command="{Binding Btn_pre}"/>
-                <Button Margin="2" BorderThickness="0" x:Name="btn_CE" Grid.Row="1"  Background="#F3F3F3" Content="CE" FontSize="15" FontWeight="Normal" Command="{Binding Btn_ce}"/>
-                <Button Margin="2" BorderThickness="0" x:Name="btn_C" Grid.Row="1" Grid.Column="1" Content="C" Background="#F3F3F3" FontSize="15" FontWeight="Normal" Command="{Binding Btn_c}"/>
-                <Button Margin="2,2,0,2" BorderThickness="0" x:Name="btn_DEL" Grid.Row="1" Grid.Column="2"  Background="#F3F3F3" Command="{Binding Btn_del}">
-                    <Image Source="images/del.png" Width="90"/>
-                </Button>
-                <Button Margin="2" BorderThickness="0" x:Name="btn_divi" Grid.Row="1" Grid.Column="3" Content="÷" Background="#F3F3F3" FontSize="28" FontWeight="Light" Command="{Binding Btn_division}"/>
-                <Button Margin="2" BorderThickness="0" x:Name="btn_sqrt" Grid.Column="1" Content="√" Background="#F3F3F3" FontSize="18" FontWeight="UltraLight" Command="{Binding Btn_squareroot}" />
-                <Button Margin="2" BorderThickness="0" x:Name="btn_7" Grid.Row="2"  Content="7" FontSize="22" FontWeight="Normal" Background="#FBFBFB" Command="{Binding Btn_7}"/>
-                <Button Margin="2" BorderThickness="0" x:Name="btn_8" Grid.Row="2" Grid.Column="1" Content="8" FontSize="22" FontWeight="Normal" Background="#FBFBFB" Command="{Binding Btn_8}"/>
-                <Button Margin="2" BorderThickness="0" x:Name="btn_9" Grid.Row="2" Grid.Column="2" Content="9" FontSize="22" FontWeight="Normal" Background="#FBFBFB" Command="{Binding Btn_9}"/>
-                <Button Margin="2" BorderThickness="0" x:Name="btn_muti" Grid.Row="2" Grid.Column="3" Content="×" Background="#F3F3F3" FontSize="28" FontWeight="Light" Command="{Binding Btn_multiplication}"/>
-                <Button Margin="2" BorderThickness="0" x:Name="btn_squ" Grid.Column="2" Content="x²" Background="#F3F3F3" FontSize="18" FontWeight="UltraLight" Command="{Binding Btn_square}"/>
-                <Button Margin="2" BorderThickness="0" x:Name="btn_4" Grid.Row="3" Content="4" Background="#FBFBFB" FontSize="22" FontWeight="Normal"  Command="{Binding Btn_4}"/>
-                <Button Margin="2" BorderThickness="0" x:Name="btn_5" Grid.Row="3" Grid.Column="1" Content="5" Background="#FBFBFB" FontSize="22" FontWeight="Normal" Command="{Binding Btn_5}"/>
-                <Button Margin="2" BorderThickness="0" x:Name="btn_6" Grid.Row="3" Grid.Column="2" Content="6" Background="#FBFBFB" FontSize="22" FontWeight="Normal" Command="{Binding Btn_6}"/>
-                <Button Margin="2" BorderThickness="0" x:Name="btn_sub" Grid.Row="3" Grid.Column="3" Content="－" Background="#F3F3F3" FontSize="28" FontWeight="Light" Command="{Binding Btn_minus}"/>
-                <Button Margin="2" BorderThickness="0" x:Name="btn_1" Grid.Row="4"  Content="1" Background="#FBFBFB" FontSize="22" FontWeight="Normal" Command="{Binding Btn_1}"/>
-                <Button Margin="2" BorderThickness="0" x:Name="btn_2" Grid.Row="4" Grid.Column="1" Content="2" Background="#FBFBFB" FontSize="22" FontWeight="Normal" Command="{Binding Btn_2}"/>
-                <Button Margin="2" BorderThickness="0" x:Name="btn_3" Grid.Row="4" Grid.Column="2" Content="3" Background="#FBFBFB" FontSize="22" FontWeight="Normal" Command="{Binding Btn_3}"/>
-                <Button Margin="2" BorderThickness="0" x:Name="btn_add" Grid.Row="4" Grid.Column="3" Content="＋" Background="#F3F3F3" FontSize="28" FontWeight="Light" Command="{Binding Btn_plus}"/>
-                <Button Margin="2" BorderThickness="0" x:Name="btn_reci" Grid.Column="3" Content="¹/x" FontSize="18" FontWeight="Light" Background="#F3F3F3" Command="{Binding Btn_reciprocal}"/>
-                <Button Margin="2" BorderThickness="0" x:Name="btn_nega" Grid.Row="5"  Content="±" Background="#F3F3F3" FontSize="22" FontWeight="Light" Command="{Binding Btn_reverse}"/>
-                <Button Margin="2" BorderThickness="0" x:Name="btn_0"  Grid.Row="5" Grid.Column="1" Content="0" Background="#FBFBFB" FontSize="22" FontWeight="Normal" Command="{Binding Btn_0}"/>
-                <Button Margin="2" BorderThickness="0" x:Name="btn_point" Grid.Row="5" Grid.Column="2" Content="." Background="#FBFBFB" FontSize="28" FontWeight="Light" Command="{Binding Btn_point}"/>
-                <Button Margin="2" BorderThickness="0" x:Name="btn_equal" Grid.Row="5" Grid.Column="3" Content="=" Background="#F3F3F3" FontSize="28" FontWeight="Light" Command="{Binding Btn_equal}"/>
-            </Grid>
-        </Grid>
-        <Grid Grid.Column="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="35"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
                 <Grid Grid.Row="0">
                     <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-                        <Button x:Name="bigMin" HorizontalAlignment="Right" Width="47" Background="#eaeaea" BorderThickness="0" FontSize="25" FontWeight="Bold" Content="-" Click="Button_Click_Min" Visibility="Hidden"/>
-                        <Button x:Name="bigMax" HorizontalAlignment="Right" Width="47" Background="#eaeaea" BorderThickness="0" FontSize="25" FontWeight="Bold" Content="□" Click="Button_Click_Max" Visibility="Hidden" />
-                        <Button x:Name="bigClose" HorizontalAlignment="Right" Width="47" Background="#eaeaea" BorderThickness="0" FontSize="25" Content="×" Click="Button_Click_Close" Visibility="Hidden" />
+                        <Button x:Name="Min" HorizontalAlignment="Right"  VerticalAlignment="Center" Width="45" BorderThickness="0" FontSize="10" FontWeight="Light" Background="#00E3E3E3" Content="―" Click="Button_Click_Min" Height="35" Margin="0,0,0,0.2" />
+                        <Button x:Name="Max" HorizontalAlignment="Right" VerticalAlignment="Center" Width="45"  BorderThickness="0" FontSize="22" FontWeight="Light" Background="#00E3E3E3" Content="□" Click="Button_Click_Max" Height="35" Margin="0,0,0,1" />
+                        <Button x:Name="Close" HorizontalAlignment="Right" VerticalAlignment="Center" Width="45" BorderThickness="0" FontSize="25" FontWeight="Light" Background="#00E3E3E3" Content="×" Click="Button_Click_Close" Height="35" Margin="0,0,0,-1"/>
                     </StackPanel>
                 </Grid>
                 <Grid Grid.Row ="1">
-                    <TabControl BorderBrush="#FFEAEAEA">
-                        <TabItem Header="历史记录" BorderThickness="0"  FontFamily="黑体" FontSize="16" FontWeight="Bold">
-                            <Grid Background="#FFEAEAEA">
-                                <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0" BorderThickness="0">
-                                    <ListBox Background="{x:Null}" BorderBrush="{x:Null}" ItemsSource="{Binding History}" FontSize="20" Width="304" Height="Auto" VerticalAlignment="Top" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                                        <ListBox.ItemTemplate>
-                                            <DataTemplate >
-                                                <StackPanel Orientation="Vertical" HorizontalAlignment="Right">
-                                                    <TextBlock TextWrapping="Wrap" Text="{Binding Path=Expression}" Margin="5" FontSize="16" HorizontalAlignment="Right" TextAlignment="Right" Foreground="Gray" Width="270"></TextBlock>
-                                                    <TextBlock Text="{Binding Path=Result}" Margin="5" FontSize="25" HorizontalAlignment="Right" TextAlignment="Right" Width="270"></TextBlock>
-                                                </StackPanel>
-                                            </DataTemplate>
-                                        </ListBox.ItemTemplate>
-                                    </ListBox>
-                                </ScrollViewer>
-                                <Button HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="50" Height="45" BorderBrush="{x:Null}" Command="{Binding Btn_qc}" Margin="5">
-                                    <Image Width="45" Source="images/qc.png"/>
-                                </Button>
-                            </Grid>
-                        </TabItem>
-                        <TabItem Header="内存" BorderThickness="0" FontFamily="黑体" FontSize="16" FontWeight="Bold">
-                            <Grid Background="#FFEAEAEA">
-                                <ScrollViewer VerticalScrollBarVisibility="Auto" Width="340" Margin="0" BorderThickness="0">
-                                    <ListBox Background="{x:Null}" BorderBrush="{x:Null}" ItemsSource="{Binding Memory}" FontSize="20" Width="304" Height="Auto" VerticalAlignment="Top" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                                        <ListBox.ItemTemplate>
-                                            <DataTemplate>
-                                                <TextBlock Text="{Binding}" Margin="5" FontSize="25" HorizontalAlignment="Right" TextAlignment="Right" Width="270"></TextBlock>
-                                            </DataTemplate>
-                                        </ListBox.ItemTemplate>
-                                    </ListBox>
-                                </ScrollViewer>
-                                <Button HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="50" Height="45" BorderBrush="{x:Null}" Command="{Binding Btn_qc1}" Margin="5">
-                                    <Image Width="45" Source="images/qc.png"/>
-                                </Button>
-                            </Grid>
-                        </TabItem>
-                    </TabControl>
+                    <Button Content="历史记录" BorderThickness="0"  FontFamily="黑体" FontSize="16" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="8,0,0,463.333" Background="{x:Null}" BorderBrush="{x:Null}" Click="Button_Click_His"/>
+                    <Grid x:Name="History" Visibility="Visible" ScrollViewer.CanContentScroll="True">
+                        <Label Width="57" Height="3" Background="#FF0A5DCF" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,25,0,0"></Label>
+                        <Label x:Name="H" Content="尚无历史纪录" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5,45,0,0" FontWeight="Bold" FontSize="16"/>
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" BorderThickness="0" Margin="0,45,0,0">
+                            <ListBox x:Name="listStockName1" Background="{x:Null}" BorderBrush="{x:Null}" ItemsSource="{Binding History}" FontSize="20" Width="304" Height="Auto" VerticalAlignment="Top" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled"  MouseLeftButtonUp="Mouse_H">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate >
+                                        <StackPanel Orientation="Vertical" HorizontalAlignment="Right" >
+                                            <TextBlock TextWrapping="Wrap" Text="{Binding Path=Expression}" Margin="5" FontSize="16" HorizontalAlignment="Right" TextAlignment="Right" Foreground="Gray" Width="270"></TextBlock>
+                                            <TextBlock Text="{Binding Path=Result}" Margin="5" FontSize="25" HorizontalAlignment="Right" TextAlignment="Right" Width="270"></TextBlock>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </ScrollViewer>
+                        <Button HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="50" Height="45" BorderBrush="{x:Null}" Command="{Binding Btn_qc}" Margin="5" Click="Button_Click_Qc">
+                            <Image Width="45" Source="images/qc.png"/>
+                        </Button>
+                    </Grid>
+                    <Button Content="内存" BorderThickness="0" FontFamily="黑体" FontSize="16" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="100,0,0,0" Background="{x:Null}" BorderBrush="{x:Null}" Click="Button_Click_Mer"/>
+                    <Grid x:Name="Memory" Visibility="Hidden" ScrollViewer.CanContentScroll="True">
+                        <Label Width="30" Height="3" Background="#FF0A5DCF" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="104,25,0,0"></Label>
+                        <Label x:Name="M" Content="内存中没有内容" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5,45,0,0" FontWeight="Bold" FontSize="16"/>
+                        <ScrollViewer VerticalScrollBarVisibility="Auto"  BorderThickness="0" Margin="0,45,0,0">
+                            <ListBox x:Name="listStockName" Background="{x:Null}" BorderBrush="{x:Null}" ItemsSource="{Binding Memory}" FontSize="20" Width="304" Height="Auto" VerticalAlignment="Top" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" MouseLeftButtonUp="Mouse_M">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding}" Margin="5" FontSize="25" HorizontalAlignment="Right" TextAlignment="Right" Width="270" >
+                                        </TextBlock>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </ScrollViewer>
+                        <Button HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="50" Height="45" BorderBrush="{x:Null}" Command="{Binding Btn_qc1}" Margin="5" Click="Button_Click_Qc1">
+                            <Image Width="45" Source="images/qc.png"/>
+                        </Button>
+                    </Grid>
                 </Grid>
             </Grid>
-    </Grid>
+        </Grid>
     </Border>
 </Window>
 

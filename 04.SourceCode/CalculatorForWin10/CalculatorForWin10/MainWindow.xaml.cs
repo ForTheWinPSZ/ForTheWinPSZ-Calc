@@ -21,43 +21,17 @@ namespace CalculatorForWin10
 	public partial class MainWindow : Window
 	{
         bool _clicked = false;
-
+        MainWindowsViewModel vm=new MainWindowsViewModel();
         public MainWindow()
         {
             InitializeComponent();
-            this.DataContext = new MainWindowsViewModel();
+            this.DataContext =vm;
         }
         protected override void OnSourceInitialized(EventArgs e)
         {
             IconHelper.RemoveIcon(this);
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            if (_clicked)
-            {
-                main.Width = 360;
-                smallClose.Visibility = Visibility.Visible;
-                smallMin.Visibility = Visibility.Visible;
-                smallMax.Visibility = Visibility.Visible;
-                bigClose.Visibility = Visibility.Hidden;
-                bigMin.Visibility = Visibility.Hidden;
-                bigMax.Visibility = Visibility.Hidden;
-                _clicked = false;
-            }
-            else
-            {
-                main.Width = 700;
-                bigClose.Visibility = Visibility.Visible;
-                bigMin.Visibility = Visibility.Visible;
-                bigMax.Visibility = Visibility.Visible;
-                smallClose.Visibility = Visibility.Hidden;
-                smallMin.Visibility = Visibility.Hidden;
-                smallMax.Visibility = Visibility.Hidden;
-                _clicked = true;
-            }
-            
-        }
+        
 
         private void Button_Click_Close(object sender, RoutedEventArgs e)
         {
@@ -68,34 +42,11 @@ namespace CalculatorForWin10
         {
             if (this.WindowState == WindowState.Maximized)
             {
-                if (_clicked)
-                {
-                    bigClose.Visibility = Visibility.Visible;
-                    bigMin.Visibility = Visibility.Visible;
-                    bigMax.Visibility = Visibility.Visible;
-                    smallClose.Visibility = Visibility.Hidden;
-                    smallMin.Visibility = Visibility.Hidden;
-                    smallMax.Visibility = Visibility.Hidden;
-                }
-                else
-                {
-                    smallClose.Visibility = Visibility.Visible;
-                    smallMin.Visibility = Visibility.Visible;
-                    smallMax.Visibility = Visibility.Visible;
-                    bigClose.Visibility = Visibility.Hidden;
-                    bigMin.Visibility = Visibility.Hidden;
-                    bigMax.Visibility = Visibility.Hidden;
-                }
+                
                 this.WindowState = WindowState.Normal; //设置窗口还原
             }
             else
             {
-                bigClose.Visibility = Visibility.Visible;
-                bigMin.Visibility = Visibility.Visible;
-                bigMax.Visibility = Visibility.Visible;
-                smallClose.Visibility = Visibility.Hidden;
-                smallMin.Visibility = Visibility.Hidden;
-                smallMax.Visibility = Visibility.Hidden;
                 this.WindowState = WindowState.Maximized; //设置窗口最大化
             }
         }
@@ -111,6 +62,44 @@ namespace CalculatorForWin10
             {
                 this.DragMove();
             }
+        }
+
+        private void Button_Click_His(object sender, RoutedEventArgs e)
+        {
+            History.Visibility = Visibility.Visible;
+            Memory.Visibility = Visibility.Hidden;
+        }
+
+        private void Button_Click_Mer(object sender, RoutedEventArgs e)
+        {
+            History.Visibility = Visibility.Hidden;
+            Memory.Visibility = Visibility.Visible;
+        }
+
+        private void Button_Click_Equal(object sender, RoutedEventArgs e)
+        {
+            H.Visibility = Visibility.Hidden;
+        }
+        private void Button_Click_Ms(object sender, RoutedEventArgs e)
+        {
+            M.Visibility = Visibility.Hidden;
+        }
+        private void Button_Click_Qc(object sender, RoutedEventArgs e)
+        {
+            H.Visibility = Visibility.Visible;
+        }
+        private void Button_Click_Qc1(object sender, RoutedEventArgs e)
+        {
+            M.Visibility = Visibility.Visible;
+        }
+        private void Mouse_M(object sender, MouseEventArgs e)
+        {
+            vm.ResultText = listStockName.SelectedItem.ToString();
+        }
+        private void Mouse_H(object sender, MouseEventArgs e)
+        {
+            string[] arr = listStockName1.SelectedItem.ToString().Split(new char[] {' '});
+            vm.ResultText = arr[arr.Length-1];
         }
     }
 }

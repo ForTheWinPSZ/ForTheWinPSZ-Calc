@@ -390,12 +390,12 @@ namespace CalculatorForWin10.ViewModel
             get { return _expressionText; }
             set { SetPropertyNotify(ref _expressionText, value, nameof(ExpressionText)); }
         }
-        private ObservableCollection<History> _history = new ObservableCollection<History>() { new History("", "尚无历史记录") };
+        private ObservableCollection<History> _history = new ObservableCollection<History>();
         public ObservableCollection<History> History
         {
             get { return _history; }
         }
-        private ObservableCollection<string> _memory =new ObservableCollection<string>() {"内存中没有内容"};
+        private ObservableCollection<string> _memory =new ObservableCollection<string>();
         public ObservableCollection<string> Memory
         {
             get { return _memory; }
