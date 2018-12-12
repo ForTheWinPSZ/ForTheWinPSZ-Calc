@@ -142,6 +142,8 @@ namespace Arithmetic.BinaryOperaion
                 char[] arr = value1.ToCharArray();
                 for (int i = arr.Length - 1; i >= 0; i--)
                 {
+                    if (arr[i] == '.')
+                        continue;
                     if (arr[i] != '9')
                     {
                         int a = ToInt32(arr[i]) - 47;

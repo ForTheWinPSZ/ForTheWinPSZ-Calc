@@ -73,6 +73,8 @@ namespace CalculatorForWin10.ViewModel
 
         private static string Rounding2(string resultValue, int num)
         {
+            Debug.WriteLine("resultValue:"+resultValue);
+            Debug.WriteLine("num:"+num);
             string value1 = resultValue.Substring(0, num);
             string value2 = resultValue.Substring(num, 1);
             if (ToDouble(value2) >= 5)
@@ -80,6 +82,8 @@ namespace CalculatorForWin10.ViewModel
                 char[] arr = value1.ToCharArray();
                 for(int i = arr.Length - 1; i >= 0; i--)
                 {
+                    if (arr[i] == '.')
+                        continue;
                     if (arr[i] != '9')
                     {
                         int a= ToInt32(arr[i]) - 47;

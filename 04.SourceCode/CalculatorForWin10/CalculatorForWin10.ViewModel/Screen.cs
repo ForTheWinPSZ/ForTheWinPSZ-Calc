@@ -160,7 +160,7 @@ namespace CalculatorForWin10.ViewModel
         }
         public void HandlePre()
         {
-            IUnary percent = new Percent(_expressionValue, _resultValue, _preResult);
+            Percent percent = new Percent(_expressionValue, _resultValue, _preResult, _lhistory);
             _expressionValue = percent.ReturnExpressionValue();
             _resultValue = percent.ReturnResultValue();
             _canNumberDef = false;
