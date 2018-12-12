@@ -29,28 +29,29 @@
                               ShadowDepth="0" />
         </Border.Effect>
         <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition  MinWidth="360" Width="299*"/>
-            <ColumnDefinition Width="340"/>
-        </Grid.ColumnDefinitions>
-        <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="80"/>
-                <RowDefinition Height="140"/>
-                <RowDefinition Height="20"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
+                <ColumnDefinition  MinWidth="360" Width="13*"/>
+                <ColumnDefinition Width="27*"/>
+                <ColumnDefinition Width="340"/>
             </Grid.ColumnDefinitions>
-            <Grid Grid.Row="0">
+            <Grid Grid.ColumnSpan="2">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="35" />
-                    <RowDefinition Height="45" />
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="140"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="45" />
+                    </Grid.RowDefinitions>
                     <Grid Grid.Row="0" MouseMove="Grid_MouseMove">
                         <Label VerticalAlignment="Center" Margin="7,0,0,0" FontSize="14" Width="60" HorizontalAlignment="Left">计算器</Label>
                         <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
@@ -74,87 +75,87 @@
                         </Button>
                     </Grid>
                 </Grid>
-            <Grid Grid.Row="1">
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Label x:Name="beforeText" Background="#EAEAEA" BorderBrush="#EAEAEA" HorizontalContentAlignment="Right" FontSize="16"  Content="{Binding ExpressionText}"/>
+                    <Label Grid.Row="1" x:Name="resultText" Background="#EAEAEA" BorderBrush="#EAEAEA" FontSize="32" FontWeight="Heavy" HorizontalContentAlignment="Right" Content="{Binding ResultText}"/>
+                </Grid>
+                <Grid Grid.Row="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button BorderThickness="0" Background="#eaeaea" Content="MC" Command="{Binding Btn_mc}"/>
+                    <Button BorderThickness="0" Grid.Column="1" Background="#eaeaea" Content="MR" Command="{Binding Btn_mr}"/>
+                    <Button BorderThickness="0" Grid.Column="2" Background="#eaeaea" Content="M+" Command="{Binding Btn_mplus}"/>
+                    <Button BorderThickness="0" Grid.Column="3" Background="#eaeaea" Content="M-" Command="{Binding Btn_mminus}"/>
+                    <Button BorderThickness="0" Grid.Column="4" Background="#eaeaea" Content="MS" Command="{Binding Btn_ms}"/>
+                    <Button BorderThickness="0" Grid.Column="5" Background="#eaeaea" Content="M▼" Command="{Binding Btn_mmore}"/>
+                </Grid>
+                <Grid Grid.Row="3" Background="#eaeaea">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button Margin="2" BorderThickness="0" x:Name="btn_pre"  Content="%" Background="#F3F3F3" FontSize="18" FontWeight="UltraLight" Command="{Binding Btn_pre}"/>
+                    <Button Margin="2" BorderThickness="0" x:Name="btn_CE" Grid.Row="1"  Background="#F3F3F3" Content="CE" FontSize="15" FontWeight="Normal" Command="{Binding Btn_ce}"/>
+                    <Button Margin="2" BorderThickness="0" x:Name="btn_C" Grid.Row="1" Grid.Column="1" Content="C" Background="#F3F3F3" FontSize="15" FontWeight="Normal" Command="{Binding Btn_c}"/>
+                    <Button Margin="2,2,0,2" BorderThickness="0" x:Name="btn_DEL" Grid.Row="1" Grid.Column="2"  Background="#F3F3F3" Command="{Binding Btn_del}">
+                        <Image Source="images/del.png" Width="90"/>
+                    </Button>
+                    <Button Margin="2" BorderThickness="0" x:Name="btn_divi" Grid.Row="1" Grid.Column="3" Content="÷" Background="#F3F3F3" FontSize="28" FontWeight="Light" Command="{Binding Btn_division}"/>
+                    <Button Margin="2" BorderThickness="0" x:Name="btn_sqrt" Grid.Column="1" Content="√" Background="#F3F3F3" FontSize="18" FontWeight="UltraLight" Command="{Binding Btn_squareroot}" />
+                    <Button Margin="2" BorderThickness="0" x:Name="btn_7" Grid.Row="2"  Content="7" FontSize="22" FontWeight="Normal" Background="#FBFBFB" Command="{Binding Btn_7}"/>
+                    <Button Margin="2" BorderThickness="0" x:Name="btn_8" Grid.Row="2" Grid.Column="1" Content="8" FontSize="22" FontWeight="Normal" Background="#FBFBFB" Command="{Binding Btn_8}"/>
+                    <Button Margin="2" BorderThickness="0" x:Name="btn_9" Grid.Row="2" Grid.Column="2" Content="9" FontSize="22" FontWeight="Normal" Background="#FBFBFB" Command="{Binding Btn_9}"/>
+                    <Button Margin="2" BorderThickness="0" x:Name="btn_muti" Grid.Row="2" Grid.Column="3" Content="×" Background="#F3F3F3" FontSize="28" FontWeight="Light" Command="{Binding Btn_multiplication}"/>
+                    <Button Margin="2" BorderThickness="0" x:Name="btn_squ" Grid.Column="2" Content="x²" Background="#F3F3F3" FontSize="18" FontWeight="UltraLight" Command="{Binding Btn_square}"/>
+                    <Button Margin="2" BorderThickness="0" x:Name="btn_4" Grid.Row="3" Content="4" Background="#FBFBFB" FontSize="22" FontWeight="Normal"  Command="{Binding Btn_4}"/>
+                    <Button Margin="2" BorderThickness="0" x:Name="btn_5" Grid.Row="3" Grid.Column="1" Content="5" Background="#FBFBFB" FontSize="22" FontWeight="Normal" Command="{Binding Btn_5}"/>
+                    <Button Margin="2" BorderThickness="0" x:Name="btn_6" Grid.Row="3" Grid.Column="2" Content="6" Background="#FBFBFB" FontSize="22" FontWeight="Normal" Command="{Binding Btn_6}"/>
+                    <Button Margin="2" BorderThickness="0" x:Name="btn_sub" Grid.Row="3" Grid.Column="3" Content="－" Background="#F3F3F3" FontSize="28" FontWeight="Light" Command="{Binding Btn_minus}"/>
+                    <Button Margin="2" BorderThickness="0" x:Name="btn_1" Grid.Row="4"  Content="1" Background="#FBFBFB" FontSize="22" FontWeight="Normal" Command="{Binding Btn_1}"/>
+                    <Button Margin="2" BorderThickness="0" x:Name="btn_2" Grid.Row="4" Grid.Column="1" Content="2" Background="#FBFBFB" FontSize="22" FontWeight="Normal" Command="{Binding Btn_2}"/>
+                    <Button Margin="2" BorderThickness="0" x:Name="btn_3" Grid.Row="4" Grid.Column="2" Content="3" Background="#FBFBFB" FontSize="22" FontWeight="Normal" Command="{Binding Btn_3}"/>
+                    <Button Margin="2" BorderThickness="0" x:Name="btn_add" Grid.Row="4" Grid.Column="3" Content="＋" Background="#F3F3F3" FontSize="28" FontWeight="Light" Command="{Binding Btn_plus}"/>
+                    <Button Margin="2" BorderThickness="0" x:Name="btn_reci" Grid.Column="3" Content="¹/x" FontSize="18" FontWeight="Light" Background="#F3F3F3" Command="{Binding Btn_reciprocal}"/>
+                    <Button Margin="2" BorderThickness="0" x:Name="btn_nega" Grid.Row="5"  Content="±" Background="#F3F3F3" FontSize="22" FontWeight="Light" Command="{Binding Btn_reverse}"/>
+                    <Button Margin="2" BorderThickness="0" x:Name="btn_0"  Grid.Row="5" Grid.Column="1" Content="0" Background="#FBFBFB" FontSize="22" FontWeight="Normal" Command="{Binding Btn_0}"/>
+                    <Button Margin="2" BorderThickness="0" x:Name="btn_point" Grid.Row="5" Grid.Column="2" Content="." Background="#FBFBFB" FontSize="28" FontWeight="Light" Command="{Binding Btn_point}"/>
+                    <Button Margin="2" BorderThickness="0" x:Name="btn_equal" Grid.Row="5" Grid.Column="3" Content="=" Background="#F3F3F3" FontSize="28" FontWeight="Light" Command="{Binding Btn_equal}"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="2">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="35"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Label x:Name="beforeText" Background="#EAEAEA" BorderBrush="#EAEAEA" HorizontalContentAlignment="Right" FontSize="16"  Content="{Binding ExpressionText}"/>
-                <Label Grid.Row="1" x:Name="resultText" Background="#EAEAEA" BorderBrush="#EAEAEA" FontSize="35" FontWeight="Heavy" HorizontalContentAlignment="Right" Content="{Binding ResultText}"/>
-            </Grid>
-            <Grid Grid.Row="2">
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Button BorderThickness="0" Background="#eaeaea" Content="MC" Command="{Binding Btn_mc}"/>
-                <Button BorderThickness="0" Grid.Column="1" Background="#eaeaea" Content="MR" Command="{Binding Btn_mr}"/>
-                <Button BorderThickness="0" Grid.Column="2" Background="#eaeaea" Content="M+" Command="{Binding Btn_mplus}"/>
-                <Button BorderThickness="0" Grid.Column="3" Background="#eaeaea" Content="M-" Command="{Binding Btn_mminus}"/>
-                <Button BorderThickness="0" Grid.Column="4" Background="#eaeaea" Content="MS" Command="{Binding Btn_ms}"/>
-                <Button BorderThickness="0" Grid.Column="5" Background="#eaeaea" Content="M▼" Command="{Binding Btn_mmore}"/>
-            </Grid>
-            <Grid Grid.Row="3" Background="#eaeaea">
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Button Margin="2" BorderThickness="0" x:Name="btn_pre"  Content="%" Background="#F3F3F3" FontSize="18" FontWeight="UltraLight" Command="{Binding Btn_pre}"/>
-                <Button Margin="2" BorderThickness="0" x:Name="btn_CE" Grid.Row="1"  Background="#F3F3F3" Content="CE" FontSize="15" FontWeight="Normal" Command="{Binding Btn_ce}"/>
-                <Button Margin="2" BorderThickness="0" x:Name="btn_C" Grid.Row="1" Grid.Column="1" Content="C" Background="#F3F3F3" FontSize="15" FontWeight="Normal" Command="{Binding Btn_c}"/>
-                <Button Margin="2,2,0,2" BorderThickness="0" x:Name="btn_DEL" Grid.Row="1" Grid.Column="2"  Background="#F3F3F3" Command="{Binding Btn_del}">
-                    <Image Source="images/del.png" Width="90"/>
-                </Button>
-                <Button Margin="2" BorderThickness="0" x:Name="btn_divi" Grid.Row="1" Grid.Column="3" Content="÷" Background="#F3F3F3" FontSize="28" FontWeight="Light" Command="{Binding Btn_division}"/>
-                <Button Margin="2" BorderThickness="0" x:Name="btn_sqrt" Grid.Column="1" Content="√" Background="#F3F3F3" FontSize="18" FontWeight="UltraLight" Command="{Binding Btn_squareroot}" />
-                <Button Margin="2" BorderThickness="0" x:Name="btn_7" Grid.Row="2"  Content="7" FontSize="22" FontWeight="Normal" Background="#FBFBFB" Command="{Binding Btn_7}"/>
-                <Button Margin="2" BorderThickness="0" x:Name="btn_8" Grid.Row="2" Grid.Column="1" Content="8" FontSize="22" FontWeight="Normal" Background="#FBFBFB" Command="{Binding Btn_8}"/>
-                <Button Margin="2" BorderThickness="0" x:Name="btn_9" Grid.Row="2" Grid.Column="2" Content="9" FontSize="22" FontWeight="Normal" Background="#FBFBFB" Command="{Binding Btn_9}"/>
-                <Button Margin="2" BorderThickness="0" x:Name="btn_muti" Grid.Row="2" Grid.Column="3" Content="×" Background="#F3F3F3" FontSize="28" FontWeight="Light" Command="{Binding Btn_multiplication}"/>
-                <Button Margin="2" BorderThickness="0" x:Name="btn_squ" Grid.Column="2" Content="x²" Background="#F3F3F3" FontSize="18" FontWeight="UltraLight" Command="{Binding Btn_square}"/>
-                <Button Margin="2" BorderThickness="0" x:Name="btn_4" Grid.Row="3" Content="4" Background="#FBFBFB" FontSize="22" FontWeight="Normal"  Command="{Binding Btn_4}"/>
-                <Button Margin="2" BorderThickness="0" x:Name="btn_5" Grid.Row="3" Grid.Column="1" Content="5" Background="#FBFBFB" FontSize="22" FontWeight="Normal" Command="{Binding Btn_5}"/>
-                <Button Margin="2" BorderThickness="0" x:Name="btn_6" Grid.Row="3" Grid.Column="2" Content="6" Background="#FBFBFB" FontSize="22" FontWeight="Normal" Command="{Binding Btn_6}"/>
-                <Button Margin="2" BorderThickness="0" x:Name="btn_sub" Grid.Row="3" Grid.Column="3" Content="－" Background="#F3F3F3" FontSize="28" FontWeight="Light" Command="{Binding Btn_minus}"/>
-                <Button Margin="2" BorderThickness="0" x:Name="btn_1" Grid.Row="4"  Content="1" Background="#FBFBFB" FontSize="22" FontWeight="Normal" Command="{Binding Btn_1}"/>
-                <Button Margin="2" BorderThickness="0" x:Name="btn_2" Grid.Row="4" Grid.Column="1" Content="2" Background="#FBFBFB" FontSize="22" FontWeight="Normal" Command="{Binding Btn_2}"/>
-                <Button Margin="2" BorderThickness="0" x:Name="btn_3" Grid.Row="4" Grid.Column="2" Content="3" Background="#FBFBFB" FontSize="22" FontWeight="Normal" Command="{Binding Btn_3}"/>
-                <Button Margin="2" BorderThickness="0" x:Name="btn_add" Grid.Row="4" Grid.Column="3" Content="＋" Background="#F3F3F3" FontSize="28" FontWeight="Light" Command="{Binding Btn_plus}"/>
-                <Button Margin="2" BorderThickness="0" x:Name="btn_reci" Grid.Column="3" Content="¹/x" FontSize="18" FontWeight="Light" Background="#F3F3F3" Command="{Binding Btn_reciprocal}"/>
-                <Button Margin="2" BorderThickness="0" x:Name="btn_nega" Grid.Row="5"  Content="±" Background="#F3F3F3" FontSize="22" FontWeight="Light" Command="{Binding Btn_reverse}"/>
-                <Button Margin="2" BorderThickness="0" x:Name="btn_0"  Grid.Row="5" Grid.Column="1" Content="0" Background="#FBFBFB" FontSize="22" FontWeight="Normal" Command="{Binding Btn_0}"/>
-                <Button Margin="2" BorderThickness="0" x:Name="btn_point" Grid.Row="5" Grid.Column="2" Content="." Background="#FBFBFB" FontSize="28" FontWeight="Light" Command="{Binding Btn_point}"/>
-                <Button Margin="2" BorderThickness="0" x:Name="btn_equal" Grid.Row="5" Grid.Column="3" Content="=" Background="#F3F3F3" FontSize="28" FontWeight="Light" Command="{Binding Btn_equal}"/>
-            </Grid>
-        </Grid>
-        <Grid Grid.Column="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="35"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
                 <Grid Grid.Row="0">
                     <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
                         <Button x:Name="bigMin" HorizontalAlignment="Right" Width="47" Background="#eaeaea" BorderThickness="0" FontSize="25" FontWeight="Bold" Content="-" Click="Button_Click_Min" Visibility="Hidden"/>
@@ -202,7 +203,7 @@
                     </TabControl>
                 </Grid>
             </Grid>
-    </Grid>
+        </Grid>
     </Border>
 </Window>
 
