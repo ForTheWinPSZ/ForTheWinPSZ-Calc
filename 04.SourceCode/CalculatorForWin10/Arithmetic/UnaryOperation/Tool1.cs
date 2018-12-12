@@ -11,11 +11,18 @@ namespace Arithmetic.UnaryOperation
     {
         public static string Calculate(string symbol, string param)
         {
-            double result = 0;
+            string result="";
             switch (symbol)
             {
                 case "sqr":
-                    result = ToDouble(param) * ToDouble(param);
+                    if(IsScienceCount(ToDouble(param))|| IsScienceCount(ToDouble(param) * ToDouble(param)))
+                    {
+                        result = (ToDouble(param) * ToDouble(param)).ToString().ToLower();
+                    }
+                    else
+                    {
+                        result = (ToDecimal(param) * ToDecimal(param)).ToString();
+                    }                   
                     break;
                 case "squareroot":
                     if (param.StartsWith("-"))
@@ -24,11 +31,17 @@ namespace Arithmetic.UnaryOperation
                     }
                     else
                     {
-                        result = Math.Sqrt(ToDouble(param));
+                        if (IsScienceCount(ToDouble(param)) || IsScienceCount(Math.Sqrt(ToDouble(param))))
+                            result = Math.Sqrt(ToDouble(param)).ToString().ToLower();
+                        else
+                            result= Sqrt(ToDecimal(param)).ToString();                                                               
                         break;
                     }
                 case "reverse":
-                    result = ToDouble(param) * -1;
+                    if (IsScienceCount(ToDouble(param)) || IsScienceCount(ToDouble(param) * -1))
+                        result = (ToDouble(param) * -1).ToString().ToLower();
+                    else
+                        result = Decimal.Negate(ToDecimal(param)).ToString();                        
                     break;
                 case "reciprocal":
                     if (param == "0")
@@ -37,11 +50,39 @@ namespace Arithmetic.UnaryOperation
                     }
                     else
                     {
-                        result = 1 / ToDouble(param);
+                        if (IsScienceCount(ToDouble(param)) || IsScienceCount(1 / ToDouble(param)))
+                            result = (1 / ToDouble(param)).ToString().ToLower();
+                        else
+                            result = (1/ToDecimal(param)).ToString();
                         break;
                     }
             }
-            return result.ToString();
+            return result;
         }
+
+        //计算decimal数值的平方根
+        public static decimal Sqrt(decimal d)
+        {
+            decimal x = d / 3;
+            decimal lastX = 0m;
+            for (int i = 0; i < 50; i++)
+            {
+                x = (d / (x * 2)) + (x / 2);
+                if (x == lastX) break;
+                lastX = x;
+            }
+            return x;
+        }
+
+        public static bool IsScienceCount(double num)
+        {
+            if (num > 9999999999999999 || num < -9999999999999999)
+                return true;
+            else
+                return false;
+        }
+
+
+
     }
 }
