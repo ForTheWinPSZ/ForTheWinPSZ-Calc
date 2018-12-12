@@ -35,8 +35,9 @@ namespace CalculatorForWin10.ViewModel
         #region 返回给model，界面显示
         public string GetResult()
         {
+           
             //不改变_resultValue的值，改变屏幕上_resultValue的显示
-            return Comma.AddComma(_resultValue);
+            return Comma.AddComma(Comma.MaxContain(_resultValue, _canNumberDef));
         }
 
         public string GetExpressionValue()
@@ -45,7 +46,7 @@ namespace CalculatorForWin10.ViewModel
         }
         public string GetPreResult()
         {
-            return Comma.AddComma(_preResult);
+            return Comma.AddComma(Comma.MaxContain(_preResult,_canNumberDef));
         }
 
         public List<History> History()
@@ -106,8 +107,11 @@ namespace CalculatorForWin10.ViewModel
         }
         public void HandleMultiplication()
         {
+            Debug.WriteLine("Res:" + _resultValue);
+            Debug.WriteLine("Pre1:" + _preResult);
             IBinary mul = new Multiplication(_resultValue, _expressionValue, _preResult);
             _preResult = mul.ReturnPreResult();
+            Debug.WriteLine("Pre2:" + _preResult);
             _expressionValue = mul.ReturnExpressionValue();
             _resultValue = "";
             _canNumberDef = false;

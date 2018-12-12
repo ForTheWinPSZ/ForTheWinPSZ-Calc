@@ -1,39 +1,111 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Convert;
 
 namespace CalculatorForWin10.ViewModel
 {
     static class Comma
     {
+        public static string MaxContain(string resultValue,bool isNumDef)
+        {
+
+            if (resultValue == ""||resultValue.Contains("不") || resultValue.Contains("无") || resultValue.Contains("未"))
+                return resultValue;
+            //科学记数法暂时不作取舍
+            if (resultValue.Contains("e") || resultValue.Contains("E"))
+                return resultValue;
+            //去掉小数后面多余的0
+            if (!isNumDef && resultValue.Contains("."))
+                resultValue = resultValue.TrimEnd('0');
+            #region 限制输出框最大容纳位数
+            //判断是否为0.
+            int index;
+            if (ToDouble(resultValue) < 1 && ToDouble(resultValue) > -1)
+                index = 1;
+            else
+                index = 0;
+            //有点有负号
+            if (resultValue.Contains(".") && resultValue.Contains("-") && resultValue.Length > index + 18)
+            {
+                Debug.WriteLine("index:" + index);
+                resultValue = Rounding2(resultValue, index + 18);
+                //resultValue = resultValue.Substring(0, index + 17) + Rounding(resultValue.Substring(index + 17, 1), resultValue.Substring(index + 18, 1));
+            }
+            //有点无负号
+            else if (resultValue.Length > index + 17 && (resultValue.Contains(".") && !resultValue.Contains("-")))
+            {
+                Debug.WriteLine("resultValue:"+resultValue);
+                resultValue = Rounding2(resultValue,index+17);
+                //resultValue = resultValue.Substring(0, index + 16) + Rounding(resultValue.Substring(index + 16, 1), resultValue.Substring(index + 17, 1));                
+            }
+            //无点有负号
+            else if (resultValue.Length > 17 && !(resultValue.Contains(".") && resultValue.Contains("-")))
+            {
+                resultValue = Rounding2(resultValue,17);
+                //resultValue = resultValue.Substring(0, 16) + Rounding(resultValue.Substring(16, 1), resultValue.Substring(17, 1));
+            }
+            //无点无负号
+            else if (resultValue.Length > 16 && !resultValue.Contains(".") && !resultValue.Contains("-"))
+            {
+                resultValue = Rounding2(resultValue, 16);
+                //resultValue = resultValue.Substring(0, 15) + Rounding(resultValue.Substring(15, 1), resultValue.Substring(16, 1));
+            }
+
+            if (!isNumDef)
+            {
+                //去掉小数后面多余的0和点
+                if (resultValue.Contains("."))
+                    resultValue = resultValue.TrimEnd('0');
+                //去掉尾数的点
+                if(resultValue.EndsWith("."))
+                    resultValue = resultValue.TrimEnd('.');
+            }
+
+            
+            
+            #endregion
+            return resultValue;
+        }
+
+        private static string Rounding2(string resultValue, int num)
+        {
+            string value1 = resultValue.Substring(0, num);
+            string value2 = resultValue.Substring(num, 1);
+            if (ToDouble(value2) >= 5)
+            {
+                char[] arr = value1.ToCharArray();
+                for(int i = arr.Length - 1; i >= 0; i--)
+                {
+                    if (arr[i] != '9')
+                    {
+                        int a= ToInt32(arr[i]) - 47;
+                        arr[i] = char.Parse(a.ToString());
+                        break;
+                    }
+                    else
+                    {
+                        arr[i] = '0';                         
+                    }
+                        
+                }
+                return new string(arr);
+            }
+            else
+            {
+                return value1;
+            }
+        }
+
         public static string AddComma(string resultValue)
         {
+            //科学记数法暂时不作取舍
+            if (resultValue.Contains("e") || resultValue.Contains("E"))
+                return resultValue;
             string integer; //输出框逗号显示部分
-            #region 限制输出框最大容纳位数
-            //负数小数，输出框最大容纳19位
-            if (resultValue.Contains("-") && resultValue.Contains(".") && resultValue.Length >= 19)
-            {
-                resultValue = resultValue.Substring(0, 19);
-            }
-            //正数小数，输出框最大容纳18位
-            else if (!resultValue.Contains("-") && resultValue.Contains(".") && resultValue.Length >= 18)
-            {
-                resultValue = resultValue.Substring(0, 18);
-            }
-            //负整数，输出框最大容纳17位
-            else if (resultValue.Contains("-") && !resultValue.Contains(".") && resultValue.Length >= 17)
-            {
-                resultValue = resultValue.Substring(0, 17);
-            }
-            //正整数，输出框最大容纳16位
-            else if (!resultValue.Contains("-") && !resultValue.Contains(".") && resultValue.Length >= 16)
-            {
-                resultValue = resultValue.Substring(0, 16);
-            }
-            #endregion
-
             if (resultValue.Contains("."))  //处理小数(正小数、负小数)
             {
                 if (resultValue.Contains("-"))
@@ -44,9 +116,9 @@ namespace CalculatorForWin10.ViewModel
                     return "-" + integer + resultValue.Substring(resultValue.IndexOf("."));
                 }
                 else
-                {
+                {                    
                     integer = resultValue.Substring(0, resultValue.IndexOf("."));
-                    CommaIndex(ref integer);
+                    CommaIndex(ref integer);                  
                     return integer + resultValue.Substring(resultValue.IndexOf("."));
                 }           
             }
@@ -101,5 +173,6 @@ namespace CalculatorForWin10.ViewModel
         }
         #endregion
 
+        
     }
 }
