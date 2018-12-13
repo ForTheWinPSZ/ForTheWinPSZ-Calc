@@ -295,7 +295,7 @@ namespace CalculatorForWin10.ViewModel
         #endregion
 
         #region 数字定义部分
-        private void Zero()
+        public void Zero()
         {
             screen.HandleZero("0");
             ResultText = screen.GetResult();

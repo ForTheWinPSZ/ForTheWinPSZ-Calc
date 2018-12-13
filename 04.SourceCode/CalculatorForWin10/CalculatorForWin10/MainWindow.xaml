@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         xmlns:ViewModel="clr-namespace:CalculatorForWin10.ViewModel;assembly=CalculatorForWin10.ViewModel" x:Class="CalculatorForWin10.MainWindow"
         mc:Ignorable="d"
         Title="计算器" Height="520" Width="700" MinHeight="501" MinWidth="360" Background="#eaeaea" x:Name="main">
@@ -10,7 +11,7 @@
         <Style TargetType="Window">
             <Setter Property="Background" Value="Transparent" />
             <Setter Property="WindowStyle" Value="None" />
-            <Setter Property="ResizeMode" Value="CanResize" />
+            <Setter Property="ResizeMode" Value="CanResizeWithGrip" />
             <Setter Property="AllowsTransparency" Value="True" />
             <Setter Property="WindowChrome.WindowChrome">
                 <Setter.Value>
@@ -19,6 +20,28 @@
             </Setter>
         </Style>
     </Window.Style>
+    <Window.InputBindings>
+        <KeyBinding Key="D1"  Command="{Binding Btn_1}" ></KeyBinding>
+        <KeyBinding Key="D2"  Command="{Binding Btn_2}" ></KeyBinding>
+        <KeyBinding Key="D3"  Command="{Binding Btn_3}" ></KeyBinding>
+        <KeyBinding Key="D4"  Command="{Binding Btn_4}" ></KeyBinding>
+        <KeyBinding Key="D5"  Command="{Binding Btn_5}" ></KeyBinding>
+        <KeyBinding Key="D6"  Command="{Binding Btn_6}" ></KeyBinding>
+        <KeyBinding Key="D7"  Command="{Binding Btn_7}" ></KeyBinding>
+        <KeyBinding Key="D8"  Command="{Binding Btn_8}" ></KeyBinding>
+        <KeyBinding Key="D9"  Command="{Binding Btn_9}" ></KeyBinding>
+        <KeyBinding Key="D0"  Command="{Binding Btn_0}" ></KeyBinding>
+        <KeyBinding Key="Backspace" Command="{Binding Btn_del}" ></KeyBinding>
+        <KeyBinding Modifiers="Shift" Key="OemPlus" Command="{Binding Btn_plus}" ></KeyBinding>
+        <KeyBinding Key="OemMinus" Command="{Binding Btn_minus}" ></KeyBinding>
+        <KeyBinding Modifiers="Shift" Key="D8" Command="{Binding Btn_multiplication}" ></KeyBinding>
+        <KeyBinding Key="OemQuestion" Command="{Binding Btn_division}" ></KeyBinding>
+        <KeyBinding Key="OemPlus" Command="{Binding Btn_equal}" ></KeyBinding>
+        <KeyBinding Modifiers="Shift" Key="D5" Command="{Binding Btn_pre}" ></KeyBinding>
+        <KeyBinding Key="OemPeriod"  Command="{Binding Btn_point}" ></KeyBinding>
+        <KeyBinding Key="Esc"  Command="{Binding Btn_c}" ></KeyBinding>
+        <KeyBinding Key="Delete"  Command="{Binding Btn_ce}" ></KeyBinding>
+    </Window.InputBindings>
     <Border
             Background="#FFE7E7E9"
             BorderThickness="1"
@@ -92,9 +115,10 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <Button BorderThickness="0"  Content="MC" Command="{Binding Btn_mc}" Background="#00DDDDDD" Click="Button_Click_Qc1"/>
+                    <Button BorderThickness="0"  Content="MC" Command="{Binding Btn_mc}" Background="#00DDDDDD" Click="Button_Click_Qc1">
+                    </Button>
                     <Button BorderThickness="0" Grid.Column="1" Content="MR" Command="{Binding Btn_mr}" Background="#00DDDDDD" />
-                    <Button BorderThickness="0" Grid.Column="2" Content="M+" Command="{Binding Btn_mplus}" Background="#00DDDDDD"/>
+                    <Button BorderThickness="0" Grid.Column="2" Content="M+" Command="{Binding Btn_mplus}" Background="#00DDDDDD" Height="20" VerticalAlignment="Top"/>
                     <Button BorderThickness="0" Grid.Column="3" Content="M-" Command="{Binding Btn_mminus}" Background="#00DDDDDD"/>
                     <Button BorderThickness="0" Grid.Column="4" Content="MS" Command="{Binding Btn_ms}" Background="#00DDDDDD" Click="Button_Click_Ms"/>
                     <Button BorderThickness="0" Grid.Column="5" Content="M▾" Command="{Binding Btn_mmore}" Background="#00DDDDDD"/>
@@ -131,7 +155,11 @@
                     <Button Margin="2" BorderThickness="0" x:Name="btn_5" Grid.Row="3" Grid.Column="1" Content="5" Background="#FBFBFB" FontSize="22" FontWeight="Normal" Command="{Binding Btn_5}"/>
                     <Button Margin="2" BorderThickness="0" x:Name="btn_6" Grid.Row="3" Grid.Column="2" Content="6" Background="#FBFBFB" FontSize="22" FontWeight="Normal" Command="{Binding Btn_6}" />
                     <Button Margin="2" BorderThickness="0" x:Name="btn_sub" Grid.Row="3" Grid.Column="3" Content="－" Background="#F3F3F3" FontSize="28" FontWeight="Light" Command="{Binding Btn_minus}" />
-                    <Button Margin="4,2,2,2" BorderThickness="0" x:Name="btn_1" Grid.Row="4"  Content="1" Background="#FBFBFB" FontSize="22" FontWeight="Normal" Command="{Binding Btn_1}"/>
+                    <Button Margin="4,2,2,2" BorderThickness="0" x:Name="btn_1" Grid.Row="4"  Content="1" Background="#FBFBFB" FontSize="22" FontWeight="Normal" >
+                        <Button.InputBindings>
+                            <MouseBinding MouseAction="LeftClick" Command="{Binding Btn_1}"></MouseBinding>
+                        </Button.InputBindings>
+                    </Button>
                     <Button Margin="2" BorderThickness="0" x:Name="btn_2" Grid.Row="4" Grid.Column="1" Content="2" Background="#FBFBFB" FontSize="22" FontWeight="Normal" Command="{Binding Btn_2}"/>
                     <Button Margin="2" BorderThickness="0" x:Name="btn_3" Grid.Row="4" Grid.Column="2" Content="3" Background="#FBFBFB" FontSize="22" FontWeight="Normal" Command="{Binding Btn_3}" />
                     <Button Margin="2" BorderThickness="0" x:Name="btn_add" Grid.Row="4" Grid.Column="3" Content="＋" Background="#F3F3F3" FontSize="28" FontWeight="Light" Command="{Binding Btn_plus}"/>
@@ -186,8 +214,16 @@
                             <ListBox x:Name="listStockName" Background="{x:Null}" BorderBrush="{x:Null}" ItemsSource="{Binding Memory}" FontSize="20" Width="304" Height="Auto" VerticalAlignment="Top" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" MouseLeftButtonUp="Mouse_M">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding}" Margin="5" FontSize="25" HorizontalAlignment="Right" TextAlignment="Right" Width="270" >
+                                        <StackPanel Orientation="Vertical" HorizontalAlignment="Right" >
+                                            <TextBlock Name="te" Text="{Binding}" Margin="5" FontFamily="等线" FontSize="25" FontWeight="Bold" HorizontalAlignment="Right" TextAlignment="Right" Width="270" >
                                         </TextBlock>
+                                            <Grid Height="15"></Grid>
+                                            <Grid>
+                                                <Button BorderThickness="0" FontFamily="等线" FontSize="12" FontWeight="Bold" Width="40" Height="30" Margin="0,0,15,0" Content="MC" Background="#00DDDDDD"/>
+                                                <Button BorderThickness="0" FontFamily="等线" FontSize="12" FontWeight="Bold" Width="40" Height="30" Margin="0,0,-125,0" Content="M+" Background="#00DDDDDD"/>
+                                                <Button BorderThickness="0" FontFamily="等线" FontSize="12" FontWeight="Bold" Width="40" Height="30" Content="M-" Background="#00DDDDDD" Margin="0,0,-255,0"/>
+                                            </Grid>
+                                        </StackPanel>
                                     </DataTemplate>
                                 </ListBox.ItemTemplate>
                             </ListBox>

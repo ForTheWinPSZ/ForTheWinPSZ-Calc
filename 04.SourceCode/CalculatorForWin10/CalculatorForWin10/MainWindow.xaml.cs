@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -13,6 +14,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Input;
+using NumberDefine;
+
 namespace CalculatorForWin10
 {
 	/// <summary>
@@ -22,6 +25,7 @@ namespace CalculatorForWin10
 	{
         bool _clicked = false;
         MainWindowsViewModel vm=new MainWindowsViewModel();
+        Screen s = new Screen();
         public MainWindow()
         {
             InitializeComponent();
@@ -98,8 +102,10 @@ namespace CalculatorForWin10
         }
         private void Mouse_H(object sender, MouseEventArgs e)
         {
-            string[] arr = listStockName1.SelectedItem.ToString().Split(new char[] {' '});
-            vm.ResultText = arr[arr.Length-1];
+            string[] arr = listStockName1.SelectedItem.ToString().Split(new char[] {'='});
+            vm.ResultText = arr[1].Trim();
+            vm.ExpressionText = arr[0].Trim();
         }
+        
     }
 }
