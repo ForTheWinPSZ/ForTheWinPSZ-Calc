@@ -105,14 +105,14 @@ namespace Arithmetic.BinaryOperaion
                 //resultValue = resultValue.Substring(0, index + 17) + Rounding(resultValue.Substring(index + 17, 1), resultValue.Substring(index + 18, 1));
             }
             //有点无负号
-            else if (resultValue.Length > index + 17 && (resultValue.Contains(".") && !resultValue.Contains("-")))
+            else if (resultValue.Length > index + 17 && resultValue.Contains(".") && !resultValue.Contains("-"))
             {
                 Debug.WriteLine("resultValue:" + resultValue);
                 resultValue = Rounding2(resultValue, index + 17);
                 //resultValue = resultValue.Substring(0, index + 16) + Rounding(resultValue.Substring(index + 16, 1), resultValue.Substring(index + 17, 1));                
             }
             //无点有负号
-            else if (resultValue.Length > 17 && !(resultValue.Contains(".") && resultValue.Contains("-")))
+            else if (resultValue.Length > 17 && !resultValue.Contains(".") && resultValue.Contains("-"))
             {
                 resultValue = Rounding2(resultValue, 17);
                 //resultValue = resultValue.Substring(0, 16) + Rounding(resultValue.Substring(16, 1), resultValue.Substring(17, 1));
@@ -142,6 +142,8 @@ namespace Arithmetic.BinaryOperaion
                 char[] arr = value1.ToCharArray();
                 for (int i = arr.Length - 1; i >= 0; i--)
                 {
+                    if (arr[i] == '.')
+                        continue;
                     if (arr[i] != '9')
                     {
                         int a = ToInt32(arr[i]) - 47;

@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
+using Arithmetic;
 
 namespace NumberDefine
 {
     public class OneToNine : Number
     {
-        public OneToNine(string content, string resultValue, bool canNumberDef, string expressionValue) : base(content,resultValue, canNumberDef, expressionValue)
+        public OneToNine(string content, string resultValue, bool canNumberDef, string expressionValue,string preResult, List<History> history, string lparm) : base(content,resultValue, canNumberDef, expressionValue,preResult,history,lparm)
         {
         }
 
@@ -17,6 +18,19 @@ namespace NumberDefine
         {
             if (!CanNumberDef)
             {
+                char[] binary = { '+', '-', '×', '÷' };                
+                if (ResultValue!=""&&ExpressionValue!=""&& ExpressionValue.LastIndexOfAny(binary)==-1)
+                {
+                    Lparm = ResultValue;
+                    historyString = ExpressionValue;
+                    AddHistory();
+                    IsUnary = true;
+                }
+                else
+                {
+                    IsUnary = false;
+                }
+
                 if (!ExpressionValue.EndsWith(" ") && ExpressionValue != "")
                 {
                     string[] arr = ExpressionValue.Split(new char[] { ' ' });
@@ -27,10 +41,7 @@ namespace NumberDefine
 
                 if (ResultValue=="0")
                     ResultValue = Content;
-                else if ((ResultValue.Contains("-") && ResultValue.Contains(".") && ResultValue.Length < 19) ||
-                   (!ResultValue.Contains("-") && ResultValue.Contains(".") && ResultValue.Length < 18) ||
-                        (ResultValue.Contains("-") && !ResultValue.Contains(".") && ResultValue.Length < 17) ||
-                        (!ResultValue.Contains("-") && !ResultValue.Contains(".") && ResultValue.Length < 16))
+                else 
                 {
                     ResultValue += Content;
                 }

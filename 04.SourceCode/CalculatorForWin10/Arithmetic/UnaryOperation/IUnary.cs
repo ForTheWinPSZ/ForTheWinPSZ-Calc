@@ -17,7 +17,7 @@ namespace Arithmetic.UnaryOperation
         protected string ExpressionValue { get => _expressionValue; set => _expressionValue = value; }
         protected string PreResult { get => _preResult; set => _preResult = value; }
         public IUnary(string expressionValue, string resultValue, string preResult)        {            ExpressionValue = expressionValue;            ResultValue = resultValue;            PreResult = preResult;
-            if (resultValue.Contains("."))            {                resultValue = Convert.ToDouble(resultValue).ToString();            }
+            if (resultValue.Contains("."))            {                resultValue = Convert.ToDecimal(resultValue).ToString();            }
             ChangeResultValue();
             ChangeExpression();        }
         public string GetUnaryExpression()        {            binaryIndex = ExpressionValue.LastIndexOf(" ") + 1;            return ExpressionValue.Substring(binaryIndex);        }
