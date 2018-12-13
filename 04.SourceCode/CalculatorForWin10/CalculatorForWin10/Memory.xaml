@@ -11,23 +11,28 @@
             <RowDefinition></RowDefinition>
             <RowDefinition Height="40"></RowDefinition>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
+        <Grid Grid.Row="0" x:Name="z">
             <StackPanel Orientation="Vertical">
                 <Label x:Name="M"  Margin="7,13,0,0" FontSize="13" FontWeight="Bold" Foreground="Black">内存中没有内容</Label>
-                <ScrollViewer VerticalScrollBarVisibility="Auto"  BorderThickness="0" Margin="0,45,0,0">
-                    <ListBox x:Name="listStockName" Background="{x:Null}" BorderBrush="{x:Null}" ItemsSource="{Binding Memory}" FontSize="20" Width="304" Height="Auto" VerticalAlignment="Top" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" MouseLeftButtonUp="Mouse_M">
+                <ScrollViewer VerticalScrollBarVisibility="Auto"  BorderThickness="0" Margin="0,-20,0,0" Height="{Binding ElementName=z,Path=ActualHeight}">
+                    <ListBox x:Name="listStockName" Background="{x:Null}" BorderBrush="{x:Null}" ItemsSource="{Binding Memory}" FontSize="20"  Width="{Binding ElementName=z,Path=ActualWidth}" Height="Auto" VerticalAlignment="Top" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" MouseLeftButtonUp="Mouse_M">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <StackPanel Orientation="Vertical" HorizontalAlignment="Right" >
-                                    <TextBlock Name="te" Text="{Binding}" Margin="5" FontFamily="等线" FontSize="25" FontWeight="Bold" HorizontalAlignment="Right" TextAlignment="Right" Width="270" >
+                                <StackPanel x:Name="q" Orientation="Vertical" HorizontalAlignment="Right" Background="#e6e6e6" Margin="-5,0,0,0">
+                                    <TextBlock Foreground="Black" Name="te" Text="{Binding}" Margin="0,20,30,0" FontFamily="等线" FontSize="25" FontWeight="Bold" HorizontalAlignment="Right" TextAlignment="Right"  Width="{Binding ElementName=z,Path=ActualWidth}">
                                     </TextBlock>
                                     <Grid Height="15"></Grid>
                                     <Grid>
-                                        <Button BorderThickness="0" FontFamily="等线" FontSize="12" FontWeight="Bold" Width="40" Height="30" Margin="0,0,15,0" Content="MC" Background="#00DDDDDD"/>
-                                        <Button BorderThickness="0" FontFamily="等线" FontSize="12" FontWeight="Bold" Width="40" Height="30" Margin="0,0,-125,0" Content="M+" Background="#00DDDDDD"/>
-                                        <Button BorderThickness="0" FontFamily="等线" FontSize="12" FontWeight="Bold" Width="40" Height="30" Content="M-" Background="#00DDDDDD" Margin="0,0,-255,0"/>
+                                        <Button Foreground="Black" BorderThickness="0" FontFamily="等线" FontSize="12" FontWeight="Bold" Width="40" Height="30" Margin="0,0,15,0" Content="MC" Background="#00DDDDDD"/>
+                                        <Button Foreground="Black" BorderThickness="0" FontFamily="等线" FontSize="12" FontWeight="Bold" Width="40" Height="30" Margin="0,0,-125,0" Content="M+" Background="#00DDDDDD"/>
+                                        <Button Foreground="Black" BorderThickness="0" FontFamily="等线" FontSize="12" FontWeight="Bold" Width="40" Height="30" Content="M-" Background="#00DDDDDD" Margin="0,0,-255,0"/>
                                     </Grid>
                                 </StackPanel>
+                                <DataTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="true">
+                                        <Setter TargetName="q" Property="Background" Value="#CFCFCF"></Setter>
+                                    </Trigger>
+                                </DataTemplate.Triggers>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>

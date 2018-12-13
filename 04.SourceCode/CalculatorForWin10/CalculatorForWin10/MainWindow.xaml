@@ -12,11 +12,11 @@
         <metro:FlyoutsControl VerticalAlignment="Bottom">
             <metro:Flyout x:Name="HistoryFlyout" Position="Bottom"
                           Visibility="Collapsed" TitleVisibility="Collapsed" CloseButtonVisibility="Collapsed" IsPinned="False" IsOpen="False">
-                <local:History Height="{Binding ElementName=BtnGroup, Path=ActualHeight}"/>
+                <local:History Height="{Binding ElementName=BtnGroup, Path=ActualHeight}" Background="#EFEFEF"/>
             </metro:Flyout>
             <metro:Flyout x:Name="MemoryFlyout" Position="Bottom"
                           Visibility="Collapsed" TitleVisibility="Collapsed" CloseButtonVisibility="Collapsed" IsPinned="False"  IsOpen="False">
-                <local:Memory Height="{Binding ElementName=BtnGroup, Path=ActualHeight}"/>
+                <local:Memory Height="{Binding ElementName=BtnGroup, Path=ActualHeight}" Background="#EFEFEF"/>
             </metro:Flyout>
             <metro:Flyout x:Name="ExtensionHistoryFlyout" Position="Right"
                           Visibility="Collapsed" TitleVisibility="Collapsed" CloseButtonVisibility="Collapsed" IsOpen="False">
@@ -58,9 +58,9 @@
         <Grid Grid.Row="0">
             <Label Content="计算器" Margin="7,4,0,0"></Label>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button Style="{StaticResource TitleButtonStyle}" Padding="0,0,0,1" Background="#E6E6E6" Width="46" Height="32" FontSize="9" Content="—" Click="Btn_Min_Click" />
-                <Button Style="{StaticResource TitleButtonStyle}" Padding="0,0,0,5" Background="#E6E6E6" Width="46" Height="32" FontSize="19" Content="□" Click="Btn_Max_Click" />
-                <Button Style="{StaticResource CloseButtonStyle}" Padding="0,0,0,5" Background="#E6E6E6" Width="46" Height="32" FontWeight="Light" FontSize="25" Content="×" Click="Btn_Close_Click" />
+                <Button Style="{StaticResource TitleButtonStyle}" Padding="0,0,0,1" Background="#E6E6E6" Width="46" Height="32" FontSize="9" Content="—" Click="Btn_Min_Click" Margin="0,-3,0,0" />
+                <Button Style="{StaticResource TitleButtonStyle}" Padding="0,0,0,5" Background="#E6E6E6" Width="46" Height="32" FontSize="19" Content="□" Click="Btn_Max_Click" Margin="0,-3,0,0" />
+                <Button Style="{StaticResource CloseButtonStyle}" Padding="0,0,0,5" Background="#E6E6E6" Width="46" Height="32" FontWeight="Light" FontSize="25" Content="×" Click="Btn_Close_Click" Margin="0,-3,0,0"/>
             </StackPanel>
         </Grid>
         <Grid Grid.Row="1" Margin="0" x:Name="Main">

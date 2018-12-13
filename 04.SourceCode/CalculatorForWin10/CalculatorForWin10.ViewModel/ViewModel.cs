@@ -418,4 +418,5 @@ namespace CalculatorForWin10.ViewModel
             }
         }
     }
+
 }
