@@ -160,10 +160,24 @@ namespace CalculatorForWin10.ViewModel
         }
         public void HandlePre()
         {
-            Percent percent = new Percent(_expressionValue, _resultValue, _preResult, _lhistory);
+            Percent percent = new Percent(_expressionValue, _resultValue, _preResult, _lhistory,_history,_lparm);
             _expressionValue = percent.ReturnExpressionValue();
             _resultValue = percent.ReturnResultValue();
             _canNumberDef = false;
+            if (percent.IsUnary)
+            {
+                _history = percent.ReturnHistory();
+                foreach (History h in _history)
+                {
+                    Debug.WriteLine("历史记录：" + h.ToString());
+                }
+                _lparm = percent.Lparm;
+                _canNumberDef = false;
+                if (_history.Count > 0)
+                {
+                    _lhistory = _history.Last<History>().ToString();
+                }
+            }
         }
         #endregion
 

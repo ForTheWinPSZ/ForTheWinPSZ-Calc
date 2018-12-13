@@ -236,6 +236,7 @@ namespace CalculatorForWin10.ViewModel
             screen.HandlePre();
             ResultText = screen.GetResult();
             ExpressionText = screen.GetExpressionValue();
+            ShowHistroy();
         }
         #endregion
 
