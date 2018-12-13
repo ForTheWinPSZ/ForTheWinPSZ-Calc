@@ -15,7 +15,7 @@ namespace Arithmetic.BinaryOperation
         protected string ExpressionValue { get => _expressionValue; set => _expressionValue = value; }
         protected string PreResult { get => _preResult; set => _preResult = value; }
 
-        public IBinary(string resultValue, string expressionValue, string preResult)        {            ResultValue = resultValue;            ExpressionValue = expressionValue;            PreResult = preResult;            if (ResultValue.Contains("."))            {                ResultValue = Convert.ToDouble(ResultValue).ToString();            }            Change();        }
+        public IBinary(string resultValue, string expressionValue, string preResult)        {            ResultValue = resultValue;            ExpressionValue = expressionValue;            PreResult = preResult;                        Change();        }
 
         public abstract void Change();
         public string ReturnResultValue()
