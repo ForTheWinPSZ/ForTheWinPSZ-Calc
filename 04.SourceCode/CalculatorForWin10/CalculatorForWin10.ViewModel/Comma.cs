@@ -77,9 +77,11 @@ namespace CalculatorForWin10.ViewModel
             string value2 = resultValue.Substring(num, 1);
             if (ToDouble(value2) >= 5)
             {
+                string mm = "";
                 char[] arr = value1.ToCharArray();
                 for(int i = arr.Length - 1; i >= 0; i--)
                 {
+                    
                     if (arr[i] == '.')
                         continue;
                     if (arr[i] != '9')
@@ -90,11 +92,15 @@ namespace CalculatorForWin10.ViewModel
                     }
                     else
                     {
+                        if (i == 0)
+                        {
+                            mm ="1";
+                        }
                         arr[i] = '0';                         
                     }
                         
                 }
-                return new string(arr);
+                return mm+ new string(arr);
             }
             else
             {
