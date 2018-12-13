@@ -8,98 +8,119 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Windows.Input;
+using MahApps.Metro.Controls;
 namespace CalculatorForWin10
 {
-	/// <summary>
-	/// Interaction logic for MainWindow.xaml
-	/// </summary>
-	public partial class MainWindow : Window
-	{
-        bool _clicked = false;
-        MainWindowsViewModel vm=new MainWindowsViewModel();
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : MetroWindow
+    {
+        private bool IsHistoryOpened = false;
+        private bool IsMemoryOpened = false;
+        private bool Arrived = false;
+        private Grid extension;
+        private UserControl extensionControl;
         public MainWindow()
         {
-            InitializeComponent();
-            this.DataContext =vm;
-        }
-        protected override void OnSourceInitialized(EventArgs e)
-        {
-            IconHelper.RemoveIcon(this);
-        }
-        
+            extensionControl = new Extension();
+            extension = new Grid();
+            extension.Width = 320;
+            extension.SetValue(Grid.ColumnProperty, 1);
+            extension.SetValue(NameProperty, "Second");
+            extension.Children.Add(extensionControl);
 
-        private void Button_Click_Close(object sender, RoutedEventArgs e)
+            InitializeComponent();
+        }
+
+        private void MetroWindow_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
+
+        private void Btn_Min_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
+        private void Btn_Max_Click(object sender, RoutedEventArgs e)
+        {
+            if (WindowState == WindowState.Maximized)
+            {
+                WindowState = WindowState.Normal;
+            }
+            else
+            {
+                WindowState = WindowState.Maximized;
+            }
+        }
+
+        private void Btn_Close_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
-        private void Button_Click_Max(object sender, RoutedEventArgs e)
+        private void Btn_History_Click(object sender, RoutedEventArgs e)
         {
-            if (this.WindowState == WindowState.Maximized)
+            this.HistoryFlyout.Visibility = Visibility.Visible;
+            if (IsHistoryOpened)
             {
-                
-                this.WindowState = WindowState.Normal; //设置窗口还原
+                this.HistoryFlyout.IsOpen = false;
+                IsHistoryOpened = false;
             }
             else
             {
-                this.WindowState = WindowState.Maximized; //设置窗口最大化
+                this.HistoryFlyout.IsOpen = true;
+                IsHistoryOpened = true;
             }
         }
 
-        private void Button_Click_Min(object sender, RoutedEventArgs e)
+        private void Btn_Memory_Click(object sender, RoutedEventArgs e)
         {
-            this.WindowState = WindowState.Minimized;
-        }
-
-        private void Grid_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (e.LeftButton == MouseButtonState.Pressed)
+            this.MemoryFlyout.Visibility = Visibility.Visible;
+            if (IsMemoryOpened)
             {
-                this.DragMove();
+                this.MemoryFlyout.IsOpen = false;
+                IsMemoryOpened = false;
+            }
+            else
+            {
+                this.MemoryFlyout.IsOpen = true;
+                IsMemoryOpened = true;
             }
         }
 
-        private void Button_Click_His(object sender, RoutedEventArgs e)
+        private void MetroWindow_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            History.Visibility = Visibility.Visible;
-            Memory.Visibility = Visibility.Hidden;
+            if (this.Width > 624 && Arrived == false)
+            {
+                this.MaxWidth = SystemParameters.WorkArea.Width;
+                ColumnDefinition col2 = new ColumnDefinition();
+                col2.MinWidth = 320;
+                col2.MaxWidth = 320;
+                Main.ColumnDefinitions.Add(col2);
+                Main.Children.Add(extension);
+                btn_history.Visibility = Visibility.Hidden;
+                btn_mopt.Visibility = Visibility.Hidden;
+                Arrived = true;
+            }
+
+            if (this.Width <= 624 && Arrived == true)
+            {
+                extension = Main.FindChild<Grid>("Second");
+                Main.Children.Remove(extension);
+                Main.ColumnDefinitions.RemoveAt(1);
+                btn_history.Visibility = Visibility.Visible;
+                btn_mopt.Visibility = Visibility.Visible;
+                Arrived = false;
+            }
         }
 
-        private void Button_Click_Mer(object sender, RoutedEventArgs e)
-        {
-            History.Visibility = Visibility.Hidden;
-            Memory.Visibility = Visibility.Visible;
-        }
 
-        private void Button_Click_Equal(object sender, RoutedEventArgs e)
-        {
-            H.Visibility = Visibility.Hidden;
-        }
-        private void Button_Click_Ms(object sender, RoutedEventArgs e)
-        {
-            M.Visibility = Visibility.Hidden;
-        }
-        private void Button_Click_Qc(object sender, RoutedEventArgs e)
-        {
-            H.Visibility = Visibility.Visible;
-        }
-        private void Button_Click_Qc1(object sender, RoutedEventArgs e)
-        {
-            M.Visibility = Visibility.Visible;
-        }
-        private void Mouse_M(object sender, MouseEventArgs e)
-        {
-            vm.ResultText = listStockName.SelectedItem.ToString();
-        }
-        private void Mouse_H(object sender, MouseEventArgs e)
-        {
-            string[] arr = listStockName1.SelectedItem.ToString().Split(new char[] {' '});
-            vm.ResultText = arr[arr.Length-1];
-        }
     }
 }
