@@ -300,66 +300,77 @@ namespace CalculatorForWin10.ViewModel
             screen.HandleZero("0");
             ResultText = screen.GetResult();
             ExpressionText = screen.GetExpressionValue();
+            ShowHistroy();
         }
         private void Point()
         {
             screen.HandlePoint(".");
             ResultText = screen.GetResult();
             ExpressionText = screen.GetExpressionValue();
+            ShowHistroy();
         }
         private void One()
         {
             screen.HandleNum("1");
             ResultText = screen.GetResult();
             ExpressionText = screen.GetExpressionValue();
+            ShowHistroy();
         }
         private void Two()
         {
             screen.HandleNum("2");
             ResultText = screen.GetResult();
             ExpressionText = screen.GetExpressionValue();
+            ShowHistroy();
         }
         private void Three()
         {
             screen.HandleNum("3");
             ResultText = screen.GetResult();
             ExpressionText = screen.GetExpressionValue();
+            ShowHistroy();
         }
         private void Four()
         {
             screen.HandleNum("4");
             ResultText = screen.GetResult();
             ExpressionText = screen.GetExpressionValue();
+            ShowHistroy();
         }
         private void Five()
         {
             screen.HandleNum("5");
             ResultText = screen.GetResult();
             ExpressionText = screen.GetExpressionValue();
+            ShowHistroy();
         }
         private void Six()
         {
             screen.HandleNum("6");
             ResultText = screen.GetResult();
             ExpressionText = screen.GetExpressionValue();
+            ShowHistroy();
         }
         private void Seven()
         {
             screen.HandleNum("7");
             ResultText = screen.GetResult();
             ExpressionText = screen.GetExpressionValue();
+            ShowHistroy();
         }
         private void Eight()
         {
             screen.HandleNum("8");
             ResultText = screen.GetResult();
             ExpressionText = screen.GetExpressionValue();
+            ShowHistroy();
         }
         private void Nine()
         {
             screen.HandleNum("9");
             ResultText = screen.GetResult();
             ExpressionText = screen.GetExpressionValue();
+            ShowHistroy();
         }
         #endregion
 
@@ -369,11 +380,7 @@ namespace CalculatorForWin10.ViewModel
             screen.HandleEqual();
             ResultText = screen.GetPreResult();
             ExpressionText = screen.GetExpressionValue();
-            History.Clear();
-            foreach (var item in screen.History())
-            {
-                History.Insert(0, item);
-            }
+            ShowHistroy();
         }
         #endregion
 
@@ -402,5 +409,13 @@ namespace CalculatorForWin10.ViewModel
         }
         #endregion
         
+        private void ShowHistroy()
+        {
+            History.Clear();
+            foreach (var item in screen.History())
+            {
+                History.Insert(0, item);
+            }
+        }
     }
 }

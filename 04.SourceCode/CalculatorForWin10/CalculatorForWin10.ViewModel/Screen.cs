@@ -161,7 +161,7 @@ namespace CalculatorForWin10.ViewModel
         }
         public void HandlePre()
         {
-            IUnary percent = new Percent(_expressionValue, _resultValue, _preResult);
+            Percent percent = new Percent(_expressionValue, _resultValue, _preResult, _lhistory);
             _expressionValue = percent.ReturnExpressionValue();
             _resultValue = percent.ReturnResultValue();
             _canNumberDef = false;
@@ -218,24 +218,67 @@ namespace CalculatorForWin10.ViewModel
         #region 数字定义
         public void HandleZero(string content)
         {
-            Number zero = new Zero(content,_resultValue,_canNumberDef, _expressionValue);
+            Number zero = new Zero(content,_resultValue,_canNumberDef, _expressionValue, _preResult,_history,_lparm);
             _resultValue = zero.ReturnResultValue();
             _canNumberDef = zero.ReturnCanNumberDef();
             _expressionValue = zero.ReturnExpressionValue();
+            if (zero.IsUnary)
+            {
+                _history = zero.ReturnHistory();
+                foreach (History h in _history)
+                {
+                    Debug.WriteLine("历史记录：" + h.ToString());
+                }
+                _lparm = zero.Lparm;
+                _canNumberDef = false;
+                if (_history.Count > 0)
+                {
+                    _lhistory = _history.Last<History>().ToString();
+                }
+            }
         }
         public void HandleNum(string content)
         {
-            Number oneToNine = new OneToNine(content,_resultValue,_canNumberDef,_expressionValue);
-            _resultValue = oneToNine.ReturnResultValue();
+            Number oneToNine = new OneToNine(content,_resultValue,_canNumberDef,_expressionValue, _preResult, _history, _lparm);
+            _resultValue = oneToNine.ReturnResultValue();           
             _canNumberDef = oneToNine.ReturnCanNumberDef();
             _expressionValue = oneToNine.ReturnExpressionValue();
+            if (oneToNine.IsUnary)
+            {
+                _history = oneToNine.ReturnHistory();
+                foreach (History h in _history)
+                {
+                    Debug.WriteLine("历史记录：" + h.ToString());
+                }
+                _lparm = oneToNine.Lparm;
+                _canNumberDef = false;
+                if (_history.Count > 0)
+                {
+                    _lhistory = _history.Last<History>().ToString();
+                }
+            }
+            
         }
         public void HandlePoint(string content)
         {
-            Number point = new Point(content,_resultValue,_canNumberDef, _expressionValue);
+            Number point = new Point(content,_resultValue,_canNumberDef, _expressionValue, _preResult, _history, _lparm);
             _resultValue = point.ReturnResultValue();
             _canNumberDef = point.ReturnCanNumberDef();
             _expressionValue = point.ReturnExpressionValue();
+            if (point.IsUnary)
+            {
+                _history = point.ReturnHistory();
+                foreach (History h in _history)
+                {
+                    Debug.WriteLine("历史记录：" + h.ToString());
+                }
+                _lparm = point.Lparm;
+                _canNumberDef = false;
+                if (_history.Count > 0)
+                {
+                    _lhistory = _history.Last<History>().ToString();
+                }
+            }
         }
         #endregion
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Arithmetic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace NumberDefine
 {
     public class Point:Number
     {
-        public Point(string content,string resultValue, bool canNumberDef, string expressionValue) : base(content,resultValue, canNumberDef, expressionValue)
+        public Point(string content,string resultValue, bool canNumberDef, string expressionValue, string preResult, List<History> history, string lparm) : base(content,resultValue, canNumberDef, expressionValue, preResult, history, lparm)
         {
         }
 
@@ -16,6 +17,19 @@ namespace NumberDefine
         {
             if (!CanNumberDef)
             {
+                char[] binary = { '+', '-', '×', '÷' };
+                if (ResultValue != "" && ExpressionValue != "" && ExpressionValue.LastIndexOfAny(binary) == -1)
+                {
+                    Lparm = ResultValue;
+                    historyString = ExpressionValue;
+                    AddHistory();
+                    IsUnary = true;
+                }
+                else
+                {
+                    IsUnary = false;
+                }
+
                 if (!ExpressionValue.EndsWith(" ") && ExpressionValue != "")
                 {
                     string[] arr = ExpressionValue.Split(new char[] { ' ' });
