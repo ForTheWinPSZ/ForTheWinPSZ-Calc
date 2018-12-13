@@ -12,8 +12,7 @@ namespace CalculatorForWin10.ViewModel
     {
         public static string MaxContain(string resultValue,bool isNumDef)
         {
-
-            if (resultValue == ""||resultValue.Contains("不") || resultValue.Contains("无") || resultValue.Contains("未"))
+            if (isNumDef||resultValue == ""||resultValue.Contains("不") || resultValue.Contains("无") || resultValue.Contains("未"))
                 return resultValue;
             //科学记数法暂时不作取舍
             if (resultValue.Contains("e") || resultValue.Contains("E"))
@@ -27,23 +26,22 @@ namespace CalculatorForWin10.ViewModel
             if (ToDouble(resultValue) < 1 && ToDouble(resultValue) > -1)
                 index = 1;
             else
-                index = 0;
+                index = 0;           
             //有点有负号
             if (resultValue.Contains(".") && resultValue.Contains("-") && resultValue.Length > index + 18)
-            {
-                Debug.WriteLine("index:" + index);
+            {                
                 resultValue = Rounding2(resultValue, index + 18);
                 //resultValue = resultValue.Substring(0, index + 17) + Rounding(resultValue.Substring(index + 17, 1), resultValue.Substring(index + 18, 1));
             }
             //有点无负号
-            else if (resultValue.Length > index + 17 && (resultValue.Contains(".") && !resultValue.Contains("-")))
+            else if (resultValue.Length > index + 17 && resultValue.Contains(".") && !resultValue.Contains("-"))
             {
-                Debug.WriteLine("resultValue:"+resultValue);
+                Debug.WriteLine("Comma resultValue:"+resultValue);
                 resultValue = Rounding2(resultValue,index+17);
                 //resultValue = resultValue.Substring(0, index + 16) + Rounding(resultValue.Substring(index + 16, 1), resultValue.Substring(index + 17, 1));                
             }
             //无点有负号
-            else if (resultValue.Length > 17 && !(resultValue.Contains(".") && resultValue.Contains("-")))
+            else if (resultValue.Length > 17 && !resultValue.Contains(".") && resultValue.Contains("-"))
             {
                 resultValue = Rounding2(resultValue,17);
                 //resultValue = resultValue.Substring(0, 16) + Rounding(resultValue.Substring(16, 1), resultValue.Substring(17, 1));
