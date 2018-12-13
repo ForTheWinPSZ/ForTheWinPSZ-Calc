@@ -12,11 +12,11 @@
         <metro:FlyoutsControl VerticalAlignment="Bottom">
             <metro:Flyout x:Name="HistoryFlyout" Position="Bottom"
                           Visibility="Collapsed" TitleVisibility="Collapsed" CloseButtonVisibility="Collapsed" IsPinned="False" IsOpen="False">
-                <local:History Height="{Binding ElementName=BtnGroup, Path=ActualHeight}"/>
+                <local:History Height="{Binding ElementName=BtnGroup, Path=ActualHeight}" Background="#EFEFEF"/>
             </metro:Flyout>
             <metro:Flyout x:Name="MemoryFlyout" Position="Bottom"
                           Visibility="Collapsed" TitleVisibility="Collapsed" CloseButtonVisibility="Collapsed" IsPinned="False"  IsOpen="False">
-                <local:Memory Height="{Binding ElementName=BtnGroup, Path=ActualHeight}"/>
+                <local:Memory Height="{Binding ElementName=BtnGroup, Path=ActualHeight}" Background="#EFEFEF"/>
             </metro:Flyout>
             <metro:Flyout x:Name="ExtensionHistoryFlyout" Position="Right"
                           Visibility="Collapsed" TitleVisibility="Collapsed" CloseButtonVisibility="Collapsed" IsOpen="False">
@@ -28,6 +28,28 @@
             </metro:Flyout>
         </metro:FlyoutsControl>
     </metro:MetroWindow.Flyouts>
+    <metro:MetroWindow.InputBindings>
+        <KeyBinding Key="D1"  Command="{Binding Btn_1}" ></KeyBinding>
+        <KeyBinding Key="D2"  Command="{Binding Btn_2}" ></KeyBinding>
+        <KeyBinding Key="D3"  Command="{Binding Btn_3}" ></KeyBinding>
+        <KeyBinding Key="D4"  Command="{Binding Btn_4}" ></KeyBinding>
+        <KeyBinding Key="D5"  Command="{Binding Btn_5}" ></KeyBinding>
+        <KeyBinding Key="D6"  Command="{Binding Btn_6}" ></KeyBinding>
+        <KeyBinding Key="D7"  Command="{Binding Btn_7}" ></KeyBinding>
+        <KeyBinding Key="D8"  Command="{Binding Btn_8}" ></KeyBinding>
+        <KeyBinding Key="D9"  Command="{Binding Btn_9}" ></KeyBinding>
+        <KeyBinding Key="D0"  Command="{Binding Btn_0}" ></KeyBinding>
+        <KeyBinding Key="Backspace" Command="{Binding Btn_del}" ></KeyBinding>
+        <KeyBinding Modifiers="Shift" Key="OemPlus" Command="{Binding Btn_plus}" ></KeyBinding>
+        <KeyBinding Key="OemMinus" Command="{Binding Btn_minus}" ></KeyBinding>
+        <KeyBinding Modifiers="Shift" Key="D8" Command="{Binding Btn_multiplication}" ></KeyBinding>
+        <KeyBinding Key="OemQuestion" Command="{Binding Btn_division}" ></KeyBinding>
+        <KeyBinding Key="OemPlus" Command="{Binding Btn_equal}" ></KeyBinding>
+        <KeyBinding Modifiers="Shift" Key="D5" Command="{Binding Btn_pre}" ></KeyBinding>
+        <KeyBinding Key="OemPeriod"  Command="{Binding Btn_point}" ></KeyBinding>
+        <KeyBinding Key="Esc"  Command="{Binding Btn_c}" ></KeyBinding>
+        <KeyBinding Key="Delete"  Command="{Binding Btn_ce}" ></KeyBinding>
+    </metro:MetroWindow.InputBindings>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="34"></RowDefinition>
@@ -36,9 +58,9 @@
         <Grid Grid.Row="0">
             <Label Content="计算器" Margin="7,4,0,0"></Label>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button Style="{StaticResource TitleButtonStyle}" Padding="0,0,0,1" Background="#E6E6E6" Width="46" Height="32" FontSize="9" Content="—" Click="Btn_Min_Click" />
-                <Button Style="{StaticResource TitleButtonStyle}" Padding="0,0,0,5" Background="#E6E6E6" Width="46" Height="32" FontSize="19" Content="□" Click="Btn_Max_Click" />
-                <Button Style="{StaticResource CloseButtonStyle}" Padding="0,0,0,5" Background="#E6E6E6" Width="46" Height="32" FontWeight="Light" FontSize="25" Content="×" Click="Btn_Close_Click" />
+                <Button Style="{StaticResource TitleButtonStyle}" Padding="0,0,0,1" Background="#E6E6E6" Width="46" Height="32" FontSize="9" Content="—" Click="Btn_Min_Click" Margin="0,-3,0,0" />
+                <Button Style="{StaticResource TitleButtonStyle}" Padding="0,0,0,5" Background="#E6E6E6" Width="46" Height="32" FontSize="19" Content="□" Click="Btn_Max_Click" Margin="0,-3,0,0" />
+                <Button Style="{StaticResource CloseButtonStyle}" Padding="0,0,0,5" Background="#E6E6E6" Width="46" Height="32" FontWeight="Light" FontSize="25" Content="×" Click="Btn_Close_Click" Margin="0,-3,0,0"/>
             </StackPanel>
         </Grid>
         <Grid Grid.Row="1" Margin="0" x:Name="Main">
@@ -104,8 +126,8 @@
                 </Grid>
                 <Grid Grid.Row="1">
                     <StackPanel Orientation="Vertical">
-                        <Label HorizontalContentAlignment="Right" Foreground="#5F5F5F" Height="25" FontSize="13" Content="0 + " Padding="0,2,20,0"></Label>
-                        <Label HorizontalContentAlignment="Right" FontFamily="Microsoft YaHei" FontSize="41" Content="0" Padding="0,0,10,0" FontWeight="Bold"></Label>
+                        <Label HorizontalContentAlignment="Right" Foreground="#5F5F5F" Height="25" FontSize="13" Padding="0,2,20,0"  Content="{Binding ExpressionText}" ></Label>
+                        <Label HorizontalContentAlignment="Right" FontFamily="Microsoft YaHei" FontSize="41" Padding="0,0,10,0" FontWeight="Bold" Content="{Binding ResultText}"></Label>
                     </StackPanel>
                 </Grid>
                 <Grid Grid.Row="2">
@@ -122,11 +144,11 @@
                             <ColumnDefinition></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <Button x:Name="btn_mc" Style="{StaticResource CommonButtonStyle}" Margin="4,0,0,0" FontWeight="Bold"  Background="#E6E6E6" Grid.Column="0" Content="MC"></Button>
-                        <Button x:Name="btn_mr" Style="{StaticResource CommonButtonStyle}" Margin="2,0,0,0" FontWeight="Bold" Background="#E6E6E6" Grid.Column="1" Content="MR"></Button>
-                        <Button x:Name="btn_mp" Style="{StaticResource CommonButtonStyle}" Margin="2,0,0,0" FontWeight="Bold" Background="#E6E6E6" Grid.Column="2" Content="M+"></Button>
-                        <Button x:Name="btn_mm" Style="{StaticResource CommonButtonStyle}" Margin="2,0,0,0" FontWeight="Bold" Background="#E6E6E6" Grid.Column="3" Content="M-"></Button>
-                        <Button x:Name="btn_ms" Style="{StaticResource CommonButtonStyle}" Margin="2,0,0,0" FontWeight="Bold" Background="#E6E6E6" Grid.Column="4" Content="MS"></Button>
+                        <Button x:Name="btn_mc" Style="{StaticResource CommonButtonStyle}" Margin="4,0,0,0" FontWeight="Bold"  Background="#E6E6E6" Grid.Column="0" Content="MC" Command="{Binding Btn_mc}" Click="Button_Click_Qc1"></Button>
+                        <Button x:Name="btn_mr" Style="{StaticResource CommonButtonStyle}" Margin="2,0,0,0" FontWeight="Bold" Background="#E6E6E6" Grid.Column="1" Content="MR" Command="{Binding Btn_mr}" ></Button>
+                        <Button x:Name="btn_mp" Style="{StaticResource CommonButtonStyle}" Margin="2,0,0,0" FontWeight="Bold" Background="#E6E6E6" Grid.Column="2" Content="M+" Command="{Binding Btn_mplus}"></Button>
+                        <Button x:Name="btn_mm" Style="{StaticResource CommonButtonStyle}" Margin="2,0,0,0" FontWeight="Bold" Background="#E6E6E6" Grid.Column="3" Content="M-" Command="{Binding Btn_mminus}"></Button>
+                        <Button x:Name="btn_ms" Style="{StaticResource CommonButtonStyle}" Margin="2,0,0,0" FontWeight="Bold" Background="#E6E6E6" Grid.Column="4" Content="MS" Command="{Binding Btn_ms}" Click="Button_Click_Ms"></Button>
                     </Grid>
                     <Grid Grid.Column="3">
                         <Button x:Name="btn_mopt" BorderThickness="0" MaxWidth="78" Background="#E6E6E6" Margin="2,0,4,0" Click="Btn_Memory_Click">
@@ -206,11 +228,9 @@
                     <Button Margin="4,1,1,5" Style="{StaticResource CommonButtonStyle}" x:Name="btn_nega" Grid.Row="5"  Content="±" Background="#F0F0F0" FontSize="22" FontWeight="Light" Command="{Binding Btn_reverse}"/>
                     <Button Margin="1,1,1,5" Style="{StaticResource CommonButtonStyle}" x:Name="btn_0"  Grid.Row="5" Grid.Column="1" Content="0" Background="#FBFBFB" FontSize="22" FontWeight="Normal" Command="{Binding Btn_0}"/>
                     <Button Margin="1,1,1,5" Style="{StaticResource CommonButtonStyle}" x:Name="btn_point" Grid.Row="5" Grid.Column="2" Content="." Background="#F0F0F0" FontSize="28" FontWeight="Light" Command="{Binding Btn_point}"/>
-                    <Button Margin="1,1,4,5" Style="{StaticResource BinaryButtonStyle}" x:Name="btn_equal" Grid.Row="5" Grid.Column="3" Content="=" Background="#F0F0F0" FontSize="28" FontWeight="Light" Command="{Binding Btn_equal}"/>
+                    <Button Margin="1,1,4,5" Style="{StaticResource BinaryButtonStyle}" x:Name="btn_equal" Grid.Row="5" Grid.Column="3" Content="=" Background="#F0F0F0" FontSize="28" FontWeight="Light" Command="{Binding Btn_equal}" Click="Button_Click_Equal"/>
                 </Grid>
             </Grid>
         </Grid>
     </Grid>
 </metro:MetroWindow>
-
-

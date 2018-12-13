@@ -11,20 +11,30 @@
             <RowDefinition></RowDefinition>
             <RowDefinition Height="40"></RowDefinition>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
+        <Grid Grid.Row="0" Name="z">
             <StackPanel Orientation="Vertical">
-                <Label Margin="7,13,0,0" FontSize="13" FontWeight="Bold" Foreground="Black">尚无历史记录</Label>
-                <ScrollViewer VerticalScrollBarVisibility="Auto">
-                    <ListBox Background="#EFEFEF" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                        <ListBoxItem Width="{Binding ElementName = HistoryGrid,Path=ActualWidth}" HorizontalContentAlignment="Right">dsfgs</ListBoxItem>
-                        <ListBoxItem Width="{Binding ElementName = HistoryGrid,Path=ActualWidth}" HorizontalContentAlignment="Right">sdfg</ListBoxItem>
-                        <ListBoxItem Width="{Binding ElementName = HistoryGrid,Path=ActualWidth}" HorizontalContentAlignment="Right">sdfgds</ListBoxItem>
+                <Label x:Name="H" Content="尚无历史纪录" Margin="7,13,0,0" FontSize="13" FontWeight="Bold" Foreground="Black"/>
+                <ScrollViewer VerticalScrollBarVisibility="Auto" BorderThickness="0" Margin="0,-20,0,0" Height="{Binding ElementName=z,Path=ActualHeight}" >
+                    <ListBox x:Name="listStockName1"  BorderBrush="{x:Null}" ItemsSource="{Binding History}" FontSize="20" Width="{Binding ElementName=z,Path=ActualWidth}" Height="Auto" VerticalAlignment="Top" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled"  MouseLeftButtonUp="Mouse_H" >
+                        <ListBox.ItemTemplate>
+                            <DataTemplate >
+                                <StackPanel x:Name="q" Orientation="Vertical" HorizontalAlignment="Stretch" Background="#e6e6e6" Margin="-5,0,0,0">
+                                    <TextBlock Margin="0,20,15,0" TextWrapping="Wrap" Text="{Binding Path=Expression}"  FontSize="16" HorizontalAlignment="Right" TextAlignment="Right" Foreground="Gray" Width="{Binding ElementName=z,Path=ActualWidth}"></TextBlock>
+                                    <TextBlock Foreground="Black" Margin="0,10,15,10" Text="{Binding Path=Result}" FontSize="25" HorizontalAlignment="Right" TextAlignment="Right" Width="{Binding ElementName=z,Path=ActualWidth}"></TextBlock>
+                                </StackPanel>
+                                <DataTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="true">
+                                        <Setter TargetName="q" Property="Background" Value="#CFCFCF"></Setter>
+                                    </Trigger>
+                                </DataTemplate.Triggers>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
                     </ListBox>
                 </ScrollViewer>
             </StackPanel>
         </Grid>
         <Grid Grid.Row="1">
-            <Button BorderThickness="0" Background="Transparent" x:Name="btn_history_dustbin" Width="40" Height="40" HorizontalAlignment="Right">
+            <Button BorderThickness="0" Background="Transparent" x:Name="btn_history_dustbin" Width="40" Height="40" HorizontalAlignment="Right" Command="{Binding Btn_qc}" Click="Button_Click_Qc">
                 <Button.Template>
                     <ControlTemplate>
                         <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True">
