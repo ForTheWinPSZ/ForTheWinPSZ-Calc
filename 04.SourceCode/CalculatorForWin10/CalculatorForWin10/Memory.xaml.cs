@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CalculatorForWin10.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,20 @@ namespace CalculatorForWin10
     /// </summary>
     public partial class Memory : UserControl
     {
+        MainWindowsViewModel vm = new MainWindowsViewModel();
         public Memory()
         {
             InitializeComponent();
+        }
+
+        private void Mouse_M(object sender, MouseButtonEventArgs e)
+        {
+            vm.ResultText = listStockName.SelectedItem.ToString();
+        }
+
+        private void Button_Click_Qc1(object sender, RoutedEventArgs e)
+        {
+            M.Visibility = Visibility.Visible;
         }
     }
 }
