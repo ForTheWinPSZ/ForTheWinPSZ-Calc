@@ -83,8 +83,8 @@ namespace Arithmetic.BinaryOperaion
         #region 限制输出框最大容纳位数
         public static string MaxContain(string resultValue)
         {
-
-            if (resultValue == "" || resultValue.Contains("不") || resultValue.Contains("无") || resultValue.Contains("未"))
+            Debug.WriteLine("MaxContain:"+resultValue);
+            if (resultValue==null||resultValue == "" || resultValue.Contains("不") || resultValue.Contains("无") || resultValue.Contains("未"))
                 return resultValue;
             //科学记数法暂时不作取舍
             if (resultValue.Contains("e") || resultValue.Contains("E"))
@@ -101,27 +101,23 @@ namespace Arithmetic.BinaryOperaion
             if (resultValue.Contains(".") && resultValue.Contains("-") && resultValue.Length > index + 18)
             {
                 Debug.WriteLine("index:" + index);
-                resultValue = Rounding2(resultValue, index + 18);
-                //resultValue = resultValue.Substring(0, index + 17) + Rounding(resultValue.Substring(index + 17, 1), resultValue.Substring(index + 18, 1));
+                resultValue = Rounding2(resultValue, index + 18);              
             }
             //有点无负号
             else if (resultValue.Length > index + 17 && resultValue.Contains(".") && !resultValue.Contains("-"))
             {
                 Debug.WriteLine("resultValue:" + resultValue);
-                resultValue = Rounding2(resultValue, index + 17);
-                //resultValue = resultValue.Substring(0, index + 16) + Rounding(resultValue.Substring(index + 16, 1), resultValue.Substring(index + 17, 1));                
+                resultValue = Rounding2(resultValue, index + 17);                         
             }
             //无点有负号
             else if (resultValue.Length > 17 && !resultValue.Contains(".") && resultValue.Contains("-"))
             {
-                resultValue = Rounding2(resultValue, 17);
-                //resultValue = resultValue.Substring(0, 16) + Rounding(resultValue.Substring(16, 1), resultValue.Substring(17, 1));
+                resultValue = Rounding2(resultValue, 17);                
             }
             //无点无负号
             else if (resultValue.Length > 16 && !resultValue.Contains(".") && !resultValue.Contains("-"))
             {
-                resultValue = Rounding2(resultValue, 16);
-                //resultValue = resultValue.Substring(0, 15) + Rounding(resultValue.Substring(15, 1), resultValue.Substring(16, 1));
+                resultValue = Rounding2(resultValue, 16);               
             }           
             //去掉小数后面多余的0和点
             if (resultValue.Contains("."))
@@ -139,9 +135,11 @@ namespace Arithmetic.BinaryOperaion
             string value2 = resultValue.Substring(num, 1);
             if (ToDouble(value2) >= 5)
             {
+                string mm = "";
                 char[] arr = value1.ToCharArray();
                 for (int i = arr.Length - 1; i >= 0; i--)
                 {
+
                     if (arr[i] == '.')
                         continue;
                     if (arr[i] != '9')
@@ -152,11 +150,15 @@ namespace Arithmetic.BinaryOperaion
                     }
                     else
                     {
+                        if (i == 0)
+                        {
+                            mm = "1";
+                        }
                         arr[i] = '0';
                     }
 
                 }
-                return new string(arr);
+                return mm + new string(arr);
             }
             else
             {
