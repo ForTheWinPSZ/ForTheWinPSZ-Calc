@@ -20,8 +20,10 @@
                         preResult = "结果未定义";
                     else
                     {
+                        lparm = resultValue == "" ? preResult : resultValue;
                         historyString = expressionValue + (resultValue == "" ? Tool.MaxContain(preResult) : Tool.MaxContain(resultValue));
                         preResult = Tool.Compute(preResult, symbol, resultValue == "" ? preResult : resultValue);
+
                     }
                 }            }            else            {                if (resultValue.Contains("."))
                     resultValue = Convert.ToDecimal(resultValue).ToString();                if (preResult != "")                {                    if (LastHistoryHasBinary())                    {                        string[] arr = lastHistory.Split(new char[] { '=' });                                               int binaryIndex = arr[0].LastIndexOfAny(binary);                        string symbol = arr[0].Substring(binaryIndex, 1);                        string lastParam = arr[0].Substring(binaryIndex + 1).Trim();
