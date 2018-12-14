@@ -182,7 +182,7 @@
                     <Button Margin="4,1,1,1" Style="{StaticResource CommonButtonStyle}" x:Name="btn_pre" Content="%" Background="#F0F0F0" FontSize="18" FontWeight="UltraLight" Command="{Binding Btn_pre}"/>
                     <Button Margin="4,1,1,1" Style="{StaticResource CommonButtonStyle}" x:Name="btn_CE" Grid.Row="1" Background="#F0F0F0" Content="CE" FontSize="15" FontWeight="Normal" Command="{Binding Btn_ce}"/>
                     <Button Margin="1,1,1,1" Style="{StaticResource CommonButtonStyle}" x:Name="btn_C" Grid.Row="1" Grid.Column="1" Content="C" Background="#F0F0F0" FontSize="15" FontWeight="Normal" Command="{Binding Btn_c}"/>
-                    <Button BorderThickness="0" Background="#F0F0F0" Margin="1,1,1,1" x:Name="btn_DEL" Grid.Row="1" Grid.Column="2" Command="{Binding btn_del}">
+                    <Button BorderThickness="0" Background="#F0F0F0" Margin="1,1,1,1" x:Name="btn_DEL" Grid.Row="1" Grid.Column="2" Command="{Binding Btn_del}">
                         <Button.Template>
                             <ControlTemplate>
                                 <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True">
