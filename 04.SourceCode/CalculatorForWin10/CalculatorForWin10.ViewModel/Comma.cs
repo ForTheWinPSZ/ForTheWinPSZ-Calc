@@ -70,9 +70,7 @@ namespace CalculatorForWin10.ViewModel
         }
 
         private static string Rounding2(string resultValue, int num)
-        {
-            Debug.WriteLine("resultValue:"+resultValue);
-            Debug.WriteLine("num:"+num);
+        {          
             string value1 = resultValue.Substring(0, num);
             string value2 = resultValue.Substring(num, 1);
             if (ToDouble(value2) >= 5)
