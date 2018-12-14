@@ -7,7 +7,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CalculatorForWin10"
         mc:Ignorable="d"
-        Title="MainWindow" Height="502" Width="322" MinHeight="502" MinWidth="322" BorderThickness="1" BorderBrush="#707070" UseNoneWindowStyle="True" Background="#E6E6E6" ResizeMode="CanResizeWithGrip" MouseLeftButtonDown="MetroWindow_MouseLeftButtonDown" SizeChanged="MetroWindow_SizeChanged">
+        Title="MainWindow" Height="502" Width="322" MinHeight="502" MinWidth="322" BorderThickness="1" BorderBrush="#707070" UseNoneWindowStyle="True" Background="#E6E6E6" ResizeMode="CanResizeWithGrip" MouseLeftButtonDown="MetroWindow_MouseLeftButtonDown" SizeChanged="MetroWindow_SizeChanged" OpacityMask="#E6E6E6">
     <metro:MetroWindow.Flyouts>
         <metro:FlyoutsControl VerticalAlignment="Bottom">
             <metro:Flyout x:Name="HistoryFlyout" Position="Bottom"
@@ -17,14 +17,6 @@
             <metro:Flyout x:Name="MemoryFlyout" Position="Bottom"
                           Visibility="Collapsed" TitleVisibility="Collapsed" CloseButtonVisibility="Collapsed" IsPinned="False"  IsOpen="False">
                 <local:Memory Height="{Binding ElementName=BtnGroup, Path=ActualHeight}" Background="#EFEFEF"/>
-            </metro:Flyout>
-            <metro:Flyout x:Name="ExtensionHistoryFlyout" Position="Right"
-                          Visibility="Collapsed" TitleVisibility="Collapsed" CloseButtonVisibility="Collapsed" IsOpen="False">
-                <local:History Width="320" Background="#E6E6E6"/>
-            </metro:Flyout>
-            <metro:Flyout x:Name="ExtensionMemoryFlyout" Position="Right"
-                          Visibility="Collapsed" TitleVisibility="Collapsed" CloseButtonVisibility="Collapsed" IsOpen="False">
-                <local:Memory Width="320" Background="#E6E6E6"/>
             </metro:Flyout>
         </metro:FlyoutsControl>
     </metro:MetroWindow.Flyouts>

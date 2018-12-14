@@ -63,8 +63,8 @@ namespace CalculatorForWin10
             OpacityAnimation.Duration = TimeSpan.FromSeconds(0.005);
             his_Control.BeginAnimation(OpacityProperty, OpacityAnimation);
             ThicknessAnimation MarginAnimation = new ThicknessAnimation();
-            MarginAnimation.From = new Thickness(0, 15, 0, 0);
-            MarginAnimation.To = new Thickness(-20, 15, 0, 0);
+            MarginAnimation.From = new Thickness(0, 0, 0, 0);
+            MarginAnimation.To = new Thickness(-20, 0, 0, 0);
             MarginAnimation.Duration = TimeSpan.FromSeconds(0.3);
             extensionButtom.BeginAnimation(MarginProperty, MarginAnimation);
         }
@@ -77,8 +77,8 @@ namespace CalculatorForWin10
             OpacityAnimation.Duration = TimeSpan.FromSeconds(0.2);
             his_Control.BeginAnimation(OpacityProperty, OpacityAnimation);
             ThicknessAnimation MarginAnimation = new ThicknessAnimation();
-            MarginAnimation.From = new Thickness(-20, 15, 0, 0);
-            MarginAnimation.To = new Thickness(0, 15, 0, 0);
+            MarginAnimation.From = new Thickness(-20, 0, 0, 0);
+            MarginAnimation.To = new Thickness(0, 0, 0, 0);
             MarginAnimation.Duration = TimeSpan.FromSeconds(0.3);
             extensionButtom.BeginAnimation(MarginProperty, MarginAnimation);
         }
@@ -91,8 +91,8 @@ namespace CalculatorForWin10
             OpacityAnimation.Duration = TimeSpan.FromSeconds(0.005);
             mem_Control.BeginAnimation(OpacityProperty, OpacityAnimation);
             ThicknessAnimation MarginAnimation = new ThicknessAnimation();
-            MarginAnimation.From = new Thickness(0, 15, 0, 0);
-            MarginAnimation.To = new Thickness(30, 15, 0, 0);
+            MarginAnimation.From = new Thickness(0, 0, 0, 0);
+            MarginAnimation.To = new Thickness(30, 0, 0, 0);
             MarginAnimation.Duration = TimeSpan.FromSeconds(0.3);
             extensionButtom.BeginAnimation(MarginProperty, MarginAnimation);
         }
@@ -105,8 +105,8 @@ namespace CalculatorForWin10
             OpacityAnimation.Duration = TimeSpan.FromSeconds(0.2);
             mem_Control.BeginAnimation(OpacityProperty, OpacityAnimation);
             ThicknessAnimation MarginAnimation = new ThicknessAnimation();
-            MarginAnimation.From = new Thickness(30, 15, 0, 0);
-            MarginAnimation.To = new Thickness(0, 15, 0, 0);
+            MarginAnimation.From = new Thickness(30, 0, 0, 0);
+            MarginAnimation.To = new Thickness(0, 0, 0, 0);
             MarginAnimation.Duration = TimeSpan.FromSeconds(0.3);
             extensionButtom.BeginAnimation(MarginProperty, MarginAnimation);
         }

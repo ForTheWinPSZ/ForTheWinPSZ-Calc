@@ -87,7 +87,7 @@ namespace CalculatorForWin10
         }
 
         private void Btn_Memory_Click(object sender, RoutedEventArgs e)
-        {
+        {        
             this.MemoryFlyout.Visibility = Visibility.Visible;
             if (IsMemoryOpened)
             {
@@ -130,12 +130,12 @@ namespace CalculatorForWin10
         private void Button_Click_Equal(object sender, RoutedEventArgs e)
         {
             Label H = historyControl.FindName("H") as Label;
-            H.Visibility = Visibility.Hidden;
+            H.Visibility = Visibility.Collapsed;
         }
         private void Button_Click_Ms(object sender, RoutedEventArgs e)
         {
             Label M = memoryControl.FindName("M") as Label;
-            M.Visibility = Visibility.Hidden;
+            M.Opacity = 0;
         }
         private void Button_Click_Qc1(object sender, RoutedEventArgs e)
         {
