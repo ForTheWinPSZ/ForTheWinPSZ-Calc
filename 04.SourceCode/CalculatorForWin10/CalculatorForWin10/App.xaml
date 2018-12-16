@@ -16,6 +16,9 @@
                 <ResourceDictionary Source="./Styles/TitleButton.xaml" />
                 <ResourceDictionary Source="./Styles/BinaryButton.xaml" />
                 <ResourceDictionary Source="./Styles/ExtensionButton.xaml" />
+                <ResourceDictionary Source="./Styles/ExtensionMButton.xaml" />
+                <ResourceDictionary Source="./Styles/MemoryListItem.xaml" />
+                <ResourceDictionary Source="./Styles/HistoryListItem.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

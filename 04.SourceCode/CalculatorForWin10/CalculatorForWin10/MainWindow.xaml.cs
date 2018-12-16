@@ -26,9 +26,14 @@ namespace CalculatorForWin10
         private bool Arrived = false;
         private Grid extension;
         private UserControl extensionControl;
+        private UserControl historyControl;
+        private UserControl memoryControl;
+        MainWindowsViewModel vm = new MainWindowsViewModel();
         public MainWindow()
         {
             extensionControl = new Extension();
+            historyControl = new History();
+            memoryControl = new Memory();
             extension = new Grid();
             extension.Width = 320;
             extension.SetValue(Grid.ColumnProperty, 1);
@@ -36,6 +41,7 @@ namespace CalculatorForWin10
             extension.Children.Add(extensionControl);
 
             InitializeComponent();
+            this.DataContext = vm;
         }
 
         private void MetroWindow_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -81,7 +87,7 @@ namespace CalculatorForWin10
         }
 
         private void Btn_Memory_Click(object sender, RoutedEventArgs e)
-        {
+        {        
             this.MemoryFlyout.Visibility = Visibility.Visible;
             if (IsMemoryOpened)
             {
@@ -97,6 +103,7 @@ namespace CalculatorForWin10
 
         private void MetroWindow_SizeChanged(object sender, SizeChangedEventArgs e)
         {
+            this.MemoryFlyout.IsOpen = false;            this.HistoryFlyout.IsOpen = false;            IsHistoryOpened = false;            IsMemoryOpened = false;
             if (this.Width > 624 && Arrived == false)
             {
                 this.MaxWidth = SystemParameters.WorkArea.Width;
@@ -120,7 +127,21 @@ namespace CalculatorForWin10
                 Arrived = false;
             }
         }
-
-
+        private void Button_Click_Equal(object sender, RoutedEventArgs e)
+        {
+            Label H = historyControl.FindName("H") as Label;
+            H.Visibility = Visibility.Collapsed;
+        }
+        private void Button_Click_Ms(object sender, RoutedEventArgs e)
+        {
+            Label M = memoryControl.FindName("M") as Label;
+            M.Opacity = 0;
+        }
+        private void Button_Click_Qc1(object sender, RoutedEventArgs e)
+        {
+            Label M = memoryControl.FindName("M") as Label;
+            M.Visibility = Visibility.Visible;
+        }
+        
     }
 }
