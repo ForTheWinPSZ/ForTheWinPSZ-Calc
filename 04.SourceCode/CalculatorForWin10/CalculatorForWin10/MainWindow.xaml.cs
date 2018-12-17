@@ -112,7 +112,10 @@ namespace CalculatorForWin10
 
         private void MetroWindow_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            this.MemoryFlyout.IsOpen = false;            this.HistoryFlyout.IsOpen = false;            IsHistoryOpened = false;            IsMemoryOpened = false;
+            this.MemoryFlyout.IsOpen = false;
+            this.HistoryFlyout.IsOpen = false;
+            IsHistoryOpened = false;
+            IsMemoryOpened = false;
             if (this.Width > 624 && Arrived == false)
             {
                 this.MaxWidth = SystemParameters.WorkArea.Width;
