@@ -22,6 +22,7 @@ namespace CalculatorForWin10
     public partial class Memory : UserControl
     {
         MainWindowsViewModel vm = new MainWindowsViewModel();
+        Window main = Application.Current.MainWindow;
         public Memory()
         {
             InitializeComponent();
@@ -29,7 +30,6 @@ namespace CalculatorForWin10
 
         private void Mouse_M(object sender, MouseButtonEventArgs e)
         {
-            Window main = Application.Current.MainWindow;
             Label re = main.FindName("re") as Label;
             re.Content = listStockName.SelectedItem.ToString();
             Label ex = main.FindName("ex") as Label;
@@ -39,6 +39,14 @@ namespace CalculatorForWin10
         private void Button_Click_Qc1(object sender, RoutedEventArgs e)
         {
             M.Visibility = Visibility.Visible;
+            Button mc = main.FindName("btn_mc") as Button;
+            mc.IsEnabled = false;
+            Button mr = main.FindName("btn_mr") as Button;
+            mr.IsEnabled = false;
+            Button mopt = main.FindName("btn_mopt") as Button;
+            mopt.IsEnabled = false;
+            btn_memory_dustbin.Visibility = Visibility.Hidden;
         }
+        
     }
 }

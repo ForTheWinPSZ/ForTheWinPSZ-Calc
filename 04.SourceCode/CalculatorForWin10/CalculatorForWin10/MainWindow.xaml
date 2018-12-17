@@ -51,7 +51,7 @@
             <Label Content="计算器" Margin="7,4,0,0"></Label>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <Button Style="{StaticResource TitleButtonStyle}" Padding="0,0,0,1" Background="#E6E6E6" Width="46" Height="32" FontSize="9" Content="—" Click="Btn_Min_Click" Margin="0,-3,0,0" />
-                <Button x:Name="max" Style="{StaticResource TitleButtonStyle}" Padding="0,0,0,5" Background="#E6E6E6" Width="46" Height="32" FontSize="19" Content="□" Click="Btn_Max_Click" Margin="0,-3,0,0" />
+                <Button x:Name="Max_Button" Style="{StaticResource TitleButtonStyle}" Padding="0,0,0,5" Background="#E6E6E6" Width="46" Height="32" FontSize="19" Content="□" Click="Btn_Max_Click" Margin="0,-3,0,0" />
                 <Button Style="{StaticResource CloseButtonStyle}" Padding="0,0,0,5" Background="#E6E6E6" Width="46" Height="32" FontWeight="Light" FontSize="25" Content="×" Click="Btn_Close_Click" Margin="0,-3,0,0"/>
             </StackPanel>
         </Grid>
@@ -136,31 +136,15 @@
                             <ColumnDefinition></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <Button x:Name="btn_mc" Style="{StaticResource CommonButtonStyle}" Margin="4,0,0,0" FontWeight="Bold"  Background="#E6E6E6" Grid.Column="0" Content="MC" Command="{Binding Btn_mc}" Click="Button_Click_Qc1"></Button>
-                        <Button x:Name="btn_mr" Style="{StaticResource CommonButtonStyle}" Margin="2,0,0,0" FontWeight="Bold" Background="#E6E6E6" Grid.Column="1" Content="MR" Command="{Binding Btn_mr}" ></Button>
-                        <Button x:Name="btn_mp" Style="{StaticResource CommonButtonStyle}" Margin="2,0,0,0" FontWeight="Bold" Background="#E6E6E6" Grid.Column="2" Content="M+" Command="{Binding Btn_mplus}"></Button>
-                        <Button x:Name="btn_mm" Style="{StaticResource CommonButtonStyle}" Margin="2,0,0,0" FontWeight="Bold" Background="#E6E6E6" Grid.Column="3" Content="M-" Command="{Binding Btn_mminus}"></Button>
-                        <Button x:Name="btn_ms" Style="{StaticResource CommonButtonStyle}" Margin="2,0,0,0" FontWeight="Bold" Background="#E6E6E6" Grid.Column="4" Content="MS" Command="{Binding Btn_ms}" Click="Button_Click_Ms"></Button>
+                        <Button x:Name="btn_mc" FontSize="11" Style="{StaticResource CommonButtonStyle}" Margin="4,0,0,0" FontWeight="Bold"  Background="#E6E6E6" Grid.Column="0" Content="MC" Command="{Binding Btn_mc}" Click="Button_Click_Qc1" IsEnabled="False">
+                        </Button>
+                        <Button x:Name="btn_mr" FontSize="11" Style="{StaticResource CommonButtonStyle}" Margin="2,0,0,0" FontWeight="Bold" Background="#E6E6E6" Grid.Column="1" Content="MR" Command="{Binding Btn_mr}" IsEnabled="False"></Button>
+                        <Button x:Name="btn_mp" FontSize="11" Style="{StaticResource CommonButtonStyle}" Margin="2,0,0,0" FontWeight="Bold" Background="#E6E6E6" Grid.Column="2" Content="M+" Command="{Binding Btn_mplus}" Click="Btn_mp_Click"></Button>
+                        <Button x:Name="btn_mm" FontSize="11" Style="{StaticResource CommonButtonStyle}" Margin="2,0,0,0" FontWeight="Bold" Background="#E6E6E6" Grid.Column="3" Content="M-" Command="{Binding Btn_mminus}" Click="Btn_mm_Click"></Button>
+                        <Button x:Name="btn_ms" FontSize="11" Style="{StaticResource CommonButtonStyle}" Margin="2,0,0,0" FontWeight="Bold" Background="#E6E6E6" Grid.Column="4" Content="MS" Command="{Binding Btn_ms}" Click="Button_Click_Ms"></Button>
                     </Grid>
                     <Grid Grid.Column="3">
-                        <Button x:Name="btn_mopt" BorderThickness="0" MaxWidth="78" Background="#E6E6E6" Margin="2,0,4,0" Click="Btn_Memory_Click">
-                            <Button.Template>
-                                <ControlTemplate>
-                                    <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True">
-                                        <Image Source="./Images/MOpt.png" Width="25" Height="25" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Border>
-                                    <ControlTemplate.Triggers>
-                                        <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter TargetName="border" Property="Background" Value="#D5D5D5"/>
-                                            <Setter TargetName="border" Property="BorderThickness" Value="1"/>
-                                            <Setter TargetName="border" Property="BorderBrush" Value="#999A9C"/>
-                                        </Trigger>
-                                        <Trigger Property="Button.IsPressed" Value="True">
-                                            <Setter TargetName="border" Property="Background" Value="#8A8A8A"/>
-                                        </Trigger>
-                                    </ControlTemplate.Triggers>
-                                </ControlTemplate>
-                            </Button.Template>
+                        <Button x:Name="btn_mopt" FontSize="11" Style="{StaticResource CommonButtonStyle}" Margin="2,0,0,0" FontWeight="Bold"  Content="M▾" IsEnabled="False" BorderThickness="0" MaxWidth="78" Background="#E6E6E6" Click="Btn_Memory_Click" >
                         </Button>
                     </Grid>
                 </Grid>

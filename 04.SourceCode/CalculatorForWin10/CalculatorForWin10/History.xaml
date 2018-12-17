@@ -20,7 +20,7 @@
             </StackPanel>
         </Grid>
         <Grid Grid.Row="1">
-            <Button BorderThickness="0" Background="Transparent" x:Name="btn_history_dustbin" Width="40" Height="40" HorizontalAlignment="Right" Command="{Binding Btn_qc}" Click="Button_Click_Qc">
+            <Button BorderThickness="0" Background="Transparent" x:Name="btn_history_dustbin" Width="40" Height="40" HorizontalAlignment="Right" Command="{Binding Btn_qc}" Click="Button_Click_Qc" Visibility="Hidden">
                 <Button.Template>
                     <ControlTemplate>
                         <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True">

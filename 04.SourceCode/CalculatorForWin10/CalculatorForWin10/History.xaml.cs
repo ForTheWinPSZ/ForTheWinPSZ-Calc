@@ -39,6 +39,7 @@ namespace CalculatorForWin10
         private void Button_Click_Qc(object sender, RoutedEventArgs e)
         {
             H.Visibility = Visibility.Visible;
+            btn_history_dustbin.Visibility = Visibility.Hidden;
         }
     }
 }

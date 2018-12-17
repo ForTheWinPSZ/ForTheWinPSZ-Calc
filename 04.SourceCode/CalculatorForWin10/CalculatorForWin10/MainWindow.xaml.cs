@@ -139,16 +139,25 @@ namespace CalculatorForWin10
         private void Button_Click_Equal(object sender, RoutedEventArgs e)
         {
             localh.H.Visibility = Visibility.Hidden;
+            localh.btn_history_dustbin.Visibility = Visibility.Visible;
             History h = extensionControl.FindName("localh") as History;
             Label hi = h.FindName("H") as Label;
             hi.Visibility = Visibility.Hidden;
+            Button dustbin = h.FindName("btn_history_dustbin") as Button;
+            dustbin.Visibility = Visibility.Visible;
         }
         private void Button_Click_Ms(object sender, RoutedEventArgs e)
         {
             localm.M.Visibility = Visibility.Hidden;
+            localm.btn_memory_dustbin.Visibility = Visibility.Visible;
             Memory m = extensionControl.FindName("localm") as Memory;
             Label me =m.FindName("M") as Label;
             me.Visibility = Visibility.Hidden;
+            Button dustbin= m.FindName("btn_memory_dustbin") as Button;
+            dustbin.Visibility = Visibility.Visible;
+            btn_mc.IsEnabled = true;
+            btn_mr.IsEnabled = true;
+            btn_mopt.IsEnabled = true;
         }
         private void Button_Click_Qc1(object sender, RoutedEventArgs e)
         {
@@ -156,7 +165,37 @@ namespace CalculatorForWin10
             Memory m = extensionControl.FindName("localm") as Memory;
             Label me = m.FindName("M") as Label;
             me.Visibility = Visibility.Visible;
+            btn_mc.IsEnabled = false;
+            btn_mr.IsEnabled = false;
+            btn_mopt.IsEnabled = false;
         }
-        
+
+        private void Btn_mp_Click(object sender, RoutedEventArgs e)
+        {
+            localm.M.Visibility = Visibility.Hidden;
+            localm.btn_memory_dustbin.Visibility = Visibility.Visible;
+            Memory m = extensionControl.FindName("localm") as Memory;
+            Label me = m.FindName("M") as Label;
+            me.Visibility = Visibility.Hidden;
+            Button dustbin = m.FindName("btn_memory_dustbin") as Button;
+            dustbin.Visibility = Visibility.Visible;
+            btn_mc.IsEnabled = true;
+            btn_mr.IsEnabled = true;
+            btn_mopt.IsEnabled = true;
+        }
+
+        private void Btn_mm_Click(object sender, RoutedEventArgs e)
+        {
+            localm.M.Visibility = Visibility.Hidden;
+            localm.btn_memory_dustbin.Visibility = Visibility.Visible;
+            Memory m = extensionControl.FindName("localm") as Memory;
+            Label me = m.FindName("M") as Label;
+            me.Visibility = Visibility.Hidden;
+            Button dustbin = m.FindName("btn_memory_dustbin") as Button;
+            dustbin.Visibility = Visibility.Visible;
+            btn_mc.IsEnabled = true;
+            btn_mr.IsEnabled = true;
+            btn_mopt.IsEnabled = true;
+        }
     }
 }
