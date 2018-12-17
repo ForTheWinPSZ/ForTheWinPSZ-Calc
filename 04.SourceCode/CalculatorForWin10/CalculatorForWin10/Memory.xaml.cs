@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Collections.Specialized;
+using System.Diagnostics;
 
 namespace CalculatorForWin10
 {
@@ -21,13 +23,24 @@ namespace CalculatorForWin10
     /// </summary>
     public partial class Memory : UserControl
     {
+        private static int count = 0;
         MainWindowsViewModel vm = new MainWindowsViewModel();
         Window main = Application.Current.MainWindow;
         public Memory()
         {
             InitializeComponent();
+            listStockName.ItemContainerGenerator.StatusChanged += Items_CollectionChanged;
         }
 
+        private void Items_CollectionChanged(object sender, EventArgs e)
+        {
+            count++;
+            if (count == 4)
+            {
+                Debug.WriteLine(listStockName.Items.Count);
+                count = 0;
+            }
+        }
         private void Mouse_M(object sender, MouseButtonEventArgs e)
         {
             Label re = main.FindName("re") as Label;

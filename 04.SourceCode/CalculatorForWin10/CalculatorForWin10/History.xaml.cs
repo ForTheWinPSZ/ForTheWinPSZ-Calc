@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Diagnostics;
+using System.Collections.Specialized;
 
 namespace CalculatorForWin10
 {
@@ -21,11 +23,24 @@ namespace CalculatorForWin10
     /// </summary>
     public partial class History : UserControl
     {
+        private static int count = 0;
         MainWindowsViewModel vm = new MainWindowsViewModel();
         public History()
         {
-            InitializeComponent();
+            InitializeComponent();           
+            listStockName1.ItemContainerGenerator.StatusChanged += Items_CollectionChanged;
         }
+
+        private void Items_CollectionChanged(object sender, EventArgs e)
+        {
+            count++;
+            if (count == 4)
+            {
+                Debug.WriteLine(listStockName1.Items.Count);
+                count = 0;
+            }
+        }
+
         private void Mouse_H(object sender, MouseButtonEventArgs e)
         {
             Window main = Application.Current.MainWindow;
@@ -41,5 +56,7 @@ namespace CalculatorForWin10
             H.Visibility = Visibility.Visible;
             btn_history_dustbin.Visibility = Visibility.Hidden;
         }
+
+        
     }
 }
