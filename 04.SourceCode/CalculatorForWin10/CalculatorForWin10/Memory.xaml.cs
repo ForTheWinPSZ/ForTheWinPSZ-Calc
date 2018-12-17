@@ -29,7 +29,11 @@ namespace CalculatorForWin10
 
         private void Mouse_M(object sender, MouseButtonEventArgs e)
         {
-            vm.ResultText = listStockName.SelectedItem.ToString();
+            Window main = Application.Current.MainWindow;
+            Label re = main.FindName("re") as Label;
+            re.Content = listStockName.SelectedItem.ToString();
+            Label ex = main.FindName("ex") as Label;
+            ex.Content = "";
         }
 
         private void Button_Click_Qc1(object sender, RoutedEventArgs e)

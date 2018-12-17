@@ -12,11 +12,11 @@
         <metro:FlyoutsControl VerticalAlignment="Bottom">
             <metro:Flyout x:Name="HistoryFlyout" Position="Bottom"
                           Visibility="Collapsed" TitleVisibility="Collapsed" CloseButtonVisibility="Collapsed" IsPinned="False" IsOpen="False">
-                <local:History Height="{Binding ElementName=BtnGroup, Path=ActualHeight}" Background="#EFEFEF"/>
+                <local:History x:Name="localh" Height="{Binding ElementName=BtnGroup, Path=ActualHeight}" Background="#EFEFEF"/>
             </metro:Flyout>
             <metro:Flyout x:Name="MemoryFlyout" Position="Bottom"
                           Visibility="Collapsed" TitleVisibility="Collapsed" CloseButtonVisibility="Collapsed" IsPinned="False"  IsOpen="False">
-                <local:Memory Height="{Binding ElementName=BtnGroup, Path=ActualHeight}" Background="#EFEFEF"/>
+                <local:Memory x:Name="localm" Height="{Binding ElementName=BtnGroup, Path=ActualHeight}" Background="#EFEFEF"/>
             </metro:Flyout>
         </metro:FlyoutsControl>
     </metro:MetroWindow.Flyouts>
@@ -51,7 +51,7 @@
             <Label Content="计算器" Margin="7,4,0,0"></Label>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <Button Style="{StaticResource TitleButtonStyle}" Padding="0,0,0,1" Background="#E6E6E6" Width="46" Height="32" FontSize="9" Content="—" Click="Btn_Min_Click" Margin="0,-3,0,0" />
-                <Button Style="{StaticResource TitleButtonStyle}" Padding="0,0,0,5" Background="#E6E6E6" Width="46" Height="32" FontSize="19" Content="□" Click="Btn_Max_Click" Margin="0,-3,0,0" />
+                <Button x:Name="max" Style="{StaticResource TitleButtonStyle}" Padding="0,0,0,5" Background="#E6E6E6" Width="46" Height="32" FontSize="19" Content="□" Click="Btn_Max_Click" Margin="0,-3,0,0" />
                 <Button Style="{StaticResource CloseButtonStyle}" Padding="0,0,0,5" Background="#E6E6E6" Width="46" Height="32" FontWeight="Light" FontSize="25" Content="×" Click="Btn_Close_Click" Margin="0,-3,0,0"/>
             </StackPanel>
         </Grid>
@@ -118,8 +118,8 @@
                 </Grid>
                 <Grid Grid.Row="1">
                     <StackPanel Orientation="Vertical">
-                        <Label HorizontalContentAlignment="Right" Foreground="#5F5F5F" Height="25" FontSize="13" Padding="0,2,20,0"  Content="{Binding ExpressionText}" ></Label>
-                        <Label HorizontalContentAlignment="Right" FontFamily="Microsoft YaHei" FontSize="41" Padding="0,0,10,0" FontWeight="Bold" Content="{Binding ResultText}"></Label>
+                        <Label x:Name="ex" HorizontalContentAlignment="Right" Foreground="#5F5F5F" Height="25" FontSize="13" Padding="0,2,20,0"  Content="{Binding ExpressionText}" ></Label>
+                        <Label x:Name="re" HorizontalContentAlignment="Right" FontFamily="Microsoft YaHei" FontSize="41" Padding="0,0,10,0" FontWeight="Bold" Content="{Binding ResultText}"></Label>
                     </StackPanel>
                 </Grid>
                 <Grid Grid.Row="2">
@@ -179,10 +179,10 @@
                         <ColumnDefinition></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Button Margin="4,1,1,1" Style="{StaticResource CommonButtonStyle}" x:Name="btn_pre" Content="%" Background="#F0F0F0" FontSize="18" FontWeight="UltraLight" Command="{Binding Btn_pre}"/>
-                    <Button Margin="4,1,1,1" Style="{StaticResource CommonButtonStyle}" x:Name="btn_CE" Grid.Row="1" Background="#F0F0F0" Content="CE" FontSize="15" FontWeight="Normal" Command="{Binding Btn_ce}"/>
-                    <Button Margin="1,1,1,1" Style="{StaticResource CommonButtonStyle}" x:Name="btn_C" Grid.Row="1" Grid.Column="1" Content="C" Background="#F0F0F0" FontSize="15" FontWeight="Normal" Command="{Binding Btn_c}"/>
-                    <Button BorderThickness="0" Background="#F0F0F0" Margin="1,1,1,1" x:Name="btn_DEL" Grid.Row="1" Grid.Column="2" Command="{Binding Btn_del}">
+                    <Button Margin="4,2,2,2" Style="{StaticResource CommonButtonStyle}" x:Name="btn_pre" Content="%" Background="#F0F0F0" FontSize="18" FontWeight="UltraLight" Command="{Binding Btn_pre}"/>
+                    <Button Margin="4,2,2,2" Style="{StaticResource CommonButtonStyle}" x:Name="btn_CE" Grid.Row="1" Background="#F0F0F0" Content="CE" FontSize="15" FontWeight="Normal" Command="{Binding Btn_ce}"/>
+                    <Button Margin="2" Style="{StaticResource CommonButtonStyle}" x:Name="btn_C" Grid.Row="1" Grid.Column="1" Content="C" Background="#F0F0F0" FontSize="15" FontWeight="Normal" Command="{Binding Btn_c}"/>
+                    <Button BorderThickness="0" Background="#F0F0F0" Margin="2" x:Name="btn_DEL" Grid.Row="1" Grid.Column="2" Command="{Binding Btn_del}">
                         <Button.Template>
                             <ControlTemplate>
                                 <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True">
@@ -201,26 +201,26 @@
                             </ControlTemplate>
                         </Button.Template>
                     </Button>
-                    <Button Margin="1,1,4,1" Style="{StaticResource BinaryButtonStyle}" x:Name="btn_divi" Grid.Row="1" Grid.Column="3" Content="÷" Background="#F0F0F0" FontSize="28" FontWeight="Light" Command="{Binding Btn_division}"/>
-                    <Button Margin="1,1,1,1" Style="{StaticResource CommonButtonStyle}" x:Name="btn_sqrt" Grid.Column="1" Content="√" Background="#F0F0F0" FontSize="18" FontWeight="UltraLight" Command="{Binding Btn_squareroot}" />
-                    <Button Margin="4,1,1,1" Style="{StaticResource CommonButtonStyle}" x:Name="btn_7" Grid.Row="2"  Content="7" FontSize="22" FontWeight="Normal" Background="#FBFBFB" Command="{Binding Btn_7}"/>
-                    <Button Margin="1,1,1,1" Style="{StaticResource CommonButtonStyle}" x:Name="btn_8" Grid.Row="2" Grid.Column="1" Content="8" FontSize="22" FontWeight="Normal" Background="#FBFBFB" Command="{Binding Btn_8}"/>
-                    <Button Margin="1,1,1,1" Style="{StaticResource CommonButtonStyle}" x:Name="btn_9" Grid.Row="2" Grid.Column="2" Content="9" FontSize="22" FontWeight="Normal" Background="#FBFBFB" Command="{Binding Btn_9}"/>
-                    <Button Margin="1,1,4,1" Style="{StaticResource BinaryButtonStyle}" x:Name="btn_muti" Grid.Row="2" Grid.Column="3" Content="×" Background="#F0F0F0" FontSize="28" FontWeight="Light" Command="{Binding Btn_multiplication}"/>
-                    <Button Margin="1,1,1,1" Style="{StaticResource CommonButtonStyle}" x:Name="btn_squ" Grid.Column="2" Content="x²" Background="#F0F0F0" FontSize="18" FontWeight="UltraLight" Command="{Binding Btn_square}"/>
-                    <Button Margin="4,1,1,1" Style="{StaticResource CommonButtonStyle}" x:Name="btn_4" Grid.Row="3" Content="4" Background="#FBFBFB" FontSize="22" FontWeight="Normal"  Command="{Binding Btn_4}"/>
-                    <Button Margin="1,1,1,1" Style="{StaticResource CommonButtonStyle}" x:Name="btn_5" Grid.Row="3" Grid.Column="1" Content="5" Background="#FBFBFB" FontSize="22" FontWeight="Normal" Command="{Binding Btn_5}"/>
-                    <Button Margin="1,1,1,1" Style="{StaticResource CommonButtonStyle}" x:Name="btn_6" Grid.Row="3" Grid.Column="2" Content="6" Background="#FBFBFB" FontSize="22" FontWeight="Normal" Command="{Binding Btn_6}"/>
-                    <Button Margin="1,1,4,1" Style="{StaticResource BinaryButtonStyle}" x:Name="btn_sub" Grid.Row="3" Grid.Column="3" Content="－" Background="#F0F0F0" FontSize="28" FontWeight="Light" Command="{Binding Btn_minus}"/>
-                    <Button Margin="4,1,1,1" Style="{StaticResource CommonButtonStyle}" x:Name="btn_1" Grid.Row="4"  Content="1" Background="#FBFBFB" FontSize="22" FontWeight="Normal" Command="{Binding Btn_1}"/>
-                    <Button Margin="1,1,1,1" Style="{StaticResource CommonButtonStyle}" x:Name="btn_2" Grid.Row="4" Grid.Column="1" Content="2" Background="#FBFBFB" FontSize="22" FontWeight="Normal" Command="{Binding Btn_2}"/>
-                    <Button Margin="1,1,1,1" Style="{StaticResource CommonButtonStyle}" x:Name="btn_3" Grid.Row="4" Grid.Column="2" Content="3" Background="#FBFBFB" FontSize="22" FontWeight="Normal" Command="{Binding Btn_3}"/>
-                    <Button Margin="1,1,4,1" Style="{StaticResource BinaryButtonStyle}" x:Name="btn_add" Grid.Row="4" Grid.Column="3" Content="＋" Background="#F0F0F0" FontSize="28" FontWeight="Light" Command="{Binding Btn_plus}"/>
-                    <Button Margin="1,1,4,1" Style="{StaticResource CommonButtonStyle}" x:Name="btn_reci" Grid.Column="3" Content="¹/x" FontSize="18" FontWeight="Light" Background="#F0F0F0" Command="{Binding Btn_reciprocal}"/>
-                    <Button Margin="4,1,1,5" Style="{StaticResource CommonButtonStyle}" x:Name="btn_nega" Grid.Row="5"  Content="±" Background="#F0F0F0" FontSize="22" FontWeight="Light" Command="{Binding Btn_reverse}"/>
-                    <Button Margin="1,1,1,5" Style="{StaticResource CommonButtonStyle}" x:Name="btn_0"  Grid.Row="5" Grid.Column="1" Content="0" Background="#FBFBFB" FontSize="22" FontWeight="Normal" Command="{Binding Btn_0}"/>
-                    <Button Margin="1,1,1,5" Style="{StaticResource CommonButtonStyle}" x:Name="btn_point" Grid.Row="5" Grid.Column="2" Content="." Background="#F0F0F0" FontSize="28" FontWeight="Light" Command="{Binding Btn_point}"/>
-                    <Button Margin="1,1,4,5" Style="{StaticResource BinaryButtonStyle}" x:Name="btn_equal" Grid.Row="5" Grid.Column="3" Content="=" Background="#F0F0F0" FontSize="28" FontWeight="Light" Command="{Binding Btn_equal}" Click="Button_Click_Equal"/>
+                    <Button Margin="2,2,4,2" Style="{StaticResource BinaryButtonStyle}" x:Name="btn_divi" Grid.Row="1" Grid.Column="3" Content="÷" Background="#F0F0F0" FontSize="28" FontWeight="Light" Command="{Binding Btn_division}"/>
+                    <Button Margin="2" Style="{StaticResource CommonButtonStyle}" x:Name="btn_sqrt" Grid.Column="1" Content="√" Background="#F0F0F0" FontSize="18" FontWeight="UltraLight" Command="{Binding Btn_squareroot}" />
+                    <Button Margin="4,2,2,2" Style="{StaticResource CommonButtonStyle}" x:Name="btn_7" Grid.Row="2"  Content="7" FontSize="22" FontWeight="Normal" Background="#FBFBFB" Command="{Binding Btn_7}"/>
+                    <Button Margin="2" Style="{StaticResource CommonButtonStyle}" x:Name="btn_8" Grid.Row="2" Grid.Column="1" Content="8" FontSize="22" FontWeight="Normal" Background="#FBFBFB" Command="{Binding Btn_8}"/>
+                    <Button Margin="2" Style="{StaticResource CommonButtonStyle}" x:Name="btn_9" Grid.Row="2" Grid.Column="2" Content="9" FontSize="22" FontWeight="Normal" Background="#FBFBFB" Command="{Binding Btn_9}"/>
+                    <Button Margin="2,2,4,2" Style="{StaticResource BinaryButtonStyle}" x:Name="btn_muti" Grid.Row="2" Grid.Column="3" Content="×" Background="#F0F0F0" FontSize="28" FontWeight="Light" Command="{Binding Btn_multiplication}"/>
+                    <Button Margin="2" Style="{StaticResource CommonButtonStyle}" x:Name="btn_squ" Grid.Column="2" Content="x²" Background="#F0F0F0" FontSize="18" FontWeight="UltraLight" Command="{Binding Btn_square}"/>
+                    <Button Margin="4,2,2,2" Style="{StaticResource CommonButtonStyle}" x:Name="btn_4" Grid.Row="3" Content="4" Background="#FBFBFB" FontSize="22" FontWeight="Normal"  Command="{Binding Btn_4}"/>
+                    <Button Margin="2" Style="{StaticResource CommonButtonStyle}" x:Name="btn_5" Grid.Row="3" Grid.Column="1" Content="5" Background="#FBFBFB" FontSize="22" FontWeight="Normal" Command="{Binding Btn_5}"/>
+                    <Button Margin="2" Style="{StaticResource CommonButtonStyle}" x:Name="btn_6" Grid.Row="3" Grid.Column="2" Content="6" Background="#FBFBFB" FontSize="22" FontWeight="Normal" Command="{Binding Btn_6}"/>
+                    <Button Margin="2,2,4,2" Style="{StaticResource BinaryButtonStyle}" x:Name="btn_sub" Grid.Row="3" Grid.Column="3" Content="－" Background="#F0F0F0" FontSize="28" FontWeight="Light" Command="{Binding Btn_minus}"/>
+                    <Button Margin="4,2,2,2" Style="{StaticResource CommonButtonStyle}" x:Name="btn_1" Grid.Row="4"  Content="1" Background="#FBFBFB" FontSize="22" FontWeight="Normal" Command="{Binding Btn_1}"/>
+                    <Button Margin="2" Style="{StaticResource CommonButtonStyle}" x:Name="btn_2" Grid.Row="4" Grid.Column="1" Content="2" Background="#FBFBFB" FontSize="22" FontWeight="Normal" Command="{Binding Btn_2}"/>
+                    <Button Margin="2" Style="{StaticResource CommonButtonStyle}" x:Name="btn_3" Grid.Row="4" Grid.Column="2" Content="3" Background="#FBFBFB" FontSize="22" FontWeight="Normal" Command="{Binding Btn_3}"/>
+                    <Button Margin="2,2,4,2" Style="{StaticResource BinaryButtonStyle}" x:Name="btn_add" Grid.Row="4" Grid.Column="3" Content="＋" Background="#F0F0F0" FontSize="28" FontWeight="Light" Command="{Binding Btn_plus}"/>
+                    <Button Margin="2,2,4,2" Style="{StaticResource CommonButtonStyle}" x:Name="btn_reci" Grid.Column="3" Content="¹/x" FontSize="18" FontWeight="Light" Background="#F0F0F0" Command="{Binding Btn_reciprocal}"/>
+                    <Button Margin="4,2,2,5" Style="{StaticResource CommonButtonStyle}" x:Name="btn_nega" Grid.Row="5"  Content="±" Background="#F0F0F0" FontSize="22" FontWeight="Light" Command="{Binding Btn_reverse}"/>
+                    <Button Margin="2,2,2,5" Style="{StaticResource CommonButtonStyle}" x:Name="btn_0"  Grid.Row="5" Grid.Column="1" Content="0" Background="#FBFBFB" FontSize="22" FontWeight="Normal" Command="{Binding Btn_0}"/>
+                    <Button Margin="2,2,2,5" Style="{StaticResource CommonButtonStyle}" x:Name="btn_point" Grid.Row="5" Grid.Column="2" Content="." Background="#F0F0F0" FontSize="28" FontWeight="Light" Command="{Binding Btn_point}"/>
+                    <Button Margin="2,2,4,5" Style="{StaticResource BinaryButtonStyle}" x:Name="btn_equal" Grid.Row="5" Grid.Column="3" Content="=" Background="#F0F0F0" FontSize="28" FontWeight="Light" Command="{Binding Btn_equal}" Click="Button_Click_Equal"/>
                 </Grid>
             </Grid>
         </Grid>

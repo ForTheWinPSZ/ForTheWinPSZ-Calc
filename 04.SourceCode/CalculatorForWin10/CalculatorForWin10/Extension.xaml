@@ -26,10 +26,10 @@
         </Grid>
         <Grid Grid.Row="2" x:Name="extensionButtom" Margin="0,0,0,0">
             <UserControl x:Name="his_Control" Opacity="1" Panel.ZIndex="1">
-                <local:History Background="Transparent"></local:History>
+                <local:History x:Name="localh" Background="Transparent"></local:History>
             </UserControl>
             <UserControl x:Name="mem_Control" Opacity="0" Panel.ZIndex="0">
-                <local:Memory Background="Transparent"></local:Memory>
+                <local:Memory x:Name="localm" Background="Transparent"></local:Memory>
             </UserControl>
         </Grid>
     </Grid>

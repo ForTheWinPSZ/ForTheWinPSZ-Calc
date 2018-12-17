@@ -13,7 +13,7 @@ namespace CalculatorForWin10.ViewModel
 {
     public class MainWindowsViewModel : NotifyObject
     {
-        Screen screen = Screen.GetScreen();
+        public Screen screen = Screen.GetScreen();
         #region 按钮委托
         private readonly NVCommand btn_mc;
         public NVCommand Btn_mc{ get => btn_mc; }

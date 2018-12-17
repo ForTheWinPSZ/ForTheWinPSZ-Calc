@@ -29,6 +29,7 @@ namespace CalculatorForWin10
         private UserControl historyControl;
         private UserControl memoryControl;
         MainWindowsViewModel vm = new MainWindowsViewModel();
+        Screen s = new Screen();
         public MainWindow()
         {
             extensionControl = new Extension();
@@ -129,18 +130,24 @@ namespace CalculatorForWin10
         }
         private void Button_Click_Equal(object sender, RoutedEventArgs e)
         {
-            Label H = historyControl.FindName("H") as Label;
-            H.Visibility = Visibility.Collapsed;
+            localh.H.Visibility = Visibility.Hidden;
+            History h = extensionControl.FindName("localh") as History;
+            Label hi = h.FindName("H") as Label;
+            hi.Visibility = Visibility.Hidden;
         }
         private void Button_Click_Ms(object sender, RoutedEventArgs e)
         {
-            Label M = memoryControl.FindName("M") as Label;
-            M.Opacity = 0;
+            localm.M.Visibility = Visibility.Hidden;
+            Memory m = extensionControl.FindName("localm") as Memory;
+            Label me =m.FindName("M") as Label;
+            me.Visibility = Visibility.Hidden;
         }
         private void Button_Click_Qc1(object sender, RoutedEventArgs e)
         {
-            Label M = memoryControl.FindName("M") as Label;
-            M.Visibility = Visibility.Visible;
+            localm.M.Visibility = Visibility.Visible;
+            Memory m = extensionControl.FindName("localm") as Memory;
+            Label me = m.FindName("M") as Label;
+            me.Visibility = Visibility.Visible;
         }
         
     }
