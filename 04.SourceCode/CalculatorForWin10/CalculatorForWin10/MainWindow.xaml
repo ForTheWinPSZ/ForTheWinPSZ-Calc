@@ -7,7 +7,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CalculatorForWin10"
         mc:Ignorable="d"
-        Title="MainWindow" Height="502" Width="322" MinHeight="502" MinWidth="322" BorderThickness="1" BorderBrush="#707070" UseNoneWindowStyle="True" Background="#E6E6E6" ResizeMode="CanResizeWithGrip" MouseLeftButtonDown="MetroWindow_MouseLeftButtonDown" SizeChanged="MetroWindow_SizeChanged" OpacityMask="#E6E6E6">
+        Title="MainWindow" Height="502" Width="322" MinHeight="502" MinWidth="322" BorderThickness="1" BorderBrush="#707070" UseNoneWindowStyle="True" Background="#E6E6E6" ResizeMode="CanResizeWithGrip" MouseLeftButtonDown="MetroWindow_MouseLeftButtonDown" SizeChanged="MetroWindow_SizeChanged">
     <metro:MetroWindow.Flyouts>
         <metro:FlyoutsControl VerticalAlignment="Bottom">
             <metro:Flyout x:Name="HistoryFlyout" Position="Bottom"
@@ -182,7 +182,7 @@
                     <Button Margin="4,1,1,1" Style="{StaticResource CommonButtonStyle}" x:Name="btn_pre" Content="%" Background="#F0F0F0" FontSize="18" FontWeight="UltraLight" Command="{Binding Btn_pre}"/>
                     <Button Margin="4,1,1,1" Style="{StaticResource CommonButtonStyle}" x:Name="btn_CE" Grid.Row="1" Background="#F0F0F0" Content="CE" FontSize="15" FontWeight="Normal" Command="{Binding Btn_ce}"/>
                     <Button Margin="1,1,1,1" Style="{StaticResource CommonButtonStyle}" x:Name="btn_C" Grid.Row="1" Grid.Column="1" Content="C" Background="#F0F0F0" FontSize="15" FontWeight="Normal" Command="{Binding Btn_c}"/>
-                    <Button BorderThickness="0" Background="#F0F0F0" Margin="1,1,1,1" x:Name="btn_DEL" Grid.Row="1" Grid.Column="2" Command="{Binding btn_del}">
+                    <Button BorderThickness="0" Background="#F0F0F0" Margin="1,1,1,1" x:Name="btn_DEL" Grid.Row="1" Grid.Column="2" Command="{Binding Btn_del}">
                         <Button.Template>
                             <ControlTemplate>
                                 <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True">
