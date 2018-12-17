@@ -183,5 +183,8 @@
   <ItemGroup>
     <Resource Include="Images\maxTitle.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\del2.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

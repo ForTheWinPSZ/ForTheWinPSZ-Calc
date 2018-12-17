@@ -7,7 +7,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CalculatorForWin10"
         mc:Ignorable="d"
-        Title="MainWindow" Height="502" Width="322" MinHeight="502" MinWidth="322" BorderThickness="1" BorderBrush="#707070" UseNoneWindowStyle="True" Background="#E6E6E6" ResizeMode="CanResizeWithGrip" MouseLeftButtonDown="MetroWindow_MouseLeftButtonDown" SizeChanged="MetroWindow_SizeChanged" OpacityMask="#E6E6E6">
+        Title="MainWindow" Height="502" Width="322" MinHeight="502" MinWidth="322" BorderThickness="1" BorderBrush="#707070" UseNoneWindowStyle="True" Background="#E6E6E6" ResizeMode="CanResizeWithGrip" MouseLeftButtonDown="MetroWindow_MouseLeftButtonDown" SizeChanged="MetroWindow_SizeChanged" OpacityMask="#E6E6E6" MouseDown="MetroWindow_MouseDown">
     <metro:MetroWindow.Flyouts>
         <metro:FlyoutsControl VerticalAlignment="Bottom">
             <metro:Flyout x:Name="HistoryFlyout" Position="Bottom"
@@ -170,7 +170,7 @@
                         <Button.Template>
                             <ControlTemplate>
                                 <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True">
-                                    <Image Source="./Images/del.png" Width="27" Height="27" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <Image x:Name="img" Source="./Images/del.png" Width="27" Height="27" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                 </Border>
                                 <ControlTemplate.Triggers>
                                     <Trigger Property="IsMouseOver" Value="True">
@@ -180,6 +180,9 @@
                                     </Trigger>
                                     <Trigger Property="Button.IsPressed" Value="True">
                                         <Setter TargetName="border" Property="Background" Value="#8A8A8A"/>
+                                    </Trigger>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter TargetName="img" Property="Source" Value="./Images/del2.png"/>
                                     </Trigger>
                                 </ControlTemplate.Triggers>
                             </ControlTemplate>
