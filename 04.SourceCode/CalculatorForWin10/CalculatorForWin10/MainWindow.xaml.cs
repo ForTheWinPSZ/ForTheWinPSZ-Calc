@@ -28,6 +28,8 @@ namespace CalculatorForWin10
         private UserControl extensionControl;
         private UserControl historyControl;
         private UserControl memoryControl;
+        private Style titleStyle;
+        private Style maxTitleStyle;
         MainWindowsViewModel vm = new MainWindowsViewModel();
         public MainWindow()
         {
@@ -39,6 +41,8 @@ namespace CalculatorForWin10
             extension.SetValue(Grid.ColumnProperty, 1);
             extension.SetValue(NameProperty, "Second");
             extension.Children.Add(extensionControl);
+            titleStyle = (Style)this.FindResource("TitleButtonStyle");
+            maxTitleStyle = (Style)this.FindResource("MaxButtonStyle");
 
             InitializeComponent();
             this.DataContext = vm;
@@ -59,10 +63,14 @@ namespace CalculatorForWin10
             if (WindowState == WindowState.Maximized)
             {
                 WindowState = WindowState.Normal;
+                Max_Button.Style = titleStyle;
+                Max_Button.Padding = new Thickness(0,0,0,5);
             }
             else
             {
                 WindowState = WindowState.Maximized;
+                Max_Button.Style = maxTitleStyle;
+                Max_Button.Padding = new Thickness(0);
             }
         }
 
