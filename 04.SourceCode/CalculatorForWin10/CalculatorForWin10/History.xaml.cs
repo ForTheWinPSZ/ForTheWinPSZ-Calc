@@ -10,6 +10,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -34,9 +35,23 @@ namespace CalculatorForWin10
         private void Items_CollectionChanged(object sender, EventArgs e)
         {
             count++;
-            if (count == 4)
+            if (count == 2)
             {
-                Debug.WriteLine(listStockName1.Items.Count);
+                ListBoxItem item = listStockName1.ItemContainerGenerator.ContainerFromIndex(0) as ListBoxItem;
+                item.Opacity = 0;
+                Debug.WriteLine("height:"+);
+                DoubleAnimation itemAnimation = new DoubleAnimation();
+                itemAnimation.From = 0;
+                itemAnimation.To = 1;
+                itemAnimation.Duration = TimeSpan.FromSeconds(0.3);
+                itemAnimation.BeginTime = TimeSpan.FromSeconds(0.7);
+                item.BeginAnimation(OpacityProperty, itemAnimation);
+                ThicknessAnimation itemMarginAnimation = new ThicknessAnimation();
+                itemMarginAnimation.From = new Thickness(-5, 0, 5, 0);
+                itemMarginAnimation.To = new Thickness(-5, 0, 0, 0);
+                itemMarginAnimation.Duration = TimeSpan.FromSeconds(0.3);
+                itemMarginAnimation.BeginTime = TimeSpan.FromSeconds(0.7);
+                item.BeginAnimation(MarginProperty, itemMarginAnimation);
                 count = 0;
             }
         }
