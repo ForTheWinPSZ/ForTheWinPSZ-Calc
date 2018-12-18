@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Collections.Specialized;
 using System.Diagnostics;
+using System.Windows.Media.Animation;
 
 namespace CalculatorForWin10
 {
@@ -24,6 +25,7 @@ namespace CalculatorForWin10
     public partial class Memory : UserControl
     {
         private static int count = 0;
+        private static int itemCount = 0;
         MainWindowsViewModel vm = new MainWindowsViewModel();
         Window main = Application.Current.MainWindow;
         public Memory()
@@ -34,11 +36,32 @@ namespace CalculatorForWin10
 
         private void Items_CollectionChanged(object sender, EventArgs e)
         {
-            count++;
-            if (count == 4)
+            if (itemCount != listStockName.Items.Count)
             {
-                Debug.WriteLine(listStockName.Items.Count);
-                count = 0;
+                count++;
+                if (count % 2 == 0)
+                {
+                    ListBoxItem firstItem = listStockName.ItemContainerGenerator.ContainerFromIndex(0) as ListBoxItem;
+                    firstItem.Opacity = 0;
+                    if (count == 4)
+                    {
+                        firstItem.Visibility = Visibility.Visible;
+                        DoubleAnimation itemAnimation = new DoubleAnimation();
+                        itemAnimation.From = 0;
+                        itemAnimation.To = 1;
+                        itemAnimation.Duration = TimeSpan.FromSeconds(0.3);
+                        itemAnimation.BeginTime = TimeSpan.FromSeconds(0.6);
+                        firstItem.BeginAnimation(OpacityProperty, itemAnimation);
+                        ThicknessAnimation itemMarginAnimation = new ThicknessAnimation();
+                        itemMarginAnimation.From = new Thickness(-5, 0, 5, 0);
+                        itemMarginAnimation.To = new Thickness(-5, 0, 0, 0);
+                        itemMarginAnimation.Duration = TimeSpan.FromSeconds(0.3);
+                        itemMarginAnimation.BeginTime = TimeSpan.FromSeconds(0.6);
+                        firstItem.BeginAnimation(MarginProperty, itemMarginAnimation);
+                        itemCount = listStockName.Items.Count;
+                        count = 0;
+                    }
+                }
             }
         }
         private void Mouse_M(object sender, MouseButtonEventArgs e)
