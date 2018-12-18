@@ -45,23 +45,29 @@ namespace CalculatorForWin10
                     firstItem.Opacity = 0;
                     if (count == 4)
                     {
-                        firstItem.Visibility = Visibility.Visible;
+                        DoubleAnimation itemAnimation1 = new DoubleAnimation();
+                        itemAnimation1.From = 0;
+                        itemAnimation1.To = firstItem.ActualHeight;
+                        itemAnimation1.Duration = TimeSpan.FromSeconds(0.1);
+                        itemAnimation1.BeginTime = TimeSpan.FromSeconds(0);
+                        firstItem.BeginAnimation(HeightProperty, itemAnimation1);
                         DoubleAnimation itemAnimation = new DoubleAnimation();
                         itemAnimation.From = 0;
                         itemAnimation.To = 1;
                         itemAnimation.Duration = TimeSpan.FromSeconds(0.3);
-                        itemAnimation.BeginTime = TimeSpan.FromSeconds(0.6);
+                        itemAnimation.BeginTime = TimeSpan.FromSeconds(0.3);
                         firstItem.BeginAnimation(OpacityProperty, itemAnimation);
                         ThicknessAnimation itemMarginAnimation = new ThicknessAnimation();
                         itemMarginAnimation.From = new Thickness(-5, 0, 5, 0);
                         itemMarginAnimation.To = new Thickness(-5, 0, 0, 0);
                         itemMarginAnimation.Duration = TimeSpan.FromSeconds(0.3);
-                        itemMarginAnimation.BeginTime = TimeSpan.FromSeconds(0.6);
+                        itemMarginAnimation.BeginTime = TimeSpan.FromSeconds(0.3);
                         firstItem.BeginAnimation(MarginProperty, itemMarginAnimation);
                         itemCount = listStockName.Items.Count;
                         count = 0;
                     }
                 }
+
             }
         }
         private void Mouse_M(object sender, MouseButtonEventArgs e)

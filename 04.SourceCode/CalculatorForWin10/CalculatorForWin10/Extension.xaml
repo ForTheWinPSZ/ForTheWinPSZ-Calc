@@ -7,11 +7,11 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="320">
     <UserControl.Background>
-        <SolidColorBrush Color="#FFE3E3E3" Opacity="0.95"/>
+        <SolidColorBrush Color="#FFE6E6E6" Opacity="0"/>
     </UserControl.Background>
     <Grid>
         <Grid.Background>
-            <SolidColorBrush Color="#FFE3E3E3" Opacity="0.95"/>
+            <SolidColorBrush Color="#FFE6E6E6" Opacity="0"/>
         </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"></RowDefinition>
@@ -20,8 +20,8 @@
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
             <StackPanel Orientation="Horizontal">
-                <Button x:Name="his" VerticalAlignment="Bottom" Margin="12,0,0,0" Width="70" Content="历史记录" FontSize="15" FontWeight="Bold" Style="{StaticResource ExtensionButtonStyle}" Height="30" Click="His_Click"></Button>
-                <Button x:Name="mem" VerticalAlignment="Bottom" Margin="24,0,0,0" Width="35" Content="内存" FontSize="15" FontWeight="Bold" Style="{StaticResource ExtensionButtonStyle}" Height="30" Click="Mem_Click"></Button>
+                <Button x:Name="his" VerticalAlignment="Bottom" Margin="12,0,0,0" Width="70" Content="历史记录" FontSize="15" FontWeight="Bold" Style="{StaticResource ExtensionButtonStyle}" Height="30" Click="His_Click" Background="#00E6E6E6"></Button>
+                <Button x:Name="mem" VerticalAlignment="Bottom" Margin="24,0,0,0" Width="35" Content="内存" FontSize="15" FontWeight="Bold" Style="{StaticResource ExtensionButtonStyle}" Height="30" Click="Mem_Click" Background="#00E6E6E6"></Button>
             </StackPanel>
         </Grid>
         <Grid Grid.Row="1">

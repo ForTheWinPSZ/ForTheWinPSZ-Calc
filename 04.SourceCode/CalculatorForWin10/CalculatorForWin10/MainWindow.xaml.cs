@@ -67,7 +67,7 @@ namespace CalculatorForWin10
             {
                 WindowState = WindowState.Normal;
                 Max_Button.Style = titleStyle;
-                Max_Button.Padding = new Thickness(0,0,0,5);
+                Max_Button.Padding = new Thickness(0,0,0,0);
             }
             else
             {
@@ -496,7 +496,6 @@ namespace CalculatorForWin10
             btn_add.IsEnabled = true;
             btn_sub.IsEnabled = true;
             btn_equal.IsEnabled = true;
-            
         }
 
         private void Btn_C_Click(object sender, RoutedEventArgs e)
@@ -799,10 +798,14 @@ namespace CalculatorForWin10
             }
         }
 
-        //private void MetroWindow_MouseLeave(object sender, MouseEventArgs e)
-        //{
-        //    Color color = Color.FromArgb(80, 130, 130, 130);
-        //    Background = new SolidColorBrush(color);
-        //}
+        private void Main_Activated(object sender, EventArgs e)
+        {
+            main.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#e0e0e0"));
+        }
+
+        private void Main_Deactivated(object sender, EventArgs e)
+        {
+            main.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#e6e6e6"));
+        }
     }
 }

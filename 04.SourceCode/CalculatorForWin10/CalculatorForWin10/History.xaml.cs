@@ -44,7 +44,12 @@ namespace CalculatorForWin10
                     firstItem.Opacity = 0;
                     if(count == 4)
                     {
-                        firstItem.Visibility = Visibility.Visible;
+                        DoubleAnimation itemAnimation1 = new DoubleAnimation();
+                        itemAnimation1.From = 0;
+                        itemAnimation1.To = firstItem.ActualHeight;
+                        itemAnimation1.Duration = TimeSpan.FromSeconds(0.1);
+                        itemAnimation1.BeginTime = TimeSpan.FromSeconds(0);
+                        firstItem.BeginAnimation(HeightProperty, itemAnimation1);
                         DoubleAnimation itemAnimation = new DoubleAnimation();
                         itemAnimation.From = 0;
                         itemAnimation.To = 1;
