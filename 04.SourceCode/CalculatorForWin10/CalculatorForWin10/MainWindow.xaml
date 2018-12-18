@@ -84,7 +84,7 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <Label x:Name="beforeText" Background="#EAEAEA" BorderBrush="#EAEAEA" HorizontalContentAlignment="Right" FontSize="16"  Content="{Binding ExpressionText}"/>
-                    <Label Grid.Row="1" x:Name="resultText" Background="#EAEAEA" BorderBrush="#EAEAEA" FontSize="32" FontWeight="Heavy" HorizontalContentAlignment="Right" Content="{Binding ResultText}"/>
+                    <Label Grid.Row="1" x:Name="resultText" Background="#EAEAEA" BorderBrush="#EAEAEA" FontSize="28" FontWeight="Heavy" HorizontalContentAlignment="Right" Content="{Binding ResultText}"/>
                 </Grid>
                 <Grid Grid.Row="2">
                     <Grid.RowDefinitions>
