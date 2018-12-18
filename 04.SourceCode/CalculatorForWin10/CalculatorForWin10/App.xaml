@@ -20,6 +20,7 @@
                 <ResourceDictionary Source="./Styles/MemoryListItem.xaml" />
                 <ResourceDictionary Source="./Styles/HistoryListItem.xaml" />
                 <ResourceDictionary Source="./Styles/MaxButton.xaml" />
+                <ResourceDictionary Source="./Styles/ScrollViewerStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
