@@ -49,6 +49,8 @@ namespace Arithmetic.BinaryOperaion
                     }
                     break;
                 case "÷":
+                    if (num1 == "除数不能为零")
+                        return "0";
                     if (num2 == "0")
                         return "除数不能为零";
                     if (IsScienceCount(ToDouble(num1)) || IsScienceCount(ToDouble(num2)) || IsScienceCount(ToDouble(num1) / ToDouble(num2)))

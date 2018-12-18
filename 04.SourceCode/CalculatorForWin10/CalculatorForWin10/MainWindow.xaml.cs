@@ -31,8 +31,7 @@ namespace CalculatorForWin10
         private Style titleStyle;
         private Style maxTitleStyle;
         private bool IsChangeCube = false;
-        MainWindowsViewModel vm = new MainWindowsViewModel();
-        Screen s = new Screen();
+        public MainWindowsViewModel vm = new MainWindowsViewModel();
         public MainWindow()
         {
             extensionControl = new Extension();
@@ -399,6 +398,7 @@ namespace CalculatorForWin10
                 btn_sub.IsEnabled = true;
                 btn_point.IsEnabled = true;
                 btn_nega.IsEnabled = true;
+                this.DataContext = vm;
             }
         }
         private void Button_Click_Ms(object sender, RoutedEventArgs e)
@@ -498,262 +498,303 @@ namespace CalculatorForWin10
 
         private void Btn_C_Click(object sender, RoutedEventArgs e)
         {
-            btn_mc.IsEnabled = true;
-            btn_mr.IsEnabled = true;
-            btn_mm.IsEnabled = true;
-            btn_mp.IsEnabled = true;
-            btn_ms.IsEnabled = true;
-            btn_mopt.IsEnabled = true;
-            btn_pre.IsEnabled = true;
-            btn_sqrt.IsEnabled = true;
-            btn_squ.IsEnabled = true;
-            btn_reci.IsEnabled = true;
-            btn_divi.IsEnabled = true;
-            btn_muti.IsEnabled = true;
-            btn_add.IsEnabled = true;
-            btn_sub.IsEnabled = true;
-            btn_point.IsEnabled = true;
-            btn_nega.IsEnabled = true;
+            if (re.Content.ToString().Contains("除"))
+            {
+                btn_mc.IsEnabled = true;
+                btn_mr.IsEnabled = true;
+                btn_mm.IsEnabled = true;
+                btn_mp.IsEnabled = true;
+                btn_ms.IsEnabled = true;
+                btn_mopt.IsEnabled = true;
+                btn_pre.IsEnabled = true;
+                btn_sqrt.IsEnabled = true;
+                btn_squ.IsEnabled = true;
+                btn_reci.IsEnabled = true;
+                btn_divi.IsEnabled = true;
+                btn_muti.IsEnabled = true;
+                btn_add.IsEnabled = true;
+                btn_sub.IsEnabled = true;
+                btn_point.IsEnabled = true;
+                btn_nega.IsEnabled = true;
+            }
         }
 
         private void Btn_DEL_Click(object sender, RoutedEventArgs e)
         {
-            btn_mc.IsEnabled = true;
-            btn_mr.IsEnabled = true;
-            btn_mm.IsEnabled = true;
-            btn_mp.IsEnabled = true;
-            btn_ms.IsEnabled = true;
-            btn_mopt.IsEnabled = true;
-            btn_pre.IsEnabled = true;
-            btn_sqrt.IsEnabled = true;
-            btn_squ.IsEnabled = true;
-            btn_reci.IsEnabled = true;
-            btn_divi.IsEnabled = true;
-            btn_muti.IsEnabled = true;
-            btn_add.IsEnabled = true;
-            btn_sub.IsEnabled = true;
-            btn_point.IsEnabled = true;
-            btn_nega.IsEnabled = true;
+            if (re.Content.ToString().Contains("除"))
+            {
+                btn_mc.IsEnabled = true;
+                btn_mr.IsEnabled = true;
+                btn_mm.IsEnabled = true;
+                btn_mp.IsEnabled = true;
+                btn_ms.IsEnabled = true;
+                btn_mopt.IsEnabled = true;
+                btn_pre.IsEnabled = true;
+                btn_sqrt.IsEnabled = true;
+                btn_squ.IsEnabled = true;
+                btn_reci.IsEnabled = true;
+                btn_divi.IsEnabled = true;
+                btn_muti.IsEnabled = true;
+                btn_add.IsEnabled = true;
+                btn_sub.IsEnabled = true;
+                btn_point.IsEnabled = true;
+                btn_nega.IsEnabled = true;
+            }
         }
 
         private void Btn_7_Click(object sender, RoutedEventArgs e)
         {
-            btn_mc.IsEnabled = true;
-            btn_mr.IsEnabled = true;
-            btn_mm.IsEnabled = true;
-            btn_mp.IsEnabled = true;
-            btn_ms.IsEnabled = true;
-            btn_mopt.IsEnabled = true;
-            btn_pre.IsEnabled = true;
-            btn_sqrt.IsEnabled = true;
-            btn_squ.IsEnabled = true;
-            btn_reci.IsEnabled = true;
-            btn_divi.IsEnabled = true;
-            btn_muti.IsEnabled = true;
-            btn_add.IsEnabled = true;
-            btn_sub.IsEnabled = true;
-            btn_point.IsEnabled = true;
-            btn_nega.IsEnabled = true;
+            if (re.Content.ToString().Contains("除"))
+            {
+                btn_mc.IsEnabled = true;
+                btn_mr.IsEnabled = true;
+                btn_mm.IsEnabled = true;
+                btn_mp.IsEnabled = true;
+                btn_ms.IsEnabled = true;
+                btn_mopt.IsEnabled = true;
+                btn_pre.IsEnabled = true;
+                btn_sqrt.IsEnabled = true;
+                btn_squ.IsEnabled = true;
+                btn_reci.IsEnabled = true;
+                btn_divi.IsEnabled = true;
+                btn_muti.IsEnabled = true;
+                btn_add.IsEnabled = true;
+                btn_sub.IsEnabled = true;
+                btn_point.IsEnabled = true;
+                btn_nega.IsEnabled = true;
+            }
         }
 
         private void Btn_8_Click(object sender, RoutedEventArgs e)
         {
-            btn_mc.IsEnabled = true;
-            btn_mr.IsEnabled = true;
-            btn_mm.IsEnabled = true;
-            btn_mp.IsEnabled = true;
-            btn_ms.IsEnabled = true;
-            btn_mopt.IsEnabled = true;
-            btn_pre.IsEnabled = true;
-            btn_sqrt.IsEnabled = true;
-            btn_squ.IsEnabled = true;
-            btn_reci.IsEnabled = true;
-            btn_divi.IsEnabled = true;
-            btn_muti.IsEnabled = true;
-            btn_add.IsEnabled = true;
-            btn_sub.IsEnabled = true;
-            btn_point.IsEnabled = true;
-            btn_nega.IsEnabled = true;
+            if (re.Content.ToString().Contains("除"))
+            {
+                btn_mc.IsEnabled = true;
+                btn_mr.IsEnabled = true;
+                btn_mm.IsEnabled = true;
+                btn_mp.IsEnabled = true;
+                btn_ms.IsEnabled = true;
+                btn_mopt.IsEnabled = true;
+                btn_pre.IsEnabled = true;
+                btn_sqrt.IsEnabled = true;
+                btn_squ.IsEnabled = true;
+                btn_reci.IsEnabled = true;
+                btn_divi.IsEnabled = true;
+                btn_muti.IsEnabled = true;
+                btn_add.IsEnabled = true;
+                btn_sub.IsEnabled = true;
+                btn_point.IsEnabled = true;
+                btn_nega.IsEnabled = true;
+            }
         }
 
         private void Btn_9_Click(object sender, RoutedEventArgs e)
         {
-            btn_mc.IsEnabled = true;
-            btn_mr.IsEnabled = true;
-            btn_mm.IsEnabled = true;
-            btn_mp.IsEnabled = true;
-            btn_ms.IsEnabled = true;
-            btn_mopt.IsEnabled = true;
-            btn_pre.IsEnabled = true;
-            btn_sqrt.IsEnabled = true;
-            btn_squ.IsEnabled = true;
-            btn_reci.IsEnabled = true;
-            btn_divi.IsEnabled = true;
-            btn_muti.IsEnabled = true;
-            btn_add.IsEnabled = true;
-            btn_sub.IsEnabled = true;
-            btn_point.IsEnabled = true;
-            btn_nega.IsEnabled = true;
+            if (re.Content.ToString().Contains("除"))
+            {
+                btn_mc.IsEnabled = true;
+                btn_mr.IsEnabled = true;
+                btn_mm.IsEnabled = true;
+                btn_mp.IsEnabled = true;
+                btn_ms.IsEnabled = true;
+                btn_mopt.IsEnabled = true;
+                btn_pre.IsEnabled = true;
+                btn_sqrt.IsEnabled = true;
+                btn_squ.IsEnabled = true;
+                btn_reci.IsEnabled = true;
+                btn_divi.IsEnabled = true;
+                btn_muti.IsEnabled = true;
+                btn_add.IsEnabled = true;
+                btn_sub.IsEnabled = true;
+                btn_point.IsEnabled = true;
+                btn_nega.IsEnabled = true;
+            }
         }
 
         private void Btn_4_Click(object sender, RoutedEventArgs e)
         {
-            btn_mc.IsEnabled = true;
-            btn_mr.IsEnabled = true;
-            btn_mm.IsEnabled = true;
-            btn_mp.IsEnabled = true;
-            btn_ms.IsEnabled = true;
-            btn_mopt.IsEnabled = true;
-            btn_pre.IsEnabled = true;
-            btn_sqrt.IsEnabled = true;
-            btn_squ.IsEnabled = true;
-            btn_reci.IsEnabled = true;
-            btn_divi.IsEnabled = true;
-            btn_muti.IsEnabled = true;
-            btn_add.IsEnabled = true;
-            btn_sub.IsEnabled = true;
-            btn_point.IsEnabled = true;
-            btn_nega.IsEnabled = true;
+            if (re.Content.ToString().Contains("除"))
+            {
+                btn_mc.IsEnabled = true;
+                btn_mr.IsEnabled = true;
+                btn_mm.IsEnabled = true;
+                btn_mp.IsEnabled = true;
+                btn_ms.IsEnabled = true;
+                btn_mopt.IsEnabled = true;
+                btn_pre.IsEnabled = true;
+                btn_sqrt.IsEnabled = true;
+                btn_squ.IsEnabled = true;
+                btn_reci.IsEnabled = true;
+                btn_divi.IsEnabled = true;
+                btn_muti.IsEnabled = true;
+                btn_add.IsEnabled = true;
+                btn_sub.IsEnabled = true;
+                btn_point.IsEnabled = true;
+                btn_nega.IsEnabled = true;
+            }
         }
 
         private void Btn_5_Click(object sender, RoutedEventArgs e)
         {
-            btn_mc.IsEnabled = true;
-            btn_mr.IsEnabled = true;
-            btn_mm.IsEnabled = true;
-            btn_mp.IsEnabled = true;
-            btn_ms.IsEnabled = true;
-            btn_mopt.IsEnabled = true;
-            btn_pre.IsEnabled = true;
-            btn_sqrt.IsEnabled = true;
-            btn_squ.IsEnabled = true;
-            btn_reci.IsEnabled = true;
-            btn_divi.IsEnabled = true;
-            btn_muti.IsEnabled = true;
-            btn_add.IsEnabled = true;
-            btn_sub.IsEnabled = true;
-            btn_point.IsEnabled = true;
-            btn_nega.IsEnabled = true;
+            if (re.Content.ToString().Contains("除"))
+            {
+                btn_mc.IsEnabled = true;
+                btn_mr.IsEnabled = true;
+                btn_mm.IsEnabled = true;
+                btn_mp.IsEnabled = true;
+                btn_ms.IsEnabled = true;
+                btn_mopt.IsEnabled = true;
+                btn_pre.IsEnabled = true;
+                btn_sqrt.IsEnabled = true;
+                btn_squ.IsEnabled = true;
+                btn_reci.IsEnabled = true;
+                btn_divi.IsEnabled = true;
+                btn_muti.IsEnabled = true;
+                btn_add.IsEnabled = true;
+                btn_sub.IsEnabled = true;
+                btn_point.IsEnabled = true;
+                btn_nega.IsEnabled = true;
+            }
+            
         }
 
         private void Btn_6_Click(object sender, RoutedEventArgs e)
         {
-            btn_mc.IsEnabled = true;
-            btn_mr.IsEnabled = true;
-            btn_mm.IsEnabled = true;
-            btn_mp.IsEnabled = true;
-            btn_ms.IsEnabled = true;
-            btn_mopt.IsEnabled = true;
-            btn_pre.IsEnabled = true;
-            btn_sqrt.IsEnabled = true;
-            btn_squ.IsEnabled = true;
-            btn_reci.IsEnabled = true;
-            btn_divi.IsEnabled = true;
-            btn_muti.IsEnabled = true;
-            btn_add.IsEnabled = true;
-            btn_sub.IsEnabled = true;
-            btn_point.IsEnabled = true;
-            btn_nega.IsEnabled = true;
+            if (re.Content.ToString().Contains("除"))
+            {
+                btn_mc.IsEnabled = true;
+                btn_mr.IsEnabled = true;
+                btn_mm.IsEnabled = true;
+                btn_mp.IsEnabled = true;
+                btn_ms.IsEnabled = true;
+                btn_mopt.IsEnabled = true;
+                btn_pre.IsEnabled = true;
+                btn_sqrt.IsEnabled = true;
+                btn_squ.IsEnabled = true;
+                btn_reci.IsEnabled = true;
+                btn_divi.IsEnabled = true;
+                btn_muti.IsEnabled = true;
+                btn_add.IsEnabled = true;
+                btn_sub.IsEnabled = true;
+                btn_point.IsEnabled = true;
+                btn_nega.IsEnabled = true;
+            }
         }
 
         private void Btn_1_Click(object sender, RoutedEventArgs e)
         {
-            btn_mc.IsEnabled = true;
-            btn_mr.IsEnabled = true;
-            btn_mm.IsEnabled = true;
-            btn_mp.IsEnabled = true;
-            btn_ms.IsEnabled = true;
-            btn_mopt.IsEnabled = true;
-            btn_pre.IsEnabled = true;
-            btn_sqrt.IsEnabled = true;
-            btn_squ.IsEnabled = true;
-            btn_reci.IsEnabled = true;
-            btn_divi.IsEnabled = true;
-            btn_muti.IsEnabled = true;
-            btn_add.IsEnabled = true;
-            btn_sub.IsEnabled = true;
-            btn_point.IsEnabled = true;
-            btn_nega.IsEnabled = true;
+            if (re.Content.ToString().Contains("除"))
+            {
+                btn_mc.IsEnabled = true;
+                btn_mr.IsEnabled = true;
+                btn_mm.IsEnabled = true;
+                btn_mp.IsEnabled = true;
+                btn_ms.IsEnabled = true;
+                btn_mopt.IsEnabled = true;
+                btn_pre.IsEnabled = true;
+                btn_sqrt.IsEnabled = true;
+                btn_squ.IsEnabled = true;
+                btn_reci.IsEnabled = true;
+                btn_divi.IsEnabled = true;
+                btn_muti.IsEnabled = true;
+                btn_add.IsEnabled = true;
+                btn_sub.IsEnabled = true;
+                btn_point.IsEnabled = true;
+                btn_nega.IsEnabled = true;
+            }
         }
 
         private void Btn_2_Click(object sender, RoutedEventArgs e)
         {
-            btn_mc.IsEnabled = true;
-            btn_mr.IsEnabled = true;
-            btn_mm.IsEnabled = true;
-            btn_mp.IsEnabled = true;
-            btn_ms.IsEnabled = true;
-            btn_mopt.IsEnabled = true;
-            btn_pre.IsEnabled = true;
-            btn_sqrt.IsEnabled = true;
-            btn_squ.IsEnabled = true;
-            btn_reci.IsEnabled = true;
-            btn_divi.IsEnabled = true;
-            btn_muti.IsEnabled = true;
-            btn_add.IsEnabled = true;
-            btn_sub.IsEnabled = true;
-            btn_point.IsEnabled = true;
-            btn_nega.IsEnabled = true;
+            if (re.Content.ToString().Contains("除"))
+            {
+                btn_mc.IsEnabled = true;
+                btn_mr.IsEnabled = true;
+                btn_mm.IsEnabled = true;
+                btn_mp.IsEnabled = true;
+                btn_ms.IsEnabled = true;
+                btn_mopt.IsEnabled = true;
+                btn_pre.IsEnabled = true;
+                btn_sqrt.IsEnabled = true;
+                btn_squ.IsEnabled = true;
+                btn_reci.IsEnabled = true;
+                btn_divi.IsEnabled = true;
+                btn_muti.IsEnabled = true;
+                btn_add.IsEnabled = true;
+                btn_sub.IsEnabled = true;
+                btn_point.IsEnabled = true;
+                btn_nega.IsEnabled = true;
+            }
         }
 
         private void Btn_3_Click(object sender, RoutedEventArgs e)
         {
-            btn_mc.IsEnabled = true;
-            btn_mr.IsEnabled = true;
-            btn_mm.IsEnabled = true;
-            btn_mp.IsEnabled = true;
-            btn_ms.IsEnabled = true;
-            btn_mopt.IsEnabled = true;
-            btn_pre.IsEnabled = true;
-            btn_sqrt.IsEnabled = true;
-            btn_squ.IsEnabled = true;
-            btn_reci.IsEnabled = true;
-            btn_divi.IsEnabled = true;
-            btn_muti.IsEnabled = true;
-            btn_add.IsEnabled = true;
-            btn_sub.IsEnabled = true;
-            btn_point.IsEnabled = true;
-            btn_nega.IsEnabled = true;
+            if (re.Content.ToString().Contains("除"))
+            {
+                btn_mc.IsEnabled = true;
+                btn_mr.IsEnabled = true;
+                btn_mm.IsEnabled = true;
+                btn_mp.IsEnabled = true;
+                btn_ms.IsEnabled = true;
+                btn_mopt.IsEnabled = true;
+                btn_pre.IsEnabled = true;
+                btn_sqrt.IsEnabled = true;
+                btn_squ.IsEnabled = true;
+                btn_reci.IsEnabled = true;
+                btn_divi.IsEnabled = true;
+                btn_muti.IsEnabled = true;
+                btn_add.IsEnabled = true;
+                btn_sub.IsEnabled = true;
+                btn_point.IsEnabled = true;
+                btn_nega.IsEnabled = true;
+            }
         }
 
         private void Btn_0_Click(object sender, RoutedEventArgs e)
         {
-            btn_mc.IsEnabled = true;
-            btn_mr.IsEnabled = true;
-            btn_mm.IsEnabled = true;
-            btn_mp.IsEnabled = true;
-            btn_ms.IsEnabled = true;
-            btn_mopt.IsEnabled = true;
-            btn_pre.IsEnabled = true;
-            btn_sqrt.IsEnabled = true;
-            btn_squ.IsEnabled = true;
-            btn_reci.IsEnabled = true;
-            btn_divi.IsEnabled = true;
-            btn_muti.IsEnabled = true;
-            btn_add.IsEnabled = true;
-            btn_sub.IsEnabled = true;
-            btn_point.IsEnabled = true;
-            btn_nega.IsEnabled = true;
+            if (re.Content.ToString().Contains("除"))
+            {
+                btn_mc.IsEnabled = true;
+                btn_mr.IsEnabled = true;
+                btn_mm.IsEnabled = true;
+                btn_mp.IsEnabled = true;
+                btn_ms.IsEnabled = true;
+                btn_mopt.IsEnabled = true;
+                btn_pre.IsEnabled = true;
+                btn_sqrt.IsEnabled = true;
+                btn_squ.IsEnabled = true;
+                btn_reci.IsEnabled = true;
+                btn_divi.IsEnabled = true;
+                btn_muti.IsEnabled = true;
+                btn_add.IsEnabled = true;
+                btn_sub.IsEnabled = true;
+                btn_point.IsEnabled = true;
+                btn_nega.IsEnabled = true;
+            }
         }
 
         private void Btn_CE_Click(object sender, RoutedEventArgs e)
         {
-            btn_mc.IsEnabled = true;
-            btn_mr.IsEnabled = true;
-            btn_mm.IsEnabled = true;
-            btn_mp.IsEnabled = true;
-            btn_ms.IsEnabled = true;
-            btn_mopt.IsEnabled = true;
-            btn_pre.IsEnabled = true;
-            btn_sqrt.IsEnabled = true;
-            btn_squ.IsEnabled = true;
-            btn_reci.IsEnabled = true;
-            btn_divi.IsEnabled = true;
-            btn_muti.IsEnabled = true;
-            btn_add.IsEnabled = true;
-            btn_sub.IsEnabled = true;
-            btn_point.IsEnabled = true;
-            btn_nega.IsEnabled = true;
+            if (re.Content.ToString().Contains("除"))
+            {
+                btn_mc.IsEnabled = true;
+                btn_mr.IsEnabled = true;
+                btn_mm.IsEnabled = true;
+                btn_mp.IsEnabled = true;
+                btn_ms.IsEnabled = true;
+                btn_mopt.IsEnabled = true;
+                btn_pre.IsEnabled = true;
+                btn_sqrt.IsEnabled = true;
+                btn_squ.IsEnabled = true;
+                btn_reci.IsEnabled = true;
+                btn_divi.IsEnabled = true;
+                btn_muti.IsEnabled = true;
+                btn_add.IsEnabled = true;
+                btn_sub.IsEnabled = true;
+                btn_point.IsEnabled = true;
+                btn_nega.IsEnabled = true;
+            }
         }
+        
     }
 }

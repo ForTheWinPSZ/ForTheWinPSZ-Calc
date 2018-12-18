@@ -418,6 +418,11 @@ namespace CalculatorForWin10.ViewModel
                 History.Insert(0, item);
             }
         }
+        public void UseMemory(string memory)
+        {
+            ResultText = memory;
+            ExpressionText = "";
+        }
     }
-
+     
 }
