@@ -13,7 +13,7 @@
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Name="z">
             <StackPanel Orientation="Vertical">
-                <Label x:Name="H" Content="尚无历史纪录" Margin="7,8,0,0" FontSize="13" FontWeight="Bold" Foreground="Black"/>
+                <Label x:Name="H" Content="尚无历史纪录" Margin="7,23,0,0" FontSize="15" FontWeight="Bold" Foreground="Black"/>
                 <ScrollViewer Template="{StaticResource ScrollViewerControlTemplate1}" VerticalScrollBarVisibility="Auto" BorderThickness="0" Margin="0,-20,0,0" Height="{Binding ElementName=z,Path=ActualHeight}" >
                     <ListBox ItemContainerStyle="{StaticResource HistoryListitemStyle}" x:Name="listStockName1" ItemsSource="{Binding History}" FontSize="20" Width="{Binding ElementName=z,Path=ActualWidth}" Height="Auto" VerticalAlignment="Top" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled"  MouseLeftButtonUp="Mouse_H" Background="Transparent"></ListBox>
                 </ScrollViewer>

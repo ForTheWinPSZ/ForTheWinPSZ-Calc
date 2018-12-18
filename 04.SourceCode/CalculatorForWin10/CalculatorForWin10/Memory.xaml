@@ -13,7 +13,7 @@
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" x:Name="z">
             <StackPanel Orientation="Vertical">
-                <Label x:Name="M" Margin="7,8,0,0" FontSize="13" FontWeight="Bold" Foreground="Black">内存中没有内容</Label>
+                <Label x:Name="M" Margin="7,23,0,0" FontSize="15" FontWeight="Bold" Foreground="Black">内存中没有内容</Label>
                 <ScrollViewer Template="{StaticResource ScrollViewerControlTemplate1}" VerticalScrollBarVisibility="Auto"  BorderThickness="0" Margin="0,-20,0,0" Height="{Binding ElementName=z,Path=ActualHeight}">
                     <ListBox ItemContainerStyle="{StaticResource MemoryListitemStyle}" x:Name="listStockName" Background="Transparent" ItemsSource="{Binding Memory}" FontSize="20"  Width="{Binding ElementName=z,Path=ActualWidth}" Height="Auto" VerticalAlignment="Top" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" MouseLeftButtonUp="Mouse_M" >
                     </ListBox>
