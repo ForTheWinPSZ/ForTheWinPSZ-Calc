@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,17 +13,11 @@ namespace Arithmetic.UnaryOperation
         public static string Calculate(string symbol, string param)
         {
             string result="";
+           
             switch (symbol)
             {
                 case "sqr":
-                    if(IsScienceCount(ToDouble(param))|| IsScienceCount(ToDouble(param) * ToDouble(param)))
-                    {
-                        result = (ToDouble(param) * ToDouble(param)).ToString().ToLower();
-                    }
-                    else
-                    {
-                        result = (ToDecimal(param) * ToDecimal(param)).ToString();
-                    }                   
+                    result = ScientificCalculationTool.Mul(param,param);
                     break;
                 case "squareroot":
                     if (param.StartsWith("-"))
@@ -31,15 +26,21 @@ namespace Arithmetic.UnaryOperation
                     }
                     else
                     {
-                        if (IsScienceCount(ToDouble(param)) || IsScienceCount(Math.Sqrt(ToDouble(param))))
+                        if (IsScienceCount(param) )
                             result = Math.Sqrt(ToDouble(param)).ToString().ToLower();
                         else
                             result= Sqrt(ToDecimal(param)).ToString();                                                               
                         break;
                     }
                 case "reverse":
-                    if (IsScienceCount(ToDouble(param)) || IsScienceCount(ToDouble(param) * -1))
-                        result = (ToDouble(param) * -1).ToString().ToLower();
+                    if (IsScienceCount(param))
+                    {
+                        result = ScientificCalculationTool.ScientficNum(param);
+                        if (result.StartsWith("-"))
+                            result = result.Replace("-", "");
+                        else
+                            result = result.Insert(0, "-");
+                    }                        
                     else
                         result = Decimal.Negate(ToDecimal(param)).ToString();                        
                     break;
@@ -50,7 +51,7 @@ namespace Arithmetic.UnaryOperation
                     }
                     else
                     {
-                        if (IsScienceCount(ToDouble(param)) || IsScienceCount(1 / ToDouble(param)))
+                        if (IsScienceCount(param))
                             result = (1 / ToDouble(param)).ToString().ToLower();
                         else
                             result = (1/ToDecimal(param)).ToString();
@@ -74,14 +75,27 @@ namespace Arithmetic.UnaryOperation
             return x;
         }
 
-        public static bool IsScienceCount(double num)
+        public static bool IsScienceCount(string num)
         {
-            if (num > 9999999999999999 || num < -9999999999999999)
+            Debug.WriteLine("IsScienceCount:"+num);
+            num = num.Trim();
+            if (num.Contains("e") || num.Contains("E"))
+            {
                 return true;
-            else
-                return false;
-        }
+            }
+            num = num.Replace("-","");
 
+            if (ToDecimal(num) >= 10000000000000000)
+                return true;
+            if (ToDecimal(num) < 0.0000000000000001m)
+                return true;               
+            if (ToDecimal(num) < 0.00000001m && num.Length > 18)
+                return true;
+            if (ToDecimal(num) < 0.001m && num.Length >= 26)
+                return true;
+            return false;
+        }
+        
 
 
     }

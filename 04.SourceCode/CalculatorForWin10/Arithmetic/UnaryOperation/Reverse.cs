@@ -1,7 +1,11 @@
-﻿using System;using System.Collections.Generic;using System.Linq;using System.Text;using System.Threading.Tasks;using System.Diagnostics;using static System.Convert;using Arithmetic.BinaryOperaion;namespace Arithmetic.UnaryOperation{    public class Reverse : IUnary    {        private bool _canNumberDef;        public Reverse(string expressionValue, string resultValue, string preResult,bool canNumberDef) : base(expressionValue, resultValue, preResult)        {
-            this._canNumberDef = canNumberDef;
+﻿using System;using System.Collections.Generic;using System.Linq;using System.Text;using System.Threading.Tasks;using System.Diagnostics;using static System.Convert;using Arithmetic.BinaryOperaion;namespace Arithmetic.UnaryOperation{    public class Reverse : IUnary    {                public Reverse(string expressionValue, string resultValue, string preResult,bool canNumberDef) : base(expressionValue, resultValue, preResult)        {
+            _canNumberDef = canNumberDef;
+            ChangeResultValue();
+            ChangeExpression();
         }        
-        public override void ChangeExpression()        {
+        public override void ChangeExpression()        {          
+            if (_canNumberDef)
+                return;
             if ((ExpressionValue == "" || ExpressionValue.EndsWith(" ")) && (_canNumberDef == false && PreResult != ""))
             {
                 Debug.WriteLine("结尾不是单目");

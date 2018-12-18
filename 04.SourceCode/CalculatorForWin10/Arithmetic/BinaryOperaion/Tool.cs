@@ -18,75 +18,77 @@ namespace Arithmetic.BinaryOperaion
             switch (symbol)
             {
                 case "+":
-                    if( IsScienceCount(ToDouble(num1)) || IsScienceCount(ToDouble(num2)) || IsScienceCount(ToDouble(num1) + ToDouble(num2)))
+                    if( IsScienceCount(num1) || IsScienceCount(num2))
                     {
-                        result = (ToDouble(num1) + ToDouble(num2)).ToString().ToLower();
+                        result = ScientificCalculationTool.Plus(num1,num2);
                     }
                     else
-                    {
+                    {                       
                         result = (ToDecimal(num1) + ToDecimal(num2)).ToString();
+                        if (IsScienceCount(result))
+                            result = ScientificCalculationTool.ScientficNum(result);
                     }
                     
                     break;
                 case "-":
-                    if (IsScienceCount(ToDouble(num1)) || IsScienceCount(ToDouble(num2)) || IsScienceCount(ToDouble(num1) - ToDouble(num2)))
+                    if (IsScienceCount(num1) || IsScienceCount(num2))
                     {
-                        result = (ToDouble(num1) - ToDouble(num2)).ToString().ToLower();
+                        if (num2.StartsWith("-"))
+                            num2 = num2.Replace("-", "");
+                        else
+                            num2 = num2.Insert(0, "-");
+                        result = ScientificCalculationTool.Plus(num1, num2);
                     }
                     else
                     {
                         result = (ToDecimal(num1) - ToDecimal(num2)).ToString();
+                        if (IsScienceCount(result))
+                            result = ScientificCalculationTool.ScientficNum(result);
                     }
                     break;
                 case "×":
-                    if (IsScienceCount(ToDouble(num1)) || IsScienceCount(ToDouble(num2)) || IsScienceCount(ToDouble(num1) * ToDouble(num2)))
-                    {
-                        result = (ToDouble(num1) * ToDouble(num2)).ToString().ToLower();
-                    }
-                    else
-                    {
-                        result = (ToDecimal(num1) * ToDecimal(num2)).ToString();
-                    }
+                    result = ScientificCalculationTool.Mul(num1, num2);
                     break;
                 case "÷":
                     if (num1 == "除数不能为零")
                         return "0";
                     if (num2 == "0")
                         return "除数不能为零";
-                    if (IsScienceCount(ToDouble(num1)) || IsScienceCount(ToDouble(num2)) || IsScienceCount(ToDouble(num1) / ToDouble(num2)))
-                    {
-                        result = (ToDouble(num1) / ToDouble(num2)).ToString().ToLower();
-                    }
-                    else
-                    {
-                        result = (ToDecimal(num1) / ToDecimal(num2)).ToString();
-                    }
+                    result = ScientificCalculationTool.Division(num1, num2);
                     break;
             }
             return result;
         }
 
-        public static bool IsScienceCount(double num)
+        public static bool IsScienceCount(string num)
         {
-           
-            if (num > 9999999999999999 || num < -9999999999999999)
+            Debug.WriteLine("IsScienceCount:" + num);
+            num = num.Trim();
+            if (num.Contains("e") || num.Contains("E"))
             {
-                
                 return true;
             }
-
-            else
-            {
-                
+            if (ToDecimal(num) == 0)
                 return false;
-            }
-                
+            num = num.Replace("-", "");
+
+            if (ToDecimal(num) >= 10000000000000000)
+                return true;
+            if (ToDecimal(num) < 0.0000000000000001m)
+                return true;
+            if (ToDecimal(num) < 0.00000001m && num.Length > 18)
+                return true;
+            if (ToDecimal(num) < 0.001m && num.Length >= 26)
+                return true;
+            return false;
         }
-        #region 限制输出框最大容纳位数
+
+
+        #region 限制输出框最大容纳位数,这里仅供存入表达式与历史记录使用
         public static string MaxContain(string resultValue)
-        {
-            Debug.WriteLine("MaxContain:"+resultValue);
-            if (resultValue==null||resultValue == "" || resultValue.Contains("不") || resultValue.Contains("无") || resultValue.Contains("未"))
+        {            
+            char[] strs = { '不', '无', '未', '溢' };
+            if (resultValue==null||resultValue == "" || resultValue.IndexOfAny(strs)!=-1)
                 return resultValue;
             //科学记数法暂时不作取舍
             if (resultValue.Contains("e") || resultValue.Contains("E"))
@@ -131,10 +133,14 @@ namespace Arithmetic.BinaryOperaion
         }
         #endregion
 
-        private static string Rounding2(string resultValue, int num)
+        public static string Rounding2(string resultValue, int num)
         {
             string value1 = resultValue.Substring(0, num);
-            string value2 = resultValue.Substring(num, 1);
+            string value2 = "";
+            if (resultValue.Substring(num, 1).Equals("."))
+                value2 = resultValue.Substring(num+1, 1);
+            else
+                value2 = resultValue.Substring(num, 1);
             if (ToDouble(value2) >= 5)
             {
                 string mm = "";

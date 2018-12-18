@@ -12,11 +12,12 @@ namespace CalculatorForWin10.ViewModel
     {
         public static string MaxContain(string resultValue,bool isNumDef)
         {
-            if (isNumDef||resultValue == ""||resultValue.Contains("不") || resultValue.Contains("无") || resultValue.Contains("未"))
+            char[] strs = {'不','无','未','溢' };
+            if (isNumDef||resultValue == ""||resultValue.IndexOfAny(strs)!=-1)
                 return resultValue;
             //科学记数法暂时不作取舍
             if (resultValue.Contains("e") || resultValue.Contains("E"))
-                return resultValue;
+                return DisplayScientficNum(resultValue);
             //去掉小数后面多余的0
             if (!isNumDef && resultValue.Contains("."))
                 resultValue = resultValue.TrimEnd('0');
@@ -35,8 +36,7 @@ namespace CalculatorForWin10.ViewModel
             }
             //有点无负号
             else if (resultValue.Length > index + 17 && resultValue.Contains(".") && !resultValue.Contains("-"))
-            {
-                Debug.WriteLine("Comma resultValue:"+resultValue);
+            {                
                 resultValue = Rounding2(resultValue,index+17);
                 //resultValue = resultValue.Substring(0, index + 16) + Rounding(resultValue.Substring(index + 16, 1), resultValue.Substring(index + 17, 1));                
             }
@@ -108,6 +108,7 @@ namespace CalculatorForWin10.ViewModel
 
         public static string AddComma(string resultValue)
         {
+            char[] strs = { '不', '无', '未', '溢' };
             //科学记数法暂时不作取舍
             if (resultValue.Contains("e") || resultValue.Contains("E"))
                 return resultValue;
@@ -137,10 +138,8 @@ namespace CalculatorForWin10.ViewModel
                     CommaIndex(ref integer);
                     return "-" + integer;
                 }
-                else if (resultValue == "除数不能为零" || resultValue == "无效输入" || resultValue == "结果未定义")
-                {
+                else if (resultValue.IndexOfAny(strs) != -1)
                     return resultValue;
-                }
                 else
                 {
                     integer = resultValue;
@@ -179,6 +178,12 @@ namespace CalculatorForWin10.ViewModel
         }
         #endregion
 
-        
+        public static string DisplayScientficNum(string num)
+        {
+            string left = num.Substring(0, num.IndexOf("e"));
+            if (left.Length > 17)
+                left = Rounding2(left, 17).TrimEnd('0');
+            return left + num.Substring(num.IndexOf("e"));
+        }
     }
 }
