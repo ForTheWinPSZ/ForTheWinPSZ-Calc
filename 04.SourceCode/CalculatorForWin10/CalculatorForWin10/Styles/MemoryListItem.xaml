@@ -9,7 +9,7 @@
                 <ControlTemplate>
                     <Border x:Name="border" Background="Transparent" Margin="-5,0,0,0">
                         <StackPanel x:Name="q" Orientation="Vertical" HorizontalAlignment="Right" Margin="-5,0,0,5">
-                            <TextBlock Foreground="Black" Name="te" Text="{Binding}" Margin="0,7,30,0" FontFamily="等线" FontSize="25" FontWeight="Bold" HorizontalAlignment="Right" TextAlignment="Right"  Width="{Binding ElementName=z,Path=ActualWidth}">
+                            <TextBlock TextWrapping="Wrap" Foreground="Black" Name="te" Text="{Binding}" Margin="0,7,30,0" FontFamily="等线" FontSize="25" FontWeight="Bold" HorizontalAlignment="Right" TextAlignment="Right"  Width="{Binding ElementName=z,Path=ActualWidth}">
                             </TextBlock>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,3">
                                 <Button Style="{StaticResource ExtensionMButtonStyle}" x:Name="extensionMc" Visibility="Hidden" FontFamily="等线" FontSize="12" FontWeight="Bold" Content="MC" Margin="0,0,1,0"/>
