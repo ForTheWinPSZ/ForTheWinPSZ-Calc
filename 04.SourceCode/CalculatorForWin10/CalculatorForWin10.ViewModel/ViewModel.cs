@@ -16,7 +16,7 @@ namespace CalculatorForWin10.ViewModel
         public Screen screen = Screen.GetScreen();
         #region 按钮委托
         private readonly NVCommand btn_mc;
-        public NVCommand Btn_mc{ get => btn_mc; }
+        public NVCommand Btn_mc { get => btn_mc; }
         private readonly NVCommand btn_mr;
         public NVCommand Btn_mr { get => btn_mr; }
         private readonly NVCommand btn_mplus;
@@ -78,6 +78,7 @@ namespace CalculatorForWin10.ViewModel
 
         private readonly NVCommand btn_qc1;
         public NVCommand Btn_qc1 { get => btn_qc1; }
+
         #endregion
         public MainWindowsViewModel()
         {
@@ -103,7 +104,7 @@ namespace CalculatorForWin10.ViewModel
             btn_point = new NVCommand(Point);
             btn_equal = new NVCommand(Equal);
             btn_0 = new NVCommand(Zero);
-            btn_1= new NVCommand(One);
+            btn_1 = new NVCommand(One);
             btn_2 = new NVCommand(Two);
             btn_3 = new NVCommand(Three);
             btn_4 = new NVCommand(Four);
@@ -120,7 +121,7 @@ namespace CalculatorForWin10.ViewModel
         {
             screen.HandleMc();
             Memory.Clear();
-            
+
         }
 
         private void Mr()
@@ -152,7 +153,7 @@ namespace CalculatorForWin10.ViewModel
             Memory.Clear();
             foreach (var item in screen.Memory())
             {
-                Memory.Insert(0,item);
+                Memory.Insert(0, item);
             }
         }
         #endregion
@@ -386,13 +387,16 @@ namespace CalculatorForWin10.ViewModel
         #endregion
 
         #region 屏幕显示部分
-        private string _resultText="0";
+        private string _resultText = "0";
         public string ResultText
         {
             get { return _resultText; }
-            set { SetPropertyNotify(ref _resultText, value, nameof(ResultText)); }
+            set
+            {
+                SetPropertyNotify(ref _resultText, value, nameof(ResultText));
+            }
         }
-        private string _expressionText="";
+        private string _expressionText = "";
         public string ExpressionText
         {
             get { return _expressionText; }
@@ -403,13 +407,13 @@ namespace CalculatorForWin10.ViewModel
         {
             get { return _history; }
         }
-        private ObservableCollection<string> _memory =new ObservableCollection<string>();
+        private ObservableCollection<string> _memory = new ObservableCollection<string>();
         public ObservableCollection<string> Memory
         {
             get { return _memory; }
         }
         #endregion
-        
+
         private void ShowHistroy()
         {
             History.Clear();
@@ -418,11 +422,6 @@ namespace CalculatorForWin10.ViewModel
                 History.Insert(0, item);
             }
         }
-        public void UseMemory(string memory)
-        {
-            ResultText = memory;
-            ExpressionText = "";
-        }
     }
-     
+
 }

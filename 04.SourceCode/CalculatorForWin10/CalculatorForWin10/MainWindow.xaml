@@ -7,7 +7,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CalculatorForWin10"
         mc:Ignorable="d"
-        Title="MainWindow" Height="502" Width="322" MinHeight="502" MinWidth="322" BorderThickness="1" BorderBrush="#707070" UseNoneWindowStyle="True" Background="#E6E6E6" ResizeMode="CanResizeWithGrip" MouseLeftButtonDown="MetroWindow_MouseLeftButtonDown" SizeChanged="MetroWindow_SizeChanged" OpacityMask="#E6E6E6" MouseDown="MetroWindow_MouseDown">
+        Title="MainWindow" Height="502" Width="322" MinHeight="502" MinWidth="322" BorderThickness="1" BorderBrush="#707070" UseNoneWindowStyle="True" ResizeMode="CanResizeWithGrip" MouseLeftButtonDown="MetroWindow_MouseLeftButtonDown" SizeChanged="MetroWindow_SizeChanged" OpacityMask="#E6E6E6" MouseDown="MetroWindow_MouseDown" AllowsTransparency="True">
+    <metro:MetroWindow.Background>
+        <SolidColorBrush Color="#FFE3E3E3" Opacity="0.95"/>
+    </metro:MetroWindow.Background>
     <metro:MetroWindow.Flyouts>
         <metro:FlyoutsControl VerticalAlignment="Bottom">
             <metro:Flyout x:Name="HistoryFlyout" Position="Bottom"
@@ -50,9 +53,13 @@
         <Grid Grid.Row="0">
             <Label Content="计算器" Margin="7,4,0,0"></Label>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button Style="{StaticResource TitleButtonStyle}" Padding="0,0,0,1" Background="#E6E6E6" Width="46" Height="32" FontSize="9" Content="—" Click="Btn_Min_Click" Margin="0,-3,0,0" />
-                <Button x:Name="Max_Button" Style="{StaticResource TitleButtonStyle}" Padding="0,0,0,5" Background="#E6E6E6" Width="46" Height="32" FontSize="19" Content="□" Click="Btn_Max_Click" Margin="0,-3,0,0" />
-                <Button Style="{StaticResource CloseButtonStyle}" Padding="0,0,0,5" Background="#E6E6E6" Width="46" Height="32" FontWeight="Light" FontSize="25" Content="×" Click="Btn_Close_Click" Margin="0,-3,0,0"/>
+                <Button Style="{StaticResource TitleButtonStyle}" FontFamily="等线 Light" Padding="0,0,0,1" Width="46" Height="32" FontSize="10" Content="—" Click="Btn_Min_Click" Margin="0,-3,0,0">
+                    <Button.Background>
+                        <SolidColorBrush Color="#FFE3E3E3" Opacity="0"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="Max_Button" Style="{StaticResource TitleButtonStyle}" FontFamily="等线 Light" Padding="0,4,0,0" Background="#00E6E6E6" Width="46" Height="32" FontSize="12.5" Content="□" Click="Btn_Max_Click" Margin="0,-3,0,0" />
+                <Button Style="{StaticResource CloseButtonStyle}" Padding="0,4,0,0" FontFamily="新宋体" Background="#00E6E6E6" Width="46" Height="32" FontWeight="Light" FontSize="17" Content="×" Click="Btn_Close_Click" Margin="0,-3,0,0"/>
             </StackPanel>
         </Grid>
         <Grid Grid.Row="1" Margin="0" x:Name="Main">
@@ -73,7 +80,7 @@
                         <ColumnDefinition Width="42"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Grid Grid.Column="0">
-                        <Button VerticalAlignment="Top" BorderThickness="0" Width="42" Height="42" Background="#E6E6E6" ToolTip="打开导航" Margin="0,1,0,0">
+                        <Button VerticalAlignment="Top" BorderThickness="0" Width="42" Height="42" Background="#00E6E6E6" ToolTip="打开导航" Margin="0,1,0,0">
                             <Button.Template>
                                 <ControlTemplate>
                                     <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True">
@@ -95,7 +102,7 @@
                         <Label FontSize="19" Margin="5,5,0,0">标准</Label>
                     </Grid>
                     <Grid Grid.Column="2">
-                        <Button x:Name="btn_history" VerticalAlignment="Top" HorizontalAlignment="Right" BorderThickness="0" Width="40" Height="40" Background="#E6E6E6" ToolTip="历史记录(Ctrl+H)" Click="Btn_History_Click">
+                        <Button x:Name="btn_history" VerticalAlignment="Top" HorizontalAlignment="Right" BorderThickness="0" Width="40" Height="40" Background="#00E6E6E6" ToolTip="历史记录(Ctrl+H)" Click="Btn_History_Click">
                             <Button.Template>
                                 <ControlTemplate>
                                     <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True">
@@ -118,8 +125,8 @@
                 </Grid>
                 <Grid Grid.Row="1">
                     <StackPanel Orientation="Vertical">
-                        <Label x:Name="ex" HorizontalContentAlignment="Right" Foreground="#5F5F5F" Height="25" FontSize="13" Padding="0,2,20,0"  Content="{Binding ExpressionText}" ></Label>
-                        <Label x:Name="re" HorizontalContentAlignment="Right" FontFamily="Microsoft YaHei" FontSize="41" Padding="0,0,10,0" FontWeight="Bold" Content="{Binding ResultText}"></Label>
+                        <Label x:Name="ex" HorizontalContentAlignment="Right" Foreground="#5F5F5F" Height="25" FontSize="14" Padding="0,2,20,0"  Content="{Binding ExpressionText}" ></Label>
+                        <Label x:Name="re" HorizontalContentAlignment="Right"  FontFamily="Yu Gothic UI Semibold" FontWeight="Normal" FontSize="45" Padding="0,0,10,0" Content="{Binding ResultText}"></Label>
                     </StackPanel>
                 </Grid>
                 <Grid Grid.Row="2">
@@ -136,15 +143,15 @@
                             <ColumnDefinition></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <Button x:Name="btn_mc" FontSize="11" Style="{StaticResource CommonButtonStyle}" Margin="4,0,0,0" FontWeight="Bold"  Background="#E6E6E6" Grid.Column="0" Content="MC" Command="{Binding Btn_mc}" Click="Button_Click_Qc1" IsEnabled="False">
+                        <Button x:Name="btn_mc" FontSize="12" FontFamily="等线" Style="{StaticResource CommonButtonStyle}" Margin="4,0,0,0" FontWeight="Bold"  Background="#E6E6E6" Grid.Column="0" Content="MC" Command="{Binding Btn_mc}" Click="Button_Click_Qc1" IsEnabled="False">
                         </Button>
-                        <Button x:Name="btn_mr" FontSize="11" Style="{StaticResource CommonButtonStyle}" Margin="2,0,0,0" FontWeight="Bold" Background="#E6E6E6" Grid.Column="1" Content="MR" Command="{Binding Btn_mr}" IsEnabled="False"></Button>
-                        <Button x:Name="btn_mp" FontSize="11" Style="{StaticResource CommonButtonStyle}" Margin="2,0,0,0" FontWeight="Bold" Background="#E6E6E6" Grid.Column="2" Content="M+" Command="{Binding Btn_mplus}" Click="Btn_mp_Click"></Button>
-                        <Button x:Name="btn_mm" FontSize="11" Style="{StaticResource CommonButtonStyle}" Margin="2,0,0,0" FontWeight="Bold" Background="#E6E6E6" Grid.Column="3" Content="M-" Command="{Binding Btn_mminus}" Click="Btn_mm_Click"></Button>
-                        <Button x:Name="btn_ms" FontSize="11" Style="{StaticResource CommonButtonStyle}" Margin="2,0,0,0" FontWeight="Bold" Background="#E6E6E6" Grid.Column="4" Content="MS" Command="{Binding Btn_ms}" Click="Button_Click_Ms"></Button>
+                        <Button x:Name="btn_mr" FontSize="12" FontFamily="等线" Style="{StaticResource CommonButtonStyle}" Margin="2,0,0,0" FontWeight="Bold" Background="#E6E6E6" Grid.Column="1" Content="MR" Command="{Binding Btn_mr}" IsEnabled="False"></Button>
+                        <Button x:Name="btn_mp" FontSize="12" FontFamily="等线" Style="{StaticResource CommonButtonStyle}" Margin="2,0,0,0" FontWeight="Bold" Background="#E6E6E6" Grid.Column="2" Content="M+" Command="{Binding Btn_mplus}" Click="Btn_mp_Click"></Button>
+                        <Button x:Name="btn_mm" FontSize="12" FontFamily="等线" Style="{StaticResource CommonButtonStyle}" Margin="2,0,0,0" FontWeight="Bold" Background="#E6E6E6" Grid.Column="3" Content="M-" Command="{Binding Btn_mminus}" Click="Btn_mm_Click"></Button>
+                        <Button x:Name="btn_ms" FontSize="12" FontFamily="等线" Style="{StaticResource CommonButtonStyle}" Margin="2,0,0,0" FontWeight="Bold" Background="#E6E6E6" Grid.Column="4" Content="MS" Command="{Binding Btn_ms}" Click="Button_Click_Ms"></Button>
                     </Grid>
                     <Grid Grid.Column="3">
-                        <Button x:Name="btn_mopt" FontSize="11" Style="{StaticResource CommonButtonStyle}" Margin="2,0,0,0" FontWeight="Bold"  Content="M▾" IsEnabled="False" BorderThickness="0" MaxWidth="78" Background="#E6E6E6" Click="Btn_Memory_Click" >
+                        <Button x:Name="btn_mopt" FontFamily="等线" FontSize="12" Style="{StaticResource CommonButtonStyle}" Margin="2,0,0,0" FontWeight="Bold"  Content="M▾" IsEnabled="False" BorderThickness="0" MaxWidth="78" Background="#E6E6E6" Click="Btn_Memory_Click" >
                         </Button>
                     </Grid>
                 </Grid>
@@ -163,14 +170,14 @@
                         <ColumnDefinition></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Button Margin="4,2,2,2" Style="{StaticResource CommonButtonStyle}" x:Name="btn_pre" Content="%" Background="#F0F0F0" FontSize="18" FontWeight="UltraLight" Command="{Binding Btn_pre}"/>
-                    <Button Margin="4,2,2,2" Style="{StaticResource CommonButtonStyle}" x:Name="btn_CE" Grid.Row="1" Background="#F0F0F0" Content="CE" FontSize="15" FontWeight="Normal" Command="{Binding Btn_ce}" Click="Btn_CE_Click"/>
-                    <Button Margin="2" Style="{StaticResource CommonButtonStyle}" x:Name="btn_C" Grid.Row="1" Grid.Column="1" Content="C" Background="#F0F0F0" FontSize="15" FontWeight="Normal" Command="{Binding Btn_c}" Click="Btn_C_Click"/>
-                    <Button BorderThickness="0" Background="#F0F0F0" Margin="2" x:Name="btn_DEL" Grid.Row="1" Grid.Column="2" Command="{Binding Btn_del}" Click="Btn_DEL_Click">
+                    <Button Margin="4,1,1,1" FontFamily="方正姚体" Style="{StaticResource CommonButtonStyle}" x:Name="btn_pre" Content="%" Background="#F0F0F0" FontSize="20" FontWeight="Light" Command="{Binding Btn_pre}"/>
+                    <Button Margin="4,1,1,1" FontFamily="Malgun Gothic" Style="{StaticResource CommonButtonStyle}" x:Name="btn_CE" Grid.Row="1" Background="#F0F0F0" Content="CE" FontSize="15" FontWeight="Normal" Command="{Binding Btn_ce}" Click="Btn_CE_Click"/>
+                    <Button Margin="1" FontFamily="Malgun Gothic" Style="{StaticResource CommonButtonStyle}" x:Name="btn_C" Grid.Row="1" Grid.Column="1" Content="C" Background="#F0F0F0" FontSize="16" FontWeight="Normal" Command="{Binding Btn_c}" Click="Btn_C_Click"/>
+                    <Button BorderThickness="0" Background="#F0F0F0" Margin="1" x:Name="btn_DEL" Grid.Row="1" Grid.Column="2" Command="{Binding Btn_del}" Click="Btn_DEL_Click">
                         <Button.Template>
                             <ControlTemplate>
                                 <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True">
-                                    <Image x:Name="img" Source="./Images/del.png" Width="27" Height="27" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <Image x:Name="img" Source="./Images/del.png" Width="25" Height="25" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                 </Border>
                                 <ControlTemplate.Triggers>
                                     <Trigger Property="IsMouseOver" Value="True">
@@ -188,26 +195,26 @@
                             </ControlTemplate>
                         </Button.Template>
                     </Button>
-                    <Button Margin="2,2,4,2" Style="{StaticResource BinaryButtonStyle}" x:Name="btn_divi" Grid.Row="1" Grid.Column="3" Content="÷" Background="#F0F0F0" FontSize="28" FontWeight="Light" Command="{Binding Btn_division}"/>
-                    <Button Margin="2" Style="{StaticResource CommonButtonStyle}" x:Name="btn_sqrt" Grid.Column="1" Content="√" Background="#F0F0F0" FontSize="18" FontWeight="UltraLight" Command="{Binding Btn_squareroot}" />
-                    <Button Margin="4,2,2,2" Style="{StaticResource CommonButtonStyle}" x:Name="btn_7" Grid.Row="2"  Content="7" FontSize="22" FontWeight="Normal" Background="#FBFBFB" Command="{Binding Btn_7}"/>
-                    <Button Margin="2" Style="{StaticResource CommonButtonStyle}" x:Name="btn_8" Grid.Row="2" Grid.Column="1" Content="8" FontSize="22" FontWeight="Normal" Background="#FBFBFB" Command="{Binding Btn_8}"/>
-                    <Button Margin="2" Style="{StaticResource CommonButtonStyle}" x:Name="btn_9" Grid.Row="2" Grid.Column="2" Content="9" FontSize="22" FontWeight="Normal" Background="#FBFBFB" Command="{Binding Btn_9}"/>
-                    <Button Margin="2,2,4,2" Style="{StaticResource BinaryButtonStyle}" x:Name="btn_muti" Grid.Row="2" Grid.Column="3" Content="×" Background="#F0F0F0" FontSize="28" FontWeight="Light" Command="{Binding Btn_multiplication}"/>
-                    <Button Margin="2" Style="{StaticResource CommonButtonStyle}" x:Name="btn_squ" Grid.Column="2" Content="x²" Background="#F0F0F0" FontSize="18" FontWeight="UltraLight" Command="{Binding Btn_square}"/>
-                    <Button Margin="4,2,2,2" Style="{StaticResource CommonButtonStyle}" x:Name="btn_4" Grid.Row="3" Content="4" Background="#FBFBFB" FontSize="22" FontWeight="Normal"  Command="{Binding Btn_4}"/>
-                    <Button Margin="2" Style="{StaticResource CommonButtonStyle}" x:Name="btn_5" Grid.Row="3" Grid.Column="1" Content="5" Background="#FBFBFB" FontSize="22" FontWeight="Normal" Command="{Binding Btn_5}"/>
-                    <Button Margin="2" Style="{StaticResource CommonButtonStyle}" x:Name="btn_6" Grid.Row="3" Grid.Column="2" Content="6" Background="#FBFBFB" FontSize="22" FontWeight="Normal" Command="{Binding Btn_6}"/>
-                    <Button Margin="2,2,4,2" Style="{StaticResource BinaryButtonStyle}" x:Name="btn_sub" Grid.Row="3" Grid.Column="3" Content="－" Background="#F0F0F0" FontSize="28" FontWeight="Light" Command="{Binding Btn_minus}"/>
-                    <Button Margin="4,2,2,2" Style="{StaticResource CommonButtonStyle}" x:Name="btn_1" Grid.Row="4"  Content="1" Background="#FBFBFB" FontSize="22" FontWeight="Normal" Command="{Binding Btn_1}" />
-                    <Button Margin="2" Style="{StaticResource CommonButtonStyle}" x:Name="btn_2" Grid.Row="4" Grid.Column="1" Content="2" Background="#FBFBFB" FontSize="22" FontWeight="Normal" Command="{Binding Btn_2}"/>
-                    <Button Margin="2" Style="{StaticResource CommonButtonStyle}" x:Name="btn_3" Grid.Row="4" Grid.Column="2" Content="3" Background="#FBFBFB" FontSize="22" FontWeight="Normal" Command="{Binding Btn_3}"/>
-                    <Button Margin="2,2,4,2" Style="{StaticResource BinaryButtonStyle}" x:Name="btn_add" Grid.Row="4" Grid.Column="3" Content="＋" Background="#F0F0F0" FontSize="28" FontWeight="Light" Command="{Binding Btn_plus}"/>
-                    <Button Margin="2,2,4,2" Style="{StaticResource CommonButtonStyle}" x:Name="btn_reci" Grid.Column="3" Content="¹/x" FontSize="18" FontWeight="Light" Background="#F0F0F0" Command="{Binding Btn_reciprocal}"/>
-                    <Button Margin="4,2,2,5" Style="{StaticResource CommonButtonStyle}" x:Name="btn_nega" Grid.Row="5"  Content="±" Background="#F0F0F0" FontSize="22" FontWeight="Light" Command="{Binding Btn_reverse}"/>
-                    <Button Margin="2,2,2,5" Style="{StaticResource CommonButtonStyle}" x:Name="btn_0"  Grid.Row="5" Grid.Column="1" Content="0" Background="#FBFBFB" FontSize="22" FontWeight="Normal" Command="{Binding Btn_0}"/>
-                    <Button Margin="2,2,2,5" Style="{StaticResource CommonButtonStyle}" x:Name="btn_point" Grid.Row="5" Grid.Column="2" Content="." Background="#F0F0F0" FontSize="28" FontWeight="Light" Command="{Binding Btn_point}"/>
-                    <Button Margin="2,2,4,5" Style="{StaticResource BinaryButtonStyle}" x:Name="btn_equal" Grid.Row="5" Grid.Column="3" Content="=" Background="#F0F0F0" FontSize="28" FontWeight="Light" Command="{Binding Btn_equal}" Click="Button_Click_Equal"/>
+                    <Button Margin="1,1,4,1" Style="{StaticResource BinaryButtonStyle}" FontFamily="等线 Light" x:Name="btn_divi" Grid.Row="1" Grid.Column="3" Content="÷" Background="#F0F0F0" FontSize="31" FontWeight="Light" Command="{Binding Btn_division}"/>
+                    <Button Margin="1" Style="{StaticResource CommonButtonStyle}" FontFamily="宋体" x:Name="btn_sqrt" Grid.Column="1" Content="√" Background="#F0F0F0" FontSize="22" FontWeight="UltraLight" Command="{Binding Btn_squareroot}" />
+                    <Button Margin="4,1,1,1" Style="{StaticResource CommonButtonStyle}" x:Name="btn_7" Grid.Row="2"  Content="7" FontSize="25"  FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" Background="#FBFBFB" Command="{Binding Btn_7}"/>
+                    <Button Margin="1" Style="{StaticResource CommonButtonStyle}" x:Name="btn_8" Grid.Row="2" Grid.Column="1" Content="8" FontSize="25" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" Background="#FBFBFB" Command="{Binding Btn_8}"/>
+                    <Button Margin="1" Style="{StaticResource CommonButtonStyle}" x:Name="btn_9" Grid.Row="2" Grid.Column="2" Content="9" FontSize="25" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" Background="#FBFBFB" Command="{Binding Btn_9}"/>
+                    <Button Margin="1,1,4,1" Style="{StaticResource BinaryButtonStyle}" FontFamily="新宋体" x:Name="btn_muti" Grid.Row="2" Grid.Column="3" Content="×" Background="#F0F0F0" FontSize="20" FontWeight="Light" Command="{Binding Btn_multiplication}"/>
+                    <Button Margin="1" Style="{StaticResource CommonButtonStyle}"  FontFamily="Palatino Linotype" x:Name="btn_squ" Grid.Column="2" Content="x²" Background="#F0F0F0" FontSize="18" FontWeight="Normal" Command="{Binding Btn_square}"/>
+                    <Button Margin="4,1,1,1" Style="{StaticResource CommonButtonStyle}" x:Name="btn_4" Grid.Row="3" Content="4" Background="#FBFBFB" FontSize="25" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" Command="{Binding Btn_4}"/>
+                    <Button Margin="1" Style="{StaticResource CommonButtonStyle}" x:Name="btn_5" Grid.Row="3" Grid.Column="1" Content="5" Background="#FBFBFB" FontSize="25" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" Command="{Binding Btn_5}"/>
+                    <Button Margin="1" Style="{StaticResource CommonButtonStyle}" x:Name="btn_6" Grid.Row="3" Grid.Column="2" Content="6" Background="#FBFBFB" FontSize="25" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" Command="{Binding Btn_6}"/>
+                    <Button Margin="1,1,4,1" Style="{StaticResource BinaryButtonStyle}" FontFamily="Dotum" x:Name="btn_sub" Grid.Row="3" Grid.Column="3" Content="－" Background="#F0F0F0" FontSize="24" FontWeight="Light" Command="{Binding Btn_minus}"/>
+                    <Button Margin="4,1,1,1" Style="{StaticResource CommonButtonStyle}" x:Name="btn_1" Grid.Row="4"  Content="1" Background="#FBFBFB" FontSize="25" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" Command="{Binding Btn_1}" />
+                    <Button Margin="1" Style="{StaticResource CommonButtonStyle}" x:Name="btn_2" Grid.Row="4" Grid.Column="1" Content="2" Background="#FBFBFB" FontSize="25" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" Command="{Binding Btn_2}"/>
+                    <Button Margin="1" Style="{StaticResource CommonButtonStyle}" x:Name="btn_3" Grid.Row="4" Grid.Column="2" Content="3" Background="#FBFBFB" FontSize="25" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" Command="{Binding Btn_3}"/>
+                    <Button Margin="1,1,4,1" Style="{StaticResource BinaryButtonStyle}" FontFamily="Dotum" x:Name="btn_add" Grid.Row="4" Grid.Column="3" Content="＋" Background="#F0F0F0" FontSize="26" FontWeight="Light" Command="{Binding Btn_plus}"/>
+                    <Button Margin="1,1,4,1" Style="{StaticResource CommonButtonStyle}" FontFamily="Palatino Linotype" x:Name="btn_reci" Grid.Column="3" Content="¹/x" FontSize="18" FontWeight="Normal" Background="#F0F0F0" Command="{Binding Btn_reciprocal}"/>
+                    <Button Margin="4,1,1,5" Style="{StaticResource CommonButtonStyle}" FontFamily="Dotum" x:Name="btn_nega" Grid.Row="5"  Content="±" Background="#F0F0F0" FontSize="24" FontWeight="Light" Command="{Binding Btn_reverse}"/>
+                    <Button Margin="1,1,1,5" Style="{StaticResource CommonButtonStyle}" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" x:Name="btn_0"  Grid.Row="5" Grid.Column="1" Content="0" Background="#FBFBFB" FontSize="24"  Command="{Binding Btn_0}"/>
+                    <Button Margin="1,1,1,5" Style="{StaticResource CommonButtonStyle}" x:Name="btn_point" Grid.Row="5" Grid.Column="2" Content="." Background="#F0F0F0" FontSize="28" FontWeight="Normal" Command="{Binding Btn_point}"/>
+                    <Button Margin="1,1,4,5" Style="{StaticResource BinaryButtonStyle}" FontFamily="仿宋" x:Name="btn_equal" Grid.Row="5" Grid.Column="3" Content="=" Background="#F0F0F0" FontSize="30" FontWeight="Light" Command="{Binding Btn_equal}" Click="Button_Click_Equal"/>
                 </Grid>
             </Grid>
         </Grid>

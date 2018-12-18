@@ -259,13 +259,13 @@ namespace CalculatorForWin10
             if (this.Width >= 1025 && this.Height >= 640 && !IsChangeCube)            {                BtnGroup.RowDefinitions.Remove(BtnGroup.RowDefinitions.Last<RowDefinition>());                BtnGroup.ColumnDefinitions.Add(new ColumnDefinition());
                 BtnGroup.Children.Add(InitCubeButton());
                 //根号改变
-                btn_sqrt.SetValue(Grid.RowProperty, 1);                btn_sqrt.SetValue(Grid.ColumnProperty, 0);                btn_sqrt.SetValue(MarginProperty, new Thickness(4, 2, 2, 2));
+                btn_sqrt.SetValue(Grid.RowProperty, 1);                btn_sqrt.SetValue(Grid.ColumnProperty, 0);                btn_sqrt.SetValue(MarginProperty, new Thickness(4, 1, 1, 1));
                 //平方
-                btn_squ.SetValue(Grid.RowProperty, 2);                btn_squ.SetValue(Grid.ColumnProperty, 0);                btn_squ.SetValue(MarginProperty, new Thickness(4, 2, 2, 2));
+                btn_squ.SetValue(Grid.RowProperty, 2);                btn_squ.SetValue(Grid.ColumnProperty, 0);                btn_squ.SetValue(MarginProperty, new Thickness(4, 1, 1, 1));
                 //倒数
-                btn_reci.SetValue(Grid.RowProperty, 4);                btn_reci.SetValue(Grid.ColumnProperty, 0);                btn_reci.SetValue(MarginProperty, new Thickness(4, 2, 2, 5));
+                btn_reci.SetValue(Grid.RowProperty, 4);                btn_reci.SetValue(Grid.ColumnProperty, 0);                btn_reci.SetValue(MarginProperty, new Thickness(4, 1, 1, 5));
                 //CE
-                btn_CE.SetValue(Grid.RowProperty, 0);                btn_CE.SetValue(Grid.ColumnProperty, 1);                btn_CE.SetValue(MarginProperty, new Thickness(2));
+                btn_CE.SetValue(Grid.RowProperty, 0);                btn_CE.SetValue(Grid.ColumnProperty, 1);                btn_CE.SetValue(MarginProperty, new Thickness(1));
                 //C
                 btn_C.SetValue(Grid.RowProperty, 0);                btn_C.SetValue(Grid.ColumnProperty, 2);
                 //退格
@@ -273,7 +273,7 @@ namespace CalculatorForWin10
                 //除法
                 btn_divi.SetValue(Grid.RowProperty, 0);                btn_divi.SetValue(Grid.ColumnProperty, 4);
                 //7
-                btn_7.SetValue(Grid.RowProperty, 1);                btn_7.SetValue(Grid.ColumnProperty, 1);                btn_7.SetValue(MarginProperty, new Thickness(2));
+                btn_7.SetValue(Grid.RowProperty, 1);                btn_7.SetValue(Grid.ColumnProperty, 1);                btn_7.SetValue(MarginProperty, new Thickness(1));
                 //8
                 btn_8.SetValue(Grid.RowProperty, 1);                btn_8.SetValue(Grid.ColumnProperty, 2);
                 //9
@@ -281,7 +281,7 @@ namespace CalculatorForWin10
                 //乘法
                 btn_muti.SetValue(Grid.RowProperty, 1);                btn_muti.SetValue(Grid.ColumnProperty, 4);
                 //4
-                btn_4.SetValue(Grid.RowProperty, 2);                btn_4.SetValue(Grid.ColumnProperty, 1);                btn_4.SetValue(MarginProperty, new Thickness(2));
+                btn_4.SetValue(Grid.RowProperty, 2);                btn_4.SetValue(Grid.ColumnProperty, 1);                btn_4.SetValue(MarginProperty, new Thickness(1));
                 //5
                 btn_5.SetValue(Grid.RowProperty, 2);                btn_5.SetValue(Grid.ColumnProperty, 2);
                 //6
@@ -289,7 +289,7 @@ namespace CalculatorForWin10
                 //减法
                 btn_sub.SetValue(Grid.RowProperty, 2);                btn_sub.SetValue(Grid.ColumnProperty, 4);
                 //1
-                btn_1.SetValue(Grid.RowProperty, 3);                btn_1.SetValue(Grid.ColumnProperty, 1);                btn_1.SetValue(MarginProperty, new Thickness(2));
+                btn_1.SetValue(Grid.RowProperty, 3);                btn_1.SetValue(Grid.ColumnProperty, 1);                btn_1.SetValue(MarginProperty, new Thickness(1));
                 //2
                 btn_2.SetValue(Grid.RowProperty, 3);                btn_2.SetValue(Grid.ColumnProperty, 2);
                 //3
@@ -297,7 +297,7 @@ namespace CalculatorForWin10
                 //加法
                 btn_add.SetValue(Grid.RowProperty, 3);                btn_add.SetValue(Grid.ColumnProperty, 4);
                 //正负
-                btn_nega.SetValue(Grid.RowProperty, 4);                btn_nega.SetValue(Grid.ColumnProperty, 1);                btn_nega.SetValue(MarginProperty, new Thickness(2, 2, 2, 5));
+                btn_nega.SetValue(Grid.RowProperty, 4);                btn_nega.SetValue(Grid.ColumnProperty, 1);                btn_nega.SetValue(MarginProperty, new Thickness(1, 1, 1, 5));
                 //0
                 btn_0.SetValue(Grid.RowProperty, 4);                btn_0.SetValue(Grid.ColumnProperty, 2);
                 //.
@@ -306,13 +306,13 @@ namespace CalculatorForWin10
                 btn_equal.SetValue(Grid.RowProperty, 4);                btn_equal.SetValue(Grid.ColumnProperty, 4);                IsChangeCube = true;            }
             if ((this.Width < 1025 || this.Height < 640) && IsChangeCube)            {                BtnGroup.Children.Remove(BtnGroup.FindChild<Button>("btn_cube"));                BtnGroup.ColumnDefinitions.Remove(BtnGroup.ColumnDefinitions.Last<ColumnDefinition>());                BtnGroup.RowDefinitions.Add(new RowDefinition());
                 //根号改变
-                btn_sqrt.SetValue(Grid.RowProperty, 0);                btn_sqrt.SetValue(Grid.ColumnProperty, 1);                btn_sqrt.SetValue(MarginProperty, new Thickness(2));
+                btn_sqrt.SetValue(Grid.RowProperty, 0);                btn_sqrt.SetValue(Grid.ColumnProperty, 1);                btn_sqrt.SetValue(MarginProperty, new Thickness(1));
                 //平方
-                btn_squ.SetValue(Grid.RowProperty, 0);                btn_squ.SetValue(Grid.ColumnProperty, 2);                btn_squ.SetValue(MarginProperty, new Thickness(2));
+                btn_squ.SetValue(Grid.RowProperty, 0);                btn_squ.SetValue(Grid.ColumnProperty, 2);                btn_squ.SetValue(MarginProperty, new Thickness(1));
                 //倒数
-                btn_reci.SetValue(Grid.RowProperty, 0);                btn_reci.SetValue(Grid.ColumnProperty, 3);                btn_reci.SetValue(MarginProperty, new Thickness(2, 2, 4, 2));
+                btn_reci.SetValue(Grid.RowProperty, 0);                btn_reci.SetValue(Grid.ColumnProperty, 3);                btn_reci.SetValue(MarginProperty, new Thickness(1, 1, 4, 1));
                 //CE
-                btn_CE.SetValue(Grid.RowProperty, 1);                btn_CE.SetValue(Grid.ColumnProperty, 0);                btn_CE.SetValue(MarginProperty, new Thickness(4, 2, 2, 2));
+                btn_CE.SetValue(Grid.RowProperty, 1);                btn_CE.SetValue(Grid.ColumnProperty, 0);                btn_CE.SetValue(MarginProperty, new Thickness(4, 1, 1, 1));
                 //C
                 btn_C.SetValue(Grid.RowProperty, 1);                btn_C.SetValue(Grid.ColumnProperty, 1);
                 //退格
@@ -320,7 +320,7 @@ namespace CalculatorForWin10
                 //除法
                 btn_divi.SetValue(Grid.RowProperty, 1);                btn_divi.SetValue(Grid.ColumnProperty, 3);
                 //7
-                btn_7.SetValue(Grid.RowProperty, 2);                btn_7.SetValue(Grid.ColumnProperty, 0);                btn_7.SetValue(MarginProperty, new Thickness(4, 2, 2, 2));
+                btn_7.SetValue(Grid.RowProperty, 2);                btn_7.SetValue(Grid.ColumnProperty, 0);                btn_7.SetValue(MarginProperty, new Thickness(4, 1, 1, 1));
                 //8
                 btn_8.SetValue(Grid.RowProperty, 2);                btn_8.SetValue(Grid.ColumnProperty, 1);
                 //9
@@ -328,7 +328,7 @@ namespace CalculatorForWin10
                 //乘法
                 btn_muti.SetValue(Grid.RowProperty, 2);                btn_muti.SetValue(Grid.ColumnProperty, 3);
                 //4
-                btn_4.SetValue(Grid.RowProperty, 3);                btn_4.SetValue(Grid.ColumnProperty, 0);                btn_4.SetValue(MarginProperty, new Thickness(4, 2, 2, 2));
+                btn_4.SetValue(Grid.RowProperty, 3);                btn_4.SetValue(Grid.ColumnProperty, 0);                btn_4.SetValue(MarginProperty, new Thickness(4, 1, 1, 1));
                 //5
                 btn_5.SetValue(Grid.RowProperty, 3);                btn_5.SetValue(Grid.ColumnProperty, 1);
                 //6
@@ -336,7 +336,7 @@ namespace CalculatorForWin10
                 //减法
                 btn_sub.SetValue(Grid.RowProperty, 3);                btn_sub.SetValue(Grid.ColumnProperty, 3);
                 //1
-                btn_1.SetValue(Grid.RowProperty, 4);                btn_1.SetValue(Grid.ColumnProperty, 0);                btn_1.SetValue(MarginProperty, new Thickness(4, 2, 2, 2));
+                btn_1.SetValue(Grid.RowProperty, 4);                btn_1.SetValue(Grid.ColumnProperty, 0);                btn_1.SetValue(MarginProperty, new Thickness(4, 1, 1, 1));
                 //2
                 btn_2.SetValue(Grid.RowProperty, 4);                btn_2.SetValue(Grid.ColumnProperty, 1);
                 //3
@@ -344,7 +344,7 @@ namespace CalculatorForWin10
                 //加法
                 btn_add.SetValue(Grid.RowProperty, 4);                btn_add.SetValue(Grid.ColumnProperty, 3);
                 //正负
-                btn_nega.SetValue(Grid.RowProperty, 5);                btn_nega.SetValue(Grid.ColumnProperty, 0);                btn_nega.SetValue(MarginProperty, new Thickness(4, 2, 2, 5));
+                btn_nega.SetValue(Grid.RowProperty, 5);                btn_nega.SetValue(Grid.ColumnProperty, 0);                btn_nega.SetValue(MarginProperty, new Thickness(4, 1, 1, 5));
                 //0
                 btn_0.SetValue(Grid.RowProperty, 5);                btn_0.SetValue(Grid.ColumnProperty, 1);
                 //.
@@ -455,7 +455,7 @@ namespace CalculatorForWin10
             btn_mr.IsEnabled = true;
             btn_mopt.IsEnabled = true;
         }
-        private Button InitCubeButton()        {            Button cubeButton = new Button();            cubeButton = new Button();            cubeButton.SetValue(NameProperty, "btn_cube");            cubeButton.Margin = new Thickness(4, 2, 2, 2);            cubeButton.Style = (Style)this.FindResource("CommonButtonStyle");            cubeButton.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#F0F0F0"));            cubeButton.FontSize = 18;            cubeButton.Content = "x³";            cubeButton.SetValue(Grid.RowProperty, 3);            cubeButton.SetValue(Grid.ColumnProperty, 0);            cubeButton.FontWeight = FontWeights.UltraLight;            return cubeButton;        }
+        private Button InitCubeButton()        {            Button cubeButton = new Button();            cubeButton = new Button();            cubeButton.SetValue(NameProperty, "btn_cube");            cubeButton.Margin = new Thickness(4, 1, 1, 1);            cubeButton.Style = (Style)this.FindResource("CommonButtonStyle");            cubeButton.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#F0F0F0"));            cubeButton.FontSize = 18;            cubeButton.Content = "x³";            cubeButton.SetValue(Grid.RowProperty, 3);            cubeButton.SetValue(Grid.ColumnProperty, 0);            cubeButton.FontWeight = FontWeights.UltraLight;            return cubeButton;        }
 
         private void MetroWindow_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -494,6 +494,7 @@ namespace CalculatorForWin10
             btn_add.IsEnabled = true;
             btn_sub.IsEnabled = true;
             btn_equal.IsEnabled = true;
+            
         }
 
         private void Btn_C_Click(object sender, RoutedEventArgs e)
@@ -795,6 +796,11 @@ namespace CalculatorForWin10
                 btn_nega.IsEnabled = true;
             }
         }
-        
+
+        //private void MetroWindow_MouseLeave(object sender, MouseEventArgs e)
+        //{
+        //    Color color = Color.FromArgb(80, 130, 130, 130);
+        //    Background = new SolidColorBrush(color);
+        //}
     }
 }
