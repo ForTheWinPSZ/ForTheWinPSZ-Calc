@@ -30,10 +30,12 @@ namespace CalculatorForWin10
 
         private void Mouse_M(object sender, MouseButtonEventArgs e)
         {
-            Label re = main.FindName("re") as Label;
-            re.Content = listStockName.SelectedItem.ToString();
-            Label ex = main.FindName("ex") as Label;
-            ex.Content = "";
+            //Label re = main.FindName("re") as Label;
+            //re.Content = listStockName.SelectedItem.ToString();
+            //Label ex = main.FindName("ex") as Label;
+            //ex.Content = "";
+            string s = listStockName.SelectedItem.ToString();
+           // vm.UseMemory(s);
         }
 
         private void Button_Click_Qc1(object sender, RoutedEventArgs e)
