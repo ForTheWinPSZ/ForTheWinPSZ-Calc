@@ -92,7 +92,7 @@ namespace Arithmetic.BinaryOperaion
                 return resultValue;
             //科学记数法暂时不作取舍
             if (resultValue.Contains("e") || resultValue.Contains("E"))
-                return resultValue;
+                return ScientificCalculationTool.DisplayScientficNum(resultValue);
             
             
             //判断是否为0.

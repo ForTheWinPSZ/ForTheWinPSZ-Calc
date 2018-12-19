@@ -183,5 +183,13 @@ namespace Arithmetic
             }
             return num;
         }
+
+        public static string DisplayScientficNum(string num)
+        {
+            string left = num.Substring(0, num.IndexOf("e"));
+            if (left.Length > 17)
+                left = Tool.Rounding2(left, 17).TrimEnd('0');
+            return left + num.Substring(num.IndexOf("e"));
+        }
     }
 }
