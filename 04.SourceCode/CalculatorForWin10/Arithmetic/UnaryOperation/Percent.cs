@@ -80,7 +80,7 @@ namespace Arithmetic.UnaryOperation
             if (PreResult == "")
                 PreResult = "0";
             
-            return Tool.Compute(param, "×", Tool.Compute(param, "×", "0.01"));        }
+            return Tool.Compute(PreResult, "×", Tool.Compute(param, "×", "0.01"));        }
         //百分号的乘除运算
         public string Calculate2(string param)
         {
