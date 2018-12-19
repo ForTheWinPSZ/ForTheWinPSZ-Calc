@@ -34,7 +34,9 @@ namespace Arithmetic.UnaryOperation
                         break;
                     }
                 case "reverse":
-                    if (param.StartsWith("-"))
+                    if (param.Equals("0")||param=="")
+                        result = "0";
+                    else if (param.StartsWith("-"))
                         result = param.Replace("-", "");
                     else
                         result = param.Insert(0, "-");                                      

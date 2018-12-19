@@ -68,6 +68,8 @@ namespace CalculatorForWin10.ViewModel
         private readonly NVCommand btn_reverse;
         public NVCommand Btn_reverse { get => btn_reverse; }
         private readonly NVCommand btn_0;
+        
+
         public NVCommand Btn_0 { get => btn_0; }
         private readonly NVCommand btn_point;
         public NVCommand Btn_point { get => btn_point; }
@@ -238,6 +240,10 @@ namespace CalculatorForWin10.ViewModel
             ResultText = screen.GetResult();
             ExpressionText = screen.GetExpressionValue();
             ShowHistroy();
+        }
+        private void Cube()
+        {
+
         }
         #endregion
 
