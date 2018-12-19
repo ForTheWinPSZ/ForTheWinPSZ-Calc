@@ -38,6 +38,27 @@
                                 </Storyboard>
                             </BeginStoryboard>
                         </EventTrigger>
+                        <EventTrigger RoutedEvent="ListBoxItem.Selected">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetName="q"
+                                                        Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)" 
+                                                        Duration="0:0:0.1"
+                                                        From="#CFCFCF" To="#BCBCBC">
+                                    </ColorAnimation>
+                                    <DoubleAnimation Storyboard.TargetName="b"
+                                                        Storyboard.TargetProperty="FontSize" 
+                                                        Duration="0:0:0.1"
+                                                        From="13" To="12">
+                                    </DoubleAnimation>
+                                    <DoubleAnimation Storyboard.TargetName="r"
+                                                        Storyboard.TargetProperty="FontSize" 
+                                                        Duration="0:0:0.1"
+                                                        From="22" To="20">
+                                    </DoubleAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
