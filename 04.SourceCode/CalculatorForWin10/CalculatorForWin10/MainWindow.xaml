@@ -7,7 +7,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CalculatorForWin10"
         mc:Ignorable="d"
-        x:Name="main" Title="MainWindow" Height="502" Width="322" MinHeight="502" MinWidth="322" BorderThickness="1" BorderBrush="#707070" UseNoneWindowStyle="True" ResizeMode="CanResizeWithGrip" MouseLeftButtonDown="MetroWindow_MouseLeftButtonDown" SizeChanged="MetroWindow_SizeChanged" OpacityMask="#E6E6E6" MouseDown="MetroWindow_MouseDown" Activated="Main_Activated" Deactivated="Main_Deactivated">
+        x:Name="main" Title="MainWindow" Height="502" Width="322" MinHeight="502" MinWidth="322" BorderThickness="1" BorderBrush="#707070" UseNoneWindowStyle="True" ResizeMode="CanResizeWithGrip" MouseLeftButtonDown="MetroWindow_MouseLeftButtonDown" SizeChanged="MetroWindow_SizeChanged" OpacityMask="#E6E6E6"  Activated="Main_Activated" Deactivated="Main_Deactivated">
     <metro:MetroWindow.Background>
         <SolidColorBrush Color="#FFE6E6E6"/>
     </metro:MetroWindow.Background>
@@ -46,6 +46,7 @@
         <KeyBinding Key="Delete"  Command="{Binding Btn_ce}" ></KeyBinding>
     </metro:MetroWindow.InputBindings>
     <Grid>
+        <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="34"></RowDefinition>
             <RowDefinition></RowDefinition>
@@ -130,7 +131,9 @@
                 <Grid Grid.Row="1">
                     <StackPanel Orientation="Vertical">
                         <Label x:Name="ex" HorizontalContentAlignment="Right" Foreground="#5F5F5F" Height="25" FontSize="14" Padding="0,2,20,0"  Content="{Binding ExpressionText}" Background="#00E0E0E0" ></Label>
+
                         <TextBox Cursor="Arrow" SelectionBrush="Transparent" IsReadOnly="True" BorderThickness="0" Background="Transparent" x:Name="re" HorizontalContentAlignment="Right"  FontFamily="Yu Gothic UI Semibold" FontWeight="Normal" FontSize="45" Padding="0,0,10,0" Text="{Binding ResultText}" TextChanged="Re_TextChanged"></TextBox>
+
                     </StackPanel>
                 </Grid>
                 <Grid Grid.Row="2">
@@ -201,26 +204,27 @@
                     </Button>
                     <Button Margin="1,1,4,1" Style="{StaticResource BinaryButtonStyle}" FontFamily="等线 Light" x:Name="btn_divi" Grid.Row="1" Grid.Column="3" Content="÷" Background="#E5F0F0F0" FontSize="31" FontWeight="Light" Command="{Binding Btn_division}"/>
                     <Button Margin="1" Style="{StaticResource CommonButtonStyle}" FontFamily="宋体" x:Name="btn_sqrt" Grid.Column="1" Content="√" Background="#E5F0F0F0" FontSize="22" FontWeight="UltraLight" Command="{Binding Btn_squareroot}" />
-                    <Button Margin="4,1,1,1" Style="{StaticResource CommonButtonStyle}" x:Name="btn_7" Grid.Row="2"  Content="7" FontSize="25"  FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" Background="#CCFBFBFB" Command="{Binding Btn_7}"/>
-                    <Button Margin="1" Style="{StaticResource CommonButtonStyle}" x:Name="btn_8" Grid.Row="2" Grid.Column="1" Content="8" FontSize="25" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" Background="#CCFBFBFB" Command="{Binding Btn_8}"/>
-                    <Button Margin="1" Style="{StaticResource CommonButtonStyle}" x:Name="btn_9" Grid.Row="2" Grid.Column="2" Content="9" FontSize="25" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" Background="#CCFBFBFB" Command="{Binding Btn_9}"/>
+                    <Button Margin="4,1,1,1" Style="{StaticResource CommonButtonStyle}" x:Name="btn_7" Grid.Row="2"  Content="7" FontSize="25"  FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" Background="#CCFBFBFB" Command="{Binding Btn_7}" Click="Btn_7_Click"/>
+                    <Button Margin="1" Style="{StaticResource CommonButtonStyle}" x:Name="btn_8" Grid.Row="2" Grid.Column="1" Content="8" FontSize="25" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" Background="#CCFBFBFB" Command="{Binding Btn_8}" Click="Btn_8_Click"/>
+                    <Button Margin="1" Style="{StaticResource CommonButtonStyle}" x:Name="btn_9" Grid.Row="2" Grid.Column="2" Content="9" FontSize="25" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" Background="#CCFBFBFB" Command="{Binding Btn_9}" Click="Btn_9_Click"/>
                     <Button Margin="1,1,4,1" Style="{StaticResource BinaryButtonStyle}" FontFamily="新宋体" x:Name="btn_muti" Grid.Row="2" Grid.Column="3" Content="×" Background="#E5F0F0F0" FontSize="20" FontWeight="Light" Command="{Binding Btn_multiplication}"/>
                     <Button Margin="1" Style="{StaticResource CommonButtonStyle}"  FontFamily="Palatino Linotype" x:Name="btn_squ" Grid.Column="2" Content="x²" Background="#E5F0F0F0" FontSize="18" FontWeight="Normal" Command="{Binding Btn_square}"/>
-                    <Button Margin="4,1,1,1" Style="{StaticResource CommonButtonStyle}" x:Name="btn_4" Grid.Row="3" Content="4" Background="#CCFBFBFB" FontSize="25" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" Command="{Binding Btn_4}"/>
-                    <Button Margin="1" Style="{StaticResource CommonButtonStyle}" x:Name="btn_5" Grid.Row="3" Grid.Column="1" Content="5" Background="#CCFBFBFB" FontSize="25" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" Command="{Binding Btn_5}"/>
-                    <Button Margin="1" Style="{StaticResource CommonButtonStyle}" x:Name="btn_6" Grid.Row="3" Grid.Column="2" Content="6" Background="#CCFBFBFB" FontSize="25" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" Command="{Binding Btn_6}"/>
+                    <Button Margin="4,1,1,1" Style="{StaticResource CommonButtonStyle}" x:Name="btn_4" Grid.Row="3" Content="4" Background="#CCFBFBFB" FontSize="25" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" Command="{Binding Btn_4}" Click="Btn_4_Click"/>
+                    <Button Margin="1" Style="{StaticResource CommonButtonStyle}" x:Name="btn_5" Grid.Row="3" Grid.Column="1" Content="5" Background="#CCFBFBFB" FontSize="25" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" Command="{Binding Btn_5}" Click="Btn_5_Click"/>
+                    <Button Margin="1" Style="{StaticResource CommonButtonStyle}" x:Name="btn_6" Grid.Row="3" Grid.Column="2" Content="6" Background="#CCFBFBFB" FontSize="25" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" Command="{Binding Btn_6}" Click="Btn_6_Click"/>
                     <Button Margin="1,1,4,1" Style="{StaticResource BinaryButtonStyle}" FontFamily="Dotum" x:Name="btn_sub" Grid.Row="3" Grid.Column="3" Content="－" Background="#E5F0F0F0" FontSize="24" FontWeight="Light" Command="{Binding Btn_minus}"/>
-                    <Button Margin="4,1,1,1" Style="{StaticResource CommonButtonStyle}" x:Name="btn_1" Grid.Row="4"  Content="1" Background="#CCFBFBFB" FontSize="25" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" Command="{Binding Btn_1}" />
-                    <Button Margin="1" Style="{StaticResource CommonButtonStyle}" x:Name="btn_2" Grid.Row="4" Grid.Column="1" Content="2" Background="#CCFBFBFB" FontSize="25" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" Command="{Binding Btn_2}"/>
-                    <Button Margin="1" Style="{StaticResource CommonButtonStyle}" x:Name="btn_3" Grid.Row="4" Grid.Column="2" Content="3" Background="#CCFBFBFB" FontSize="25" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" Command="{Binding Btn_3}"/>
+                    <Button Margin="4,1,1,1" Style="{StaticResource CommonButtonStyle}" x:Name="btn_1" Grid.Row="4"  Content="1" Background="#CCFBFBFB" FontSize="25" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" Command="{Binding Btn_1}" Click="Btn_1_Click"/>
+                    <Button Margin="1" Style="{StaticResource CommonButtonStyle}" x:Name="btn_2" Grid.Row="4" Grid.Column="1" Content="2" Background="#CCFBFBFB" FontSize="25" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" Command="{Binding Btn_2}" Click="Btn_2_Click"/>
+                    <Button Margin="1" Style="{StaticResource CommonButtonStyle}" x:Name="btn_3" Grid.Row="4" Grid.Column="2" Content="3" Background="#CCFBFBFB" FontSize="25" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" Command="{Binding Btn_3}" Click="Btn_3_Click"/>
                     <Button Margin="1,1,4,1" Style="{StaticResource BinaryButtonStyle}" FontFamily="Dotum" x:Name="btn_add" Grid.Row="4" Grid.Column="3" Content="＋" Background="#E5F0F0F0" FontSize="26" FontWeight="Light" Command="{Binding Btn_plus}"/>
                     <Button Margin="1,1,4,1" Style="{StaticResource CommonButtonStyle}" FontFamily="Palatino Linotype" x:Name="btn_reci" Grid.Column="3" Content="¹/x" FontSize="18" FontWeight="Normal" Background="#E5F0F0F0" Command="{Binding Btn_reciprocal}"/>
                     <Button Margin="4,1,1,5" Style="{StaticResource CommonButtonStyle}" FontFamily="Dotum" x:Name="btn_nega" Grid.Row="5"  Content="±" Background="#E5F0F0F0" FontSize="24" FontWeight="Light" Command="{Binding Btn_reverse}"/>
-                    <Button Margin="1,1,1,5" Style="{StaticResource CommonButtonStyle}" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" x:Name="btn_0"  Grid.Row="5" Grid.Column="1" Content="0" Background="#CCFBFBFB" FontSize="24"  Command="{Binding Btn_0}"/>
+                    <Button Margin="1,1,1,5" Style="{StaticResource CommonButtonStyle}" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" x:Name="btn_0"  Grid.Row="5" Grid.Column="1" Content="0" Background="#CCFBFBFB" FontSize="24"  Command="{Binding Btn_0}" Click="Btn_0_Click"/>
                     <Button Margin="1,1,1,5" Style="{StaticResource CommonButtonStyle}" x:Name="btn_point" Grid.Row="5" Grid.Column="2" Content="." Background="#E5F0F0F0" FontSize="28" FontWeight="Normal" Command="{Binding Btn_point}"/>
                     <Button Margin="1,1,4,5" Style="{StaticResource BinaryButtonStyle}" FontFamily="仿宋" x:Name="btn_equal" Grid.Row="5" Grid.Column="3" Content="=" Background="#E5F0F0F0" FontSize="30" FontWeight="Light" Command="{Binding Btn_equal}" Click="Button_Click_Equal"/>
                 </Grid>
             </Grid>
         </Grid>
     </Grid>
+     </Grid>
 </metro:MetroWindow>
