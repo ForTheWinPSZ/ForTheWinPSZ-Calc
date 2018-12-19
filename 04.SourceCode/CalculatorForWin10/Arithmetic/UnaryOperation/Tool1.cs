@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Arithmetic.BinaryOperaion;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -27,22 +28,16 @@ namespace Arithmetic.UnaryOperation
                     else
                     {
                         if (IsScienceCount(param) )
-                            result = Math.Sqrt(ToDouble(param)).ToString().ToLower();
+                            result = ScientificSqrt(param);
                         else
                             result= Sqrt(ToDecimal(param)).ToString();                                                               
                         break;
                     }
                 case "reverse":
-                    if (IsScienceCount(param))
-                    {
-                        result = ScientificCalculationTool.ScientficNum(param);
-                        if (result.StartsWith("-"))
-                            result = result.Replace("-", "");
-                        else
-                            result = result.Insert(0, "-");
-                    }                        
+                    if (param.StartsWith("-"))
+                        result = param.Replace("-", "");
                     else
-                        result = Decimal.Negate(ToDecimal(param)).ToString();                        
+                        result = param.Insert(0, "-");                                      
                     break;
                 case "reciprocal":
                     if (param == "0")
@@ -51,12 +46,12 @@ namespace Arithmetic.UnaryOperation
                     }
                     else
                     {
-                        if (IsScienceCount(param))
-                            result = (1 / ToDouble(param)).ToString().ToLower();
-                        else
-                            result = (1/ToDecimal(param)).ToString();
+                        result= ScientificCalculationTool.Division("1", param); 
                         break;
                     }
+                case "cube":
+                    result =ScientificCalculationTool.Mul(param, ScientificCalculationTool.Mul(param, param)) ;
+                    break;
             }
             return result;
         }
@@ -74,7 +69,19 @@ namespace Arithmetic.UnaryOperation
             }
             return x;
         }
-
+        //计算科学计数的平方根
+        public static string ScientificSqrt(string d)
+        {
+            string x = ScientificCalculationTool.Division(d, "3");
+            string lastX = "";
+            for(int i = 0; i < 50; i++)
+            {
+                x = Tool.Compute(Tool.Compute(d, "÷", Tool.Compute(x, "+", x)), "+", Tool.Compute(x, "÷", "2"));
+                if (x.Equals(lastX)) break;
+                lastX = x;
+            }
+            return x;
+        }
         public static bool IsScienceCount(string num)
         {
             Debug.WriteLine("IsScienceCount:"+num);
@@ -84,7 +91,8 @@ namespace Arithmetic.UnaryOperation
                 return true;
             }
             num = num.Replace("-","");
-
+            if (num.Equals("0"))
+                return false;
             if (ToDecimal(num) >= 10000000000000000)
                 return true;
             if (ToDecimal(num) < 0.0000000000000001m)

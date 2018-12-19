@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Arithmetic.UnaryOperation;
 using Arithmetic.BinaryOperaion;
 using static System.Convert;
+using System.Diagnostics;
 
 namespace Arithmetic
 {
@@ -40,13 +41,23 @@ namespace Arithmetic
             int right;
             if (right1 >= right2)
             {
-                left2 = left2 /ToDecimal(Math.Pow(10, right1 - right2));
+                int len = right1 - right2;
+                if (len > 0)
+                {
+                    StringBuilder tem = new StringBuilder("0.");
+                    tem.Append('0', len - 1);
+                    left2 = ToDecimal(tem.Append(left2.ToString().Replace(".", "").Trim('0')).ToString());
+                }          
                 left = left1 + left2;
                 right = right1;
             }
             else
             {
-                left1 = left1 / ToDecimal(Math.Pow(10, right2 - right1));
+                //left1 = left1 / ToDecimal(Math.Pow(10, right2 - right1));
+                int len = right2 - right1;
+                StringBuilder tem = new StringBuilder("0.");
+                tem.Append('0', len - 1);
+                left1 = ToDecimal(tem.Append(left1.ToString().Replace(".", "").Trim('0')).ToString());
                 left = left1 + left2;
                 right = right2;
             }
@@ -136,7 +147,10 @@ namespace Arithmetic
             //左边计算的值超过两位数
             if (left >= 10)
             {
-                index = left.ToString().IndexOf(".") - 1;
+                if (left.ToString().Contains("."))
+                    index = left.ToString().IndexOf(".") - 1;
+                else
+                    index = left.ToString().Length - 1;
                 newLeft = left.ToString().Replace(".", "").Insert(1, ".");
             }
             else
@@ -173,7 +187,8 @@ namespace Arithmetic
 
         //将科学计数法转为数字
         public static string ReturnNum(string num)
-        {            
+        {
+            Debug.WriteLine("nummmm:"+num);
             if (!num.Contains("e"))
                 return num;
             int right = ToInt32(num.Substring(num.IndexOf('e') + 1));
@@ -181,9 +196,18 @@ namespace Arithmetic
             {
                 num = Decimal.Parse(num, System.Globalization.NumberStyles.Float).ToString();
             }
+            else if (right <= -4 && right >= -18)
+            {
+                decimal num1 = Decimal.Parse(num, System.Globalization.NumberStyles.Float);
+                if ((num1.ToString().Length <= 18 && num1 >= 0.00000001m))
+                    num = num1.ToString();
+            }
+            
+
+            
             return num;
         }
-
+        //科学计数位数显示
         public static string DisplayScientficNum(string num)
         {
             string left = num.Substring(0, num.IndexOf("e"));

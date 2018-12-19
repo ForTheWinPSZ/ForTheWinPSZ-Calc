@@ -18,11 +18,13 @@ namespace Clean
         }
         public void ChangeExpression()
         {
-            if (!_expressionValue.EndsWith(" "))
+          
+            if (_expressionValue != ""&&!_expressionValue.EndsWith(" "))
             {
                 string[] arr = _expressionValue.Split(new char[] { ' ' });
                 _expressionValue=_expressionValue.Replace(arr[arr.Length-1],"");
             }
+            
         }
         public void ClearResultValue()
         {

@@ -68,10 +68,10 @@ namespace Arithmetic.BinaryOperaion
             {
                 return true;
             }
-            if (ToDecimal(num) == 0)
-                return false;
+            
             num = num.Replace("-", "");
-
+            if (num.Equals("0"))
+                return false;
             if (ToDecimal(num) >= 10000000000000000)
                 return true;
             if (ToDecimal(num) < 0.0000000000000001m)
@@ -97,29 +97,29 @@ namespace Arithmetic.BinaryOperaion
             
             //判断是否为0.
             int index;
-            if (ToDouble(resultValue) < 1 && ToDouble(resultValue) > -1)
+            if (ToDecimal(resultValue) < 1 && ToDecimal(resultValue) > -1)
                 index = 1;
             else
                 index = 0;
             //有点有负号
-            if (resultValue.Contains(".") && resultValue.Contains("-") && resultValue.Length > index + 18)
+            if (resultValue.Contains(".") && resultValue.StartsWith("-") && resultValue.Length > index + 18)
             {
                 Debug.WriteLine("index:" + index);
                 resultValue = Rounding2(resultValue, index + 18);              
             }
             //有点无负号
-            else if (resultValue.Length > index + 17 && resultValue.Contains(".") && !resultValue.Contains("-"))
+            else if (resultValue.Length > index + 17 && resultValue.Contains(".") && !resultValue.StartsWith("-"))
             {
                 Debug.WriteLine("resultValue:" + resultValue);
                 resultValue = Rounding2(resultValue, index + 17);                         
             }
             //无点有负号
-            else if (resultValue.Length > 17 && !resultValue.Contains(".") && resultValue.Contains("-"))
+            else if (resultValue.Length > 17 && !resultValue.Contains(".") && resultValue.StartsWith("-"))
             {
                 resultValue = Rounding2(resultValue, 17);                
             }
             //无点无负号
-            else if (resultValue.Length > 16 && !resultValue.Contains(".") && !resultValue.Contains("-"))
+            else if (resultValue.Length > 16 && !resultValue.Contains(".") && !resultValue.StartsWith("-"))
             {
                 resultValue = Rounding2(resultValue, 16);               
             }           

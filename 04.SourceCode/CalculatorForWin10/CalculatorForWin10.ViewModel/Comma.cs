@@ -24,33 +24,29 @@ namespace CalculatorForWin10.ViewModel
             #region 限制输出框最大容纳位数
             //判断是否为0.
             int index;
-            if (ToDouble(resultValue) < 1 && ToDouble(resultValue) > -1)
+            if (ToDecimal(resultValue) < 1 && ToDecimal(resultValue) > -1)
                 index = 1;
             else
                 index = 0;           
             //有点有负号
-            if (resultValue.Contains(".") && resultValue.Contains("-") && resultValue.Length > index + 18)
+            if (resultValue.Contains(".") && resultValue.StartsWith("-") && resultValue.Length > index + 18)
             {                
-                resultValue = Rounding2(resultValue, index + 18);
-                //resultValue = resultValue.Substring(0, index + 17) + Rounding(resultValue.Substring(index + 17, 1), resultValue.Substring(index + 18, 1));
+                resultValue = Rounding2(resultValue, index + 18);             
             }
             //有点无负号
-            else if (resultValue.Length > index + 17 && resultValue.Contains(".") && !resultValue.Contains("-"))
+            else if (resultValue.Length > index + 17 && resultValue.Contains(".") && !resultValue.StartsWith("-"))
             {                
-                resultValue = Rounding2(resultValue,index+17);
-                //resultValue = resultValue.Substring(0, index + 16) + Rounding(resultValue.Substring(index + 16, 1), resultValue.Substring(index + 17, 1));                
+                resultValue = Rounding2(resultValue,index+17);                             
             }
             //无点有负号
-            else if (resultValue.Length > 17 && !resultValue.Contains(".") && resultValue.Contains("-"))
+            else if (resultValue.Length > 17 && !resultValue.Contains(".") && resultValue.StartsWith("-"))
             {
-                resultValue = Rounding2(resultValue,17);
-                //resultValue = resultValue.Substring(0, 16) + Rounding(resultValue.Substring(16, 1), resultValue.Substring(17, 1));
+                resultValue = Rounding2(resultValue,17);              
             }
             //无点无负号
-            else if (resultValue.Length > 16 && !resultValue.Contains(".") && !resultValue.Contains("-"))
+            else if (resultValue.Length > 16 && !resultValue.Contains(".") && !resultValue.StartsWith("-"))
             {
-                resultValue = Rounding2(resultValue, 16);
-                //resultValue = resultValue.Substring(0, 15) + Rounding(resultValue.Substring(15, 1), resultValue.Substring(16, 1));
+                resultValue = Rounding2(resultValue, 16);              
             }
 
             if (!isNumDef)

@@ -17,8 +17,7 @@ namespace NumberDefine
         {
             if (!CanNumberDef)
             {
-                char[] binary = { '+', '-', '×', '÷' };
-                if (ResultValue != "" && ExpressionValue != "" && ExpressionValue.LastIndexOfAny(binary) == -1)
+                if (ResultValue != "" && ExpressionValue != "" && ExpressionValue.Split(new char[] { ' ' }).Length == 1)
                 {
                     Lparm = ResultValue;
                     historyString = ExpressionValue;
