@@ -54,7 +54,7 @@ namespace NumberDefine
             return true;
         }
                 public List<History> ReturnHistory()        {            return History;        }
-        public void AddHistory()        {            if (resultValue != "除数不能为零" && resultValue != "无效输入" && resultValue != "结果未定义")
+        public void AddHistory()        {            char[] strs = { '不', '无', '未', '溢' };            if (resultValue.IndexOfAny(strs) == -1)
             {
                 History his = new History(historyString + " = ", Tool.MaxContain(resultValue));
                 history.Add(his);

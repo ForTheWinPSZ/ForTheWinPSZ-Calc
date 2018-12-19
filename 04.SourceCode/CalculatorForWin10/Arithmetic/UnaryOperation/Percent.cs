@@ -31,8 +31,7 @@ namespace Arithmetic.UnaryOperation
             this.ExpressionValue = expressionValue;            this.ResultValue = resultValue;            this.PreResult = preResult;
             this.LastHistory = lHistroy;
             this.History = history;
-            this.Lparm = lparm;
-            if (ResultValue.Contains("."))            {                ResultValue = Convert.ToDecimal(ResultValue).ToString();            }
+            this.Lparm = lparm;            
             ChangeResultValue();
             ChangeExpression();        }        public  void ChangeExpression()        {            if (ExpressionValue == "" || ExpressionValue.EndsWith(" "))            {                ExpressionValue += Tool.MaxContain(ResultValue);            }            else            {                string UnaryExpression = GetUnaryExpression().Trim();                if (ExpressionValue.Trim().Equals(UnaryExpression.Trim()))                    ExpressionValue = "0";                else
                 {
@@ -55,7 +54,7 @@ namespace Arithmetic.UnaryOperation
             if (index != -1)
             {
                 if (strs[strs.Length - 1].LastIndexOfAny(binary) != -1 || strs[strs.Length - 2].LastIndexOfAny(binary) != -1)
-                    ResultValue = displayText = ResultValue == "" ? (ToDecimal(PreResult) / 100).ToString() : (ToDecimal(ResultValue) / 100).ToString();
+                    ResultValue = displayText = ResultValue == "" ? Calculate2(PreResult)  : Calculate2(ResultValue);
                 else
                     ResultValue = Calculate(displayText = ResultValue == "" ? PreResult : ResultValue);
             }
@@ -70,23 +69,31 @@ namespace Arithmetic.UnaryOperation
                         string[] strs2 = LastHistory.Split(new char[] { ' ' });
                         if(strs2[strs2.Length-4].LastIndexOfAny(binary) != -1)
                         {
-                            ResultValue = displayText = ResultValue == "" ? (ToDecimal(PreResult) / 100).ToString() : (ToDecimal(ResultValue) / 100).ToString();
+                            ResultValue = displayText = ResultValue == "" ? Calculate2(PreResult) : Calculate2(ResultValue);
                             return;
                         }
                     }
 
                 }
                 ResultValue = Calculate(displayText = ResultValue == "" ? PreResult : ResultValue);
-            }                        }        public string Calculate(string param)        {
+            }                        }        //百分号的加减运算        public string Calculate(string param)        {
             if (PreResult == "")
                 PreResult = "0";
-            return ((ToDecimal(PreResult) * ToDecimal(param) / 100)).ToString();        }
+            
+            return Tool.Compute(param, "×", Tool.Compute(param, "×", "0.01"));        }
+        //百分号的乘除运算
+        public string Calculate2(string param)
+        {
+            if (PreResult == "")
+                PreResult = "0";
+            return Tool.Compute(param, "×","0.01");
+        }
 
         public string GetUnaryExpression()        {            binaryIndex = ExpressionValue.LastIndexOf(" ") + 1;            return ExpressionValue.Substring(binaryIndex);        }
         public string ReturnExpressionValue()        {            return ExpressionValue;        }
         public string ReturnResultValue()        {            return ResultValue;        }
         public List<History> ReturnHistory()        {            return History;        }
-        public void AddHistory()        {            if (ResultValue != "除数不能为零" && ResultValue != "无效输入" && ResultValue != "结果未定义")
+        public void AddHistory()        {            char[] strs = { '不', '无', '未', '溢' };            if (ResultValue.IndexOfAny(strs) == -1)
             {
                 History his = new History(historyString + " = ", "0");
                 History.Add(his);

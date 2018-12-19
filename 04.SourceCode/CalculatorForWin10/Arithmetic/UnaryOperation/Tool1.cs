@@ -51,10 +51,7 @@ namespace Arithmetic.UnaryOperation
                     }
                     else
                     {
-                        if (IsScienceCount(param))
-                            result = (1 / ToDouble(param)).ToString().ToLower();
-                        else
-                            result = (1/ToDecimal(param)).ToString();
+                        result= ScientificCalculationTool.Division("1", param); 
                         break;
                     }
             }
