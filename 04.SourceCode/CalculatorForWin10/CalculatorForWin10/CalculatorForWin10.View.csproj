@@ -60,12 +60,23 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="XamlMVVMInfrastructure, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\XamlMVVMInfrastructure.1.0.0\lib\net461\XamlMVVMInfrastructure.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Extension.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="History.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -74,13 +85,66 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Extension.xaml.cs">
+      <DependentUpon>Extension.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="History.xaml.cs">
+      <DependentUpon>History.xaml</DependentUpon>
+    </Compile>
     <Compile Include="IconHelper.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Memory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\BinaryButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\CloseButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\CommonButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\ExtensionButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\ExtensionMButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\HistoryListItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\MaxButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\MemoryListItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\ScrollViewerStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\TitleButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Memory.xaml.cs">
+      <DependentUpon>Memory.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -108,24 +172,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\opt.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\qc.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\del.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\his.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="IconCal.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Cal.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Calculate.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -133,6 +179,22 @@
       <Project>{045d1ea9-3a61-4bb0-b89b-91d34d8a985a}</Project>
       <Name>CalculatorForWin10.ViewModel</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\del.png" />
+    <Resource Include="Images\dusbin.png" />
+    <Resource Include="Images\history.png" />
+    <Resource Include="Images\MOpt.png" />
+    <Resource Include="Images\Opt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\maxTitle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\del2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\up.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -50,6 +50,8 @@ namespace Arithmetic.BinaryOperaion
                     result = ScientificCalculationTool.Mul(num1, num2);
                     break;
                 case "÷":
+                    if (num1 == "除数不能为零")
+                        return "0";
                     if (num2 == "0")
                         return "除数不能为零";
                     result = ScientificCalculationTool.Division(num1, num2);
