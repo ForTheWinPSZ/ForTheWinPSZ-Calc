@@ -236,6 +236,7 @@ namespace CalculatorForWin10
             this.HistoryFlyout.IsOpen = false;
             IsHistoryOpened = false;
             IsMemoryOpened = false;
+            re.FontSize = ChangeFontSize(re.ActualWidth,re.Text.Length);
             if (this.Width > 624 && Arrived == false)
             {
                 this.MaxWidth = SystemParameters.WorkArea.Width;
@@ -363,7 +364,7 @@ namespace CalculatorForWin10
             hi.Visibility = Visibility.Hidden;
             Button dustbin = h.FindName("btn_history_dustbin") as Button;
             dustbin.Visibility = Visibility.Visible;
-            if (ex.Content.ToString().EndsWith(" ÷ ") && re.Content.ToString() == "0")
+            if (ex.Content.ToString().EndsWith(" ÷ ") && re.Text.ToString() == "0")
             {
                 btn_mc.IsEnabled = false;
                 btn_mr.IsEnabled = false;
@@ -382,7 +383,7 @@ namespace CalculatorForWin10
                 btn_point.IsEnabled = false;
                 btn_nega.IsEnabled = false;
             }
-            if (re.Content.ToString().Contains("除")|| re.Content.ToString().Contains("结"))
+            if (re.Text.ToString().Contains("除")|| re.Text.ToString().Contains("结"))
             {
                 btn_mc.IsEnabled = true;
                 btn_mr.IsEnabled = true;
@@ -500,7 +501,7 @@ namespace CalculatorForWin10
 
         private void Btn_C_Click(object sender, RoutedEventArgs e)
         {
-            if (re.Content.ToString().Contains("除"))
+            if (re.Text.ToString().Contains("除"))
             {
                 btn_mc.IsEnabled = true;
                 btn_mr.IsEnabled = true;
@@ -523,7 +524,7 @@ namespace CalculatorForWin10
 
         private void Btn_DEL_Click(object sender, RoutedEventArgs e)
         {
-            if (re.Content.ToString().Contains("除"))
+            if (re.Text.ToString().Contains("除"))
             {
                 btn_mc.IsEnabled = true;
                 btn_mr.IsEnabled = true;
@@ -546,7 +547,7 @@ namespace CalculatorForWin10
 
         private void Btn_7_Click(object sender, RoutedEventArgs e)
         {
-            if (re.Content.ToString().Contains("除"))
+            if (re.Text.ToString().Contains("除"))
             {
                 btn_mc.IsEnabled = true;
                 btn_mr.IsEnabled = true;
@@ -569,7 +570,7 @@ namespace CalculatorForWin10
 
         private void Btn_8_Click(object sender, RoutedEventArgs e)
         {
-            if (re.Content.ToString().Contains("除"))
+            if (re.Text.ToString().Contains("除"))
             {
                 btn_mc.IsEnabled = true;
                 btn_mr.IsEnabled = true;
@@ -592,7 +593,7 @@ namespace CalculatorForWin10
 
         private void Btn_9_Click(object sender, RoutedEventArgs e)
         {
-            if (re.Content.ToString().Contains("除"))
+            if (re.Text.ToString().Contains("除"))
             {
                 btn_mc.IsEnabled = true;
                 btn_mr.IsEnabled = true;
@@ -615,7 +616,7 @@ namespace CalculatorForWin10
 
         private void Btn_4_Click(object sender, RoutedEventArgs e)
         {
-            if (re.Content.ToString().Contains("除"))
+            if (re.Text.ToString().Contains("除"))
             {
                 btn_mc.IsEnabled = true;
                 btn_mr.IsEnabled = true;
@@ -638,7 +639,7 @@ namespace CalculatorForWin10
 
         private void Btn_5_Click(object sender, RoutedEventArgs e)
         {
-            if (re.Content.ToString().Contains("除"))
+            if (re.Text.ToString().Contains("除"))
             {
                 btn_mc.IsEnabled = true;
                 btn_mr.IsEnabled = true;
@@ -662,7 +663,7 @@ namespace CalculatorForWin10
 
         private void Btn_6_Click(object sender, RoutedEventArgs e)
         {
-            if (re.Content.ToString().Contains("除"))
+            if (re.Text.ToString().Contains("除"))
             {
                 btn_mc.IsEnabled = true;
                 btn_mr.IsEnabled = true;
@@ -685,7 +686,7 @@ namespace CalculatorForWin10
 
         private void Btn_1_Click(object sender, RoutedEventArgs e)
         {
-            if (re.Content.ToString().Contains("除"))
+            if (re.Text.ToString().Contains("除"))
             {
                 btn_mc.IsEnabled = true;
                 btn_mr.IsEnabled = true;
@@ -708,7 +709,7 @@ namespace CalculatorForWin10
 
         private void Btn_2_Click(object sender, RoutedEventArgs e)
         {
-            if (re.Content.ToString().Contains("除"))
+            if (re.Text.ToString().Contains("除"))
             {
                 btn_mc.IsEnabled = true;
                 btn_mr.IsEnabled = true;
@@ -731,7 +732,7 @@ namespace CalculatorForWin10
 
         private void Btn_3_Click(object sender, RoutedEventArgs e)
         {
-            if (re.Content.ToString().Contains("除"))
+            if (re.Text.ToString().Contains("除"))
             {
                 btn_mc.IsEnabled = true;
                 btn_mr.IsEnabled = true;
@@ -754,7 +755,7 @@ namespace CalculatorForWin10
 
         private void Btn_0_Click(object sender, RoutedEventArgs e)
         {
-            if (re.Content.ToString().Contains("除"))
+            if (re.Text.ToString().Contains("除"))
             {
                 btn_mc.IsEnabled = true;
                 btn_mr.IsEnabled = true;
@@ -777,7 +778,7 @@ namespace CalculatorForWin10
 
         private void Btn_CE_Click(object sender, RoutedEventArgs e)
         {
-            if (re.Content.ToString().Contains("除"))
+            if (re.Text.ToString().Contains("除"))
             {
                 btn_mc.IsEnabled = true;
                 btn_mr.IsEnabled = true;
@@ -806,6 +807,21 @@ namespace CalculatorForWin10
         private void Main_Deactivated(object sender, EventArgs e)
         {
             main.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#e6e6e6"));
+        }
+
+        private void Re_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            re.FontSize = ChangeFontSize(re.ActualWidth,re.Text.Length);
+        }
+
+        private double ChangeFontSize(double textBoxWidth,int textLength)
+        {
+            double fontSize = textBoxWidth / (0.587 * textLength);
+            if (textLength <= 13)
+                fontSize = 45;
+            else
+                fontSize = fontSize > 45 ? 45 : fontSize;
+            return fontSize;
         }
     }
 }

@@ -130,7 +130,7 @@
                 <Grid Grid.Row="1">
                     <StackPanel Orientation="Vertical">
                         <Label x:Name="ex" HorizontalContentAlignment="Right" Foreground="#5F5F5F" Height="25" FontSize="14" Padding="0,2,20,0"  Content="{Binding ExpressionText}" Background="#00E0E0E0" ></Label>
-                        <Label x:Name="re" HorizontalContentAlignment="Right"  FontFamily="Yu Gothic UI Semibold" FontWeight="Normal" FontSize="45" Padding="0,0,10,0" Content="{Binding ResultText}"></Label>
+                        <TextBox Cursor="Arrow" SelectionBrush="Transparent" IsReadOnly="True" BorderThickness="0" Background="Transparent" x:Name="re" HorizontalContentAlignment="Right"  FontFamily="Yu Gothic UI Semibold" FontWeight="Normal" FontSize="45" Padding="0,0,10,0" Text="{Binding ResultText}" TextChanged="Re_TextChanged"></TextBox>
                     </StackPanel>
                 </Grid>
                 <Grid Grid.Row="2">
