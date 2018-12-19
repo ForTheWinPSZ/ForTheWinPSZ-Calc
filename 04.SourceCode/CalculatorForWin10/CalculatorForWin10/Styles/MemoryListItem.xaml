@@ -25,18 +25,37 @@
                             <Setter TargetName="extensionMplus" Property="Visibility" Value="Visible"/>
                             <Setter TargetName="extensionMminus" Property="Visibility" Value="Visible"/>
                         </Trigger>
-                        <EventTrigger RoutedEvent="ListBoxItem.MouseDown">
+                        <EventTrigger RoutedEvent="ListBoxItem.Selected">
                             <BeginStoryboard>
                                 <Storyboard>
                                     <ColorAnimation Storyboard.TargetName="q"
                                                         Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)" 
-                                                        Duration="0:0:0.5"
+                                                        Duration="0:0:0.1"
                                                         From="#CFCFCF" To="#BCBCBC">
                                     </ColorAnimation>
+                                    <DoubleAnimation Storyboard.TargetName="te"
+                                                        Storyboard.TargetProperty="FontSize" 
+                                                        Duration="0:0:0.1"
+                                                        From="25" To="23"/>
+                                    <DoubleAnimation Storyboard.TargetName="extensionMc"
+                                                        Storyboard.TargetProperty="FontSize" 
+                                                        Duration="0:0:0.1"
+                                                        From="12" To="11">
+                                    </DoubleAnimation>
+                                    <DoubleAnimation Storyboard.TargetName="extensionMplus"
+                                                        Storyboard.TargetProperty="FontSize" 
+                                                        Duration="0:0:0.1"
+                                                        From="12" To="11">
+                                    </DoubleAnimation>
+                                    <DoubleAnimation Storyboard.TargetName="extensionMminus"
+                                                        Storyboard.TargetProperty="FontSize" 
+                                                        Duration="0:0:0.1"
+                                                        From="12" To="11">
+                                    </DoubleAnimation>
                                 </Storyboard>
                             </BeginStoryboard>
                         </EventTrigger>
-                        <EventTrigger RoutedEvent="ListBoxItem.MouseUp">
+                        <EventTrigger RoutedEvent="ListBoxItem.MouseLeftButtonUp">
                             <BeginStoryboard>
                                 <Storyboard>
                                     <ColorAnimation Storyboard.TargetName="q"
