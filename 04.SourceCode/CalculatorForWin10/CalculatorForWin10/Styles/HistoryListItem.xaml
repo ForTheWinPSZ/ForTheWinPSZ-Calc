@@ -15,7 +15,7 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter TargetName="q" Property="Background"  Value="#CFCFCF"></Setter>
+                            <Setter TargetName="q" Property="Background" Value="#CFCFCF"></Setter>
                         </Trigger>
                         <EventTrigger RoutedEvent="ListBoxItem.MouseUp">
                             <BeginStoryboard>
