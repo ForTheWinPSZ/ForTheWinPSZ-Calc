@@ -38,13 +38,12 @@ namespace Arithmetic.UnaryOperation
                     string partExpression = ExpressionValue.Substring(0, binaryIndex);
                     ExpressionValue = partExpression + Tool.MaxContain(displayText);
                 }                            }        }        public  void ChangeResultValue()        {
-            char[] binary1 = { '+', '-', '×', '÷' };
-            if ((ResultValue != "" && ExpressionValue != "" && ExpressionValue.LastIndexOfAny(binary1) == -1)||ExpressionValue.Equals("0"))
-            {
-                Lparm = ResultValue;
-                historyString = ExpressionValue;
-                AddHistory();
-                IsUnary = true;
+            if (ResultValue != "" && ExpressionValue != ""&& ExpressionValue.Split(new char[] { ' ' }).Length == 1)
+            {               
+                    Lparm = ResultValue;
+                    historyString = ExpressionValue;
+                    AddHistory();
+                    IsUnary = true;                               
             }
             else
             {

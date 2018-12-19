@@ -66,10 +66,10 @@ namespace Arithmetic.BinaryOperaion
             {
                 return true;
             }
-            if (ToDecimal(num) == 0)
-                return false;
+            
             num = num.Replace("-", "");
-
+            if (num.Equals("0"))
+                return false;
             if (ToDecimal(num) >= 10000000000000000)
                 return true;
             if (ToDecimal(num) < 0.0000000000000001m)

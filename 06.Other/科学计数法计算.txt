@@ -68,3 +68,17 @@ if (IsScienceCount(num1) || IsScienceCount(num2))
                     {
                         result = (ToDecimal(num1) / ToDecimal(num2)).ToString();
                     }
+
+
+
+//Tool1ÖÐÈ¡·´
+if (IsScienceCount(param))
+                    {
+                        result = ScientificCalculationTool.ScientficNum(param);
+                        if (result.StartsWith("-"))
+                            result = result.Replace("-", "");
+                        else
+                            result = result.Insert(0, "-");
+                    }                        
+                    else
+                        result = Decimal.Negate(ToDecimal(param)).ToString();  
