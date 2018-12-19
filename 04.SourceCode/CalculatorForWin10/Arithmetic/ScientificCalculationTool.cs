@@ -183,7 +183,7 @@ namespace Arithmetic
             }
             return num;
         }
-
+        //科学计数位数显示
         public static string DisplayScientficNum(string num)
         {
             string left = num.Substring(0, num.IndexOf("e"));
