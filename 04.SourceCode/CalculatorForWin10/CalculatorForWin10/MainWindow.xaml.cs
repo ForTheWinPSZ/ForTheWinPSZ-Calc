@@ -575,7 +575,7 @@ namespace CalculatorForWin10
         private void Btn_C_Click(object sender, RoutedEventArgs e)
         {
 
-            if (re.Content.ToString().Contains("除")|| re.Content.ToString().Contains("结"))
+            if (re.Text.ToString().Contains("除")|| re.Text.ToString().Contains("结"))
 
             {
                 if (btn_mopt.IsEnabled == false)
@@ -621,7 +621,7 @@ namespace CalculatorForWin10
         private void Btn_DEL_Click(object sender, RoutedEventArgs e)
         {
 
-            if (re.Content.ToString().Contains("除") || re.Content.ToString().Contains("结"))
+            if (re.Text.ToString().Contains("除") || re.Text.ToString().Contains("结"))
 
             {
                 if (btn_mopt.IsEnabled == false)
@@ -667,7 +667,7 @@ namespace CalculatorForWin10
         private void Btn_7_Click(object sender, RoutedEventArgs e)
         {
 
-            if (re.Content.ToString().Contains("除") || re.Content.ToString().Contains("结"))
+            if (re.Text.ToString().Contains("除") || re.Text.ToString().Contains("结"))
 
             {
                 if (btn_mopt.IsEnabled == false)
@@ -713,7 +713,7 @@ namespace CalculatorForWin10
         private void Btn_8_Click(object sender, RoutedEventArgs e)
         {
 
-            if (re.Content.ToString().Contains("除") || re.Content.ToString().Contains("结"))
+            if (re.Text.ToString().Contains("除") || re.Text.ToString().Contains("结"))
 
             {
                 if (btn_mopt.IsEnabled == false)
@@ -759,7 +759,7 @@ namespace CalculatorForWin10
         private void Btn_9_Click(object sender, RoutedEventArgs e)
         {
 
-            if (re.Content.ToString().Contains("除") || re.Content.ToString().Contains("结"))
+            if (re.Text.ToString().Contains("除") || re.Text.ToString().Contains("结"))
 
             {
                 if (btn_mopt.IsEnabled == false)
@@ -805,7 +805,7 @@ namespace CalculatorForWin10
         private void Btn_4_Click(object sender, RoutedEventArgs e)
         {
 
-            if (re.Content.ToString().Contains("除") || re.Content.ToString().Contains("结"))
+            if (re.Text.ToString().Contains("除") || re.Text.ToString().Contains("结"))
 
             {
                 if (btn_mopt.IsEnabled == false)
@@ -851,7 +851,7 @@ namespace CalculatorForWin10
         private void Btn_5_Click(object sender, RoutedEventArgs e)
         {
 
-            if (re.Content.ToString().Contains("除") || re.Content.ToString().Contains("结"))
+            if (re.Text.ToString().Contains("除") || re.Text.ToString().Contains("结"))
 
             {
                 if (btn_mopt.IsEnabled == false)
@@ -898,7 +898,7 @@ namespace CalculatorForWin10
         private void Btn_6_Click(object sender, RoutedEventArgs e)
         {
 
-            if (re.Content.ToString().Contains("除") || re.Content.ToString().Contains("结"))
+            if (re.Text.ToString().Contains("除") || re.Text.ToString().Contains("结"))
 
             {
                 if (btn_mopt.IsEnabled == false)
@@ -944,7 +944,7 @@ namespace CalculatorForWin10
         private void Btn_1_Click(object sender, RoutedEventArgs e)
         {
 
-            if (re.Content.ToString().Contains("除") || re.Content.ToString().Contains("结"))
+            if (re.Text.ToString().Contains("除") || re.Text.ToString().Contains("结"))
 
             {
                 if (btn_mopt.IsEnabled == false)
@@ -990,7 +990,7 @@ namespace CalculatorForWin10
         private void Btn_2_Click(object sender, RoutedEventArgs e)
         {
 
-            if (re.Content.ToString().Contains("除") || re.Content.ToString().Contains("结"))
+            if (re.Text.ToString().Contains("除") || re.Text.ToString().Contains("结"))
 
             {
                 if (btn_mopt.IsEnabled == false)
@@ -1036,7 +1036,7 @@ namespace CalculatorForWin10
         private void Btn_3_Click(object sender, RoutedEventArgs e)
         {
 
-            if (re.Content.ToString().Contains("除") || re.Content.ToString().Contains("结"))
+            if (re.Text.ToString().Contains("除") || re.Text.ToString().Contains("结"))
 
             {
                 if (btn_mopt.IsEnabled == false)
@@ -1082,7 +1082,7 @@ namespace CalculatorForWin10
         private void Btn_0_Click(object sender, RoutedEventArgs e)
         {
 
-            if (re.Content.ToString().Contains("除") || re.Content.ToString().Contains("结"))
+            if (re.Text.ToString().Contains("除") || re.Text.ToString().Contains("结"))
 
             {
                 if (btn_mopt.IsEnabled == false)
@@ -1128,7 +1128,7 @@ namespace CalculatorForWin10
         private void Btn_CE_Click(object sender, RoutedEventArgs e)
         {
 
-            if (re.Content.ToString().Contains("除") || re.Content.ToString().Contains("结"))
+            if (re.Text.ToString().Contains("除") || re.Text.ToString().Contains("结"))
 
             {
                 if (btn_mopt.IsEnabled == false)

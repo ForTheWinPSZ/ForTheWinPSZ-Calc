@@ -72,8 +72,8 @@ namespace CalculatorForWin10
         }
         private void Mouse_M(object sender, MouseButtonEventArgs e)
         {
-            Label re = main.FindName("re") as Label;
-            re.Content = listStockName.SelectedItem.ToString();
+            TextBox re = main.FindName("re") as TextBox;
+            re.Text = listStockName.SelectedItem.ToString();
             Label ex = main.FindName("ex") as Label;
             ex.Content = "";
         }
