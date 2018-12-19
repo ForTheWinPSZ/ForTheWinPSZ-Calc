@@ -6,7 +6,7 @@
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate>
+                <ControlTemplate TargetType="ListBoxItem">
                     <Border x:Name="border" Background="Transparent" Margin="-5,0,0,0">
                         <StackPanel x:Name="q" Orientation="Vertical" HorizontalAlignment="Right" Margin="-5,0,0,5">
                             <TextBlock TextWrapping="Wrap" Foreground="Black" Name="te" Text="{Binding}" Margin="0,7,30,0" FontFamily="等线" FontSize="25" FontWeight="Bold" HorizontalAlignment="Right" TextAlignment="Right"  Width="{Binding ElementName=z,Path=ActualWidth}">
@@ -18,20 +18,55 @@
                             </StackPanel>
                         </StackPanel>
                     </Border>
-                    <ControlTemplate.Triggers>
+                    <ControlTemplate.Triggers >
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="q" Property="Background" Value="#CFCFCF"></Setter>
                             <Setter TargetName="extensionMc" Property="Visibility" Value="Visible"/>
                             <Setter TargetName="extensionMplus" Property="Visibility" Value="Visible"/>
                             <Setter TargetName="extensionMminus" Property="Visibility" Value="Visible"/>
                         </Trigger>
-                        <Trigger Property="ListBoxItem.IsSelected" Value="True">
-                            <Setter TargetName="q" Property="Background" Value="#B29D9A9A"></Setter>
-                            <Setter TargetName="extensionMc" Property="FontSize" Value="11"></Setter>
-                            <Setter TargetName="te" Property="FontSize" Value="23"/>
-                            <Setter TargetName="extensionMplus" Property="FontSize" Value="11"/>
-                            <Setter TargetName="extensionMminus" Property="FontSize" Value="11"/>
-                        </Trigger>
+                        <EventTrigger RoutedEvent="ListBoxItem.MouseDown">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetName="q"
+                                                        Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)" 
+                                                        Duration="0:0:0.5"
+                                                        From="#CFCFCF" To="#BCBCBC">
+                                    </ColorAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="ListBoxItem.MouseUp">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetName="q"
+                                                        Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)" 
+                                                        Duration="0:0:0.1"
+                                                        From="#BCBCBC" To="#CFCFCF">
+                                    </ColorAnimation>
+                                    <DoubleAnimation Storyboard.TargetName="te"
+                                                        Storyboard.TargetProperty="FontSize" 
+                                                        Duration="0:0:0.1"
+                                                        From="23" To="25">
+                                    </DoubleAnimation>
+                                    <DoubleAnimation Storyboard.TargetName="extensionMc"
+                                                        Storyboard.TargetProperty="FontSize" 
+                                                        Duration="0:0:0.1"
+                                                        From="11" To="12">
+                                    </DoubleAnimation>
+                                    <DoubleAnimation Storyboard.TargetName="extensionMplus"
+                                                        Storyboard.TargetProperty="FontSize" 
+                                                        Duration="0:0:0.1"
+                                                        From="11" To="12">
+                                    </DoubleAnimation>
+                                    <DoubleAnimation Storyboard.TargetName="extensionMminus"
+                                                        Storyboard.TargetProperty="FontSize" 
+                                                        Duration="0:0:0.1"
+                                                        From="11" To="12">
+                                    </DoubleAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
