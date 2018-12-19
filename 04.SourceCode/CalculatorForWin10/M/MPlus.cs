@@ -16,8 +16,15 @@ namespace M
         }
         public List<string> FirstPlus()
         {
-            result = Convert.ToDouble(memory[memory.Count - 1]) +Convert.ToDouble(resultValue);
-            memory[memory.Count - 1] = Convert .ToString (result);
+            if (memory.Count == 0)
+            {
+                memory.Add(resultValue);
+            }
+            else
+            {
+                result = Convert.ToDouble(memory[memory.Count - 1]) + Convert.ToDouble(resultValue);
+                memory[memory.Count - 1] = Convert.ToString(result);
+            }
             return memory;
         }
     }

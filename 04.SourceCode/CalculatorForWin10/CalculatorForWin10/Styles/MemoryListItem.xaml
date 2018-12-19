@@ -8,8 +8,8 @@
             <Setter.Value>
                 <ControlTemplate>
                     <Border x:Name="border" Background="Transparent" Margin="-5,0,0,0">
-                        <StackPanel x:Name="q" Orientation="Vertical" HorizontalAlignment="Right" Height="67"  Margin="-5,0,0,5">
-                            <TextBlock Foreground="Black" Name="te" Text="{Binding}" Margin="0,7,30,0" FontFamily="等线" FontSize="25" FontWeight="Bold" HorizontalAlignment="Right" TextAlignment="Right"  Width="{Binding ElementName=z,Path=ActualWidth}">
+                        <StackPanel x:Name="q" Orientation="Vertical" HorizontalAlignment="Right" Margin="-5,0,0,5">
+                            <TextBlock TextWrapping="Wrap" Foreground="Black" Name="te" Text="{Binding}" Margin="0,7,30,0" FontFamily="等线" FontSize="25" FontWeight="Bold" HorizontalAlignment="Right" TextAlignment="Right"  Width="{Binding ElementName=z,Path=ActualWidth}">
                             </TextBlock>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,3">
                                 <Button Style="{StaticResource ExtensionMButtonStyle}" x:Name="extensionMc" Visibility="Hidden" FontFamily="等线" FontSize="12" FontWeight="Bold" Content="MC" Margin="0,0,1,0"/>
@@ -25,8 +25,12 @@
                             <Setter TargetName="extensionMplus" Property="Visibility" Value="Visible"/>
                             <Setter TargetName="extensionMminus" Property="Visibility" Value="Visible"/>
                         </Trigger>
-                        <Trigger Property="Button.IsPressed" Value="True">
-                            <Setter TargetName="border" Property="Background" Value="#BBBBBB"/>
+                        <Trigger Property="ListBoxItem.IsSelected" Value="True">
+                            <Setter TargetName="q" Property="Background" Value="#B29D9A9A"></Setter>
+                            <Setter TargetName="extensionMc" Property="FontSize" Value="11"></Setter>
+                            <Setter TargetName="te" Property="FontSize" Value="23"/>
+                            <Setter TargetName="extensionMplus" Property="FontSize" Value="11"/>
+                            <Setter TargetName="extensionMminus" Property="FontSize" Value="11"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
