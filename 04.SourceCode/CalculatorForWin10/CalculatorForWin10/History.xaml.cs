@@ -74,13 +74,14 @@ namespace CalculatorForWin10
             Window main = Application.Current.MainWindow;
             string[] arr = listStockName1.SelectedItem.ToString().Split(new char[] { '=' });
             Label ex = main.FindName("ex") as Label;
-            Label re = main.FindName("re") as Label;
+            TextBox re = main.FindName("re") as TextBox;
             ex.Content = arr[0].Trim();
-            re.Content = arr[1].Trim();
+            re.Text = arr[1].Trim();
         }
 
         private void Button_Click_Qc(object sender, RoutedEventArgs e)
         {
+            Debug.WriteLine("test3");
             H.Visibility = Visibility.Visible;
             btn_history_dustbin.Visibility = Visibility.Hidden;
         }
