@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Arithmetic.UnaryOperation
 {
-    class Cube:IUnary
+    public class Cube:IUnary
     {
         public Cube(string expressionValue, string resultValue, string preResult) : base(expressionValue, resultValue, preResult)
         {

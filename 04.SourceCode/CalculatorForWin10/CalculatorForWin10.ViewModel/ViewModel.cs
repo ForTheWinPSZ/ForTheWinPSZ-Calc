@@ -47,6 +47,8 @@ namespace CalculatorForWin10.ViewModel
         public NVCommand Btn_multiplication { get => btn_multiplication; }
         private readonly NVCommand btn_square;
         public NVCommand Btn_square { get => btn_square; }
+        private readonly NVCommand btn_cube;
+        public NVCommand Btn_cube { get => btn_cube; }
         private readonly NVCommand btn_4;
         public NVCommand Btn_4 { get => btn_4; }
         private readonly NVCommand btn_5;
@@ -243,7 +245,9 @@ namespace CalculatorForWin10.ViewModel
         }
         private void Cube()
         {
-
+            screen.HandleCube();
+            ResultText = screen.GetResult();
+            ExpressionText = screen.GetExpressionValue();
         }
         #endregion
 

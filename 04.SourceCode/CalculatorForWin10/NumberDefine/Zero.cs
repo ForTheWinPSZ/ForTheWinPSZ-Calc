@@ -16,7 +16,12 @@ namespace NumberDefine
         public override void InputNum()
         {
             if (!CanNumberDef)
-            {               
+            {
+                char[] strs = { '不', '无', '未', '溢' };
+                if (PreResult.IndexOfAny(strs) != -1)
+                {
+                    ExpressionValue = "";
+                }
                 if (ResultValue != "" && ExpressionValue != "" && ExpressionValue.Split(new char[] { ' ' }).Length == 1)
                 {
                     Lparm = ResultValue;
