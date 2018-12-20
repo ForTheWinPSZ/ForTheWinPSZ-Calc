@@ -16,6 +16,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MahApps.Metro.Controls;
 using System.Diagnostics;
+using CalculatorForWin10.Styles;
+
 namespace CalculatorForWin10
 {
     /// <summary>
@@ -30,6 +32,7 @@ namespace CalculatorForWin10
         private UserControl extensionControl;
         private UserControl historyControl;
         private UserControl memoryControl;
+        private ResourceDictionary mseries;
         private Style titleStyle;
         private Style maxTitleStyle;
         private bool IsChangeCube = false;
@@ -39,6 +42,7 @@ namespace CalculatorForWin10
             extensionControl = new Extension();
             historyControl = new History();
             memoryControl = new Memory();
+            mseries = new Mseries();
             extension = new Grid();
             extension.Width = 320;
             extension.SetValue(Grid.ColumnProperty, 1);
@@ -54,8 +58,45 @@ namespace CalculatorForWin10
         private void MetroWindow_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.DragMove();
+            if (btn_mopt.IsEnabled == false)
+            {
+                btn_mc.IsEnabled = false;
+                btn_mr.IsEnabled = false;
+            }
+            else
+            {
+                btn_mc.IsEnabled = true;
+                btn_mr.IsEnabled = true;
+            }
+            btn_mm.IsEnabled = true;
+            btn_mp.IsEnabled = true;
+            btn_ms.IsEnabled = true;
+            btn_pre.IsEnabled = true;
+            btn_sqrt.IsEnabled = true;
+            btn_squ.IsEnabled = true;
+            btn_reci.IsEnabled = true;
+            btn_CE.IsEnabled = true;
+            btn_C.IsEnabled = true;
+            btn_DEL.IsEnabled = true;
+            btn_divi.IsEnabled = true;
+            btn_9.IsEnabled = true;
+            btn_8.IsEnabled = true;
+            btn_7.IsEnabled = true;
+            btn_6.IsEnabled = true;
+            btn_5.IsEnabled = true;
+            btn_4.IsEnabled = true;
+            btn_3.IsEnabled = true;
+            btn_2.IsEnabled = true;
+            btn_1.IsEnabled = true;
+            btn_0.IsEnabled = true;
+            btn_muti.IsEnabled = true;
+            btn_add.IsEnabled = true;
+            btn_sub.IsEnabled = true;
+            btn_equal.IsEnabled = true;
+            btn_point.IsEnabled = true;
+            btn_nega.IsEnabled = true;
         }
-       
+
         #region 标题栏
         private void Btn_Min_Click(object sender, RoutedEventArgs e)
         {
@@ -68,7 +109,7 @@ namespace CalculatorForWin10
             {
                 WindowState = WindowState.Normal;
                 Max_Button.Style = titleStyle;
-                Max_Button.Padding = new Thickness(0,0,0,0);
+                Max_Button.Padding = new Thickness(0, 0, 0, 0);
             }
             else
             {
@@ -88,7 +129,7 @@ namespace CalculatorForWin10
         private void Btn_History_Click(object sender, RoutedEventArgs e)
         {
             this.HistoryFlyout.Visibility = Visibility.Visible;
-            
+
             if (IsHistoryOpened)
             {
                 #region 按钮恢复
@@ -168,9 +209,9 @@ namespace CalculatorForWin10
         }
 
         private void Btn_Memory_Click(object sender, RoutedEventArgs e)
-        {        
+        {
             this.MemoryFlyout.Visibility = Visibility.Visible;
-            
+
             if (IsMemoryOpened)
             {
                 #region 按钮恢复
@@ -248,7 +289,7 @@ namespace CalculatorForWin10
             this.HistoryFlyout.IsOpen = false;
             IsHistoryOpened = false;
             IsMemoryOpened = false;
-            re.FontSize = ChangeFontSize(re.ActualWidth,re.Text.Length);
+            re.FontSize = ChangeFontSize(re.ActualWidth, re.Text.Length);
             if (this.Width > 624 && Arrived == false)
             {
                 #region 添加扩展栏
@@ -458,7 +499,7 @@ namespace CalculatorForWin10
             hi.Visibility = Visibility.Hidden;
             Button dustbin = h.FindName("btn_history_dustbin") as Button;
             dustbin.Visibility = Visibility.Visible;
-            if (ex.Content.ToString().EndsWith(" ÷ ") && re.Text.ToString() == "0")
+            if (ex.Text.ToString().EndsWith(" ÷ ") && re.Text.ToString() == "0")
             {
                 btn_mc.IsEnabled = false;
                 btn_mr.IsEnabled = false;
@@ -479,7 +520,7 @@ namespace CalculatorForWin10
                 re.FontFamily = new FontFamily("微软雅黑");
                 re.FontWeight = FontWeights.Bold;
             }
-            if (re.Text.ToString().Contains("除")|| re.Text.ToString().Contains("结"))
+            if (re.Text.ToString().Contains("除") || re.Text.ToString().Contains("结"))
             {
                 re.FontFamily = new FontFamily("Yu Gothic UI Semibold");
                 re.FontWeight = FontWeights.Normal;
@@ -507,9 +548,9 @@ namespace CalculatorForWin10
             localm.M.Visibility = Visibility.Hidden;
             localm.btn_memory_dustbin.Visibility = Visibility.Visible;
             Memory m = extensionControl.FindName("localm") as Memory;
-            Label me =m.FindName("M") as Label;
+            Label me = m.FindName("M") as Label;
             me.Visibility = Visibility.Hidden;
-            Button dustbin= m.FindName("btn_memory_dustbin") as Button;
+            Button dustbin = m.FindName("btn_memory_dustbin") as Button;
             dustbin.Visibility = Visibility.Visible;
             btn_mc.IsEnabled = true;
             btn_mr.IsEnabled = true;
@@ -575,10 +616,7 @@ namespace CalculatorForWin10
 
         private void Btn_C_Click(object sender, RoutedEventArgs e)
         {
-
-            if (re.Text.ToString().Contains("除")|| re.Text.ToString().Contains("结"))
-
-            {
+            
                 if (btn_mopt.IsEnabled == false)
                 {
                     btn_mc.IsEnabled = false;
@@ -617,14 +655,11 @@ namespace CalculatorForWin10
                 btn_point.IsEnabled = true;
                 btn_nega.IsEnabled = true;
             }
-        }
+        
 
         private void Btn_DEL_Click(object sender, RoutedEventArgs e)
         {
-
-            if (re.Text.ToString().Contains("除") || re.Text.ToString().Contains("结"))
-
-            {
+            
                 if (btn_mopt.IsEnabled == false)
                 {
                     btn_mc.IsEnabled = false;
@@ -662,15 +697,12 @@ namespace CalculatorForWin10
                 btn_equal.IsEnabled = true;
                 btn_point.IsEnabled = true;
                 btn_nega.IsEnabled = true;
-            }
+            
         }
 
         private void Btn_7_Click(object sender, RoutedEventArgs e)
         {
-
-            if (re.Text.ToString().Contains("除") || re.Text.ToString().Contains("结"))
-
-            {
+            
                 if (btn_mopt.IsEnabled == false)
                 {
                     btn_mc.IsEnabled = false;
@@ -708,15 +740,12 @@ namespace CalculatorForWin10
                 btn_equal.IsEnabled = true;
                 btn_point.IsEnabled = true;
                 btn_nega.IsEnabled = true;
-            }
+            
         }
 
         private void Btn_8_Click(object sender, RoutedEventArgs e)
         {
-
-            if (re.Text.ToString().Contains("除") || re.Text.ToString().Contains("结"))
-
-            {
+            
                 if (btn_mopt.IsEnabled == false)
                 {
                     btn_mc.IsEnabled = false;
@@ -754,15 +783,12 @@ namespace CalculatorForWin10
                 btn_equal.IsEnabled = true;
                 btn_point.IsEnabled = true;
                 btn_nega.IsEnabled = true;
-            }
+            
         }
 
         private void Btn_9_Click(object sender, RoutedEventArgs e)
         {
-
-            if (re.Text.ToString().Contains("除") || re.Text.ToString().Contains("结"))
-
-            {
+            
                 if (btn_mopt.IsEnabled == false)
                 {
                     btn_mc.IsEnabled = false;
@@ -800,15 +826,12 @@ namespace CalculatorForWin10
                 btn_equal.IsEnabled = true;
                 btn_point.IsEnabled = true;
                 btn_nega.IsEnabled = true;
-            }
+            
         }
 
         private void Btn_4_Click(object sender, RoutedEventArgs e)
         {
-
-            if (re.Text.ToString().Contains("除") || re.Text.ToString().Contains("结"))
-
-            {
+            
                 if (btn_mopt.IsEnabled == false)
                 {
                     btn_mc.IsEnabled = false;
@@ -846,15 +869,12 @@ namespace CalculatorForWin10
                 btn_equal.IsEnabled = true;
                 btn_point.IsEnabled = true;
                 btn_nega.IsEnabled = true;
-            }
+            
         }
 
         private void Btn_5_Click(object sender, RoutedEventArgs e)
         {
-
-            if (re.Text.ToString().Contains("除") || re.Text.ToString().Contains("结"))
-
-            {
+            
                 if (btn_mopt.IsEnabled == false)
                 {
                     btn_mc.IsEnabled = false;
@@ -892,16 +912,14 @@ namespace CalculatorForWin10
                 btn_equal.IsEnabled = true;
                 btn_point.IsEnabled = true;
                 btn_nega.IsEnabled = true;
-            }
+            
 
         }
 
         private void Btn_6_Click(object sender, RoutedEventArgs e)
         {
 
-            if (re.Text.ToString().Contains("除") || re.Text.ToString().Contains("结"))
-
-            {
+            
                 if (btn_mopt.IsEnabled == false)
                 {
                     btn_mc.IsEnabled = false;
@@ -939,15 +957,12 @@ namespace CalculatorForWin10
                 btn_equal.IsEnabled = true;
                 btn_point.IsEnabled = true;
                 btn_nega.IsEnabled = true;
-            }
+            
         }
 
         private void Btn_1_Click(object sender, RoutedEventArgs e)
         {
 
-            if (re.Text.ToString().Contains("除") || re.Text.ToString().Contains("结"))
-
-            {
                 if (btn_mopt.IsEnabled == false)
                 {
                     btn_mc.IsEnabled = false;
@@ -985,15 +1000,12 @@ namespace CalculatorForWin10
                 btn_equal.IsEnabled = true;
                 btn_point.IsEnabled = true;
                 btn_nega.IsEnabled = true;
-            }
+            
         }
 
         private void Btn_2_Click(object sender, RoutedEventArgs e)
         {
-
-            if (re.Text.ToString().Contains("除") || re.Text.ToString().Contains("结"))
-
-            {
+            
                 if (btn_mopt.IsEnabled == false)
                 {
                     btn_mc.IsEnabled = false;
@@ -1031,15 +1043,11 @@ namespace CalculatorForWin10
                 btn_equal.IsEnabled = true;
                 btn_point.IsEnabled = true;
                 btn_nega.IsEnabled = true;
-            }
+            
         }
 
         private void Btn_3_Click(object sender, RoutedEventArgs e)
         {
-
-            if (re.Text.ToString().Contains("除") || re.Text.ToString().Contains("结"))
-
-            {
                 if (btn_mopt.IsEnabled == false)
                 {
                     btn_mc.IsEnabled = false;
@@ -1077,15 +1085,12 @@ namespace CalculatorForWin10
                 btn_equal.IsEnabled = true;
                 btn_point.IsEnabled = true;
                 btn_nega.IsEnabled = true;
-            }
+            
         }
 
         private void Btn_0_Click(object sender, RoutedEventArgs e)
         {
-
-            if (re.Text.ToString().Contains("除") || re.Text.ToString().Contains("结"))
-
-            {
+            
                 if (btn_mopt.IsEnabled == false)
                 {
                     btn_mc.IsEnabled = false;
@@ -1124,14 +1129,11 @@ namespace CalculatorForWin10
                 btn_point.IsEnabled = true;
                 btn_nega.IsEnabled = true;
             }
-        }
+        
 
         private void Btn_CE_Click(object sender, RoutedEventArgs e)
         {
-
-            if (re.Text.ToString().Contains("除") || re.Text.ToString().Contains("结"))
-
-            {
+            
                 if (btn_mopt.IsEnabled == false)
                 {
                     btn_mc.IsEnabled = false;
@@ -1169,7 +1171,7 @@ namespace CalculatorForWin10
                 btn_equal.IsEnabled = true;
                 btn_point.IsEnabled = true;
                 btn_nega.IsEnabled = true;
-            }
+            
         }
 
         private void Main_Activated(object sender, EventArgs e)
@@ -1180,17 +1182,54 @@ namespace CalculatorForWin10
         private void Main_Deactivated(object sender, EventArgs e)
         {
             main.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#e6e6e6"));
+            if (btn_mopt.IsEnabled == false)
+            {
+                btn_mc.IsEnabled = false;
+                btn_mr.IsEnabled = false;
+            }
+            else
+            {
+                btn_mc.IsEnabled = true;
+                btn_mr.IsEnabled = true;
+            }
+            btn_mm.IsEnabled = true;
+            btn_mp.IsEnabled = true;
+            btn_ms.IsEnabled = true;
+            btn_pre.IsEnabled = true;
+            btn_sqrt.IsEnabled = true;
+            btn_squ.IsEnabled = true;
+            btn_reci.IsEnabled = true;
+            btn_CE.IsEnabled = true;
+            btn_C.IsEnabled = true;
+            btn_DEL.IsEnabled = true;
+            btn_divi.IsEnabled = true;
+            btn_9.IsEnabled = true;
+            btn_8.IsEnabled = true;
+            btn_7.IsEnabled = true;
+            btn_6.IsEnabled = true;
+            btn_5.IsEnabled = true;
+            btn_4.IsEnabled = true;
+            btn_3.IsEnabled = true;
+            btn_2.IsEnabled = true;
+            btn_1.IsEnabled = true;
+            btn_0.IsEnabled = true;
+            btn_muti.IsEnabled = true;
+            btn_add.IsEnabled = true;
+            btn_sub.IsEnabled = true;
+            btn_equal.IsEnabled = true;
+            this.HistoryFlyout.IsOpen = false;
+            IsHistoryOpened = false;
         }
 
-        
+
 
 
         private void Re_TextChanged(object sender, TextChangedEventArgs e)
         {
-            re.FontSize = ChangeFontSize(re.ActualWidth,re.Text.Length);
+            re.FontSize = ChangeFontSize(re.ActualWidth, re.Text.Length);
         }
 
-        private double ChangeFontSize(double textBoxWidth,int textLength)
+        private double ChangeFontSize(double textBoxWidth, int textLength)
         {
             double fontSize = textBoxWidth / (0.587 * textLength);
             if (textLength <= 13)
@@ -1199,5 +1238,7 @@ namespace CalculatorForWin10
                 fontSize = fontSize > 45 ? 45 : fontSize;
             return fontSize;
         }
+        
     }
-}
+    }
+
