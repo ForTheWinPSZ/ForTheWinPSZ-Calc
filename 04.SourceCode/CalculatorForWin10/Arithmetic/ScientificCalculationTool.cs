@@ -189,6 +189,8 @@ namespace Arithmetic
         public static string ReturnNum(string num)
         {
             Debug.WriteLine("nummmm:"+num);
+            if (num.Equals("e0") || num.Equals("0"))
+                return "0";
             if (!num.Contains("e"))
                 return num;
             int right = ToInt32(num.Substring(num.IndexOf('e') + 1));

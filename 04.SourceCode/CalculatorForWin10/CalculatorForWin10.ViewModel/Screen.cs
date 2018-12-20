@@ -143,7 +143,13 @@ namespace CalculatorForWin10.ViewModel
             _resultValue = square.ReturnResultValue();
             _canNumberDef = false;
         }
-
+        public void HandleCube()
+        {
+            IUnary cube = new Cube(_expressionValue, _resultValue, _preResult);
+            _expressionValue = cube.ReturnExpressionValue();
+            _resultValue = cube.ReturnResultValue();
+            _canNumberDef = false;
+        }
 
         public void HandleReciprocal()
         {
