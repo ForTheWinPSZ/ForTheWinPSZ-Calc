@@ -33,10 +33,10 @@ namespace Arithmetic.UnaryOperation
             this.History = history;
             this.Lparm = lparm;            
             ChangeResultValue();
-            ChangeExpression();        }        public  void ChangeExpression()        {            if (ExpressionValue == "" || ExpressionValue.EndsWith(" "))            {                ExpressionValue += Tool.MaxContain(ResultValue);            }            else            {                string UnaryExpression = GetUnaryExpression().Trim();                if (ExpressionValue.Trim().Equals(UnaryExpression.Trim()))                    ExpressionValue = "0";                else
+            ChangeExpression();        }        public  void ChangeExpression()        {            if (ExpressionValue == "" || ExpressionValue.EndsWith(" "))            {                ExpressionValue += HistoryDisplayTool.MaxContain(ResultValue);            }            else            {                string UnaryExpression = GetUnaryExpression().Trim();                if (ExpressionValue.Trim().Equals(UnaryExpression.Trim()))                    ExpressionValue = "0";                else
                 {
                     string partExpression = ExpressionValue.Substring(0, binaryIndex);
-                    ExpressionValue = partExpression + Tool.MaxContain(displayText);
+                    ExpressionValue = partExpression + HistoryDisplayTool.MaxContain(displayText);
                 }                            }        }        public  void ChangeResultValue()        {
             if (ResultValue != "" && ExpressionValue != ""&& ExpressionValue.Split(new char[] { ' ' }).Length == 1)
             {               

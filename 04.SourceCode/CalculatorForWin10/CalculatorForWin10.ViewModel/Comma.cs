@@ -69,7 +69,12 @@ namespace CalculatorForWin10.ViewModel
         {          
             string value1 = resultValue.Substring(0, num);
             string value2 = resultValue.Substring(num, 1);
-            if (ToDouble(value2) >= 5)
+            if (resultValue.Substring(num, 1).Equals("."))
+                value2 = resultValue.Substring(num + 1, resultValue.Length - num - 1);
+            else
+                value2 = resultValue.Substring(num, resultValue.Length - num);
+            value2= value2.Insert(1, ".");
+            if (Math.Round(ToDouble(value2), 0) >= 5)
             {
                 string mm = "";
                 char[] arr = value1.ToCharArray();
@@ -106,7 +111,7 @@ namespace CalculatorForWin10.ViewModel
         {
             char[] strs = { '不', '无', '未', '溢' };
             //科学记数法暂时不作取舍
-            if (resultValue.Contains("e") || resultValue.Contains("E"))
+            if (resultValue.Contains("e") || resultValue.IndexOfAny(strs) != -1)
                 return resultValue;
             string integer; //输出框逗号显示部分
             if (resultValue.Contains("."))  //处理小数(正小数、负小数)

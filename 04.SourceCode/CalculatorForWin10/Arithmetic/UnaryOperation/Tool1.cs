@@ -27,7 +27,7 @@ namespace Arithmetic.UnaryOperation
                     }
                     else
                     {
-                        if (IsScienceCount(param) )
+                        if (Tool.IsScienceCount(param) )
                             result = ScientificSqrt(param);
                         else
                             result= Sqrt(ToDecimal(param)).ToString();                                                               
@@ -84,28 +84,6 @@ namespace Arithmetic.UnaryOperation
             }
             return x;
         }
-        public static bool IsScienceCount(string num)
-        {
-            Debug.WriteLine("IsScienceCount:"+num);
-            num = num.Trim();
-            if (num.Contains("e") || num.Contains("E"))
-            {
-                return true;
-            }
-            num = num.Replace("-","");
-            if (num.Equals("0"))
-                return false;
-            if (ToDecimal(num) >= 10000000000000000)
-                return true;
-            if (ToDecimal(num) < 0.0000000000000001m)
-                return true;               
-            if (ToDecimal(num) < 0.00000001m && num.Length > 18)
-                return true;
-            if (ToDecimal(num) < 0.001m && num.Length >= 26)
-                return true;
-            return false;
-        }
-        
 
 
     }

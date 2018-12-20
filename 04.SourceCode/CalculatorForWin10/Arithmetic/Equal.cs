@@ -4,7 +4,7 @@
                         string[] arr1 = lastHistory.Split(new char[] { ' ' });
                         string sym = arr1[arr1.Length - 4].Trim();
                         preResult= Tool.Compute(resultValue,sym, lparm);
-                        historyString = expressionValue + " " + sym + " "+Tool.MaxContain(lparm);
+                        historyString = expressionValue + " " + sym + " "+HistoryDisplayTool.MaxContain(lparm);
                     }
                     else
                     {
@@ -21,15 +21,15 @@
                     else
                     {
                         lparm = resultValue == "" ? preResult : resultValue;
-                        historyString = expressionValue + (resultValue == "" ? Tool.MaxContain(preResult) : Tool.MaxContain(resultValue));
+                        historyString = expressionValue + (resultValue == "" ? HistoryDisplayTool.MaxContain(preResult) : HistoryDisplayTool.MaxContain(resultValue));
                         preResult = Tool.Compute(preResult, symbol, resultValue == "" ? preResult : resultValue);
 
                     }
                 }            }            else            {                                if (preResult != "")                {                    if (LastHistoryHasBinary())                    {                        string[] arr = lastHistory.Split(new char[] { ' ' });                                                                      string symbol = arr[arr.Length - 4].Trim();                        string lastParam = arr[arr.Length - 3].Trim();
                         if (lastParam.EndsWith(")"))
-                            lastParam = lparm;                                        historyString = (resultValue == "" ? Tool.MaxContain(preResult): Tool.MaxContain(resultValue)) + " " + symbol + " " + Tool.MaxContain(lastParam);                        preResult =Tool.Compute(resultValue == "" ? preResult : resultValue, symbol, lastParam);                    }                    else                    {                        historyString = resultValue == "" ? Tool.MaxContain(preResult) : Tool.MaxContain(resultValue);                        preResult = historyString;                    }                }                else                {                    historyString = resultValue;                    preResult = historyString;                }            }        }        public void AddHistory()        {            char[] strs = { '不', '无', '未', '溢' };            if (preResult.IndexOfAny(strs) == -1)
+                            lastParam = lparm;                                        historyString = (resultValue == "" ? HistoryDisplayTool.MaxContain(preResult): HistoryDisplayTool.MaxContain(resultValue)) + " " + symbol + " " + HistoryDisplayTool.MaxContain(lastParam);                        preResult =Tool.Compute(resultValue == "" ? preResult : resultValue, symbol, lastParam);                    }                    else                    {                        historyString = resultValue == "" ? HistoryDisplayTool.MaxContain(preResult) : HistoryDisplayTool.MaxContain(resultValue);                        preResult = historyString;                    }                }                else                {                    historyString = resultValue;                    preResult = historyString;                }            }        }        public void AddHistory()        {            char[] strs = { '不', '无', '未', '溢' };            if (preResult.IndexOfAny(strs) == -1)
             {
-                History his = new History(historyString + " = ",Tool.MaxContain(preResult));
+                History his = new History(historyString + " = ",HistoryDisplayTool.AddComma(HistoryDisplayTool.MaxContain(preResult)));
                 history.Add(his);
             }        }        public string ReturnExpressionValue()        {            char[] strs = { '不', '无', '未', '溢' };            if(preResult.IndexOfAny(strs) != -1)
             {
