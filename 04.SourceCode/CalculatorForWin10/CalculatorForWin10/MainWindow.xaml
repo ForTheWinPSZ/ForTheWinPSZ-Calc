@@ -7,7 +7,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CalculatorForWin10"
         mc:Ignorable="d"
-        x:Name="main" Title="MainWindow" Height="502" Width="322" MinHeight="502" MinWidth="322" BorderThickness="1" BorderBrush="#707070" UseNoneWindowStyle="True" ResizeMode="CanResizeWithGrip" MouseLeftButtonDown="MetroWindow_MouseLeftButtonDown" SizeChanged="MetroWindow_SizeChanged" OpacityMask="#E6E6E6"  Activated="Main_Activated" Deactivated="Main_Deactivated">
+        x:Name="main" Title="MainWindow" Height="502" Width="322" MinHeight="502" MinWidth="322" BorderThickness="1" BorderBrush="#707070" UseNoneWindowStyle="True" ResizeMode="CanResizeWithGrip" MouseLeftButtonDown="MetroWindow_MouseLeftButtonDown" SizeChanged="MetroWindow_SizeChanged" OpacityMask="#E6E6E6"  Activated="Main_Activated" Deactivated="Main_Deactivated" >
     <metro:MetroWindow.Background>
         <SolidColorBrush Color="#FFE6E6E6"/>
     </metro:MetroWindow.Background>
@@ -130,7 +130,7 @@
                 </Grid>
                 <Grid Grid.Row="1">
                     <StackPanel Orientation="Vertical">
-                        <Label x:Name="ex" HorizontalContentAlignment="Right" Foreground="#5F5F5F" Height="25" FontSize="14" Padding="0,2,20,0"  Content="{Binding ExpressionText}" Background="#00E0E0E0" ></Label>
+                        <TextBox Cursor="Arrow" SelectionBrush="Transparent" IsReadOnly="True" BorderThickness="0" x:Name="ex" HorizontalContentAlignment="Right" Foreground="#5F5F5F" Height="25" FontSize="14" Padding="0,2,20,0"  Text="{Binding ExpressionText}" Background="#00E0E0E0" ></TextBox>
 
                         <TextBox Cursor="Arrow" SelectionBrush="Transparent" IsReadOnly="True" BorderThickness="0" Background="Transparent" x:Name="re" HorizontalContentAlignment="Right"  FontFamily="Yu Gothic UI Semibold" FontWeight="Normal" FontSize="45" Padding="0,0,10,0" Text="{Binding ResultText}" TextChanged="Re_TextChanged"></TextBox>
 
@@ -226,5 +226,5 @@
             </Grid>
         </Grid>
     </Grid>
-     </Grid>
+    </Grid>
 </metro:MetroWindow>

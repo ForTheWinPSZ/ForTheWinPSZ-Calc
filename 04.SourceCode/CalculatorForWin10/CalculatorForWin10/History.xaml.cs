@@ -73,9 +73,9 @@ namespace CalculatorForWin10
         {
             Window main = Application.Current.MainWindow;
             string[] arr = listStockName1.SelectedItem.ToString().Split(new char[] { '=' });
-            Label ex = main.FindName("ex") as Label;
+            TextBox ex = main.FindName("ex") as TextBox;
             TextBox re = main.FindName("re") as TextBox;
-            ex.Content = arr[0].Trim();
+            ex.Text = arr[0].Trim();
             re.Text = arr[1].Trim();
         }
 
