@@ -569,6 +569,7 @@ namespace CalculatorForWin10
             cubeButton.SetValue(Grid.RowProperty, 3);
             cubeButton.SetValue(Grid.ColumnProperty, 0);
             cubeButton.FontWeight = FontWeights.UltraLight;
+            cubeButton.Command = vm.Btn_cube;
             return cubeButton;
         }
 

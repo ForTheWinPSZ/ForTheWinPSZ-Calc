@@ -105,6 +105,7 @@ namespace CalculatorForWin10.ViewModel
             btn_plus = new NVCommand(Plus);
             btn_reciprocal = new NVCommand(Reciprocal);
             btn_reverse = new NVCommand(Reverse);
+            btn_cube = new NVCommand(Cube);
             btn_point = new NVCommand(Point);
             btn_equal = new NVCommand(Equal);
             btn_0 = new NVCommand(Zero);
