@@ -58,43 +58,6 @@ namespace CalculatorForWin10
         private void MetroWindow_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.DragMove();
-            if (btn_mopt.IsEnabled == false)
-            {
-                btn_mc.IsEnabled = false;
-                btn_mr.IsEnabled = false;
-            }
-            else
-            {
-                btn_mc.IsEnabled = true;
-                btn_mr.IsEnabled = true;
-            }
-            btn_mm.IsEnabled = true;
-            btn_mp.IsEnabled = true;
-            btn_ms.IsEnabled = true;
-            btn_pre.IsEnabled = true;
-            btn_sqrt.IsEnabled = true;
-            btn_squ.IsEnabled = true;
-            btn_reci.IsEnabled = true;
-            btn_CE.IsEnabled = true;
-            btn_C.IsEnabled = true;
-            btn_DEL.IsEnabled = true;
-            btn_divi.IsEnabled = true;
-            btn_9.IsEnabled = true;
-            btn_8.IsEnabled = true;
-            btn_7.IsEnabled = true;
-            btn_6.IsEnabled = true;
-            btn_5.IsEnabled = true;
-            btn_4.IsEnabled = true;
-            btn_3.IsEnabled = true;
-            btn_2.IsEnabled = true;
-            btn_1.IsEnabled = true;
-            btn_0.IsEnabled = true;
-            btn_muti.IsEnabled = true;
-            btn_add.IsEnabled = true;
-            btn_sub.IsEnabled = true;
-            btn_equal.IsEnabled = true;
-            btn_point.IsEnabled = true;
-            btn_nega.IsEnabled = true;
         }
 
         #region 标题栏
@@ -499,49 +462,6 @@ namespace CalculatorForWin10
             hi.Visibility = Visibility.Hidden;
             Button dustbin = h.FindName("btn_history_dustbin") as Button;
             dustbin.Visibility = Visibility.Visible;
-            if (ex.Text.ToString().EndsWith(" ÷ ") && re.Text.ToString() == "0")
-            {
-                btn_mc.IsEnabled = false;
-                btn_mr.IsEnabled = false;
-                btn_mm.IsEnabled = false;
-                btn_mp.IsEnabled = false;
-                btn_ms.IsEnabled = false;
-                btn_mopt.IsEnabled = false;
-                btn_pre.IsEnabled = false;
-                btn_sqrt.IsEnabled = false;
-                btn_squ.IsEnabled = false;
-                btn_reci.IsEnabled = false;
-                btn_divi.IsEnabled = false;
-                btn_muti.IsEnabled = false;
-                btn_add.IsEnabled = false;
-                btn_sub.IsEnabled = false;
-                btn_point.IsEnabled = false;
-                btn_nega.IsEnabled = false;
-                re.FontFamily = new FontFamily("微软雅黑");
-                re.FontWeight = FontWeights.Bold;
-            }
-            if (re.Text.ToString().Contains("除") || re.Text.ToString().Contains("结"))
-            {
-                re.FontFamily = new FontFamily("Yu Gothic UI Semibold");
-                re.FontWeight = FontWeights.Normal;
-                btn_mc.IsEnabled = true;
-                btn_mr.IsEnabled = true;
-                btn_mm.IsEnabled = true;
-                btn_mp.IsEnabled = true;
-                btn_ms.IsEnabled = true;
-                btn_mopt.IsEnabled = true;
-                btn_pre.IsEnabled = true;
-                btn_sqrt.IsEnabled = true;
-                btn_squ.IsEnabled = true;
-                btn_reci.IsEnabled = true;
-                btn_divi.IsEnabled = true;
-                btn_muti.IsEnabled = true;
-                btn_add.IsEnabled = true;
-                btn_sub.IsEnabled = true;
-                btn_point.IsEnabled = true;
-                btn_nega.IsEnabled = true;
-                this.DataContext = vm;
-            }
         }
         private void Button_Click_Ms(object sender, RoutedEventArgs e)
         {
@@ -614,565 +534,52 @@ namespace CalculatorForWin10
             return cubeButton;
         }
 
-        private void Btn_C_Click(object sender, RoutedEventArgs e)
+        private void IsEnable()
         {
-            
-                if (btn_mopt.IsEnabled == false)
-                {
-                    btn_mc.IsEnabled = false;
-                    btn_mr.IsEnabled = false;
-                }
-                else
-                {
-                    btn_mc.IsEnabled = true;
-                    btn_mr.IsEnabled = true;
-                }
-                btn_mm.IsEnabled = true;
-                btn_mp.IsEnabled = true;
-                btn_ms.IsEnabled = true;
-                btn_pre.IsEnabled = true;
-                btn_sqrt.IsEnabled = true;
-                btn_squ.IsEnabled = true;
-                btn_reci.IsEnabled = true;
-                btn_CE.IsEnabled = true;
-                btn_C.IsEnabled = true;
-                btn_DEL.IsEnabled = true;
-                btn_divi.IsEnabled = true;
-                btn_9.IsEnabled = true;
-                btn_8.IsEnabled = true;
-                btn_7.IsEnabled = true;
-                btn_6.IsEnabled = true;
-                btn_5.IsEnabled = true;
-                btn_4.IsEnabled = true;
-                btn_3.IsEnabled = true;
-                btn_2.IsEnabled = true;
-                btn_1.IsEnabled = true;
-                btn_0.IsEnabled = true;
-                btn_muti.IsEnabled = true;
-                btn_add.IsEnabled = true;
-                btn_sub.IsEnabled = true;
-                btn_equal.IsEnabled = true;
-                btn_point.IsEnabled = true;
-                btn_nega.IsEnabled = true;
+            if (btn_mopt.IsEnabled == false)
+            {
+                btn_mc.IsEnabled = false;
+                btn_mr.IsEnabled = false;
             }
-        
-
-        private void Btn_DEL_Click(object sender, RoutedEventArgs e)
-        {
-            
-                if (btn_mopt.IsEnabled == false)
-                {
-                    btn_mc.IsEnabled = false;
-                    btn_mr.IsEnabled = false;
-                }
-                else
-                {
-                    btn_mc.IsEnabled = true;
-                    btn_mr.IsEnabled = true;
-                }
-                btn_mm.IsEnabled = true;
-                btn_mp.IsEnabled = true;
-                btn_ms.IsEnabled = true;
-                btn_pre.IsEnabled = true;
-                btn_sqrt.IsEnabled = true;
-                btn_squ.IsEnabled = true;
-                btn_reci.IsEnabled = true;
-                btn_CE.IsEnabled = true;
-                btn_C.IsEnabled = true;
-                btn_DEL.IsEnabled = true;
-                btn_divi.IsEnabled = true;
-                btn_9.IsEnabled = true;
-                btn_8.IsEnabled = true;
-                btn_7.IsEnabled = true;
-                btn_6.IsEnabled = true;
-                btn_5.IsEnabled = true;
-                btn_4.IsEnabled = true;
-                btn_3.IsEnabled = true;
-                btn_2.IsEnabled = true;
-                btn_1.IsEnabled = true;
-                btn_0.IsEnabled = true;
-                btn_muti.IsEnabled = true;
-                btn_add.IsEnabled = true;
-                btn_sub.IsEnabled = true;
-                btn_equal.IsEnabled = true;
-                btn_point.IsEnabled = true;
-                btn_nega.IsEnabled = true;
-            
-        }
-
-        private void Btn_7_Click(object sender, RoutedEventArgs e)
-        {
-            
-                if (btn_mopt.IsEnabled == false)
-                {
-                    btn_mc.IsEnabled = false;
-                    btn_mr.IsEnabled = false;
-                }
-                else
-                {
-                    btn_mc.IsEnabled = true;
-                    btn_mr.IsEnabled = true;
-                }
-                btn_mm.IsEnabled = true;
-                btn_mp.IsEnabled = true;
-                btn_ms.IsEnabled = true;
-                btn_pre.IsEnabled = true;
-                btn_sqrt.IsEnabled = true;
-                btn_squ.IsEnabled = true;
-                btn_reci.IsEnabled = true;
-                btn_CE.IsEnabled = true;
-                btn_C.IsEnabled = true;
-                btn_DEL.IsEnabled = true;
-                btn_divi.IsEnabled = true;
-                btn_9.IsEnabled = true;
-                btn_8.IsEnabled = true;
-                btn_7.IsEnabled = true;
-                btn_6.IsEnabled = true;
-                btn_5.IsEnabled = true;
-                btn_4.IsEnabled = true;
-                btn_3.IsEnabled = true;
-                btn_2.IsEnabled = true;
-                btn_1.IsEnabled = true;
-                btn_0.IsEnabled = true;
-                btn_muti.IsEnabled = true;
-                btn_add.IsEnabled = true;
-                btn_sub.IsEnabled = true;
-                btn_equal.IsEnabled = true;
-                btn_point.IsEnabled = true;
-                btn_nega.IsEnabled = true;
-            
-        }
-
-        private void Btn_8_Click(object sender, RoutedEventArgs e)
-        {
-            
-                if (btn_mopt.IsEnabled == false)
-                {
-                    btn_mc.IsEnabled = false;
-                    btn_mr.IsEnabled = false;
-                }
-                else
-                {
-                    btn_mc.IsEnabled = true;
-                    btn_mr.IsEnabled = true;
-                }
-                btn_mm.IsEnabled = true;
-                btn_mp.IsEnabled = true;
-                btn_ms.IsEnabled = true;
-                btn_pre.IsEnabled = true;
-                btn_sqrt.IsEnabled = true;
-                btn_squ.IsEnabled = true;
-                btn_reci.IsEnabled = true;
-                btn_CE.IsEnabled = true;
-                btn_C.IsEnabled = true;
-                btn_DEL.IsEnabled = true;
-                btn_divi.IsEnabled = true;
-                btn_9.IsEnabled = true;
-                btn_8.IsEnabled = true;
-                btn_7.IsEnabled = true;
-                btn_6.IsEnabled = true;
-                btn_5.IsEnabled = true;
-                btn_4.IsEnabled = true;
-                btn_3.IsEnabled = true;
-                btn_2.IsEnabled = true;
-                btn_1.IsEnabled = true;
-                btn_0.IsEnabled = true;
-                btn_muti.IsEnabled = true;
-                btn_add.IsEnabled = true;
-                btn_sub.IsEnabled = true;
-                btn_equal.IsEnabled = true;
-                btn_point.IsEnabled = true;
-                btn_nega.IsEnabled = true;
-            
-        }
-
-        private void Btn_9_Click(object sender, RoutedEventArgs e)
-        {
-            
-                if (btn_mopt.IsEnabled == false)
-                {
-                    btn_mc.IsEnabled = false;
-                    btn_mr.IsEnabled = false;
-                }
-                else
-                {
-                    btn_mc.IsEnabled = true;
-                    btn_mr.IsEnabled = true;
-                }
-                btn_mm.IsEnabled = true;
-                btn_mp.IsEnabled = true;
-                btn_ms.IsEnabled = true;
-                btn_pre.IsEnabled = true;
-                btn_sqrt.IsEnabled = true;
-                btn_squ.IsEnabled = true;
-                btn_reci.IsEnabled = true;
-                btn_CE.IsEnabled = true;
-                btn_C.IsEnabled = true;
-                btn_DEL.IsEnabled = true;
-                btn_divi.IsEnabled = true;
-                btn_9.IsEnabled = true;
-                btn_8.IsEnabled = true;
-                btn_7.IsEnabled = true;
-                btn_6.IsEnabled = true;
-                btn_5.IsEnabled = true;
-                btn_4.IsEnabled = true;
-                btn_3.IsEnabled = true;
-                btn_2.IsEnabled = true;
-                btn_1.IsEnabled = true;
-                btn_0.IsEnabled = true;
-                btn_muti.IsEnabled = true;
-                btn_add.IsEnabled = true;
-                btn_sub.IsEnabled = true;
-                btn_equal.IsEnabled = true;
-                btn_point.IsEnabled = true;
-                btn_nega.IsEnabled = true;
-            
-        }
-
-        private void Btn_4_Click(object sender, RoutedEventArgs e)
-        {
-            
-                if (btn_mopt.IsEnabled == false)
-                {
-                    btn_mc.IsEnabled = false;
-                    btn_mr.IsEnabled = false;
-                }
-                else
-                {
-                    btn_mc.IsEnabled = true;
-                    btn_mr.IsEnabled = true;
-                }
-                btn_mm.IsEnabled = true;
-                btn_mp.IsEnabled = true;
-                btn_ms.IsEnabled = true;
-                btn_pre.IsEnabled = true;
-                btn_sqrt.IsEnabled = true;
-                btn_squ.IsEnabled = true;
-                btn_reci.IsEnabled = true;
-                btn_CE.IsEnabled = true;
-                btn_C.IsEnabled = true;
-                btn_DEL.IsEnabled = true;
-                btn_divi.IsEnabled = true;
-                btn_9.IsEnabled = true;
-                btn_8.IsEnabled = true;
-                btn_7.IsEnabled = true;
-                btn_6.IsEnabled = true;
-                btn_5.IsEnabled = true;
-                btn_4.IsEnabled = true;
-                btn_3.IsEnabled = true;
-                btn_2.IsEnabled = true;
-                btn_1.IsEnabled = true;
-                btn_0.IsEnabled = true;
-                btn_muti.IsEnabled = true;
-                btn_add.IsEnabled = true;
-                btn_sub.IsEnabled = true;
-                btn_equal.IsEnabled = true;
-                btn_point.IsEnabled = true;
-                btn_nega.IsEnabled = true;
-            
-        }
-
-        private void Btn_5_Click(object sender, RoutedEventArgs e)
-        {
-            
-                if (btn_mopt.IsEnabled == false)
-                {
-                    btn_mc.IsEnabled = false;
-                    btn_mr.IsEnabled = false;
-                }
-                else
-                {
-                    btn_mc.IsEnabled = true;
-                    btn_mr.IsEnabled = true;
-                }
-                btn_mm.IsEnabled = true;
-                btn_mp.IsEnabled = true;
-                btn_ms.IsEnabled = true;
-                btn_pre.IsEnabled = true;
-                btn_sqrt.IsEnabled = true;
-                btn_squ.IsEnabled = true;
-                btn_reci.IsEnabled = true;
-                btn_CE.IsEnabled = true;
-                btn_C.IsEnabled = true;
-                btn_DEL.IsEnabled = true;
-                btn_divi.IsEnabled = true;
-                btn_9.IsEnabled = true;
-                btn_8.IsEnabled = true;
-                btn_7.IsEnabled = true;
-                btn_6.IsEnabled = true;
-                btn_5.IsEnabled = true;
-                btn_4.IsEnabled = true;
-                btn_3.IsEnabled = true;
-                btn_2.IsEnabled = true;
-                btn_1.IsEnabled = true;
-                btn_0.IsEnabled = true;
-                btn_muti.IsEnabled = true;
-                btn_add.IsEnabled = true;
-                btn_sub.IsEnabled = true;
-                btn_equal.IsEnabled = true;
-                btn_point.IsEnabled = true;
-                btn_nega.IsEnabled = true;
-            
-
-        }
-
-        private void Btn_6_Click(object sender, RoutedEventArgs e)
-        {
-
-            
-                if (btn_mopt.IsEnabled == false)
-                {
-                    btn_mc.IsEnabled = false;
-                    btn_mr.IsEnabled = false;
-                }
-                else
-                {
-                    btn_mc.IsEnabled = true;
-                    btn_mr.IsEnabled = true;
-                }
-                btn_mm.IsEnabled = true;
-                btn_mp.IsEnabled = true;
-                btn_ms.IsEnabled = true;
-                btn_pre.IsEnabled = true;
-                btn_sqrt.IsEnabled = true;
-                btn_squ.IsEnabled = true;
-                btn_reci.IsEnabled = true;
-                btn_CE.IsEnabled = true;
-                btn_C.IsEnabled = true;
-                btn_DEL.IsEnabled = true;
-                btn_divi.IsEnabled = true;
-                btn_9.IsEnabled = true;
-                btn_8.IsEnabled = true;
-                btn_7.IsEnabled = true;
-                btn_6.IsEnabled = true;
-                btn_5.IsEnabled = true;
-                btn_4.IsEnabled = true;
-                btn_3.IsEnabled = true;
-                btn_2.IsEnabled = true;
-                btn_1.IsEnabled = true;
-                btn_0.IsEnabled = true;
-                btn_muti.IsEnabled = true;
-                btn_add.IsEnabled = true;
-                btn_sub.IsEnabled = true;
-                btn_equal.IsEnabled = true;
-                btn_point.IsEnabled = true;
-                btn_nega.IsEnabled = true;
-            
-        }
-
-        private void Btn_1_Click(object sender, RoutedEventArgs e)
-        {
-
-                if (btn_mopt.IsEnabled == false)
-                {
-                    btn_mc.IsEnabled = false;
-                    btn_mr.IsEnabled = false;
-                }
-                else
-                {
-                    btn_mc.IsEnabled = true;
-                    btn_mr.IsEnabled = true;
-                }
-                btn_mm.IsEnabled = true;
-                btn_mp.IsEnabled = true;
-                btn_ms.IsEnabled = true;
-                btn_pre.IsEnabled = true;
-                btn_sqrt.IsEnabled = true;
-                btn_squ.IsEnabled = true;
-                btn_reci.IsEnabled = true;
-                btn_CE.IsEnabled = true;
-                btn_C.IsEnabled = true;
-                btn_DEL.IsEnabled = true;
-                btn_divi.IsEnabled = true;
-                btn_9.IsEnabled = true;
-                btn_8.IsEnabled = true;
-                btn_7.IsEnabled = true;
-                btn_6.IsEnabled = true;
-                btn_5.IsEnabled = true;
-                btn_4.IsEnabled = true;
-                btn_3.IsEnabled = true;
-                btn_2.IsEnabled = true;
-                btn_1.IsEnabled = true;
-                btn_0.IsEnabled = true;
-                btn_muti.IsEnabled = true;
-                btn_add.IsEnabled = true;
-                btn_sub.IsEnabled = true;
-                btn_equal.IsEnabled = true;
-                btn_point.IsEnabled = true;
-                btn_nega.IsEnabled = true;
-            
-        }
-
-        private void Btn_2_Click(object sender, RoutedEventArgs e)
-        {
-            
-                if (btn_mopt.IsEnabled == false)
-                {
-                    btn_mc.IsEnabled = false;
-                    btn_mr.IsEnabled = false;
-                }
-                else
-                {
-                    btn_mc.IsEnabled = true;
-                    btn_mr.IsEnabled = true;
-                }
-                btn_mm.IsEnabled = true;
-                btn_mp.IsEnabled = true;
-                btn_ms.IsEnabled = true;
-                btn_pre.IsEnabled = true;
-                btn_sqrt.IsEnabled = true;
-                btn_squ.IsEnabled = true;
-                btn_reci.IsEnabled = true;
-                btn_CE.IsEnabled = true;
-                btn_C.IsEnabled = true;
-                btn_DEL.IsEnabled = true;
-                btn_divi.IsEnabled = true;
-                btn_9.IsEnabled = true;
-                btn_8.IsEnabled = true;
-                btn_7.IsEnabled = true;
-                btn_6.IsEnabled = true;
-                btn_5.IsEnabled = true;
-                btn_4.IsEnabled = true;
-                btn_3.IsEnabled = true;
-                btn_2.IsEnabled = true;
-                btn_1.IsEnabled = true;
-                btn_0.IsEnabled = true;
-                btn_muti.IsEnabled = true;
-                btn_add.IsEnabled = true;
-                btn_sub.IsEnabled = true;
-                btn_equal.IsEnabled = true;
-                btn_point.IsEnabled = true;
-                btn_nega.IsEnabled = true;
-            
-        }
-
-        private void Btn_3_Click(object sender, RoutedEventArgs e)
-        {
-                if (btn_mopt.IsEnabled == false)
-                {
-                    btn_mc.IsEnabled = false;
-                    btn_mr.IsEnabled = false;
-                }
-                else
-                {
-                    btn_mc.IsEnabled = true;
-                    btn_mr.IsEnabled = true;
-                }
-                btn_mm.IsEnabled = true;
-                btn_mp.IsEnabled = true;
-                btn_ms.IsEnabled = true;
-                btn_pre.IsEnabled = true;
-                btn_sqrt.IsEnabled = true;
-                btn_squ.IsEnabled = true;
-                btn_reci.IsEnabled = true;
-                btn_CE.IsEnabled = true;
-                btn_C.IsEnabled = true;
-                btn_DEL.IsEnabled = true;
-                btn_divi.IsEnabled = true;
-                btn_9.IsEnabled = true;
-                btn_8.IsEnabled = true;
-                btn_7.IsEnabled = true;
-                btn_6.IsEnabled = true;
-                btn_5.IsEnabled = true;
-                btn_4.IsEnabled = true;
-                btn_3.IsEnabled = true;
-                btn_2.IsEnabled = true;
-                btn_1.IsEnabled = true;
-                btn_0.IsEnabled = true;
-                btn_muti.IsEnabled = true;
-                btn_add.IsEnabled = true;
-                btn_sub.IsEnabled = true;
-                btn_equal.IsEnabled = true;
-                btn_point.IsEnabled = true;
-                btn_nega.IsEnabled = true;
-            
-        }
-
-        private void Btn_0_Click(object sender, RoutedEventArgs e)
-        {
-            
-                if (btn_mopt.IsEnabled == false)
-                {
-                    btn_mc.IsEnabled = false;
-                    btn_mr.IsEnabled = false;
-                }
-                else
-                {
-                    btn_mc.IsEnabled = true;
-                    btn_mr.IsEnabled = true;
-                }
-                btn_mm.IsEnabled = true;
-                btn_mp.IsEnabled = true;
-                btn_ms.IsEnabled = true;
-                btn_pre.IsEnabled = true;
-                btn_sqrt.IsEnabled = true;
-                btn_squ.IsEnabled = true;
-                btn_reci.IsEnabled = true;
-                btn_CE.IsEnabled = true;
-                btn_C.IsEnabled = true;
-                btn_DEL.IsEnabled = true;
-                btn_divi.IsEnabled = true;
-                btn_9.IsEnabled = true;
-                btn_8.IsEnabled = true;
-                btn_7.IsEnabled = true;
-                btn_6.IsEnabled = true;
-                btn_5.IsEnabled = true;
-                btn_4.IsEnabled = true;
-                btn_3.IsEnabled = true;
-                btn_2.IsEnabled = true;
-                btn_1.IsEnabled = true;
-                btn_0.IsEnabled = true;
-                btn_muti.IsEnabled = true;
-                btn_add.IsEnabled = true;
-                btn_sub.IsEnabled = true;
-                btn_equal.IsEnabled = true;
-                btn_point.IsEnabled = true;
-                btn_nega.IsEnabled = true;
+            else
+            {
+                btn_mc.IsEnabled = true;
+                btn_mr.IsEnabled = true;
             }
-        
-
-        private void Btn_CE_Click(object sender, RoutedEventArgs e)
-        {
-            
-                if (btn_mopt.IsEnabled == false)
-                {
-                    btn_mc.IsEnabled = false;
-                    btn_mr.IsEnabled = false;
-                }
-                else
-                {
-                    btn_mc.IsEnabled = true;
-                    btn_mr.IsEnabled = true;
-                }
-                btn_mm.IsEnabled = true;
-                btn_mp.IsEnabled = true;
-                btn_ms.IsEnabled = true;
-                btn_pre.IsEnabled = true;
-                btn_sqrt.IsEnabled = true;
-                btn_squ.IsEnabled = true;
-                btn_reci.IsEnabled = true;
-                btn_CE.IsEnabled = true;
-                btn_C.IsEnabled = true;
-                btn_DEL.IsEnabled = true;
-                btn_divi.IsEnabled = true;
-                btn_9.IsEnabled = true;
-                btn_8.IsEnabled = true;
-                btn_7.IsEnabled = true;
-                btn_6.IsEnabled = true;
-                btn_5.IsEnabled = true;
-                btn_4.IsEnabled = true;
-                btn_3.IsEnabled = true;
-                btn_2.IsEnabled = true;
-                btn_1.IsEnabled = true;
-                btn_0.IsEnabled = true;
-                btn_muti.IsEnabled = true;
-                btn_add.IsEnabled = true;
-                btn_sub.IsEnabled = true;
-                btn_equal.IsEnabled = true;
-                btn_point.IsEnabled = true;
-                btn_nega.IsEnabled = true;
-            
+            btn_mm.IsEnabled = true;
+            btn_mp.IsEnabled = true;
+            btn_ms.IsEnabled = true;
+            btn_pre.IsEnabled = true;
+            btn_sqrt.IsEnabled = true;
+            btn_squ.IsEnabled = true;
+            btn_reci.IsEnabled = true;
+            btn_CE.IsEnabled = true;
+            btn_C.IsEnabled = true;
+            btn_DEL.IsEnabled = true;
+            btn_divi.IsEnabled = true;
+            btn_9.IsEnabled = true;
+            btn_8.IsEnabled = true;
+            btn_7.IsEnabled = true;
+            btn_6.IsEnabled = true;
+            btn_5.IsEnabled = true;
+            btn_4.IsEnabled = true;
+            btn_3.IsEnabled = true;
+            btn_2.IsEnabled = true;
+            btn_1.IsEnabled = true;
+            btn_0.IsEnabled = true;
+            btn_muti.IsEnabled = true;
+            btn_add.IsEnabled = true;
+            btn_sub.IsEnabled = true;
+            btn_equal.IsEnabled = true;
+            btn_point.IsEnabled = true;
+            btn_nega.IsEnabled = true;
         }
+
+        private void Btn_Enable_Click(object sender, RoutedEventArgs e)
+        {
+            IsEnable();     
+        }
+        
 
         private void Main_Activated(object sender, EventArgs e)
         {
@@ -1227,6 +634,32 @@ namespace CalculatorForWin10
         private void Re_TextChanged(object sender, TextChangedEventArgs e)
         {
             re.FontSize = ChangeFontSize(re.ActualWidth, re.Text.Length);
+            if (re.Text.ToString().Contains("除") || re.Text.ToString().Contains("结") || re.Text.ToString().Contains("未") || re.Text.ToString().Contains("溢"))
+            {
+                btn_mc.IsEnabled = false;
+                btn_mr.IsEnabled = false;
+                btn_mm.IsEnabled = false;
+                btn_mp.IsEnabled = false;
+                btn_ms.IsEnabled = false;
+                btn_mopt.IsEnabled = false;
+                btn_pre.IsEnabled = false;
+                btn_sqrt.IsEnabled = false;
+                btn_squ.IsEnabled = false;
+                btn_reci.IsEnabled = false;
+                btn_divi.IsEnabled = false;
+                btn_muti.IsEnabled = false;
+                btn_add.IsEnabled = false;
+                btn_sub.IsEnabled = false;
+                btn_point.IsEnabled = false;
+                btn_nega.IsEnabled = false;
+                re.FontFamily = new FontFamily("微软雅黑");
+                re.FontWeight = FontWeights.Bold;
+            }
+            else
+            {
+                re.FontFamily = new FontFamily("Yu Gothic UI Semibold");
+                re.FontWeight = FontWeights.Normal;
+            }
         }
 
         private double ChangeFontSize(double textBoxWidth, int textLength)

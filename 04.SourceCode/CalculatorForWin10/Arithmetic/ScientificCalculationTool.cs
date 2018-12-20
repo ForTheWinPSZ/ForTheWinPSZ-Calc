@@ -194,8 +194,6 @@ namespace Arithmetic
                     num = num1.ToString();
             }
             
-
-            
             return num;
         }
         //科学计数位数显示
