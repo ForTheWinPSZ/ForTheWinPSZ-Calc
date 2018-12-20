@@ -12,21 +12,7 @@ namespace Arithmetic
 {
     public static class ScientificCalculationTool
     {
-        //平方
-        public static string Square(string num)
-        {
-            string str = "";            
-            str = ScientficNum(num);
-            string left = str.Substring(0, str.IndexOf("e"));
-            string right = str.Substring(str.LastIndexOf("e") + 1);
-            decimal left1 = ToDecimal(left.Trim());
-            int right1 = ToInt32(right.Trim());
-            left1 = left1 * left1;
-            right1 = right1 + right1;
-            //将e左边平方后变为个位数
-            str=RegulateNum(left1, right1);            
-            return str;
-        }
+       
         //加减
         public static string Plus(string num1,string num2)
         {
@@ -47,6 +33,7 @@ namespace Arithmetic
                     StringBuilder tem = new StringBuilder("0.");
                     tem.Append('0', len - 1);
                     left2 = ToDecimal(tem.Append(left2.ToString().Replace(".", "").Trim('0')).ToString());
+                    Debug.WriteLine(tem.Append(left1.ToString().Replace(".", "").Trim('0')).ToString());
                 }          
                 left = left1 + left2;
                 right = right1;
@@ -57,6 +44,7 @@ namespace Arithmetic
                 int len = right2 - right1;
                 StringBuilder tem = new StringBuilder("0.");
                 tem.Append('0', len - 1);
+                Debug.WriteLine(tem.Append(left1.ToString().Replace(".", "").Trim('0')).ToString());
                 left1 = ToDecimal(tem.Append(left1.ToString().Replace(".", "").Trim('0')).ToString());
                 left = left1 + left2;
                 right = right2;
@@ -80,6 +68,7 @@ namespace Arithmetic
             str = RegulateNum(left, right);
             return ReturnNum(str);
         }
+        //除
         public static string Division(string num1, string num2)
         {
             string str = "";
@@ -214,7 +203,7 @@ namespace Arithmetic
         {
             string left = num.Substring(0, num.IndexOf("e"));
             if (left.Length > 17)
-                left = Tool.Rounding2(left, 17).TrimEnd('0');
+                left = HistoryDisplayTool.Rounding2(left, 17).TrimEnd('0');
             return left + num.Substring(num.IndexOf("e"));
         }
     }

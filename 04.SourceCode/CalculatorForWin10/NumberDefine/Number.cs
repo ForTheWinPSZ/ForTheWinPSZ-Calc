@@ -56,7 +56,7 @@ namespace NumberDefine
                 public List<History> ReturnHistory()        {            return History;        }
         public void AddHistory()        {            char[] strs = { '不', '无', '未', '溢' };            if (resultValue.IndexOfAny(strs) == -1)
             {
-                History his = new History(historyString + " = ", Tool.MaxContain(resultValue));
+                History his = new History(historyString + " = ",HistoryDisplayTool.AddComma(HistoryDisplayTool.MaxContain(resultValue)));
                 history.Add(his);
             }        }
     }

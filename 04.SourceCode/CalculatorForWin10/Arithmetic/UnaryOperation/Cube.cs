@@ -19,7 +19,7 @@ namespace Arithmetic.UnaryOperation
         {
             if (ExpressionValue == "" || ExpressionValue.EndsWith(" ")) //结尾是双目
             {
-                ExpressionValue += "cube(" + Tool.MaxContain(displayText) + ")";
+                ExpressionValue += "cube(" + HistoryDisplayTool.MaxContain(displayText) + ")";
             }
             else
             {
