@@ -74,8 +74,8 @@ namespace CalculatorForWin10
         {
             TextBox re = main.FindName("re") as TextBox;
             re.Text = listStockName.SelectedItem.ToString();
-            Label ex = main.FindName("ex") as Label;
-            ex.Content = "";
+            TextBox ex = main.FindName("ex") as TextBox;
+            ex.Text = "";
         }
 
         private void Button_Click_Qc1(object sender, RoutedEventArgs e)

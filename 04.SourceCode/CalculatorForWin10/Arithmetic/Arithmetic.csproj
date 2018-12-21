@@ -48,6 +48,7 @@
     <Compile Include="BinaryOperaion\Minus.cs" />
     <Compile Include="BinaryOperaion\Multiplication.cs" />
     <Compile Include="History.cs" />
+    <Compile Include="HistoryDisplayTool.cs" />
     <Compile Include="ScientificCalculationTool.cs" />
     <Compile Include="UnaryOperation\Cube.cs" />
     <Compile Include="UnaryOperation\Percent.cs" />

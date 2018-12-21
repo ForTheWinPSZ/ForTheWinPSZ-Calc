@@ -9,7 +9,7 @@
             if ((ExpressionValue == "" || ExpressionValue.EndsWith(" ")) && (_canNumberDef == false && PreResult != ""))
             {
                 Debug.WriteLine("结尾不是单目");
-                ExpressionValue += "negate(" + Tool.MaxContain(displayText) + ")";
+                ExpressionValue += "negate(" + HistoryDisplayTool.MaxContain(displayText) + ")";
             }
             else if (ExpressionValue.EndsWith(")"))
             {

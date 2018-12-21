@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using Arithmetic;
-
+using static System.Net.Mime.MediaTypeNames;
 
 namespace CalculatorForWin10.ViewModel
 {
@@ -105,6 +105,7 @@ namespace CalculatorForWin10.ViewModel
             btn_plus = new NVCommand(Plus);
             btn_reciprocal = new NVCommand(Reciprocal);
             btn_reverse = new NVCommand(Reverse);
+            btn_cube = new NVCommand(Cube);
             btn_point = new NVCommand(Point);
             btn_equal = new NVCommand(Equal);
             btn_0 = new NVCommand(Zero);
@@ -400,7 +401,8 @@ namespace CalculatorForWin10.ViewModel
         private string _resultText = "0";
         public string ResultText
         {
-            get { return _resultText; }
+           
+            get {return _resultText; }
             set
             {
                 SetPropertyNotify(ref _resultText, value, nameof(ResultText));
