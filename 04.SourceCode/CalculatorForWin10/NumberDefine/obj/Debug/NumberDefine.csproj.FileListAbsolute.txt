@@ -1,0 +1,15 @@
+C:\Users\zhouq\Documents\github\ForTheWinPSZ-Calc\04.SourceCode\CalculatorForWin10\NumberDefine\bin\Debug\NumberDefine.dll
+C:\Users\zhouq\Documents\github\ForTheWinPSZ-Calc\04.SourceCode\CalculatorForWin10\NumberDefine\bin\Debug\NumberDefine.pdb
+C:\Users\zhouq\Documents\github\ForTheWinPSZ-Calc\04.SourceCode\CalculatorForWin10\NumberDefine\obj\Debug\NumberDefine.csprojAssemblyReference.cache
+C:\Users\zhouq\Documents\github\ForTheWinPSZ-Calc\04.SourceCode\CalculatorForWin10\NumberDefine\obj\Debug\NumberDefine.csproj.CoreCompileInputs.cache
+C:\Users\zhouq\Documents\github\ForTheWinPSZ-Calc\04.SourceCode\CalculatorForWin10\NumberDefine\obj\Debug\NumberDefine.dll
+C:\Users\zhouq\Documents\github\ForTheWinPSZ-Calc\04.SourceCode\CalculatorForWin10\NumberDefine\obj\Debug\NumberDefine.pdb
+D:\GitHub\ForTheWinPSZ\ForTheWinPSZ-Calc\04.SourceCode\CalculatorForWin10\NumberDefine\bin\Debug\NumberDefine.dll
+D:\GitHub\ForTheWinPSZ\ForTheWinPSZ-Calc\04.SourceCode\CalculatorForWin10\NumberDefine\bin\Debug\NumberDefine.pdb
+D:\GitHub\ForTheWinPSZ\ForTheWinPSZ-Calc\04.SourceCode\CalculatorForWin10\NumberDefine\obj\Debug\NumberDefine.csprojAssemblyReference.cache
+D:\GitHub\ForTheWinPSZ\ForTheWinPSZ-Calc\04.SourceCode\CalculatorForWin10\NumberDefine\obj\Debug\NumberDefine.csproj.CoreCompileInputs.cache
+D:\GitHub\ForTheWinPSZ\ForTheWinPSZ-Calc\04.SourceCode\CalculatorForWin10\NumberDefine\obj\Debug\NumberDefine.dll
+D:\GitHub\ForTheWinPSZ\ForTheWinPSZ-Calc\04.SourceCode\CalculatorForWin10\NumberDefine\obj\Debug\NumberDefine.pdb
+D:\GitHub\ForTheWinPSZ\ForTheWinPSZ-Calc\04.SourceCode\CalculatorForWin10\NumberDefine\bin\Debug\Arithmetic.dll
+D:\GitHub\ForTheWinPSZ\ForTheWinPSZ-Calc\04.SourceCode\CalculatorForWin10\NumberDefine\bin\Debug\Arithmetic.pdb
+D:\GitHub\ForTheWinPSZ\ForTheWinPSZ-Calc\04.SourceCode\CalculatorForWin10\NumberDefine\obj\Debug\NumberDefine.csproj.CopyComplete
