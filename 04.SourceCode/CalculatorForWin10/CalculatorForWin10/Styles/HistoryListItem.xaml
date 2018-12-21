@@ -1,0 +1,67 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:CalculatorForWin10.Styles">
+    <Style x:Key="HistoryListitemStyle" TargetType="ListBoxItem">
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border Background="Transparent" Margin="-5,0,0,0">
+                        <StackPanel x:Name="q" Orientation="Vertical" HorizontalAlignment="Stretch" Margin="-5,0,0,20">
+                            <TextBlock x:Name="b" Margin="0,7,20,0" TextWrapping="Wrap" Text="{Binding Path=Expression}" FontSize="13" HorizontalAlignment="Right" TextAlignment="Right" Foreground="#5F5F5F" Width="{Binding ElementName=z,Path=ActualWidth}"></TextBlock>
+                            <TextBlock x:Name="r" TextWrapping="Wrap" Foreground="Black" Margin="0,10,20,10" Text="{Binding Path=Result}" FontWeight="Bold" FontSize="22" HorizontalAlignment="Right" TextAlignment="Right" Width="{Binding ElementName=z,Path=ActualWidth}"></TextBlock>
+                        </StackPanel>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter TargetName="q" Property="Background" Value="#CFCFCF"></Setter>
+                        </Trigger>
+                        <EventTrigger RoutedEvent="ListBoxItem.MouseUp">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetName="q"
+                                                        Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)" 
+                                                        Duration="0:0:0.1"
+                                                        From="#BCBCBC" To="#CFCFCF">
+                                    </ColorAnimation>
+                                    <DoubleAnimation Storyboard.TargetName="b"
+                                                        Storyboard.TargetProperty="FontSize" 
+                                                        Duration="0:0:0.1"
+                                                        From="12" To="13">
+                                    </DoubleAnimation>
+                                    <DoubleAnimation Storyboard.TargetName="r"
+                                                        Storyboard.TargetProperty="FontSize" 
+                                                        Duration="0:0:0.1"
+                                                        From="20" To="22">
+                                    </DoubleAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="ListBoxItem.Selected">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetName="q"
+                                                        Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)" 
+                                                        Duration="0:0:0.1"
+                                                        From="#CFCFCF" To="#BCBCBC">
+                                    </ColorAnimation>
+                                    <DoubleAnimation Storyboard.TargetName="b"
+                                                        Storyboard.TargetProperty="FontSize" 
+                                                        Duration="0:0:0.1"
+                                                        From="13" To="12">
+                                    </DoubleAnimation>
+                                    <DoubleAnimation Storyboard.TargetName="r"
+                                                        Storyboard.TargetProperty="FontSize" 
+                                                        Duration="0:0:0.1"
+                                                        From="22" To="20">
+                                    </DoubleAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
